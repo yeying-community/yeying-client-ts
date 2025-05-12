@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs", 
+  "exclude": ["**/test/**", "**/tests/**"], 
+  "theme": "default", 
+  "excludePrivate": true, 
+  "excludeProtected": true,
+  "readme": "none"
+}
+
