@@ -6,7 +6,6 @@ import { ProviderOption } from '../common/model'
 import { SecurityAlgorithm } from '@yeying-community/yeying-web3'
 import { AssetProvider } from './asset'
 import {BlockMetadata} from "../../yeying/api/asset/block_pb";
-import {Blob} from "happy-dom";
 
 export type BlockCallback = (block: BlockMetadata, data: Blob) => void
 
