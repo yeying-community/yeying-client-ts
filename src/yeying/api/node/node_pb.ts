@@ -2,9 +2,22 @@
 // @generated from file yeying/api/node/node.proto (package yeying.api.node, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type {
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
+import type {
+  MessageHeader,
+  MessageHeaderJson,
+  ResponseStatus,
+  ResponseStatusJson,
+} from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { ServiceMetadata, ServiceMetadataJson } from "../common/model_pb";
 import { file_yeying_api_common_model } from "../common/model_pb";
@@ -13,18 +26,23 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file yeying/api/node/node.proto.
  */
-export const file_yeying_api_node_node: GenFile = /*@__PURE__*/
-  fileDesc("Chp5ZXlpbmcvYXBpL25vZGUvbm9kZS5wcm90bxIPeWV5aW5nLmFwaS5ub2RlIkYKEkhlYWx0aENoZWNrUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIn8KE0hlYWx0aENoZWNrUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5ub2RlLkhlYWx0aENoZWNrUmVzcG9uc2VCb2R5IkwKF0hlYWx0aENoZWNrUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIkEKDVdob2FtaVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJ1Cg5XaG9hbWlSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLm5vZGUuV2hvYW1pUmVzcG9uc2VCb2R5InwKEldob2FtaVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCgdzZXJ2aWNlGAIgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhMq8BCgROb2RlEloKC0hlYWx0aENoZWNrEiMueWV5aW5nLmFwaS5ub2RlLkhlYWx0aENoZWNrUmVxdWVzdBokLnlleWluZy5hcGkubm9kZS5IZWFsdGhDaGVja1Jlc3BvbnNlIgASSwoGV2hvYW1pEh4ueWV5aW5nLmFwaS5ub2RlLldob2FtaVJlcXVlc3QaHy55ZXlpbmcuYXBpLm5vZGUuV2hvYW1pUmVzcG9uc2UiAEIRWg95ZXlpbmcvYXBpL25vZGViBnByb3RvMw", [file_yeying_api_common_message, file_yeying_api_common_model]);
+export const file_yeying_api_node_node: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "Chp5ZXlpbmcvYXBpL25vZGUvbm9kZS5wcm90bxIPeWV5aW5nLmFwaS5ub2RlIkYKEkhlYWx0aENoZWNrUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIn8KE0hlYWx0aENoZWNrUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5ub2RlLkhlYWx0aENoZWNrUmVzcG9uc2VCb2R5IkwKF0hlYWx0aENoZWNrUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIkEKDVdob2FtaVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJ1Cg5XaG9hbWlSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLm5vZGUuV2hvYW1pUmVzcG9uc2VCb2R5InwKEldob2FtaVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCgdzZXJ2aWNlGAIgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhMq8BCgROb2RlEloKC0hlYWx0aENoZWNrEiMueWV5aW5nLmFwaS5ub2RlLkhlYWx0aENoZWNrUmVxdWVzdBokLnlleWluZy5hcGkubm9kZS5IZWFsdGhDaGVja1Jlc3BvbnNlIgASSwoGV2hvYW1pEh4ueWV5aW5nLmFwaS5ub2RlLldob2FtaVJlcXVlc3QaHy55ZXlpbmcuYXBpLm5vZGUuV2hvYW1pUmVzcG9uc2UiAEIRWg95ZXlpbmcvYXBpL25vZGViBnByb3RvMw",
+    [file_yeying_api_common_message, file_yeying_api_common_model],
+  );
 
 /**
  * @generated from message yeying.api.node.HealthCheckRequest
  */
-export type HealthCheckRequest = Message<"yeying.api.node.HealthCheckRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
-};
+export type HealthCheckRequest =
+  Message<"yeying.api.node.HealthCheckRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
+  };
 
 /**
  * @generated from message yeying.api.node.HealthCheckRequest
@@ -40,23 +58,26 @@ export type HealthCheckRequestJson = {
  * Describes the message yeying.api.node.HealthCheckRequest.
  * Use `create(HealthCheckRequestSchema)` to create a new message.
  */
-export const HealthCheckRequestSchema: GenMessage<HealthCheckRequest, HealthCheckRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_node_node, 0);
+export const HealthCheckRequestSchema: GenMessage<
+  HealthCheckRequest,
+  HealthCheckRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_node_node, 0);
 
 /**
  * @generated from message yeying.api.node.HealthCheckResponse
  */
-export type HealthCheckResponse = Message<"yeying.api.node.HealthCheckResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type HealthCheckResponse =
+  Message<"yeying.api.node.HealthCheckResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.node.HealthCheckResponseBody body = 2;
-   */
-  body?: HealthCheckResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.node.HealthCheckResponseBody body = 2;
+     */
+    body?: HealthCheckResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.node.HealthCheckResponse
@@ -77,18 +98,21 @@ export type HealthCheckResponseJson = {
  * Describes the message yeying.api.node.HealthCheckResponse.
  * Use `create(HealthCheckResponseSchema)` to create a new message.
  */
-export const HealthCheckResponseSchema: GenMessage<HealthCheckResponse, HealthCheckResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_node_node, 1);
+export const HealthCheckResponseSchema: GenMessage<
+  HealthCheckResponse,
+  HealthCheckResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_node_node, 1);
 
 /**
  * @generated from message yeying.api.node.HealthCheckResponseBody
  */
-export type HealthCheckResponseBody = Message<"yeying.api.node.HealthCheckResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type HealthCheckResponseBody =
+  Message<"yeying.api.node.HealthCheckResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.node.HealthCheckResponseBody
@@ -104,8 +128,10 @@ export type HealthCheckResponseBodyJson = {
  * Describes the message yeying.api.node.HealthCheckResponseBody.
  * Use `create(HealthCheckResponseBodySchema)` to create a new message.
  */
-export const HealthCheckResponseBodySchema: GenMessage<HealthCheckResponseBody, HealthCheckResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_node_node, 2);
+export const HealthCheckResponseBodySchema: GenMessage<
+  HealthCheckResponseBody,
+  HealthCheckResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_node_node, 2);
 
 /**
  * @generated from message yeying.api.node.WhoamiRequest
@@ -131,7 +157,8 @@ export type WhoamiRequestJson = {
  * Describes the message yeying.api.node.WhoamiRequest.
  * Use `create(WhoamiRequestSchema)` to create a new message.
  */
-export const WhoamiRequestSchema: GenMessage<WhoamiRequest, WhoamiRequestJson> = /*@__PURE__*/
+export const WhoamiRequestSchema: GenMessage<WhoamiRequest, WhoamiRequestJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_node_node, 3);
 
 /**
@@ -168,23 +195,26 @@ export type WhoamiResponseJson = {
  * Describes the message yeying.api.node.WhoamiResponse.
  * Use `create(WhoamiResponseSchema)` to create a new message.
  */
-export const WhoamiResponseSchema: GenMessage<WhoamiResponse, WhoamiResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_node_node, 4);
+export const WhoamiResponseSchema: GenMessage<
+  WhoamiResponse,
+  WhoamiResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_node_node, 4);
 
 /**
  * @generated from message yeying.api.node.WhoamiResponseBody
  */
-export type WhoamiResponseBody = Message<"yeying.api.node.WhoamiResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type WhoamiResponseBody =
+  Message<"yeying.api.node.WhoamiResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.common.ServiceMetadata service = 2;
-   */
-  service?: ServiceMetadata;
-};
+    /**
+     * @generated from field: yeying.api.common.ServiceMetadata service = 2;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.node.WhoamiResponseBody
@@ -205,8 +235,10 @@ export type WhoamiResponseBodyJson = {
  * Describes the message yeying.api.node.WhoamiResponseBody.
  * Use `create(WhoamiResponseBodySchema)` to create a new message.
  */
-export const WhoamiResponseBodySchema: GenMessage<WhoamiResponseBody, WhoamiResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_node_node, 5);
+export const WhoamiResponseBodySchema: GenMessage<
+  WhoamiResponseBody,
+  WhoamiResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_node_node, 5);
 
 /**
  * *
@@ -222,7 +254,7 @@ export const Node: GenService<{
     methodKind: "unary";
     input: typeof HealthCheckRequestSchema;
     output: typeof HealthCheckResponseSchema;
-  },
+  };
   /**
    * @generated from rpc yeying.api.node.Node.Whoami
    */
@@ -230,7 +262,5 @@ export const Node: GenService<{
     methodKind: "unary";
     input: typeof WhoamiRequestSchema;
     output: typeof WhoamiResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_yeying_api_node_node, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_yeying_api_node_node, 0);
