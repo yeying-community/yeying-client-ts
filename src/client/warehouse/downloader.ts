@@ -71,27 +71,22 @@ export class Downloader {
           }
 
           // 下载数据块
-          const result = await this.blockProvider.get(
+          const detail = await this.blockProvider.get(
             namespaceId,
             asset.chunks[index],
           );
           if (asset.isEncrypted) {
             // 如果资产加密，解密数据块
-            result.data = await this.assetCipher.decrypt(result.data);
+            detail.data = await this.assetCipher.decrypt(detail.data);
           }
 
-          // 将解密后的数据块转换为 Blob
-          const blockData = new Blob([result.data], {
-            type: "application/octet-stream",
-          });
-
           if (blockCallback) {
-            const downloadResult: DownloadResult = {
-              block: result.block,
-              data: blockData,
+            const result: DownloadResult = {
+              block: detail.block,
+              data: detail.data,
               progress: { total: asset.chunkCount, completed: index + 1 },
             };
-            blockCallback(downloadResult);
+            blockCallback(result);
           }
         }
 
