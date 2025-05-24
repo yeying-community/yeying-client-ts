@@ -9,6 +9,7 @@ import {
   ConfirmBlockResponseBodySchema,
   GetBlockRequestBodySchema,
   GetBlockRequestSchema,
+  GetBlockResponseBody,
   GetBlockResponseBodySchema,
   PutBlockRequestBodySchema,
   PutBlockRequestSchema,
@@ -24,6 +25,7 @@ import {
   encodeHex,
   getCurrentUtcString,
 } from "@yeying-community/yeying-web3";
+import { BlockDetail } from "./model";
 
 /**
  * 用于与区块链交互，提供数据的获取和存储功能
@@ -54,11 +56,9 @@ export class BlockProvider {
 
   /**
    * 获取当前用户的 DID（所有者）
+   *
    * @returns 返回当前用户的 DID
-   * @example
-   * ```ts
-   * const owner = blockProvider.getOwner()
-   * ```
+   *
    */
   getOwner() {
     return this.authenticate.getDid();
@@ -66,18 +66,15 @@ export class BlockProvider {
 
   /**
    * 获取资产块数据。
+   *
    * @param namespaceId 资产块命名空间
    * @param hash - 要获取的资产块哈希值
-   * @returns 一个 Promise，解析为获取到的区块数据（Uint8Array）
-   * @example
-   * ```ts
-   * blockProvider.get('example-namespace', 'example-hash')
-   *   .then(data => console.log(data))
-   *   .catch(err => console.error(err))
-   * ```
+   *
+   * @returns 区块数据详情，包括数据和元数据
+   *
    */
   get(namespaceId: string, hash: string) {
-    return new Promise<any>(async (resolve, reject) => {
+    return new Promise<BlockDetail>(async (resolve, reject) => {
       const body = create(GetBlockRequestBodySchema, {
         namespaceId: namespaceId,
         hash: hash,
@@ -103,9 +100,15 @@ export class BlockProvider {
       try {
         const res = await this.client.get(request);
         await this.authenticate.doResponse(res, GetBlockResponseBodySchema);
-        resolve({ data: res.data, block: res.body?.block });
+        const detail: BlockDetail = {
+          data: res.data,
+          block: (res.body as GetBlockResponseBody)?.block as BlockMetadata,
+        };
+
+        resolve(detail);
       } catch (err) {
         console.error("Fail to get block", err);
+        return reject(err);
       }
     });
   }

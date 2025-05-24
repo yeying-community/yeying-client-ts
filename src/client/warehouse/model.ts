@@ -2,7 +2,7 @@ import { BlockMetadata } from "../../yeying/api/asset/block_pb";
 
 export interface DownloadResult {
   block: BlockMetadata;
-  data?: Blob;
+  data: Uint8Array;
   progress: Progress;
 }
 
@@ -17,4 +17,9 @@ export interface UploadResult {
 export interface Progress {
   total: number;
   completed: number;
+}
+
+export interface BlockDetail {
+  block: BlockMetadata;
+  data: Uint8Array;
 }

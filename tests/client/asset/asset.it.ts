@@ -64,12 +64,14 @@ describe('Asset', () => {
 
     it('download', async () => {
         const downloader = new Downloader(providerOption, identity.securityConfig.algorithm)
-        const dataList :Blob[] = []
-        const result = await downloader.download(namespace.uid, hash, r => {
+
+        const dataList :Uint8Array[] = []
+        const asset = await downloader.download(namespace.uid, hash, r => {
             console.log(`download block=${JSON.stringify(toJson(BlockMetadataSchema, r.block))}`)
-            dataList.push(r.data as Blob)
+            dataList.push(r.data)
         })
 
+        console.log(`download asset completely, asset=${JSON.stringify(toJson(AssetMetadataSchema, asset))}`)
         const data = new Blob(dataList, { type: 'application/octet-stream' })
         const text = await readFile(data, ResultDataType.Text)
         assert.equal(text as string, content)
