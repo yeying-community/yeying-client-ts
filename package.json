@@ -9,6 +9,7 @@
     "dev": "rollup -c -w",
     "build": "NODE_ENV=production rollup -c",
     "build:docs": "typedoc",
+    "docs": "npm run build:docs",
     "test": "vitest",
     "format": "prettier --write \"src/**/*.ts\""
   },
