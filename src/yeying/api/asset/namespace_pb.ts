@@ -2,52 +2,32 @@
 // @generated from file yeying/api/asset/namespace.proto (package yeying.api.asset, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  RequestPage,
-  RequestPageJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/asset/namespace.proto.
  */
-export const file_yeying_api_asset_namespace: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiB5ZXlpbmcvYXBpL2Fzc2V0L25hbWVzcGFjZS5wcm90bxIQeWV5aW5nLmFwaS5hc3NldCKGAQoWU2VhcmNoTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlcXVlc3RCb2R5IokBChpTZWFyY2hOYW1lc3BhY2VSZXF1ZXN0Qm9keRI9Cgljb25kaXRpb24YASABKAsyKi55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZUNvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UiKAoYU2VhcmNoTmFtZXNwYWNlQ29uZGl0aW9uEgwKBG5hbWUYAiABKAkihgEKFk5hbWVzcGFjZURldGFpbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VEZXRhaWxSZXF1ZXN0Qm9keSIpChpOYW1lc3BhY2VEZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkiiAEKF05hbWVzcGFjZURldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVzcG9uc2VCb2R5IogBChtOYW1lc3BhY2VEZXRhaWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKIAQoXU2VhcmNoTmFtZXNwYWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hOYW1lc3BhY2VSZXNwb25zZUJvZHkiiQEKG1NlYXJjaE5hbWVzcGFjZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI3CgpuYW1lc3BhY2VzGAIgAygLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWQ3JlYXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LkNyZWF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IlQKGkNyZWF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EjYKCW5hbWVzcGFjZRgBIAEoCzIjLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlTWV0YWRhdGEiiAEKF0NyZWF0ZU5hbWVzcGFjZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuQ3JlYXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5IogBChtDcmVhdGVOYW1lc3BhY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWVXBkYXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IlQKGlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EjYKCW5hbWVzcGFjZRgBIAEoCzIjLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlTWV0YWRhdGEiiAEKF1VwZGF0ZU5hbWVzcGFjZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5IogBChtVcGRhdGVOYW1lc3BhY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWRGVsZXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IikKGkRlbGV0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSKIAQoXRGVsZXRlTmFtZXNwYWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXNwb25zZUJvZHkiUAobRGVsZXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIqEBChFOYW1lc3BhY2VNZXRhZGF0YRINCgVvd25lchgBIAEoCRIUCgxwYXJ0aWNpcGFudHMYAiABKAkSCwoDdWlkGAMgASgJEgwKBG5hbWUYBCABKAkSEwoLZGVzY3JpcHRpb24YBSABKAkSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXVwZGF0ZWRBdBgHIAEoCRIRCglzaWduYXR1cmUYCCABKAky8AMKCU5hbWVzcGFjZRJfCgZTZWFyY2gSKC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlcXVlc3QaKS55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlc3BvbnNlIgASXwoGQ3JlYXRlEigueWV5aW5nLmFwaS5hc3NldC5DcmVhdGVOYW1lc3BhY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5hc3NldC5DcmVhdGVOYW1lc3BhY2VSZXNwb25zZSIAEl8KBkRldGFpbBIoLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVxdWVzdBopLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVzcG9uc2UiABJfCgZVcGRhdGUSKC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3QaKS55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlc3BvbnNlIgASXwoGRGVsZXRlEigueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXNwb25zZSIAQhJaEHlleWluZy9hcGkvYXNzZXRiBnByb3RvMw",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_asset_namespace: GenFile = /*@__PURE__*/
+  fileDesc("CiB5ZXlpbmcvYXBpL2Fzc2V0L25hbWVzcGFjZS5wcm90bxIQeWV5aW5nLmFwaS5hc3NldCKGAQoWU2VhcmNoTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlcXVlc3RCb2R5IokBChpTZWFyY2hOYW1lc3BhY2VSZXF1ZXN0Qm9keRI9Cgljb25kaXRpb24YASABKAsyKi55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZUNvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UiKAoYU2VhcmNoTmFtZXNwYWNlQ29uZGl0aW9uEgwKBG5hbWUYAiABKAkihgEKFk5hbWVzcGFjZURldGFpbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VEZXRhaWxSZXF1ZXN0Qm9keSIpChpOYW1lc3BhY2VEZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkiiAEKF05hbWVzcGFjZURldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVzcG9uc2VCb2R5IogBChtOYW1lc3BhY2VEZXRhaWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKIAQoXU2VhcmNoTmFtZXNwYWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hOYW1lc3BhY2VSZXNwb25zZUJvZHkiiQEKG1NlYXJjaE5hbWVzcGFjZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI3CgpuYW1lc3BhY2VzGAIgAygLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWQ3JlYXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LkNyZWF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IlQKGkNyZWF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EjYKCW5hbWVzcGFjZRgBIAEoCzIjLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlTWV0YWRhdGEiiAEKF0NyZWF0ZU5hbWVzcGFjZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuQ3JlYXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5IogBChtDcmVhdGVOYW1lc3BhY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWVXBkYXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IlQKGlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EjYKCW5hbWVzcGFjZRgBIAEoCzIjLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlTWV0YWRhdGEiiAEKF1VwZGF0ZU5hbWVzcGFjZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5IogBChtVcGRhdGVOYW1lc3BhY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoJbmFtZXNwYWNlGAIgASgLMiMueWV5aW5nLmFwaS5hc3NldC5OYW1lc3BhY2VNZXRhZGF0YSKGAQoWRGVsZXRlTmFtZXNwYWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5IikKGkRlbGV0ZU5hbWVzcGFjZVJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSKIAQoXRGVsZXRlTmFtZXNwYWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXNwb25zZUJvZHkiUAobRGVsZXRlTmFtZXNwYWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIqEBChFOYW1lc3BhY2VNZXRhZGF0YRINCgVvd25lchgBIAEoCRIUCgxwYXJ0aWNpcGFudHMYAiABKAkSCwoDdWlkGAMgASgJEgwKBG5hbWUYBCABKAkSEwoLZGVzY3JpcHRpb24YBSABKAkSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXVwZGF0ZWRBdBgHIAEoCRIRCglzaWduYXR1cmUYCCABKAky8AMKCU5hbWVzcGFjZRJfCgZTZWFyY2gSKC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlcXVlc3QaKS55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaE5hbWVzcGFjZVJlc3BvbnNlIgASXwoGQ3JlYXRlEigueWV5aW5nLmFwaS5hc3NldC5DcmVhdGVOYW1lc3BhY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5hc3NldC5DcmVhdGVOYW1lc3BhY2VSZXNwb25zZSIAEl8KBkRldGFpbBIoLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVxdWVzdBopLnlleWluZy5hcGkuYXNzZXQuTmFtZXNwYWNlRGV0YWlsUmVzcG9uc2UiABJfCgZVcGRhdGUSKC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlcXVlc3QaKS55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZU5hbWVzcGFjZVJlc3BvbnNlIgASXwoGRGVsZXRlEigueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5hc3NldC5EZWxldGVOYW1lc3BhY2VSZXNwb25zZSIAQhJaEHlleWluZy9hcGkvYXNzZXRiBnByb3RvMw", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceRequest
  */
-export type SearchNamespaceRequest =
-  Message<"yeying.api.asset.SearchNamespaceRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchNamespaceRequest = Message<"yeying.api.asset.SearchNamespaceRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.SearchNamespaceRequestBody body = 2;
-     */
-    body?: SearchNamespaceRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.SearchNamespaceRequestBody body = 2;
+   */
+  body?: SearchNamespaceRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceRequest
@@ -68,26 +48,23 @@ export type SearchNamespaceRequestJson = {
  * Describes the message yeying.api.asset.SearchNamespaceRequest.
  * Use `create(SearchNamespaceRequestSchema)` to create a new message.
  */
-export const SearchNamespaceRequestSchema: GenMessage<
-  SearchNamespaceRequest,
-  SearchNamespaceRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 0);
+export const SearchNamespaceRequestSchema: GenMessage<SearchNamespaceRequest, SearchNamespaceRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 0);
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceRequestBody
  */
-export type SearchNamespaceRequestBody =
-  Message<"yeying.api.asset.SearchNamespaceRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.SearchNamespaceCondition condition = 1;
-     */
-    condition?: SearchNamespaceCondition;
+export type SearchNamespaceRequestBody = Message<"yeying.api.asset.SearchNamespaceRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.SearchNamespaceCondition condition = 1;
+   */
+  condition?: SearchNamespaceCondition;
 
-    /**
-     * @generated from field: yeying.api.common.RequestPage page = 2;
-     */
-    page?: RequestPage;
-  };
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceRequestBody
@@ -108,21 +85,18 @@ export type SearchNamespaceRequestBodyJson = {
  * Describes the message yeying.api.asset.SearchNamespaceRequestBody.
  * Use `create(SearchNamespaceRequestBodySchema)` to create a new message.
  */
-export const SearchNamespaceRequestBodySchema: GenMessage<
-  SearchNamespaceRequestBody,
-  SearchNamespaceRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 1);
+export const SearchNamespaceRequestBodySchema: GenMessage<SearchNamespaceRequestBody, SearchNamespaceRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 1);
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceCondition
  */
-export type SearchNamespaceCondition =
-  Message<"yeying.api.asset.SearchNamespaceCondition"> & {
-    /**
-     * @generated from field: string name = 2;
-     */
-    name: string;
-  };
+export type SearchNamespaceCondition = Message<"yeying.api.asset.SearchNamespaceCondition"> & {
+  /**
+   * @generated from field: string name = 2;
+   */
+  name: string;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceCondition
@@ -138,26 +112,23 @@ export type SearchNamespaceConditionJson = {
  * Describes the message yeying.api.asset.SearchNamespaceCondition.
  * Use `create(SearchNamespaceConditionSchema)` to create a new message.
  */
-export const SearchNamespaceConditionSchema: GenMessage<
-  SearchNamespaceCondition,
-  SearchNamespaceConditionJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 2);
+export const SearchNamespaceConditionSchema: GenMessage<SearchNamespaceCondition, SearchNamespaceConditionJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 2);
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailRequest
  */
-export type NamespaceDetailRequest =
-  Message<"yeying.api.asset.NamespaceDetailRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type NamespaceDetailRequest = Message<"yeying.api.asset.NamespaceDetailRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.NamespaceDetailRequestBody body = 2;
-     */
-    body?: NamespaceDetailRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.NamespaceDetailRequestBody body = 2;
+   */
+  body?: NamespaceDetailRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailRequest
@@ -178,21 +149,18 @@ export type NamespaceDetailRequestJson = {
  * Describes the message yeying.api.asset.NamespaceDetailRequest.
  * Use `create(NamespaceDetailRequestSchema)` to create a new message.
  */
-export const NamespaceDetailRequestSchema: GenMessage<
-  NamespaceDetailRequest,
-  NamespaceDetailRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 3);
+export const NamespaceDetailRequestSchema: GenMessage<NamespaceDetailRequest, NamespaceDetailRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 3);
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailRequestBody
  */
-export type NamespaceDetailRequestBody =
-  Message<"yeying.api.asset.NamespaceDetailRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type NamespaceDetailRequestBody = Message<"yeying.api.asset.NamespaceDetailRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailRequestBody
@@ -208,26 +176,23 @@ export type NamespaceDetailRequestBodyJson = {
  * Describes the message yeying.api.asset.NamespaceDetailRequestBody.
  * Use `create(NamespaceDetailRequestBodySchema)` to create a new message.
  */
-export const NamespaceDetailRequestBodySchema: GenMessage<
-  NamespaceDetailRequestBody,
-  NamespaceDetailRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 4);
+export const NamespaceDetailRequestBodySchema: GenMessage<NamespaceDetailRequestBody, NamespaceDetailRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 4);
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailResponse
  */
-export type NamespaceDetailResponse =
-  Message<"yeying.api.asset.NamespaceDetailResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type NamespaceDetailResponse = Message<"yeying.api.asset.NamespaceDetailResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.NamespaceDetailResponseBody body = 2;
-     */
-    body?: NamespaceDetailResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.NamespaceDetailResponseBody body = 2;
+   */
+  body?: NamespaceDetailResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailResponse
@@ -248,26 +213,23 @@ export type NamespaceDetailResponseJson = {
  * Describes the message yeying.api.asset.NamespaceDetailResponse.
  * Use `create(NamespaceDetailResponseSchema)` to create a new message.
  */
-export const NamespaceDetailResponseSchema: GenMessage<
-  NamespaceDetailResponse,
-  NamespaceDetailResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 5);
+export const NamespaceDetailResponseSchema: GenMessage<NamespaceDetailResponse, NamespaceDetailResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 5);
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailResponseBody
  */
-export type NamespaceDetailResponseBody =
-  Message<"yeying.api.asset.NamespaceDetailResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type NamespaceDetailResponseBody = Message<"yeying.api.asset.NamespaceDetailResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
-     */
-    namespace?: NamespaceMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
+   */
+  namespace?: NamespaceMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.NamespaceDetailResponseBody
@@ -288,26 +250,23 @@ export type NamespaceDetailResponseBodyJson = {
  * Describes the message yeying.api.asset.NamespaceDetailResponseBody.
  * Use `create(NamespaceDetailResponseBodySchema)` to create a new message.
  */
-export const NamespaceDetailResponseBodySchema: GenMessage<
-  NamespaceDetailResponseBody,
-  NamespaceDetailResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 6);
+export const NamespaceDetailResponseBodySchema: GenMessage<NamespaceDetailResponseBody, NamespaceDetailResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 6);
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceResponse
  */
-export type SearchNamespaceResponse =
-  Message<"yeying.api.asset.SearchNamespaceResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchNamespaceResponse = Message<"yeying.api.asset.SearchNamespaceResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.SearchNamespaceResponseBody body = 2;
-     */
-    body?: SearchNamespaceResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.SearchNamespaceResponseBody body = 2;
+   */
+  body?: SearchNamespaceResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceResponse
@@ -328,26 +287,23 @@ export type SearchNamespaceResponseJson = {
  * Describes the message yeying.api.asset.SearchNamespaceResponse.
  * Use `create(SearchNamespaceResponseSchema)` to create a new message.
  */
-export const SearchNamespaceResponseSchema: GenMessage<
-  SearchNamespaceResponse,
-  SearchNamespaceResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 7);
+export const SearchNamespaceResponseSchema: GenMessage<SearchNamespaceResponse, SearchNamespaceResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 7);
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceResponseBody
  */
-export type SearchNamespaceResponseBody =
-  Message<"yeying.api.asset.SearchNamespaceResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SearchNamespaceResponseBody = Message<"yeying.api.asset.SearchNamespaceResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: repeated yeying.api.asset.NamespaceMetadata namespaces = 2;
-     */
-    namespaces: NamespaceMetadata[];
-  };
+  /**
+   * @generated from field: repeated yeying.api.asset.NamespaceMetadata namespaces = 2;
+   */
+  namespaces: NamespaceMetadata[];
+};
 
 /**
  * @generated from message yeying.api.asset.SearchNamespaceResponseBody
@@ -368,26 +324,23 @@ export type SearchNamespaceResponseBodyJson = {
  * Describes the message yeying.api.asset.SearchNamespaceResponseBody.
  * Use `create(SearchNamespaceResponseBodySchema)` to create a new message.
  */
-export const SearchNamespaceResponseBodySchema: GenMessage<
-  SearchNamespaceResponseBody,
-  SearchNamespaceResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 8);
+export const SearchNamespaceResponseBodySchema: GenMessage<SearchNamespaceResponseBody, SearchNamespaceResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 8);
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceRequest
  */
-export type CreateNamespaceRequest =
-  Message<"yeying.api.asset.CreateNamespaceRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateNamespaceRequest = Message<"yeying.api.asset.CreateNamespaceRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.CreateNamespaceRequestBody body = 2;
-     */
-    body?: CreateNamespaceRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.CreateNamespaceRequestBody body = 2;
+   */
+  body?: CreateNamespaceRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceRequest
@@ -408,21 +361,18 @@ export type CreateNamespaceRequestJson = {
  * Describes the message yeying.api.asset.CreateNamespaceRequest.
  * Use `create(CreateNamespaceRequestSchema)` to create a new message.
  */
-export const CreateNamespaceRequestSchema: GenMessage<
-  CreateNamespaceRequest,
-  CreateNamespaceRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 9);
+export const CreateNamespaceRequestSchema: GenMessage<CreateNamespaceRequest, CreateNamespaceRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 9);
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceRequestBody
  */
-export type CreateNamespaceRequestBody =
-  Message<"yeying.api.asset.CreateNamespaceRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 1;
-     */
-    namespace?: NamespaceMetadata;
-  };
+export type CreateNamespaceRequestBody = Message<"yeying.api.asset.CreateNamespaceRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 1;
+   */
+  namespace?: NamespaceMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceRequestBody
@@ -438,26 +388,23 @@ export type CreateNamespaceRequestBodyJson = {
  * Describes the message yeying.api.asset.CreateNamespaceRequestBody.
  * Use `create(CreateNamespaceRequestBodySchema)` to create a new message.
  */
-export const CreateNamespaceRequestBodySchema: GenMessage<
-  CreateNamespaceRequestBody,
-  CreateNamespaceRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 10);
+export const CreateNamespaceRequestBodySchema: GenMessage<CreateNamespaceRequestBody, CreateNamespaceRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 10);
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceResponse
  */
-export type CreateNamespaceResponse =
-  Message<"yeying.api.asset.CreateNamespaceResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateNamespaceResponse = Message<"yeying.api.asset.CreateNamespaceResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.CreateNamespaceResponseBody body = 2;
-     */
-    body?: CreateNamespaceResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.CreateNamespaceResponseBody body = 2;
+   */
+  body?: CreateNamespaceResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceResponse
@@ -478,26 +425,23 @@ export type CreateNamespaceResponseJson = {
  * Describes the message yeying.api.asset.CreateNamespaceResponse.
  * Use `create(CreateNamespaceResponseSchema)` to create a new message.
  */
-export const CreateNamespaceResponseSchema: GenMessage<
-  CreateNamespaceResponse,
-  CreateNamespaceResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 11);
+export const CreateNamespaceResponseSchema: GenMessage<CreateNamespaceResponse, CreateNamespaceResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 11);
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceResponseBody
  */
-export type CreateNamespaceResponseBody =
-  Message<"yeying.api.asset.CreateNamespaceResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type CreateNamespaceResponseBody = Message<"yeying.api.asset.CreateNamespaceResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
-     */
-    namespace?: NamespaceMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
+   */
+  namespace?: NamespaceMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.CreateNamespaceResponseBody
@@ -518,26 +462,23 @@ export type CreateNamespaceResponseBodyJson = {
  * Describes the message yeying.api.asset.CreateNamespaceResponseBody.
  * Use `create(CreateNamespaceResponseBodySchema)` to create a new message.
  */
-export const CreateNamespaceResponseBodySchema: GenMessage<
-  CreateNamespaceResponseBody,
-  CreateNamespaceResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 12);
+export const CreateNamespaceResponseBodySchema: GenMessage<CreateNamespaceResponseBody, CreateNamespaceResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 12);
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceRequest
  */
-export type UpdateNamespaceRequest =
-  Message<"yeying.api.asset.UpdateNamespaceRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type UpdateNamespaceRequest = Message<"yeying.api.asset.UpdateNamespaceRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.UpdateNamespaceRequestBody body = 2;
-     */
-    body?: UpdateNamespaceRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.UpdateNamespaceRequestBody body = 2;
+   */
+  body?: UpdateNamespaceRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceRequest
@@ -558,21 +499,18 @@ export type UpdateNamespaceRequestJson = {
  * Describes the message yeying.api.asset.UpdateNamespaceRequest.
  * Use `create(UpdateNamespaceRequestSchema)` to create a new message.
  */
-export const UpdateNamespaceRequestSchema: GenMessage<
-  UpdateNamespaceRequest,
-  UpdateNamespaceRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 13);
+export const UpdateNamespaceRequestSchema: GenMessage<UpdateNamespaceRequest, UpdateNamespaceRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 13);
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceRequestBody
  */
-export type UpdateNamespaceRequestBody =
-  Message<"yeying.api.asset.UpdateNamespaceRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 1;
-     */
-    namespace?: NamespaceMetadata;
-  };
+export type UpdateNamespaceRequestBody = Message<"yeying.api.asset.UpdateNamespaceRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 1;
+   */
+  namespace?: NamespaceMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceRequestBody
@@ -588,26 +526,23 @@ export type UpdateNamespaceRequestBodyJson = {
  * Describes the message yeying.api.asset.UpdateNamespaceRequestBody.
  * Use `create(UpdateNamespaceRequestBodySchema)` to create a new message.
  */
-export const UpdateNamespaceRequestBodySchema: GenMessage<
-  UpdateNamespaceRequestBody,
-  UpdateNamespaceRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 14);
+export const UpdateNamespaceRequestBodySchema: GenMessage<UpdateNamespaceRequestBody, UpdateNamespaceRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 14);
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceResponse
  */
-export type UpdateNamespaceResponse =
-  Message<"yeying.api.asset.UpdateNamespaceResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type UpdateNamespaceResponse = Message<"yeying.api.asset.UpdateNamespaceResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.UpdateNamespaceResponseBody body = 2;
-     */
-    body?: UpdateNamespaceResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.UpdateNamespaceResponseBody body = 2;
+   */
+  body?: UpdateNamespaceResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceResponse
@@ -628,26 +563,23 @@ export type UpdateNamespaceResponseJson = {
  * Describes the message yeying.api.asset.UpdateNamespaceResponse.
  * Use `create(UpdateNamespaceResponseSchema)` to create a new message.
  */
-export const UpdateNamespaceResponseSchema: GenMessage<
-  UpdateNamespaceResponse,
-  UpdateNamespaceResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 15);
+export const UpdateNamespaceResponseSchema: GenMessage<UpdateNamespaceResponse, UpdateNamespaceResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 15);
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceResponseBody
  */
-export type UpdateNamespaceResponseBody =
-  Message<"yeying.api.asset.UpdateNamespaceResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type UpdateNamespaceResponseBody = Message<"yeying.api.asset.UpdateNamespaceResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
-     */
-    namespace?: NamespaceMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.NamespaceMetadata namespace = 2;
+   */
+  namespace?: NamespaceMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.UpdateNamespaceResponseBody
@@ -668,26 +600,23 @@ export type UpdateNamespaceResponseBodyJson = {
  * Describes the message yeying.api.asset.UpdateNamespaceResponseBody.
  * Use `create(UpdateNamespaceResponseBodySchema)` to create a new message.
  */
-export const UpdateNamespaceResponseBodySchema: GenMessage<
-  UpdateNamespaceResponseBody,
-  UpdateNamespaceResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 16);
+export const UpdateNamespaceResponseBodySchema: GenMessage<UpdateNamespaceResponseBody, UpdateNamespaceResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 16);
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceRequest
  */
-export type DeleteNamespaceRequest =
-  Message<"yeying.api.asset.DeleteNamespaceRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type DeleteNamespaceRequest = Message<"yeying.api.asset.DeleteNamespaceRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.DeleteNamespaceRequestBody body = 2;
-     */
-    body?: DeleteNamespaceRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.DeleteNamespaceRequestBody body = 2;
+   */
+  body?: DeleteNamespaceRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceRequest
@@ -708,21 +637,18 @@ export type DeleteNamespaceRequestJson = {
  * Describes the message yeying.api.asset.DeleteNamespaceRequest.
  * Use `create(DeleteNamespaceRequestSchema)` to create a new message.
  */
-export const DeleteNamespaceRequestSchema: GenMessage<
-  DeleteNamespaceRequest,
-  DeleteNamespaceRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 17);
+export const DeleteNamespaceRequestSchema: GenMessage<DeleteNamespaceRequest, DeleteNamespaceRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 17);
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceRequestBody
  */
-export type DeleteNamespaceRequestBody =
-  Message<"yeying.api.asset.DeleteNamespaceRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type DeleteNamespaceRequestBody = Message<"yeying.api.asset.DeleteNamespaceRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceRequestBody
@@ -738,26 +664,23 @@ export type DeleteNamespaceRequestBodyJson = {
  * Describes the message yeying.api.asset.DeleteNamespaceRequestBody.
  * Use `create(DeleteNamespaceRequestBodySchema)` to create a new message.
  */
-export const DeleteNamespaceRequestBodySchema: GenMessage<
-  DeleteNamespaceRequestBody,
-  DeleteNamespaceRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 18);
+export const DeleteNamespaceRequestBodySchema: GenMessage<DeleteNamespaceRequestBody, DeleteNamespaceRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 18);
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceResponse
  */
-export type DeleteNamespaceResponse =
-  Message<"yeying.api.asset.DeleteNamespaceResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type DeleteNamespaceResponse = Message<"yeying.api.asset.DeleteNamespaceResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.DeleteNamespaceResponseBody body = 2;
-     */
-    body?: DeleteNamespaceResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.DeleteNamespaceResponseBody body = 2;
+   */
+  body?: DeleteNamespaceResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceResponse
@@ -778,21 +701,18 @@ export type DeleteNamespaceResponseJson = {
  * Describes the message yeying.api.asset.DeleteNamespaceResponse.
  * Use `create(DeleteNamespaceResponseSchema)` to create a new message.
  */
-export const DeleteNamespaceResponseSchema: GenMessage<
-  DeleteNamespaceResponse,
-  DeleteNamespaceResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 19);
+export const DeleteNamespaceResponseSchema: GenMessage<DeleteNamespaceResponse, DeleteNamespaceResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 19);
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceResponseBody
  */
-export type DeleteNamespaceResponseBody =
-  Message<"yeying.api.asset.DeleteNamespaceResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type DeleteNamespaceResponseBody = Message<"yeying.api.asset.DeleteNamespaceResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.asset.DeleteNamespaceResponseBody
@@ -808,74 +728,71 @@ export type DeleteNamespaceResponseBodyJson = {
  * Describes the message yeying.api.asset.DeleteNamespaceResponseBody.
  * Use `create(DeleteNamespaceResponseBodySchema)` to create a new message.
  */
-export const DeleteNamespaceResponseBodySchema: GenMessage<
-  DeleteNamespaceResponseBody,
-  DeleteNamespaceResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 20);
+export const DeleteNamespaceResponseBodySchema: GenMessage<DeleteNamespaceResponseBody, DeleteNamespaceResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 20);
 
 /**
  * 命名空间定义
  *
  * @generated from message yeying.api.asset.NamespaceMetadata
  */
-export type NamespaceMetadata =
-  Message<"yeying.api.asset.NamespaceMetadata"> & {
-    /**
-     * 空间所有者
-     *
-     * @generated from field: string owner = 1;
-     */
-    owner: string;
+export type NamespaceMetadata = Message<"yeying.api.asset.NamespaceMetadata"> & {
+  /**
+   * 空间所有者
+   *
+   * @generated from field: string owner = 1;
+   */
+  owner: string;
 
-    /**
-     * 空间参与者
-     *
-     * @generated from field: string participants = 2;
-     */
-    participants: string;
+  /**
+   * 空间参与者
+   *
+   * @generated from field: string participants = 2;
+   */
+  participants: string;
 
-    /**
-     * 空间唯一ID
-     *
-     * @generated from field: string uid = 3;
-     */
-    uid: string;
+  /**
+   * 空间唯一ID
+   *
+   * @generated from field: string uid = 3;
+   */
+  uid: string;
 
-    /**
-     * 空间名称
-     *
-     * @generated from field: string name = 4;
-     */
-    name: string;
+  /**
+   * 空间名称
+   *
+   * @generated from field: string name = 4;
+   */
+  name: string;
 
-    /**
-     * 空间描述
-     *
-     * @generated from field: string description = 5;
-     */
-    description: string;
+  /**
+   * 空间描述
+   *
+   * @generated from field: string description = 5;
+   */
+  description: string;
 
-    /**
-     * 空间创建时间
-     *
-     * @generated from field: string createdAt = 6;
-     */
-    createdAt: string;
+  /**
+   * 空间创建时间
+   *
+   * @generated from field: string createdAt = 6;
+   */
+  createdAt: string;
 
-    /**
-     * 空间更新时间
-     *
-     * @generated from field: string updatedAt = 7;
-     */
-    updatedAt: string;
+  /**
+   * 空间更新时间
+   *
+   * @generated from field: string updatedAt = 7;
+   */
+  updatedAt: string;
 
-    /**
-     * 空间信息签名
-     *
-     * @generated from field: string signature = 8;
-     */
-    signature: string;
-  };
+  /**
+   * 空间信息签名
+   *
+   * @generated from field: string signature = 8;
+   */
+  signature: string;
+};
 
 /**
  * 命名空间定义
@@ -944,10 +861,8 @@ export type NamespaceMetadataJson = {
  * Describes the message yeying.api.asset.NamespaceMetadata.
  * Use `create(NamespaceMetadataSchema)` to create a new message.
  */
-export const NamespaceMetadataSchema: GenMessage<
-  NamespaceMetadata,
-  NamespaceMetadataJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_namespace, 21);
+export const NamespaceMetadataSchema: GenMessage<NamespaceMetadata, NamespaceMetadataJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_namespace, 21);
 
 /**
  * 命名空间，用于隔离和资产治理的目的，确保用一个用户在使用不同的应用时产生的资产信息互补干扰。同时也方便用户管理资产。
@@ -964,7 +879,7 @@ export const Namespace: GenService<{
     methodKind: "unary";
     input: typeof SearchNamespaceRequestSchema;
     output: typeof SearchNamespaceResponseSchema;
-  };
+  },
   /**
    * 创建命名空间
    *
@@ -974,7 +889,7 @@ export const Namespace: GenService<{
     methodKind: "unary";
     input: typeof CreateNamespaceRequestSchema;
     output: typeof CreateNamespaceResponseSchema;
-  };
+  },
   /**
    * 命名空间详情
    *
@@ -984,7 +899,7 @@ export const Namespace: GenService<{
     methodKind: "unary";
     input: typeof NamespaceDetailRequestSchema;
     output: typeof NamespaceDetailResponseSchema;
-  };
+  },
   /**
    * 更新命名空间
    *
@@ -994,7 +909,7 @@ export const Namespace: GenService<{
     methodKind: "unary";
     input: typeof UpdateNamespaceRequestSchema;
     output: typeof UpdateNamespaceResponseSchema;
-  };
+  },
   /**
    * 删除命名空间
    *
@@ -1004,5 +919,7 @@ export const Namespace: GenService<{
     methodKind: "unary";
     input: typeof DeleteNamespaceRequestSchema;
     output: typeof DeleteNamespaceResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_asset_namespace, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_asset_namespace, 0);
+

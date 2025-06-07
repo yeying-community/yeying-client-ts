@@ -2,59 +2,34 @@
 // @generated from file yeying/api/asset/recycle.proto (package yeying.api.asset, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  RequestPage,
-  RequestPageJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
-import type {
-  AssetMetadata,
-  AssetMetadataJson,
-  SearchAssetCondition,
-  SearchAssetConditionJson,
-} from "./asset_pb";
+import type { AssetMetadata, AssetMetadataJson, SearchAssetCondition, SearchAssetConditionJson } from "./asset_pb";
 import { file_yeying_api_asset_asset } from "./asset_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/asset/recycle.proto.
  */
-export const file_yeying_api_asset_recycle: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Ch55ZXlpbmcvYXBpL2Fzc2V0L3JlY3ljbGUucHJvdG8SEHlleWluZy5hcGkuYXNzZXQijAEKGVNlYXJjaERlbGV0ZWRBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI9CgRib2R5GAIgASgLMi8ueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXF1ZXN0Qm9keSKIAQodU2VhcmNoRGVsZXRlZEFzc2V0UmVxdWVzdEJvZHkSOQoJY29uZGl0aW9uGAEgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldENvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UijgEKGlNlYXJjaERlbGV0ZWRBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoRGVsZXRlZEFzc2V0UmVzcG9uc2VCb2R5IosBCh5TZWFyY2hEZWxldGVkQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoGYXNzZXRzGAIgAygLMiYueWV5aW5nLmFwaS5hc3NldC5EZWxldGVkQXNzZXRNZXRhZGF0YSKOAQoaUmVjb3ZlckRlbGV0ZWRBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5hc3NldC5SZWNvdmVyRGVsZXRlZEFzc2V0UmVxdWVzdEJvZHkiQwoeUmVjb3ZlckRlbGV0ZWRBc3NldFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkikAEKG1JlY292ZXJEZWxldGVkQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj8KBGJvZHkYAiABKAsyMS55ZXlpbmcuYXBpLmFzc2V0LlJlY292ZXJEZWxldGVkQXNzZXRSZXNwb25zZUJvZHkiVAofUmVjb3ZlckRlbGV0ZWRBc3NldFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyKMAQoZUmVtb3ZlRGVsZXRlZEFzc2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj0KBGJvZHkYAiABKAsyLy55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3RCb2R5IkIKHVJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkijgEKGlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuUmVtb3ZlRGVsZXRlZEFzc2V0UmVzcG9uc2VCb2R5IlMKHlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyJZChREZWxldGVkQXNzZXRNZXRhZGF0YRIuCgVhc3NldBgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YRIRCglkZWxldGVkQXQYDSABKAkywQIKB1JlY3ljbGUSZQoGU2VhcmNoEisueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXF1ZXN0GiwueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXNwb25zZSIAEmgKB1JlY292ZXISLC55ZXlpbmcuYXBpLmFzc2V0LlJlY292ZXJEZWxldGVkQXNzZXRSZXF1ZXN0Gi0ueWV5aW5nLmFwaS5hc3NldC5SZWNvdmVyRGVsZXRlZEFzc2V0UmVzcG9uc2UiABJlCgZSZW1vdmUSKy55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3QaLC55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlIgBCEloQeWV5aW5nL2FwaS9hc3NldGIGcHJvdG8z",
-    [file_yeying_api_common_message, file_yeying_api_asset_asset],
-  );
+export const file_yeying_api_asset_recycle: GenFile = /*@__PURE__*/
+  fileDesc("Ch55ZXlpbmcvYXBpL2Fzc2V0L3JlY3ljbGUucHJvdG8SEHlleWluZy5hcGkuYXNzZXQijAEKGVNlYXJjaERlbGV0ZWRBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI9CgRib2R5GAIgASgLMi8ueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXF1ZXN0Qm9keSKIAQodU2VhcmNoRGVsZXRlZEFzc2V0UmVxdWVzdEJvZHkSOQoJY29uZGl0aW9uGAEgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldENvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UijgEKGlNlYXJjaERlbGV0ZWRBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoRGVsZXRlZEFzc2V0UmVzcG9uc2VCb2R5IosBCh5TZWFyY2hEZWxldGVkQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNgoGYXNzZXRzGAIgAygLMiYueWV5aW5nLmFwaS5hc3NldC5EZWxldGVkQXNzZXRNZXRhZGF0YSKOAQoaUmVjb3ZlckRlbGV0ZWRBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5hc3NldC5SZWNvdmVyRGVsZXRlZEFzc2V0UmVxdWVzdEJvZHkiQwoeUmVjb3ZlckRlbGV0ZWRBc3NldFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkikAEKG1JlY292ZXJEZWxldGVkQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj8KBGJvZHkYAiABKAsyMS55ZXlpbmcuYXBpLmFzc2V0LlJlY292ZXJEZWxldGVkQXNzZXRSZXNwb25zZUJvZHkiVAofUmVjb3ZlckRlbGV0ZWRBc3NldFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyKMAQoZUmVtb3ZlRGVsZXRlZEFzc2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj0KBGJvZHkYAiABKAsyLy55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3RCb2R5IkIKHVJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkijgEKGlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuUmVtb3ZlRGVsZXRlZEFzc2V0UmVzcG9uc2VCb2R5IlMKHlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyJZChREZWxldGVkQXNzZXRNZXRhZGF0YRIuCgVhc3NldBgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YRIRCglkZWxldGVkQXQYDSABKAkywQIKB1JlY3ljbGUSZQoGU2VhcmNoEisueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXF1ZXN0GiwueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hEZWxldGVkQXNzZXRSZXNwb25zZSIAEmgKB1JlY292ZXISLC55ZXlpbmcuYXBpLmFzc2V0LlJlY292ZXJEZWxldGVkQXNzZXRSZXF1ZXN0Gi0ueWV5aW5nLmFwaS5hc3NldC5SZWNvdmVyRGVsZXRlZEFzc2V0UmVzcG9uc2UiABJlCgZSZW1vdmUSKy55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlcXVlc3QaLC55ZXlpbmcuYXBpLmFzc2V0LlJlbW92ZURlbGV0ZWRBc3NldFJlc3BvbnNlIgBCEloQeWV5aW5nL2FwaS9hc3NldGIGcHJvdG8z", [file_yeying_api_common_message, file_yeying_api_asset_asset]);
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetRequest
  */
-export type SearchDeletedAssetRequest =
-  Message<"yeying.api.asset.SearchDeletedAssetRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchDeletedAssetRequest = Message<"yeying.api.asset.SearchDeletedAssetRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.SearchDeletedAssetRequestBody body = 2;
-     */
-    body?: SearchDeletedAssetRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.SearchDeletedAssetRequestBody body = 2;
+   */
+  body?: SearchDeletedAssetRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetRequest
@@ -75,26 +50,23 @@ export type SearchDeletedAssetRequestJson = {
  * Describes the message yeying.api.asset.SearchDeletedAssetRequest.
  * Use `create(SearchDeletedAssetRequestSchema)` to create a new message.
  */
-export const SearchDeletedAssetRequestSchema: GenMessage<
-  SearchDeletedAssetRequest,
-  SearchDeletedAssetRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 0);
+export const SearchDeletedAssetRequestSchema: GenMessage<SearchDeletedAssetRequest, SearchDeletedAssetRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 0);
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetRequestBody
  */
-export type SearchDeletedAssetRequestBody =
-  Message<"yeying.api.asset.SearchDeletedAssetRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.SearchAssetCondition condition = 1;
-     */
-    condition?: SearchAssetCondition;
+export type SearchDeletedAssetRequestBody = Message<"yeying.api.asset.SearchDeletedAssetRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.SearchAssetCondition condition = 1;
+   */
+  condition?: SearchAssetCondition;
 
-    /**
-     * @generated from field: yeying.api.common.RequestPage page = 2;
-     */
-    page?: RequestPage;
-  };
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetRequestBody
@@ -115,26 +87,23 @@ export type SearchDeletedAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.SearchDeletedAssetRequestBody.
  * Use `create(SearchDeletedAssetRequestBodySchema)` to create a new message.
  */
-export const SearchDeletedAssetRequestBodySchema: GenMessage<
-  SearchDeletedAssetRequestBody,
-  SearchDeletedAssetRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 1);
+export const SearchDeletedAssetRequestBodySchema: GenMessage<SearchDeletedAssetRequestBody, SearchDeletedAssetRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 1);
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetResponse
  */
-export type SearchDeletedAssetResponse =
-  Message<"yeying.api.asset.SearchDeletedAssetResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchDeletedAssetResponse = Message<"yeying.api.asset.SearchDeletedAssetResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.SearchDeletedAssetResponseBody body = 2;
-     */
-    body?: SearchDeletedAssetResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.SearchDeletedAssetResponseBody body = 2;
+   */
+  body?: SearchDeletedAssetResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetResponse
@@ -155,26 +124,23 @@ export type SearchDeletedAssetResponseJson = {
  * Describes the message yeying.api.asset.SearchDeletedAssetResponse.
  * Use `create(SearchDeletedAssetResponseSchema)` to create a new message.
  */
-export const SearchDeletedAssetResponseSchema: GenMessage<
-  SearchDeletedAssetResponse,
-  SearchDeletedAssetResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 2);
+export const SearchDeletedAssetResponseSchema: GenMessage<SearchDeletedAssetResponse, SearchDeletedAssetResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 2);
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetResponseBody
  */
-export type SearchDeletedAssetResponseBody =
-  Message<"yeying.api.asset.SearchDeletedAssetResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SearchDeletedAssetResponseBody = Message<"yeying.api.asset.SearchDeletedAssetResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: repeated yeying.api.asset.DeletedAssetMetadata assets = 2;
-     */
-    assets: DeletedAssetMetadata[];
-  };
+  /**
+   * @generated from field: repeated yeying.api.asset.DeletedAssetMetadata assets = 2;
+   */
+  assets: DeletedAssetMetadata[];
+};
 
 /**
  * @generated from message yeying.api.asset.SearchDeletedAssetResponseBody
@@ -195,26 +161,23 @@ export type SearchDeletedAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.SearchDeletedAssetResponseBody.
  * Use `create(SearchDeletedAssetResponseBodySchema)` to create a new message.
  */
-export const SearchDeletedAssetResponseBodySchema: GenMessage<
-  SearchDeletedAssetResponseBody,
-  SearchDeletedAssetResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 3);
+export const SearchDeletedAssetResponseBodySchema: GenMessage<SearchDeletedAssetResponseBody, SearchDeletedAssetResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 3);
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetRequest
  */
-export type RecoverDeletedAssetRequest =
-  Message<"yeying.api.asset.RecoverDeletedAssetRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type RecoverDeletedAssetRequest = Message<"yeying.api.asset.RecoverDeletedAssetRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.RecoverDeletedAssetRequestBody body = 2;
-     */
-    body?: RecoverDeletedAssetRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.RecoverDeletedAssetRequestBody body = 2;
+   */
+  body?: RecoverDeletedAssetRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetRequest
@@ -235,26 +198,23 @@ export type RecoverDeletedAssetRequestJson = {
  * Describes the message yeying.api.asset.RecoverDeletedAssetRequest.
  * Use `create(RecoverDeletedAssetRequestSchema)` to create a new message.
  */
-export const RecoverDeletedAssetRequestSchema: GenMessage<
-  RecoverDeletedAssetRequest,
-  RecoverDeletedAssetRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 4);
+export const RecoverDeletedAssetRequestSchema: GenMessage<RecoverDeletedAssetRequest, RecoverDeletedAssetRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 4);
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetRequestBody
  */
-export type RecoverDeletedAssetRequestBody =
-  Message<"yeying.api.asset.RecoverDeletedAssetRequestBody"> & {
-    /**
-     * @generated from field: string hash = 1;
-     */
-    hash: string;
+export type RecoverDeletedAssetRequestBody = Message<"yeying.api.asset.RecoverDeletedAssetRequestBody"> & {
+  /**
+   * @generated from field: string hash = 1;
+   */
+  hash: string;
 
-    /**
-     * @generated from field: string namespaceId = 2;
-     */
-    namespaceId: string;
-  };
+  /**
+   * @generated from field: string namespaceId = 2;
+   */
+  namespaceId: string;
+};
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetRequestBody
@@ -275,26 +235,23 @@ export type RecoverDeletedAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.RecoverDeletedAssetRequestBody.
  * Use `create(RecoverDeletedAssetRequestBodySchema)` to create a new message.
  */
-export const RecoverDeletedAssetRequestBodySchema: GenMessage<
-  RecoverDeletedAssetRequestBody,
-  RecoverDeletedAssetRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 5);
+export const RecoverDeletedAssetRequestBodySchema: GenMessage<RecoverDeletedAssetRequestBody, RecoverDeletedAssetRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 5);
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetResponse
  */
-export type RecoverDeletedAssetResponse =
-  Message<"yeying.api.asset.RecoverDeletedAssetResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type RecoverDeletedAssetResponse = Message<"yeying.api.asset.RecoverDeletedAssetResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.RecoverDeletedAssetResponseBody body = 2;
-     */
-    body?: RecoverDeletedAssetResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.RecoverDeletedAssetResponseBody body = 2;
+   */
+  body?: RecoverDeletedAssetResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetResponse
@@ -315,21 +272,18 @@ export type RecoverDeletedAssetResponseJson = {
  * Describes the message yeying.api.asset.RecoverDeletedAssetResponse.
  * Use `create(RecoverDeletedAssetResponseSchema)` to create a new message.
  */
-export const RecoverDeletedAssetResponseSchema: GenMessage<
-  RecoverDeletedAssetResponse,
-  RecoverDeletedAssetResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 6);
+export const RecoverDeletedAssetResponseSchema: GenMessage<RecoverDeletedAssetResponse, RecoverDeletedAssetResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 6);
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetResponseBody
  */
-export type RecoverDeletedAssetResponseBody =
-  Message<"yeying.api.asset.RecoverDeletedAssetResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type RecoverDeletedAssetResponseBody = Message<"yeying.api.asset.RecoverDeletedAssetResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.asset.RecoverDeletedAssetResponseBody
@@ -345,26 +299,23 @@ export type RecoverDeletedAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.RecoverDeletedAssetResponseBody.
  * Use `create(RecoverDeletedAssetResponseBodySchema)` to create a new message.
  */
-export const RecoverDeletedAssetResponseBodySchema: GenMessage<
-  RecoverDeletedAssetResponseBody,
-  RecoverDeletedAssetResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 7);
+export const RecoverDeletedAssetResponseBodySchema: GenMessage<RecoverDeletedAssetResponseBody, RecoverDeletedAssetResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 7);
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetRequest
  */
-export type RemoveDeletedAssetRequest =
-  Message<"yeying.api.asset.RemoveDeletedAssetRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type RemoveDeletedAssetRequest = Message<"yeying.api.asset.RemoveDeletedAssetRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.RemoveDeletedAssetRequestBody body = 2;
-     */
-    body?: RemoveDeletedAssetRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.RemoveDeletedAssetRequestBody body = 2;
+   */
+  body?: RemoveDeletedAssetRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetRequest
@@ -385,26 +336,23 @@ export type RemoveDeletedAssetRequestJson = {
  * Describes the message yeying.api.asset.RemoveDeletedAssetRequest.
  * Use `create(RemoveDeletedAssetRequestSchema)` to create a new message.
  */
-export const RemoveDeletedAssetRequestSchema: GenMessage<
-  RemoveDeletedAssetRequest,
-  RemoveDeletedAssetRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 8);
+export const RemoveDeletedAssetRequestSchema: GenMessage<RemoveDeletedAssetRequest, RemoveDeletedAssetRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 8);
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetRequestBody
  */
-export type RemoveDeletedAssetRequestBody =
-  Message<"yeying.api.asset.RemoveDeletedAssetRequestBody"> & {
-    /**
-     * @generated from field: string hash = 1;
-     */
-    hash: string;
+export type RemoveDeletedAssetRequestBody = Message<"yeying.api.asset.RemoveDeletedAssetRequestBody"> & {
+  /**
+   * @generated from field: string hash = 1;
+   */
+  hash: string;
 
-    /**
-     * @generated from field: string namespaceId = 2;
-     */
-    namespaceId: string;
-  };
+  /**
+   * @generated from field: string namespaceId = 2;
+   */
+  namespaceId: string;
+};
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetRequestBody
@@ -425,26 +373,23 @@ export type RemoveDeletedAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.RemoveDeletedAssetRequestBody.
  * Use `create(RemoveDeletedAssetRequestBodySchema)` to create a new message.
  */
-export const RemoveDeletedAssetRequestBodySchema: GenMessage<
-  RemoveDeletedAssetRequestBody,
-  RemoveDeletedAssetRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 9);
+export const RemoveDeletedAssetRequestBodySchema: GenMessage<RemoveDeletedAssetRequestBody, RemoveDeletedAssetRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 9);
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetResponse
  */
-export type RemoveDeletedAssetResponse =
-  Message<"yeying.api.asset.RemoveDeletedAssetResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type RemoveDeletedAssetResponse = Message<"yeying.api.asset.RemoveDeletedAssetResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.RemoveDeletedAssetResponseBody body = 2;
-     */
-    body?: RemoveDeletedAssetResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.RemoveDeletedAssetResponseBody body = 2;
+   */
+  body?: RemoveDeletedAssetResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetResponse
@@ -465,21 +410,18 @@ export type RemoveDeletedAssetResponseJson = {
  * Describes the message yeying.api.asset.RemoveDeletedAssetResponse.
  * Use `create(RemoveDeletedAssetResponseSchema)` to create a new message.
  */
-export const RemoveDeletedAssetResponseSchema: GenMessage<
-  RemoveDeletedAssetResponse,
-  RemoveDeletedAssetResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 10);
+export const RemoveDeletedAssetResponseSchema: GenMessage<RemoveDeletedAssetResponse, RemoveDeletedAssetResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 10);
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetResponseBody
  */
-export type RemoveDeletedAssetResponseBody =
-  Message<"yeying.api.asset.RemoveDeletedAssetResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type RemoveDeletedAssetResponseBody = Message<"yeying.api.asset.RemoveDeletedAssetResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.asset.RemoveDeletedAssetResponseBody
@@ -495,28 +437,25 @@ export type RemoveDeletedAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.RemoveDeletedAssetResponseBody.
  * Use `create(RemoveDeletedAssetResponseBodySchema)` to create a new message.
  */
-export const RemoveDeletedAssetResponseBodySchema: GenMessage<
-  RemoveDeletedAssetResponseBody,
-  RemoveDeletedAssetResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 11);
+export const RemoveDeletedAssetResponseBodySchema: GenMessage<RemoveDeletedAssetResponseBody, RemoveDeletedAssetResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 11);
 
 /**
  * @generated from message yeying.api.asset.DeletedAssetMetadata
  */
-export type DeletedAssetMetadata =
-  Message<"yeying.api.asset.DeletedAssetMetadata"> & {
-    /**
-     * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
-     */
-    asset?: AssetMetadata;
+export type DeletedAssetMetadata = Message<"yeying.api.asset.DeletedAssetMetadata"> & {
+  /**
+   * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
+   */
+  asset?: AssetMetadata;
 
-    /**
-     * 资产删除时间
-     *
-     * @generated from field: string deletedAt = 13;
-     */
-    deletedAt: string;
-  };
+  /**
+   * 资产删除时间
+   *
+   * @generated from field: string deletedAt = 13;
+   */
+  deletedAt: string;
+};
 
 /**
  * @generated from message yeying.api.asset.DeletedAssetMetadata
@@ -539,10 +478,8 @@ export type DeletedAssetMetadataJson = {
  * Describes the message yeying.api.asset.DeletedAssetMetadata.
  * Use `create(DeletedAssetMetadataSchema)` to create a new message.
  */
-export const DeletedAssetMetadataSchema: GenMessage<
-  DeletedAssetMetadata,
-  DeletedAssetMetadataJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_recycle, 12);
+export const DeletedAssetMetadataSchema: GenMessage<DeletedAssetMetadata, DeletedAssetMetadataJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_recycle, 12);
 
 /**
  * @generated from service yeying.api.asset.Recycle
@@ -558,7 +495,7 @@ export const Recycle: GenService<{
     methodKind: "unary";
     input: typeof SearchDeletedAssetRequestSchema;
     output: typeof SearchDeletedAssetResponseSchema;
-  };
+  },
   /**
    * *
    * 从回收站里恢复资产
@@ -569,7 +506,7 @@ export const Recycle: GenService<{
     methodKind: "unary";
     input: typeof RecoverDeletedAssetRequestSchema;
     output: typeof RecoverDeletedAssetResponseSchema;
-  };
+  },
   /**
    * *
    * 从回收站里删除资产
@@ -580,5 +517,7 @@ export const Recycle: GenService<{
     methodKind: "unary";
     input: typeof RemoveDeletedAssetRequestSchema;
     output: typeof RemoveDeletedAssetResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_asset_recycle, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_asset_recycle, 0);
+

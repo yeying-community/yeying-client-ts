@@ -12,24 +12,15 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type {
-  AuthenticateTypeEnum,
-  AuthenticateTypeEnumJson,
-  ResponseCodeEnum,
-  ResponseCodeEnumJson,
-} from "./code_pb";
+import type { AuthenticateTypeEnum, AuthenticateTypeEnumJson, ResponseCodeEnum, ResponseCodeEnumJson } from "./code_pb";
 import { file_yeying_api_common_code } from "./code_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/common/message.proto.
  */
-export const file_yeying_api_common_message: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Ch95ZXlpbmcvYXBpL2NvbW1vbi9tZXNzYWdlLnByb3RvEhF5ZXlpbmcuYXBpLmNvbW1vbiKfAQoNTWVzc2FnZUhlYWRlchILCgNkaWQYASABKAkSOQoIYXV0aFR5cGUYAiABKA4yJy55ZXlpbmcuYXBpLmNvbW1vbi5BdXRoZW50aWNhdGVUeXBlRW51bRITCgthdXRoQ29udGVudBgDIAEoCRINCgVub25jZRgEIAEoCRIRCgl0aW1lc3RhbXAYBSABKAkSDwoHdmVyc2lvbhgGIAEoDSJUCg5SZXNwb25zZVN0YXR1cxIxCgRjb2RlGAEgASgOMiMueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VDb2RlRW51bRIPCgdtZXNzYWdlGAIgASgJIj0KDFJlc3BvbnNlUGFnZRINCgV0b3RhbBgBIAEoDRIMCgRwYWdlGAMgASgNEhAKCHBhZ2VTaXplGAQgASgNIi0KC1JlcXVlc3RQYWdlEgwKBHBhZ2UYASABKA0SEAoIcGFnZVNpemUYAiABKA1CE1oReWV5aW5nL2FwaS9jb21tb25iBnByb3RvMw",
-    [file_yeying_api_common_code],
-  );
+export const file_yeying_api_common_message: GenFile = /*@__PURE__*/
+  fileDesc("Ch95ZXlpbmcvYXBpL2NvbW1vbi9tZXNzYWdlLnByb3RvEhF5ZXlpbmcuYXBpLmNvbW1vbiKfAQoNTWVzc2FnZUhlYWRlchILCgNkaWQYASABKAkSOQoIYXV0aFR5cGUYAiABKA4yJy55ZXlpbmcuYXBpLmNvbW1vbi5BdXRoZW50aWNhdGVUeXBlRW51bRITCgthdXRoQ29udGVudBgDIAEoCRINCgVub25jZRgEIAEoCRIRCgl0aW1lc3RhbXAYBSABKAkSDwoHdmVyc2lvbhgGIAEoDSJUCg5SZXNwb25zZVN0YXR1cxIxCgRjb2RlGAEgASgOMiMueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VDb2RlRW51bRIPCgdtZXNzYWdlGAIgASgJIj0KDFJlc3BvbnNlUGFnZRINCgV0b3RhbBgBIAEoDRIMCgRwYWdlGAMgASgNEhAKCHBhZ2VTaXplGAQgASgNIi0KC1JlcXVlc3RQYWdlEgwKBHBhZ2UYASABKA0SEAoIcGFnZVNpemUYAiABKA1CE1oReWV5aW5nL2FwaS9jb21tb25iBnByb3RvMw", [file_yeying_api_common_code]);
 
 /**
  * @generated from message yeying.api.common.MessageHeader
@@ -105,8 +96,7 @@ export type MessageHeaderJson = {
  * Describes the message yeying.api.common.MessageHeader.
  * Use `create(MessageHeaderSchema)` to create a new message.
  */
-export const MessageHeaderSchema: GenMessage<MessageHeader, MessageHeaderJson> =
-  /*@__PURE__*/
+export const MessageHeaderSchema: GenMessage<MessageHeader, MessageHeaderJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_common_message, 0);
 
 /**
@@ -151,10 +141,8 @@ export type ResponseStatusJson = {
  * Describes the message yeying.api.common.ResponseStatus.
  * Use `create(ResponseStatusSchema)` to create a new message.
  */
-export const ResponseStatusSchema: GenMessage<
-  ResponseStatus,
-  ResponseStatusJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_common_message, 1);
+export const ResponseStatusSchema: GenMessage<ResponseStatus, ResponseStatusJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_common_message, 1);
 
 /**
  * @generated from message yeying.api.common.ResponsePage
@@ -212,8 +200,7 @@ export type ResponsePageJson = {
  * Describes the message yeying.api.common.ResponsePage.
  * Use `create(ResponsePageSchema)` to create a new message.
  */
-export const ResponsePageSchema: GenMessage<ResponsePage, ResponsePageJson> =
-  /*@__PURE__*/
+export const ResponsePageSchema: GenMessage<ResponsePage, ResponsePageJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_common_message, 2);
 
 /**
@@ -258,6 +245,6 @@ export type RequestPageJson = {
  * Describes the message yeying.api.common.RequestPage.
  * Use `create(RequestPageSchema)` to create a new message.
  */
-export const RequestPageSchema: GenMessage<RequestPage, RequestPageJson> =
-  /*@__PURE__*/
+export const RequestPageSchema: GenMessage<RequestPage, RequestPageJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_common_message, 3);
+
