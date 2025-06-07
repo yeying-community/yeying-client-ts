@@ -5,6 +5,7 @@ export { ProviderOption } from "./client/common/model";
 export { UserProvider } from "./client/user/user";
 export { BulletinProvider } from "./client/bulletin/bulletin";
 export { SupportProvider } from "./client/support/support";
+export { ApplicationProvider } from "./client/application/application";
 export { ServiceProvider } from "./client/service/service";
 export { AssetProvider } from "./client/warehouse/asset";
 export { LinkProvider } from "./client/warehouse/link";
