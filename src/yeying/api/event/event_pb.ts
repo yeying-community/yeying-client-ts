@@ -2,36 +2,17 @@
 // @generated from file yeying/api/event/event.proto (package yeying.api.event, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  enumDesc,
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/event/event.proto.
  */
-export const file_yeying_api_event_event: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Chx5ZXlpbmcvYXBpL2V2ZW50L2V2ZW50LnByb3RvEhB5ZXlpbmcuYXBpLmV2ZW50IswECg1FdmVudE1ldGFkYXRhEgsKA3VpZBgBIAEoCRItCgR0eXBlGAIgASgOMh8ueWV5aW5nLmFwaS5ldmVudC5FdmVudFR5cGVFbnVtEhEKCXByb2R1Y2VycxgDIAMoCRIRCgljb25zdW1lcnMYBCADKAkSMwoJc2lnbmF0dXJlGAUgASgLMiAueWV5aW5nLmFwaS5ldmVudC5FdmVudFNpZ25hdHVyZRIOCgZleHRlbmQYBiABKAkSEQoJY3JlYXRlZEF0GAcgASgJEhMKC3Byb2Nlc3NlZEF0GAggASgJEjgKDW5vdGlmeUNvbnRlbnQYCSABKAsyHy55ZXlpbmcuYXBpLmV2ZW50Lk5vdGlmeUNvbnRlbnRIABI2CgxhcHBseUNvbnRlbnQYCiABKAsyHi55ZXlpbmcuYXBpLmV2ZW50LkFwcGx5Q29udGVudEgAEjgKDWN1c3RvbUNvbnRlbnQYCyABKAsyHy55ZXlpbmcuYXBpLmV2ZW50LkN1c3RvbUNvbnRlbnRIABI4Cg1ub3RpZnlPcGluaW9uGAwgASgLMh8ueWV5aW5nLmFwaS5ldmVudC5Ob3RpZnlPcGluaW9uSAESNgoMYXBwbHlPcGluaW9uGA0gASgLMh4ueWV5aW5nLmFwaS5ldmVudC5BcHBseU9waW5pb25IARI4Cg1jdXN0b21PcGluaW9uGA4gASgLMh8ueWV5aW5nLmFwaS5ldmVudC5DdXN0b21PcGluaW9uSAFCCQoHY29udGVudEIJCgdvcGluaW9uIuABCg9TaWduYXR1cmVPYmplY3QSCwoDdWlkGAEgASgJEi0KBHR5cGUYAiABKA4yHy55ZXlpbmcuYXBpLmV2ZW50LkV2ZW50VHlwZUVudW0SEQoJcHJvZHVjZXJzGAMgAygJEhEKCWNvbnN1bWVycxgEIAMoCRIRCglzaWduYXR1cmUYBSABKAwSDgoGZXh0ZW5kGAYgASgJEhEKCWNyZWF0ZWRBdBgHIAEoCRITCgtwcm9jZXNzZWRBdBgIIAEoCRIPCgdvcGluaW9uGAkgASgMEg8KB2NvbnRlbnQYCiABKAwiNgoORXZlbnRTaWduYXR1cmUSEQoJcHJvZHVjZXJzGAEgAygJEhEKCWNvbnN1bWVycxgCIAMoCSItCg1DdXN0b21Db250ZW50EgwKBG5hbWUYASABKAkSDgoGb2JqZWN0GAIgASgJIh8KDEFwcGx5Q29udGVudBIPCgdhcHBsaWVyGAEgASgJIkoKDU5vdGlmeUNvbnRlbnQSDAoEbmFtZRgBIAEoCRIrCgVpdGVtcxgCIAMoCzIcLnlleWluZy5hcGkuZXZlbnQuTm90aWZ5SXRlbSJNCgpOb3RpZnlJdGVtEgsKA3VpZBgBIAEoCRIyCgZhY3Rpb24YAiABKA4yIi55ZXlpbmcuYXBpLmV2ZW50Lk5vdGlmeUFjdGlvbkVudW0idgoOUHJvZHVjZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5ldmVudC5Qcm9kdWNlUmVxdWVzdEJvZHkiRAoSUHJvZHVjZVJlcXVlc3RCb2R5Ei4KBWV2ZW50GAEgASgLMh8ueWV5aW5nLmFwaS5ldmVudC5FdmVudE1ldGFkYXRhIngKD1Byb2R1Y2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmV2ZW50LlByb2R1Y2VSZXNwb25zZUJvZHkiSAoTUHJvZHVjZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyJ2Cg5Db25zdW1lUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXF1ZXN0Qm9keSJHChJDb25zdW1lUmVxdWVzdEJvZHkSMQoIbWV0YWRhdGEYASABKAsyHy55ZXlpbmcuYXBpLmV2ZW50LkV2ZW50TWV0YWRhdGEiIgoNTm90aWZ5T3BpbmlvbhIRCglwcm9jZXNzZWQYASABKAkiYwoMQXBwbHlPcGluaW9uEjEKBmFjdGlvbhgBIAEoDjIhLnlleWluZy5hcGkuZXZlbnQuQXBwbHlBY3Rpb25FbnVtEg0KBWNhdXNlGAIgASgJEhEKCXByb2Nlc3NlZBgDIAEoCSItCg1DdXN0b21PcGluaW9uEgwKBG5hbWUYASABKAkSDgoGb2JqZWN0GAIgASgJIngKD0NvbnN1bWVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXNwb25zZUJvZHkiSAoTQ29uc3VtZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyqCAQoNRXZlbnRUeXBlRW51bRIWChJFVkVOVF9UWVBFX1VOS05PV04QABIVChFFVkVOVF9UWVBFX1JFTUlORBABEhUKEUVWRU5UX1RZUEVfTk9USUZZEAISFAoQRVZFTlRfVFlQRV9BUFBMWRADEhUKEUVWRU5UX1RZUEVfQ1VTVE9NEAQqXgoPQXBwbHlBY3Rpb25FbnVtEhgKFEFQUExZX0FDVElPTl9VTktOT1dOEAASFwoTQVBQTFlfQUNUSU9OX1BBU1NFRBABEhgKFEFQUExZX0FDVElPTl9SRUZVU0VEEAIqcgoQTm90aWZ5QWN0aW9uRW51bRIZChVOT1RJRllfQUNUSU9OX1VOS05PV04QABIVChFOT1RJRllfQUNUSU9OX0FERBABEhUKEU5PVElGWV9BQ1RJT05fREVMEAISFQoRTk9USUZZX0FDVElPTl9NT0QQAzKrAQoFRXZlbnQSUAoHUHJvZHVjZRIgLnlleWluZy5hcGkuZXZlbnQuUHJvZHVjZVJlcXVlc3QaIS55ZXlpbmcuYXBpLmV2ZW50LlByb2R1Y2VSZXNwb25zZSIAElAKB0NvbnN1bWUSIC55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXF1ZXN0GiEueWV5aW5nLmFwaS5ldmVudC5Db25zdW1lUmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2V2ZW50YgZwcm90bzM",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_event_event: GenFile = /*@__PURE__*/
+  fileDesc("Chx5ZXlpbmcvYXBpL2V2ZW50L2V2ZW50LnByb3RvEhB5ZXlpbmcuYXBpLmV2ZW50IswECg1FdmVudE1ldGFkYXRhEgsKA3VpZBgBIAEoCRItCgR0eXBlGAIgASgOMh8ueWV5aW5nLmFwaS5ldmVudC5FdmVudFR5cGVFbnVtEhEKCXByb2R1Y2VycxgDIAMoCRIRCgljb25zdW1lcnMYBCADKAkSMwoJc2lnbmF0dXJlGAUgASgLMiAueWV5aW5nLmFwaS5ldmVudC5FdmVudFNpZ25hdHVyZRIOCgZleHRlbmQYBiABKAkSEQoJY3JlYXRlZEF0GAcgASgJEhMKC3Byb2Nlc3NlZEF0GAggASgJEjgKDW5vdGlmeUNvbnRlbnQYCSABKAsyHy55ZXlpbmcuYXBpLmV2ZW50Lk5vdGlmeUNvbnRlbnRIABI2CgxhcHBseUNvbnRlbnQYCiABKAsyHi55ZXlpbmcuYXBpLmV2ZW50LkFwcGx5Q29udGVudEgAEjgKDWN1c3RvbUNvbnRlbnQYCyABKAsyHy55ZXlpbmcuYXBpLmV2ZW50LkN1c3RvbUNvbnRlbnRIABI4Cg1ub3RpZnlPcGluaW9uGAwgASgLMh8ueWV5aW5nLmFwaS5ldmVudC5Ob3RpZnlPcGluaW9uSAESNgoMYXBwbHlPcGluaW9uGA0gASgLMh4ueWV5aW5nLmFwaS5ldmVudC5BcHBseU9waW5pb25IARI4Cg1jdXN0b21PcGluaW9uGA4gASgLMh8ueWV5aW5nLmFwaS5ldmVudC5DdXN0b21PcGluaW9uSAFCCQoHY29udGVudEIJCgdvcGluaW9uIuABCg9TaWduYXR1cmVPYmplY3QSCwoDdWlkGAEgASgJEi0KBHR5cGUYAiABKA4yHy55ZXlpbmcuYXBpLmV2ZW50LkV2ZW50VHlwZUVudW0SEQoJcHJvZHVjZXJzGAMgAygJEhEKCWNvbnN1bWVycxgEIAMoCRIRCglzaWduYXR1cmUYBSABKAwSDgoGZXh0ZW5kGAYgASgJEhEKCWNyZWF0ZWRBdBgHIAEoCRITCgtwcm9jZXNzZWRBdBgIIAEoCRIPCgdvcGluaW9uGAkgASgMEg8KB2NvbnRlbnQYCiABKAwiNgoORXZlbnRTaWduYXR1cmUSEQoJcHJvZHVjZXJzGAEgAygJEhEKCWNvbnN1bWVycxgCIAMoCSItCg1DdXN0b21Db250ZW50EgwKBG5hbWUYASABKAkSDgoGb2JqZWN0GAIgASgJIh8KDEFwcGx5Q29udGVudBIPCgdhcHBsaWVyGAEgASgJIkoKDU5vdGlmeUNvbnRlbnQSDAoEbmFtZRgBIAEoCRIrCgVpdGVtcxgCIAMoCzIcLnlleWluZy5hcGkuZXZlbnQuTm90aWZ5SXRlbSJNCgpOb3RpZnlJdGVtEgsKA3VpZBgBIAEoCRIyCgZhY3Rpb24YAiABKA4yIi55ZXlpbmcuYXBpLmV2ZW50Lk5vdGlmeUFjdGlvbkVudW0idgoOUHJvZHVjZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5ldmVudC5Qcm9kdWNlUmVxdWVzdEJvZHkiRAoSUHJvZHVjZVJlcXVlc3RCb2R5Ei4KBWV2ZW50GAEgASgLMh8ueWV5aW5nLmFwaS5ldmVudC5FdmVudE1ldGFkYXRhIngKD1Byb2R1Y2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmV2ZW50LlByb2R1Y2VSZXNwb25zZUJvZHkiSAoTUHJvZHVjZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyJ2Cg5Db25zdW1lUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXF1ZXN0Qm9keSJHChJDb25zdW1lUmVxdWVzdEJvZHkSMQoIbWV0YWRhdGEYASABKAsyHy55ZXlpbmcuYXBpLmV2ZW50LkV2ZW50TWV0YWRhdGEiIgoNTm90aWZ5T3BpbmlvbhIRCglwcm9jZXNzZWQYASABKAkiYwoMQXBwbHlPcGluaW9uEjEKBmFjdGlvbhgBIAEoDjIhLnlleWluZy5hcGkuZXZlbnQuQXBwbHlBY3Rpb25FbnVtEg0KBWNhdXNlGAIgASgJEhEKCXByb2Nlc3NlZBgDIAEoCSItCg1DdXN0b21PcGluaW9uEgwKBG5hbWUYASABKAkSDgoGb2JqZWN0GAIgASgJIngKD0NvbnN1bWVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXNwb25zZUJvZHkiSAoTQ29uc3VtZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyqCAQoNRXZlbnRUeXBlRW51bRIWChJFVkVOVF9UWVBFX1VOS05PV04QABIVChFFVkVOVF9UWVBFX1JFTUlORBABEhUKEUVWRU5UX1RZUEVfTk9USUZZEAISFAoQRVZFTlRfVFlQRV9BUFBMWRADEhUKEUVWRU5UX1RZUEVfQ1VTVE9NEAQqXgoPQXBwbHlBY3Rpb25FbnVtEhgKFEFQUExZX0FDVElPTl9VTktOT1dOEAASFwoTQVBQTFlfQUNUSU9OX1BBU1NFRBABEhgKFEFQUExZX0FDVElPTl9SRUZVU0VEEAIqcgoQTm90aWZ5QWN0aW9uRW51bRIZChVOT1RJRllfQUNUSU9OX1VOS05PV04QABIVChFOT1RJRllfQUNUSU9OX0FERBABEhUKEU5PVElGWV9BQ1RJT05fREVMEAISFQoRTk9USUZZX0FDVElPTl9NT0QQAzKrAQoFRXZlbnQSUAoHUHJvZHVjZRIgLnlleWluZy5hcGkuZXZlbnQuUHJvZHVjZVJlcXVlc3QaIS55ZXlpbmcuYXBpLmV2ZW50LlByb2R1Y2VSZXNwb25zZSIAElAKB0NvbnN1bWUSIC55ZXlpbmcuYXBpLmV2ZW50LkNvbnN1bWVSZXF1ZXN0GiEueWV5aW5nLmFwaS5ldmVudC5Db25zdW1lUmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2V2ZW50YgZwcm90bzM", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.event.EventMetadata
@@ -80,56 +61,48 @@ export type EventMetadata = Message<"yeying.api.event.EventMetadata"> & {
   /**
    * @generated from oneof yeying.api.event.EventMetadata.content
    */
-  content:
-    | {
-        /**
-         * @generated from field: yeying.api.event.NotifyContent notifyContent = 9;
-         */
-        value: NotifyContent;
-        case: "notifyContent";
-      }
-    | {
-        /**
-         * @generated from field: yeying.api.event.ApplyContent applyContent = 10;
-         */
-        value: ApplyContent;
-        case: "applyContent";
-      }
-    | {
-        /**
-         * @generated from field: yeying.api.event.CustomContent customContent = 11;
-         */
-        value: CustomContent;
-        case: "customContent";
-      }
-    | { case: undefined; value?: undefined };
+  content: {
+    /**
+     * @generated from field: yeying.api.event.NotifyContent notifyContent = 9;
+     */
+    value: NotifyContent;
+    case: "notifyContent";
+  } | {
+    /**
+     * @generated from field: yeying.api.event.ApplyContent applyContent = 10;
+     */
+    value: ApplyContent;
+    case: "applyContent";
+  } | {
+    /**
+     * @generated from field: yeying.api.event.CustomContent customContent = 11;
+     */
+    value: CustomContent;
+    case: "customContent";
+  } | { case: undefined; value?: undefined };
 
   /**
    * @generated from oneof yeying.api.event.EventMetadata.opinion
    */
-  opinion:
-    | {
-        /**
-         * @generated from field: yeying.api.event.NotifyOpinion notifyOpinion = 12;
-         */
-        value: NotifyOpinion;
-        case: "notifyOpinion";
-      }
-    | {
-        /**
-         * @generated from field: yeying.api.event.ApplyOpinion applyOpinion = 13;
-         */
-        value: ApplyOpinion;
-        case: "applyOpinion";
-      }
-    | {
-        /**
-         * @generated from field: yeying.api.event.CustomOpinion customOpinion = 14;
-         */
-        value: CustomOpinion;
-        case: "customOpinion";
-      }
-    | { case: undefined; value?: undefined };
+  opinion: {
+    /**
+     * @generated from field: yeying.api.event.NotifyOpinion notifyOpinion = 12;
+     */
+    value: NotifyOpinion;
+    case: "notifyOpinion";
+  } | {
+    /**
+     * @generated from field: yeying.api.event.ApplyOpinion applyOpinion = 13;
+     */
+    value: ApplyOpinion;
+    case: "applyOpinion";
+  } | {
+    /**
+     * @generated from field: yeying.api.event.CustomOpinion customOpinion = 14;
+     */
+    value: CustomOpinion;
+    case: "customOpinion";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
@@ -211,8 +184,7 @@ export type EventMetadataJson = {
  * Describes the message yeying.api.event.EventMetadata.
  * Use `create(EventMetadataSchema)` to create a new message.
  */
-export const EventMetadataSchema: GenMessage<EventMetadata, EventMetadataJson> =
-  /*@__PURE__*/
+export const EventMetadataSchema: GenMessage<EventMetadata, EventMetadataJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 0);
 
 /**
@@ -329,10 +301,8 @@ export type SignatureObjectJson = {
  * Describes the message yeying.api.event.SignatureObject.
  * Use `create(SignatureObjectSchema)` to create a new message.
  */
-export const SignatureObjectSchema: GenMessage<
-  SignatureObject,
-  SignatureObjectJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 1);
+export const SignatureObjectSchema: GenMessage<SignatureObject, SignatureObjectJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 1);
 
 /**
  * @generated from message yeying.api.event.EventSignature
@@ -368,10 +338,8 @@ export type EventSignatureJson = {
  * Describes the message yeying.api.event.EventSignature.
  * Use `create(EventSignatureSchema)` to create a new message.
  */
-export const EventSignatureSchema: GenMessage<
-  EventSignature,
-  EventSignatureJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 2);
+export const EventSignatureSchema: GenMessage<EventSignature, EventSignatureJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 2);
 
 /**
  * @generated from message yeying.api.event.CustomContent
@@ -407,8 +375,7 @@ export type CustomContentJson = {
  * Describes the message yeying.api.event.CustomContent.
  * Use `create(CustomContentSchema)` to create a new message.
  */
-export const CustomContentSchema: GenMessage<CustomContent, CustomContentJson> =
-  /*@__PURE__*/
+export const CustomContentSchema: GenMessage<CustomContent, CustomContentJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 3);
 
 /**
@@ -435,8 +402,7 @@ export type ApplyContentJson = {
  * Describes the message yeying.api.event.ApplyContent.
  * Use `create(ApplyContentSchema)` to create a new message.
  */
-export const ApplyContentSchema: GenMessage<ApplyContent, ApplyContentJson> =
-  /*@__PURE__*/
+export const ApplyContentSchema: GenMessage<ApplyContent, ApplyContentJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 4);
 
 /**
@@ -473,8 +439,7 @@ export type NotifyContentJson = {
  * Describes the message yeying.api.event.NotifyContent.
  * Use `create(NotifyContentSchema)` to create a new message.
  */
-export const NotifyContentSchema: GenMessage<NotifyContent, NotifyContentJson> =
-  /*@__PURE__*/
+export const NotifyContentSchema: GenMessage<NotifyContent, NotifyContentJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 5);
 
 /**
@@ -511,8 +476,7 @@ export type NotifyItemJson = {
  * Describes the message yeying.api.event.NotifyItem.
  * Use `create(NotifyItemSchema)` to create a new message.
  */
-export const NotifyItemSchema: GenMessage<NotifyItem, NotifyItemJson> =
-  /*@__PURE__*/
+export const NotifyItemSchema: GenMessage<NotifyItem, NotifyItemJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 6);
 
 /**
@@ -549,21 +513,18 @@ export type ProduceRequestJson = {
  * Describes the message yeying.api.event.ProduceRequest.
  * Use `create(ProduceRequestSchema)` to create a new message.
  */
-export const ProduceRequestSchema: GenMessage<
-  ProduceRequest,
-  ProduceRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 7);
+export const ProduceRequestSchema: GenMessage<ProduceRequest, ProduceRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 7);
 
 /**
  * @generated from message yeying.api.event.ProduceRequestBody
  */
-export type ProduceRequestBody =
-  Message<"yeying.api.event.ProduceRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.event.EventMetadata event = 1;
-     */
-    event?: EventMetadata;
-  };
+export type ProduceRequestBody = Message<"yeying.api.event.ProduceRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.event.EventMetadata event = 1;
+   */
+  event?: EventMetadata;
+};
 
 /**
  * @generated from message yeying.api.event.ProduceRequestBody
@@ -579,10 +540,8 @@ export type ProduceRequestBodyJson = {
  * Describes the message yeying.api.event.ProduceRequestBody.
  * Use `create(ProduceRequestBodySchema)` to create a new message.
  */
-export const ProduceRequestBodySchema: GenMessage<
-  ProduceRequestBody,
-  ProduceRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 8);
+export const ProduceRequestBodySchema: GenMessage<ProduceRequestBody, ProduceRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 8);
 
 /**
  * @generated from message yeying.api.event.ProduceResponse
@@ -618,21 +577,18 @@ export type ProduceResponseJson = {
  * Describes the message yeying.api.event.ProduceResponse.
  * Use `create(ProduceResponseSchema)` to create a new message.
  */
-export const ProduceResponseSchema: GenMessage<
-  ProduceResponse,
-  ProduceResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 9);
+export const ProduceResponseSchema: GenMessage<ProduceResponse, ProduceResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 9);
 
 /**
  * @generated from message yeying.api.event.ProduceResponseBody
  */
-export type ProduceResponseBody =
-  Message<"yeying.api.event.ProduceResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type ProduceResponseBody = Message<"yeying.api.event.ProduceResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.event.ProduceResponseBody
@@ -648,10 +604,8 @@ export type ProduceResponseBodyJson = {
  * Describes the message yeying.api.event.ProduceResponseBody.
  * Use `create(ProduceResponseBodySchema)` to create a new message.
  */
-export const ProduceResponseBodySchema: GenMessage<
-  ProduceResponseBody,
-  ProduceResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 10);
+export const ProduceResponseBodySchema: GenMessage<ProduceResponseBody, ProduceResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 10);
 
 /**
  * @generated from message yeying.api.event.ConsumeRequest
@@ -687,21 +641,18 @@ export type ConsumeRequestJson = {
  * Describes the message yeying.api.event.ConsumeRequest.
  * Use `create(ConsumeRequestSchema)` to create a new message.
  */
-export const ConsumeRequestSchema: GenMessage<
-  ConsumeRequest,
-  ConsumeRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 11);
+export const ConsumeRequestSchema: GenMessage<ConsumeRequest, ConsumeRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 11);
 
 /**
  * @generated from message yeying.api.event.ConsumeRequestBody
  */
-export type ConsumeRequestBody =
-  Message<"yeying.api.event.ConsumeRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.event.EventMetadata metadata = 1;
-     */
-    metadata?: EventMetadata;
-  };
+export type ConsumeRequestBody = Message<"yeying.api.event.ConsumeRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.event.EventMetadata metadata = 1;
+   */
+  metadata?: EventMetadata;
+};
 
 /**
  * @generated from message yeying.api.event.ConsumeRequestBody
@@ -717,10 +668,8 @@ export type ConsumeRequestBodyJson = {
  * Describes the message yeying.api.event.ConsumeRequestBody.
  * Use `create(ConsumeRequestBodySchema)` to create a new message.
  */
-export const ConsumeRequestBodySchema: GenMessage<
-  ConsumeRequestBody,
-  ConsumeRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 12);
+export const ConsumeRequestBodySchema: GenMessage<ConsumeRequestBody, ConsumeRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 12);
 
 /**
  * @generated from message yeying.api.event.NotifyOpinion
@@ -746,8 +695,7 @@ export type NotifyOpinionJson = {
  * Describes the message yeying.api.event.NotifyOpinion.
  * Use `create(NotifyOpinionSchema)` to create a new message.
  */
-export const NotifyOpinionSchema: GenMessage<NotifyOpinion, NotifyOpinionJson> =
-  /*@__PURE__*/
+export const NotifyOpinionSchema: GenMessage<NotifyOpinion, NotifyOpinionJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 13);
 
 /**
@@ -794,8 +742,7 @@ export type ApplyOpinionJson = {
  * Describes the message yeying.api.event.ApplyOpinion.
  * Use `create(ApplyOpinionSchema)` to create a new message.
  */
-export const ApplyOpinionSchema: GenMessage<ApplyOpinion, ApplyOpinionJson> =
-  /*@__PURE__*/
+export const ApplyOpinionSchema: GenMessage<ApplyOpinion, ApplyOpinionJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 14);
 
 /**
@@ -832,8 +779,7 @@ export type CustomOpinionJson = {
  * Describes the message yeying.api.event.CustomOpinion.
  * Use `create(CustomOpinionSchema)` to create a new message.
  */
-export const CustomOpinionSchema: GenMessage<CustomOpinion, CustomOpinionJson> =
-  /*@__PURE__*/
+export const CustomOpinionSchema: GenMessage<CustomOpinion, CustomOpinionJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_event_event, 15);
 
 /**
@@ -870,21 +816,18 @@ export type ConsumeResponseJson = {
  * Describes the message yeying.api.event.ConsumeResponse.
  * Use `create(ConsumeResponseSchema)` to create a new message.
  */
-export const ConsumeResponseSchema: GenMessage<
-  ConsumeResponse,
-  ConsumeResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 16);
+export const ConsumeResponseSchema: GenMessage<ConsumeResponse, ConsumeResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 16);
 
 /**
  * @generated from message yeying.api.event.ConsumeResponseBody
  */
-export type ConsumeResponseBody =
-  Message<"yeying.api.event.ConsumeResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type ConsumeResponseBody = Message<"yeying.api.event.ConsumeResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.event.ConsumeResponseBody
@@ -900,10 +843,8 @@ export type ConsumeResponseBodyJson = {
  * Describes the message yeying.api.event.ConsumeResponseBody.
  * Use `create(ConsumeResponseBodySchema)` to create a new message.
  */
-export const ConsumeResponseBodySchema: GenMessage<
-  ConsumeResponseBody,
-  ConsumeResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_event_event, 17);
+export const ConsumeResponseBodySchema: GenMessage<ConsumeResponseBody, ConsumeResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_event_event, 17);
 
 /**
  * @generated from enum yeying.api.event.EventTypeEnum
@@ -948,18 +889,12 @@ export enum EventTypeEnum {
 /**
  * @generated from enum yeying.api.event.EventTypeEnum
  */
-export type EventTypeEnumJson =
-  | "EVENT_TYPE_UNKNOWN"
-  | "EVENT_TYPE_REMIND"
-  | "EVENT_TYPE_NOTIFY"
-  | "EVENT_TYPE_APPLY"
-  | "EVENT_TYPE_CUSTOM";
+export type EventTypeEnumJson = "EVENT_TYPE_UNKNOWN" | "EVENT_TYPE_REMIND" | "EVENT_TYPE_NOTIFY" | "EVENT_TYPE_APPLY" | "EVENT_TYPE_CUSTOM";
 
 /**
  * Describes the enum yeying.api.event.EventTypeEnum.
  */
-export const EventTypeEnumSchema: GenEnum<EventTypeEnum, EventTypeEnumJson> =
-  /*@__PURE__*/
+export const EventTypeEnumSchema: GenEnum<EventTypeEnum, EventTypeEnumJson> = /*@__PURE__*/
   enumDesc(file_yeying_api_event_event, 0);
 
 /**
@@ -991,18 +926,13 @@ export enum ApplyActionEnum {
 /**
  * @generated from enum yeying.api.event.ApplyActionEnum
  */
-export type ApplyActionEnumJson =
-  | "APPLY_ACTION_UNKNOWN"
-  | "APPLY_ACTION_PASSED"
-  | "APPLY_ACTION_REFUSED";
+export type ApplyActionEnumJson = "APPLY_ACTION_UNKNOWN" | "APPLY_ACTION_PASSED" | "APPLY_ACTION_REFUSED";
 
 /**
  * Describes the enum yeying.api.event.ApplyActionEnum.
  */
-export const ApplyActionEnumSchema: GenEnum<
-  ApplyActionEnum,
-  ApplyActionEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_event_event, 1);
+export const ApplyActionEnumSchema: GenEnum<ApplyActionEnum, ApplyActionEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_event_event, 1);
 
 /**
  * @generated from enum yeying.api.event.NotifyActionEnum
@@ -1040,19 +970,13 @@ export enum NotifyActionEnum {
 /**
  * @generated from enum yeying.api.event.NotifyActionEnum
  */
-export type NotifyActionEnumJson =
-  | "NOTIFY_ACTION_UNKNOWN"
-  | "NOTIFY_ACTION_ADD"
-  | "NOTIFY_ACTION_DEL"
-  | "NOTIFY_ACTION_MOD";
+export type NotifyActionEnumJson = "NOTIFY_ACTION_UNKNOWN" | "NOTIFY_ACTION_ADD" | "NOTIFY_ACTION_DEL" | "NOTIFY_ACTION_MOD";
 
 /**
  * Describes the enum yeying.api.event.NotifyActionEnum.
  */
-export const NotifyActionEnumSchema: GenEnum<
-  NotifyActionEnum,
-  NotifyActionEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_event_event, 2);
+export const NotifyActionEnumSchema: GenEnum<NotifyActionEnum, NotifyActionEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_event_event, 2);
 
 /**
  * @generated from service yeying.api.event.Event
@@ -1067,7 +991,7 @@ export const Event: GenService<{
     methodKind: "unary";
     input: typeof ProduceRequestSchema;
     output: typeof ProduceResponseSchema;
-  };
+  },
   /**
    * 用户直接向生成事件的服务消费并给出处理意见
    *
@@ -1077,5 +1001,7 @@ export const Event: GenService<{
     methodKind: "unary";
     input: typeof ConsumeRequestSchema;
     output: typeof ConsumeResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_event_event, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_event_event, 0);
+

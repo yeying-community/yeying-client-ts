@@ -15,7 +15,22 @@ import {
   SearchApplicationRequestSchema,
   SearchApplicationResponseBody,
   SearchApplicationResponseBodySchema,
+  ApplicationDetailRequestBodySchema,
+  ApplicationDetailRequestSchema,
+  ApplicationDetailResponseBodySchema,
+  OfflineApplicationRequestSchema,
+  OfflineApplicationRequestBodySchema,
+  OfflineApplicationResponseBodySchema,
+
+  OnlineApplicationRequestSchema,
+  OnlineApplicationRequestBodySchema,
+  OnlineApplicationResponseBodySchema,
+
+  AuditApplicationRequestSchema,
+  AuditApplicationRequestBodySchema,
+  AuditApplicationResponseBodySchema,
   SearchCondition,
+  ApplicationCommentSchema,
 } from "../../yeying/api/application/application_pb";
 import { NetworkUnavailable } from "../../common/error";
 import {
@@ -168,6 +183,13 @@ export class ApplicationProvider {
     });
   }
 
+  /**
+   * 删除应用
+   * @param did 唯一身份
+   * @param version 应用版本
+   * @returns 
+   * @throws  NetworkUnavailable
+   */
   delete(did: string, version: number) {
     return new Promise<void>(async (resolve, reject) => {
       const body = create(DeleteApplicationRequestBodySchema, {
@@ -199,6 +221,185 @@ export class ApplicationProvider {
         return resolve();
       } catch (err) {
         console.error("Fail to delete application", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
+  }
+
+  /**
+   * 查看应用详情
+   * @param did 唯一身份
+   * @param version 应用版本
+   * @returns 应用元信息
+   * @throws  NetworkUnavailable
+   */
+  detail(did: string, version: number) {
+    return new Promise<void>(async (resolve, reject) => {
+      const body = create(ApplicationDetailRequestBodySchema, {
+        did: did,
+        version: version,
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(ApplicationDetailRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for deleting application.", err);
+        return reject(err);
+      }
+
+      const request = create(ApplicationDetailRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.detail(request);
+        await this.authenticate.doResponse(
+          res,
+          ApplicationDetailResponseBodySchema,
+        );
+        return resolve();
+      } catch (err) {
+        console.error("Fail to detail application", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
+  }
+
+  /**
+   * 下架应用
+   * @param did 唯一身份
+   * @param version 应用版本
+   * @returns 下架之后的应用状态元信息
+   * @throws  NetworkUnavailable
+   */
+  offline(did: string, version: number) {
+    return new Promise<void>(async (resolve, reject) => {
+      const body = create(OfflineApplicationRequestBodySchema, {
+        did: did,
+        version: version,
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(OfflineApplicationRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for deleting application.", err);
+        return reject(err);
+      }
+
+      const request = create(OfflineApplicationRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.offline(request);
+        await this.authenticate.doResponse(
+          res,
+          OfflineApplicationResponseBodySchema,
+        );
+        return resolve();
+      } catch (err) {
+        console.error("Fail to offline application", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
+  }
+
+  /**
+   * 上架应用
+   * @param did 唯一身份
+   * @param version 应用版本
+   * @returns 上架之后的应用状态元信息
+   * @throws  NetworkUnavailable
+   */
+  online(did: string, version: number) {
+    return new Promise<void>(async (resolve, reject) => {
+      const body = create(OnlineApplicationRequestBodySchema, {
+        did: did,
+        version: version,
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(OnlineApplicationRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for deleting application.", err);
+        return reject(err);
+      }
+
+      const request = create(OnlineApplicationRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.online(request);
+        await this.authenticate.doResponse(
+          res,
+          OnlineApplicationResponseBodySchema,
+        );
+        return resolve();
+      } catch (err) {
+        console.error("Fail to online application", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
+  }
+
+  /**
+   * 审核应用
+   * @param did 唯一身份
+   * @param version 应用版本
+   * @param auditor 审核人
+   * @param comment 注释-审核意见
+   * @param passed 是否同意
+   * @param signature 应用签名
+   * @returns 审核之后的应用状态元信息
+   * @throws  NetworkUnavailable
+   */
+  audit(did: string, version: number, passed: boolean, signature?: string, auditor?: string, comment?: string) {
+    return new Promise<void>(async (resolve, reject) => {
+      const commentMeta = create(ApplicationCommentSchema, {
+        auditor: auditor,
+        comment: comment,
+        passed: passed,
+        signature: signature
+      })
+      const body = create(AuditApplicationRequestBodySchema, {
+        did: did,
+        version: version,
+        comment: commentMeta
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(AuditApplicationRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for deleting application.", err);
+        return reject(err);
+      }
+
+      const request = create(AuditApplicationRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.audit(request);
+        await this.authenticate.doResponse(
+          res,
+          AuditApplicationResponseBodySchema,
+        );
+        return resolve();
+      } catch (err) {
+        console.error("Fail to audit application", err);
         return reject(new NetworkUnavailable());
       }
     });

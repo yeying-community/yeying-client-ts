@@ -2,50 +2,32 @@
 // @generated from file yeying/api/asset/block.proto (package yeying.api.asset, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/asset/block.proto.
  */
-export const file_yeying_api_asset_block: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Chx5ZXlpbmcvYXBpL2Fzc2V0L2Jsb2NrLnByb3RvEhB5ZXlpbmcuYXBpLmFzc2V0IoABChNDb25maXJtQmxvY2tSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuQ29uZmlybUJsb2NrUmVxdWVzdEJvZHkiSQoXQ29uZmlybUJsb2NrUmVxdWVzdEJvZHkSLgoFYmxvY2sYASABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkJsb2NrTWV0YWRhdGEiggEKFENvbmZpcm1CbG9ja1Jlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOAoEYm9keRgCIAEoCzIqLnlleWluZy5hcGkuYXNzZXQuQ29uZmlybUJsb2NrUmVzcG9uc2VCb2R5In0KGENvbmZpcm1CbG9ja1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVibG9jaxgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSLWAQoVU3RyZWFtUHV0QmxvY2tSZXF1ZXN0EjsKBGhlYWQYAiABKAsyKy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVxdWVzdEhlYWRIABI7CgRib2R5GAMgASgLMisueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1QdXRCbG9ja1JlcXVlc3RCb2R5SAASOwoEVGFpbBgEIAEoCzIrLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXF1ZXN0VGFpbEgAQgYKBGRhdGEijAEKGVN0cmVhbVB1dEJsb2NrUmVxdWVzdEhlYWQSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI9CgRib2R5GAIgASgLMi8ueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1QdXRCbG9ja1JlcXVlc3RIZWFkQm9keSJPCh1TdHJlYW1QdXRCbG9ja1JlcXVlc3RIZWFkQm9keRIuCgVibG9jaxgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSIpChlTdHJlYW1QdXRCbG9ja1JlcXVlc3RCb2R5EgwKBGRhdGEYASABKAwiTQoZU3RyZWFtUHV0QmxvY2tSZXF1ZXN0VGFpbBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIpwBChZTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlEjwKBGhlYWQYASABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VIZWFkSAASPAoEdGFpbBgCIAEoCzIsLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXNwb25zZVRhaWxIAEIGCgRkYXRhIo4BChpTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj4KBGJvZHkYAiABKAsyMC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VIZWFkQm9keSKDAQoeU3RyZWFtUHV0QmxvY2tSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi4KBWJsb2NrGAIgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhIo4BChpTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlVGFpbBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj4KBGJvZHkYAiABKAsyMC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VUYWlsQm9keSJTCh5TdHJlYW1QdXRCbG9ja1Jlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMihgEKD1B1dEJsb2NrUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmFzc2V0LlB1dEJsb2NrUmVxdWVzdEJvZHkSDAoEZGF0YRgDIAEoDCJFChNQdXRCbG9ja1JlcXVlc3RCb2R5Ei4KBWJsb2NrGAEgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhInoKEFB1dEJsb2NrUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hc3NldC5QdXRCbG9ja1Jlc3BvbnNlQm9keSJ5ChRQdXRCbG9ja1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVibG9jaxgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSJ4Cg9HZXRCbG9ja1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIzCgRib2R5GAIgASgLMiUueWV5aW5nLmFwaS5hc3NldC5HZXRCbG9ja1JlcXVlc3RCb2R5IjgKE0dldEJsb2NrUmVxdWVzdEJvZHkSEwoLbmFtZXNwYWNlSWQYASABKAkSDAoEaGFzaBgCIAEoCSKZAQoVU3RyZWFtR2V0QmxvY2tSZXF1ZXN0EjsKBGhlYWQYAiABKAsyKy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRIABI7CgRib2R5GAMgASgLMisueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1JlcXVlc3RCb2R5SABCBgoEZGF0YSKMAQoZU3RyZWFtR2V0QmxvY2tSZXF1ZXN0SGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj0KBGJvZHkYAiABKAsyLy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRCb2R5IkIKHVN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRCb2R5EhMKC25hbWVzcGFjZUlkGAEgASgJEgwKBGhhc2gYAiABKAkiTQoZU3RyZWFtR2V0QmxvY2tSZXF1ZXN0Qm9keRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyItoBChZTdHJlYW1HZXRCbG9ja1Jlc3BvbnNlEjwKBGhlYWQYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVzcG9uc2VIZWFkSAASPAoEYm9keRgDIAEoCzIsLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtR2V0QmxvY2tSZXNwb25zZUJvZHlIABI8CgR0YWlsGAQgASgLMiwueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlVGFpbEgAQgYKBGRhdGEijgEKGlN0cmVhbUdldEJsb2NrUmVzcG9uc2VIZWFkEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtR2V0QmxvY2tSZXNwb25zZUhlYWRCb2R5IoMBCh5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlSGVhZEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYmxvY2sYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkJsb2NrTWV0YWRhdGEiKgoaU3RyZWFtR2V0QmxvY2tSZXNwb25zZUJvZHkSDAoEZGF0YRgBIAEoDCKOAQoaU3RyZWFtR2V0QmxvY2tSZXNwb25zZVRhaWwSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlVGFpbEJvZHkiUwoeU3RyZWFtR2V0QmxvY2tSZXNwb25zZVRhaWxCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzInkKFEdldEJsb2NrUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi4KBWJsb2NrGAIgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhIogBChBHZXRCbG9ja1Jlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNAoEYm9keRgCIAEoCzImLnlleWluZy5hcGkuYXNzZXQuR2V0QmxvY2tSZXNwb25zZUJvZHkSDAoEZGF0YRgDIAEoDCKHAQoNQmxvY2tNZXRhZGF0YRITCgtuYW1lc3BhY2VJZBgBIAEoCRIQCgh1cGxvYWRlchgCIAEoCRINCgVvd25lchgDIAEoCRIMCgRoYXNoGAQgASgJEgwKBHNpemUYBSABKAQSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXNpZ25hdHVyZRgHIAEoCTLPAwoFQmxvY2sSTgoDUHV0EiEueWV5aW5nLmFwaS5hc3NldC5QdXRCbG9ja1JlcXVlc3QaIi55ZXlpbmcuYXBpLmFzc2V0LlB1dEJsb2NrUmVzcG9uc2UiABJkCglTdHJlYW1QdXQSJy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVxdWVzdBooLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXNwb25zZSIAKAEwARJaCgdDb25maXJtEiUueWV5aW5nLmFwaS5hc3NldC5Db25maXJtQmxvY2tSZXF1ZXN0GiYueWV5aW5nLmFwaS5hc3NldC5Db25maXJtQmxvY2tSZXNwb25zZSIAEk4KA0dldBIhLnlleWluZy5hcGkuYXNzZXQuR2V0QmxvY2tSZXF1ZXN0GiIueWV5aW5nLmFwaS5hc3NldC5HZXRCbG9ja1Jlc3BvbnNlIgASZAoJU3RyZWFtR2V0EicueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1JlcXVlc3QaKC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVzcG9uc2UiACgBMAFCEloQeWV5aW5nL2FwaS9hc3NldGIGcHJvdG8z",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_asset_block: GenFile = /*@__PURE__*/
+  fileDesc("Chx5ZXlpbmcvYXBpL2Fzc2V0L2Jsb2NrLnByb3RvEhB5ZXlpbmcuYXBpLmFzc2V0IoABChNDb25maXJtQmxvY2tSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuQ29uZmlybUJsb2NrUmVxdWVzdEJvZHkiSQoXQ29uZmlybUJsb2NrUmVxdWVzdEJvZHkSLgoFYmxvY2sYASABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkJsb2NrTWV0YWRhdGEiggEKFENvbmZpcm1CbG9ja1Jlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOAoEYm9keRgCIAEoCzIqLnlleWluZy5hcGkuYXNzZXQuQ29uZmlybUJsb2NrUmVzcG9uc2VCb2R5In0KGENvbmZpcm1CbG9ja1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVibG9jaxgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSLWAQoVU3RyZWFtUHV0QmxvY2tSZXF1ZXN0EjsKBGhlYWQYAiABKAsyKy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVxdWVzdEhlYWRIABI7CgRib2R5GAMgASgLMisueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1QdXRCbG9ja1JlcXVlc3RCb2R5SAASOwoEVGFpbBgEIAEoCzIrLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXF1ZXN0VGFpbEgAQgYKBGRhdGEijAEKGVN0cmVhbVB1dEJsb2NrUmVxdWVzdEhlYWQSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI9CgRib2R5GAIgASgLMi8ueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1QdXRCbG9ja1JlcXVlc3RIZWFkQm9keSJPCh1TdHJlYW1QdXRCbG9ja1JlcXVlc3RIZWFkQm9keRIuCgVibG9jaxgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSIpChlTdHJlYW1QdXRCbG9ja1JlcXVlc3RCb2R5EgwKBGRhdGEYASABKAwiTQoZU3RyZWFtUHV0QmxvY2tSZXF1ZXN0VGFpbBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIpwBChZTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlEjwKBGhlYWQYASABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VIZWFkSAASPAoEdGFpbBgCIAEoCzIsLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXNwb25zZVRhaWxIAEIGCgRkYXRhIo4BChpTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj4KBGJvZHkYAiABKAsyMC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VIZWFkQm9keSKDAQoeU3RyZWFtUHV0QmxvY2tSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi4KBWJsb2NrGAIgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhIo4BChpTdHJlYW1QdXRCbG9ja1Jlc3BvbnNlVGFpbBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj4KBGJvZHkYAiABKAsyMC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVzcG9uc2VUYWlsQm9keSJTCh5TdHJlYW1QdXRCbG9ja1Jlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMihgEKD1B1dEJsb2NrUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjMKBGJvZHkYAiABKAsyJS55ZXlpbmcuYXBpLmFzc2V0LlB1dEJsb2NrUmVxdWVzdEJvZHkSDAoEZGF0YRgDIAEoDCJFChNQdXRCbG9ja1JlcXVlc3RCb2R5Ei4KBWJsb2NrGAEgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhInoKEFB1dEJsb2NrUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hc3NldC5QdXRCbG9ja1Jlc3BvbnNlQm9keSJ5ChRQdXRCbG9ja1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVibG9jaxgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQmxvY2tNZXRhZGF0YSJ4Cg9HZXRCbG9ja1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIzCgRib2R5GAIgASgLMiUueWV5aW5nLmFwaS5hc3NldC5HZXRCbG9ja1JlcXVlc3RCb2R5IjgKE0dldEJsb2NrUmVxdWVzdEJvZHkSEwoLbmFtZXNwYWNlSWQYASABKAkSDAoEaGFzaBgCIAEoCSKZAQoVU3RyZWFtR2V0QmxvY2tSZXF1ZXN0EjsKBGhlYWQYAiABKAsyKy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRIABI7CgRib2R5GAMgASgLMisueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1JlcXVlc3RCb2R5SABCBgoEZGF0YSKMAQoZU3RyZWFtR2V0QmxvY2tSZXF1ZXN0SGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEj0KBGJvZHkYAiABKAsyLy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRCb2R5IkIKHVN0cmVhbUdldEJsb2NrUmVxdWVzdEhlYWRCb2R5EhMKC25hbWVzcGFjZUlkGAEgASgJEgwKBGhhc2gYAiABKAkiTQoZU3RyZWFtR2V0QmxvY2tSZXF1ZXN0Qm9keRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyItoBChZTdHJlYW1HZXRCbG9ja1Jlc3BvbnNlEjwKBGhlYWQYAiABKAsyLC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVzcG9uc2VIZWFkSAASPAoEYm9keRgDIAEoCzIsLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtR2V0QmxvY2tSZXNwb25zZUJvZHlIABI8CgR0YWlsGAQgASgLMiwueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlVGFpbEgAQgYKBGRhdGEijgEKGlN0cmVhbUdldEJsb2NrUmVzcG9uc2VIZWFkEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPgoEYm9keRgCIAEoCzIwLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtR2V0QmxvY2tSZXNwb25zZUhlYWRCb2R5IoMBCh5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlSGVhZEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYmxvY2sYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkJsb2NrTWV0YWRhdGEiKgoaU3RyZWFtR2V0QmxvY2tSZXNwb25zZUJvZHkSDAoEZGF0YRgBIAEoDCKOAQoaU3RyZWFtR2V0QmxvY2tSZXNwb25zZVRhaWwSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1Jlc3BvbnNlVGFpbEJvZHkiUwoeU3RyZWFtR2V0QmxvY2tSZXNwb25zZVRhaWxCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzInkKFEdldEJsb2NrUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi4KBWJsb2NrGAIgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5CbG9ja01ldGFkYXRhIogBChBHZXRCbG9ja1Jlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNAoEYm9keRgCIAEoCzImLnlleWluZy5hcGkuYXNzZXQuR2V0QmxvY2tSZXNwb25zZUJvZHkSDAoEZGF0YRgDIAEoDCKHAQoNQmxvY2tNZXRhZGF0YRITCgtuYW1lc3BhY2VJZBgBIAEoCRIQCgh1cGxvYWRlchgCIAEoCRINCgVvd25lchgDIAEoCRIMCgRoYXNoGAQgASgJEgwKBHNpemUYBSABKAQSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXNpZ25hdHVyZRgHIAEoCTLPAwoFQmxvY2sSTgoDUHV0EiEueWV5aW5nLmFwaS5hc3NldC5QdXRCbG9ja1JlcXVlc3QaIi55ZXlpbmcuYXBpLmFzc2V0LlB1dEJsb2NrUmVzcG9uc2UiABJkCglTdHJlYW1QdXQSJy55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbVB1dEJsb2NrUmVxdWVzdBooLnlleWluZy5hcGkuYXNzZXQuU3RyZWFtUHV0QmxvY2tSZXNwb25zZSIAKAEwARJaCgdDb25maXJtEiUueWV5aW5nLmFwaS5hc3NldC5Db25maXJtQmxvY2tSZXF1ZXN0GiYueWV5aW5nLmFwaS5hc3NldC5Db25maXJtQmxvY2tSZXNwb25zZSIAEk4KA0dldBIhLnlleWluZy5hcGkuYXNzZXQuR2V0QmxvY2tSZXF1ZXN0GiIueWV5aW5nLmFwaS5hc3NldC5HZXRCbG9ja1Jlc3BvbnNlIgASZAoJU3RyZWFtR2V0EicueWV5aW5nLmFwaS5hc3NldC5TdHJlYW1HZXRCbG9ja1JlcXVlc3QaKC55ZXlpbmcuYXBpLmFzc2V0LlN0cmVhbUdldEJsb2NrUmVzcG9uc2UiACgBMAFCEloQeWV5aW5nL2FwaS9hc3NldGIGcHJvdG8z", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockRequest
  */
-export type ConfirmBlockRequest =
-  Message<"yeying.api.asset.ConfirmBlockRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type ConfirmBlockRequest = Message<"yeying.api.asset.ConfirmBlockRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.ConfirmBlockRequestBody body = 2;
-     */
-    body?: ConfirmBlockRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.ConfirmBlockRequestBody body = 2;
+   */
+  body?: ConfirmBlockRequestBody;
+};
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockRequest
@@ -66,21 +48,18 @@ export type ConfirmBlockRequestJson = {
  * Describes the message yeying.api.asset.ConfirmBlockRequest.
  * Use `create(ConfirmBlockRequestSchema)` to create a new message.
  */
-export const ConfirmBlockRequestSchema: GenMessage<
-  ConfirmBlockRequest,
-  ConfirmBlockRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 0);
+export const ConfirmBlockRequestSchema: GenMessage<ConfirmBlockRequest, ConfirmBlockRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 0);
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockRequestBody
  */
-export type ConfirmBlockRequestBody =
-  Message<"yeying.api.asset.ConfirmBlockRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 1;
-     */
-    block?: BlockMetadata;
-  };
+export type ConfirmBlockRequestBody = Message<"yeying.api.asset.ConfirmBlockRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 1;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockRequestBody
@@ -96,26 +75,23 @@ export type ConfirmBlockRequestBodyJson = {
  * Describes the message yeying.api.asset.ConfirmBlockRequestBody.
  * Use `create(ConfirmBlockRequestBodySchema)` to create a new message.
  */
-export const ConfirmBlockRequestBodySchema: GenMessage<
-  ConfirmBlockRequestBody,
-  ConfirmBlockRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 1);
+export const ConfirmBlockRequestBodySchema: GenMessage<ConfirmBlockRequestBody, ConfirmBlockRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 1);
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockResponse
  */
-export type ConfirmBlockResponse =
-  Message<"yeying.api.asset.ConfirmBlockResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type ConfirmBlockResponse = Message<"yeying.api.asset.ConfirmBlockResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.ConfirmBlockResponseBody body = 2;
-     */
-    body?: ConfirmBlockResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.ConfirmBlockResponseBody body = 2;
+   */
+  body?: ConfirmBlockResponseBody;
+};
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockResponse
@@ -136,26 +112,23 @@ export type ConfirmBlockResponseJson = {
  * Describes the message yeying.api.asset.ConfirmBlockResponse.
  * Use `create(ConfirmBlockResponseSchema)` to create a new message.
  */
-export const ConfirmBlockResponseSchema: GenMessage<
-  ConfirmBlockResponse,
-  ConfirmBlockResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 2);
+export const ConfirmBlockResponseSchema: GenMessage<ConfirmBlockResponse, ConfirmBlockResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 2);
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockResponseBody
  */
-export type ConfirmBlockResponseBody =
-  Message<"yeying.api.asset.ConfirmBlockResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type ConfirmBlockResponseBody = Message<"yeying.api.asset.ConfirmBlockResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 2;
-     */
-    block?: BlockMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 2;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.ConfirmBlockResponseBody
@@ -176,45 +149,38 @@ export type ConfirmBlockResponseBodyJson = {
  * Describes the message yeying.api.asset.ConfirmBlockResponseBody.
  * Use `create(ConfirmBlockResponseBodySchema)` to create a new message.
  */
-export const ConfirmBlockResponseBodySchema: GenMessage<
-  ConfirmBlockResponseBody,
-  ConfirmBlockResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 3);
+export const ConfirmBlockResponseBodySchema: GenMessage<ConfirmBlockResponseBody, ConfirmBlockResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 3);
 
 /**
  * 先发送内容，然后发送的chunk元信息，
  *
  * @generated from message yeying.api.asset.StreamPutBlockRequest
  */
-export type StreamPutBlockRequest =
-  Message<"yeying.api.asset.StreamPutBlockRequest"> & {
+export type StreamPutBlockRequest = Message<"yeying.api.asset.StreamPutBlockRequest"> & {
+  /**
+   * @generated from oneof yeying.api.asset.StreamPutBlockRequest.data
+   */
+  data: {
     /**
-     * @generated from oneof yeying.api.asset.StreamPutBlockRequest.data
+     * @generated from field: yeying.api.asset.StreamPutBlockRequestHead head = 2;
      */
-    data:
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamPutBlockRequestHead head = 2;
-           */
-          value: StreamPutBlockRequestHead;
-          case: "head";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamPutBlockRequestBody body = 3;
-           */
-          value: StreamPutBlockRequestBody;
-          case: "body";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamPutBlockRequestTail Tail = 4;
-           */
-          value: StreamPutBlockRequestTail;
-          case: "Tail";
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: StreamPutBlockRequestHead;
+    case: "head";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamPutBlockRequestBody body = 3;
+     */
+    value: StreamPutBlockRequestBody;
+    case: "body";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamPutBlockRequestTail Tail = 4;
+     */
+    value: StreamPutBlockRequestTail;
+    case: "Tail";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * 先发送内容，然后发送的chunk元信息，
@@ -242,26 +208,23 @@ export type StreamPutBlockRequestJson = {
  * Describes the message yeying.api.asset.StreamPutBlockRequest.
  * Use `create(StreamPutBlockRequestSchema)` to create a new message.
  */
-export const StreamPutBlockRequestSchema: GenMessage<
-  StreamPutBlockRequest,
-  StreamPutBlockRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 4);
+export const StreamPutBlockRequestSchema: GenMessage<StreamPutBlockRequest, StreamPutBlockRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 4);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestHead
  */
-export type StreamPutBlockRequestHead =
-  Message<"yeying.api.asset.StreamPutBlockRequestHead"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamPutBlockRequestHead = Message<"yeying.api.asset.StreamPutBlockRequestHead"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamPutBlockRequestHeadBody body = 2;
-     */
-    body?: StreamPutBlockRequestHeadBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamPutBlockRequestHeadBody body = 2;
+   */
+  body?: StreamPutBlockRequestHeadBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestHead
@@ -282,21 +245,18 @@ export type StreamPutBlockRequestHeadJson = {
  * Describes the message yeying.api.asset.StreamPutBlockRequestHead.
  * Use `create(StreamPutBlockRequestHeadSchema)` to create a new message.
  */
-export const StreamPutBlockRequestHeadSchema: GenMessage<
-  StreamPutBlockRequestHead,
-  StreamPutBlockRequestHeadJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 5);
+export const StreamPutBlockRequestHeadSchema: GenMessage<StreamPutBlockRequestHead, StreamPutBlockRequestHeadJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 5);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestHeadBody
  */
-export type StreamPutBlockRequestHeadBody =
-  Message<"yeying.api.asset.StreamPutBlockRequestHeadBody"> & {
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 1;
-     */
-    block?: BlockMetadata;
-  };
+export type StreamPutBlockRequestHeadBody = Message<"yeying.api.asset.StreamPutBlockRequestHeadBody"> & {
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 1;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestHeadBody
@@ -312,21 +272,18 @@ export type StreamPutBlockRequestHeadBodyJson = {
  * Describes the message yeying.api.asset.StreamPutBlockRequestHeadBody.
  * Use `create(StreamPutBlockRequestHeadBodySchema)` to create a new message.
  */
-export const StreamPutBlockRequestHeadBodySchema: GenMessage<
-  StreamPutBlockRequestHeadBody,
-  StreamPutBlockRequestHeadBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 6);
+export const StreamPutBlockRequestHeadBodySchema: GenMessage<StreamPutBlockRequestHeadBody, StreamPutBlockRequestHeadBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 6);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestBody
  */
-export type StreamPutBlockRequestBody =
-  Message<"yeying.api.asset.StreamPutBlockRequestBody"> & {
-    /**
-     * @generated from field: bytes data = 1;
-     */
-    data: Uint8Array;
-  };
+export type StreamPutBlockRequestBody = Message<"yeying.api.asset.StreamPutBlockRequestBody"> & {
+  /**
+   * @generated from field: bytes data = 1;
+   */
+  data: Uint8Array;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestBody
@@ -342,21 +299,18 @@ export type StreamPutBlockRequestBodyJson = {
  * Describes the message yeying.api.asset.StreamPutBlockRequestBody.
  * Use `create(StreamPutBlockRequestBodySchema)` to create a new message.
  */
-export const StreamPutBlockRequestBodySchema: GenMessage<
-  StreamPutBlockRequestBody,
-  StreamPutBlockRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 7);
+export const StreamPutBlockRequestBodySchema: GenMessage<StreamPutBlockRequestBody, StreamPutBlockRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 7);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestTail
  */
-export type StreamPutBlockRequestTail =
-  Message<"yeying.api.asset.StreamPutBlockRequestTail"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
-  };
+export type StreamPutBlockRequestTail = Message<"yeying.api.asset.StreamPutBlockRequestTail"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockRequestTail
@@ -372,36 +326,30 @@ export type StreamPutBlockRequestTailJson = {
  * Describes the message yeying.api.asset.StreamPutBlockRequestTail.
  * Use `create(StreamPutBlockRequestTailSchema)` to create a new message.
  */
-export const StreamPutBlockRequestTailSchema: GenMessage<
-  StreamPutBlockRequestTail,
-  StreamPutBlockRequestTailJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 8);
+export const StreamPutBlockRequestTailSchema: GenMessage<StreamPutBlockRequestTail, StreamPutBlockRequestTailJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 8);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponse
  */
-export type StreamPutBlockResponse =
-  Message<"yeying.api.asset.StreamPutBlockResponse"> & {
+export type StreamPutBlockResponse = Message<"yeying.api.asset.StreamPutBlockResponse"> & {
+  /**
+   * @generated from oneof yeying.api.asset.StreamPutBlockResponse.data
+   */
+  data: {
     /**
-     * @generated from oneof yeying.api.asset.StreamPutBlockResponse.data
+     * @generated from field: yeying.api.asset.StreamPutBlockResponseHead head = 1;
      */
-    data:
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamPutBlockResponseHead head = 1;
-           */
-          value: StreamPutBlockResponseHead;
-          case: "head";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamPutBlockResponseTail tail = 2;
-           */
-          value: StreamPutBlockResponseTail;
-          case: "tail";
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: StreamPutBlockResponseHead;
+    case: "head";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamPutBlockResponseTail tail = 2;
+     */
+    value: StreamPutBlockResponseTail;
+    case: "tail";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponse
@@ -422,26 +370,23 @@ export type StreamPutBlockResponseJson = {
  * Describes the message yeying.api.asset.StreamPutBlockResponse.
  * Use `create(StreamPutBlockResponseSchema)` to create a new message.
  */
-export const StreamPutBlockResponseSchema: GenMessage<
-  StreamPutBlockResponse,
-  StreamPutBlockResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 9);
+export const StreamPutBlockResponseSchema: GenMessage<StreamPutBlockResponse, StreamPutBlockResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 9);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseHead
  */
-export type StreamPutBlockResponseHead =
-  Message<"yeying.api.asset.StreamPutBlockResponseHead"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamPutBlockResponseHead = Message<"yeying.api.asset.StreamPutBlockResponseHead"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamPutBlockResponseHeadBody body = 2;
-     */
-    body?: StreamPutBlockResponseHeadBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamPutBlockResponseHeadBody body = 2;
+   */
+  body?: StreamPutBlockResponseHeadBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseHead
@@ -462,26 +407,23 @@ export type StreamPutBlockResponseHeadJson = {
  * Describes the message yeying.api.asset.StreamPutBlockResponseHead.
  * Use `create(StreamPutBlockResponseHeadSchema)` to create a new message.
  */
-export const StreamPutBlockResponseHeadSchema: GenMessage<
-  StreamPutBlockResponseHead,
-  StreamPutBlockResponseHeadJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 10);
+export const StreamPutBlockResponseHeadSchema: GenMessage<StreamPutBlockResponseHead, StreamPutBlockResponseHeadJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 10);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseHeadBody
  */
-export type StreamPutBlockResponseHeadBody =
-  Message<"yeying.api.asset.StreamPutBlockResponseHeadBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type StreamPutBlockResponseHeadBody = Message<"yeying.api.asset.StreamPutBlockResponseHeadBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 2;
-     */
-    block?: BlockMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 2;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseHeadBody
@@ -502,26 +444,23 @@ export type StreamPutBlockResponseHeadBodyJson = {
  * Describes the message yeying.api.asset.StreamPutBlockResponseHeadBody.
  * Use `create(StreamPutBlockResponseHeadBodySchema)` to create a new message.
  */
-export const StreamPutBlockResponseHeadBodySchema: GenMessage<
-  StreamPutBlockResponseHeadBody,
-  StreamPutBlockResponseHeadBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 11);
+export const StreamPutBlockResponseHeadBodySchema: GenMessage<StreamPutBlockResponseHeadBody, StreamPutBlockResponseHeadBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 11);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseTail
  */
-export type StreamPutBlockResponseTail =
-  Message<"yeying.api.asset.StreamPutBlockResponseTail"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamPutBlockResponseTail = Message<"yeying.api.asset.StreamPutBlockResponseTail"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamPutBlockResponseTailBody body = 2;
-     */
-    body?: StreamPutBlockResponseTailBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamPutBlockResponseTailBody body = 2;
+   */
+  body?: StreamPutBlockResponseTailBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseTail
@@ -542,21 +481,18 @@ export type StreamPutBlockResponseTailJson = {
  * Describes the message yeying.api.asset.StreamPutBlockResponseTail.
  * Use `create(StreamPutBlockResponseTailSchema)` to create a new message.
  */
-export const StreamPutBlockResponseTailSchema: GenMessage<
-  StreamPutBlockResponseTail,
-  StreamPutBlockResponseTailJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 12);
+export const StreamPutBlockResponseTailSchema: GenMessage<StreamPutBlockResponseTail, StreamPutBlockResponseTailJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 12);
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseTailBody
  */
-export type StreamPutBlockResponseTailBody =
-  Message<"yeying.api.asset.StreamPutBlockResponseTailBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type StreamPutBlockResponseTailBody = Message<"yeying.api.asset.StreamPutBlockResponseTailBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamPutBlockResponseTailBody
@@ -572,10 +508,8 @@ export type StreamPutBlockResponseTailBodyJson = {
  * Describes the message yeying.api.asset.StreamPutBlockResponseTailBody.
  * Use `create(StreamPutBlockResponseTailBodySchema)` to create a new message.
  */
-export const StreamPutBlockResponseTailBodySchema: GenMessage<
-  StreamPutBlockResponseTailBody,
-  StreamPutBlockResponseTailBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 13);
+export const StreamPutBlockResponseTailBodySchema: GenMessage<StreamPutBlockResponseTailBody, StreamPutBlockResponseTailBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 13);
 
 /**
  * @generated from message yeying.api.asset.PutBlockRequest
@@ -625,23 +559,20 @@ export type PutBlockRequestJson = {
  * Describes the message yeying.api.asset.PutBlockRequest.
  * Use `create(PutBlockRequestSchema)` to create a new message.
  */
-export const PutBlockRequestSchema: GenMessage<
-  PutBlockRequest,
-  PutBlockRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 14);
+export const PutBlockRequestSchema: GenMessage<PutBlockRequest, PutBlockRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 14);
 
 /**
  * @generated from message yeying.api.asset.PutBlockRequestBody
  */
-export type PutBlockRequestBody =
-  Message<"yeying.api.asset.PutBlockRequestBody"> & {
-    /**
-     * 资产块
-     *
-     * @generated from field: yeying.api.asset.BlockMetadata block = 1;
-     */
-    block?: BlockMetadata;
-  };
+export type PutBlockRequestBody = Message<"yeying.api.asset.PutBlockRequestBody"> & {
+  /**
+   * 资产块
+   *
+   * @generated from field: yeying.api.asset.BlockMetadata block = 1;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.PutBlockRequestBody
@@ -659,10 +590,8 @@ export type PutBlockRequestBodyJson = {
  * Describes the message yeying.api.asset.PutBlockRequestBody.
  * Use `create(PutBlockRequestBodySchema)` to create a new message.
  */
-export const PutBlockRequestBodySchema: GenMessage<
-  PutBlockRequestBody,
-  PutBlockRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 15);
+export const PutBlockRequestBodySchema: GenMessage<PutBlockRequestBody, PutBlockRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 15);
 
 /**
  * @generated from message yeying.api.asset.PutBlockResponse
@@ -698,26 +627,23 @@ export type PutBlockResponseJson = {
  * Describes the message yeying.api.asset.PutBlockResponse.
  * Use `create(PutBlockResponseSchema)` to create a new message.
  */
-export const PutBlockResponseSchema: GenMessage<
-  PutBlockResponse,
-  PutBlockResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 16);
+export const PutBlockResponseSchema: GenMessage<PutBlockResponse, PutBlockResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 16);
 
 /**
  * @generated from message yeying.api.asset.PutBlockResponseBody
  */
-export type PutBlockResponseBody =
-  Message<"yeying.api.asset.PutBlockResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type PutBlockResponseBody = Message<"yeying.api.asset.PutBlockResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 2;
-     */
-    block?: BlockMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 2;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.PutBlockResponseBody
@@ -738,10 +664,8 @@ export type PutBlockResponseBodyJson = {
  * Describes the message yeying.api.asset.PutBlockResponseBody.
  * Use `create(PutBlockResponseBodySchema)` to create a new message.
  */
-export const PutBlockResponseBodySchema: GenMessage<
-  PutBlockResponseBody,
-  PutBlockResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 17);
+export const PutBlockResponseBodySchema: GenMessage<PutBlockResponseBody, PutBlockResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 17);
 
 /**
  * @generated from message yeying.api.asset.GetBlockRequest
@@ -777,26 +701,23 @@ export type GetBlockRequestJson = {
  * Describes the message yeying.api.asset.GetBlockRequest.
  * Use `create(GetBlockRequestSchema)` to create a new message.
  */
-export const GetBlockRequestSchema: GenMessage<
-  GetBlockRequest,
-  GetBlockRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 18);
+export const GetBlockRequestSchema: GenMessage<GetBlockRequest, GetBlockRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 18);
 
 /**
  * @generated from message yeying.api.asset.GetBlockRequestBody
  */
-export type GetBlockRequestBody =
-  Message<"yeying.api.asset.GetBlockRequestBody"> & {
-    /**
-     * @generated from field: string namespaceId = 1;
-     */
-    namespaceId: string;
+export type GetBlockRequestBody = Message<"yeying.api.asset.GetBlockRequestBody"> & {
+  /**
+   * @generated from field: string namespaceId = 1;
+   */
+  namespaceId: string;
 
-    /**
-     * @generated from field: string hash = 2;
-     */
-    hash: string;
-  };
+  /**
+   * @generated from field: string hash = 2;
+   */
+  hash: string;
+};
 
 /**
  * @generated from message yeying.api.asset.GetBlockRequestBody
@@ -817,36 +738,30 @@ export type GetBlockRequestBodyJson = {
  * Describes the message yeying.api.asset.GetBlockRequestBody.
  * Use `create(GetBlockRequestBodySchema)` to create a new message.
  */
-export const GetBlockRequestBodySchema: GenMessage<
-  GetBlockRequestBody,
-  GetBlockRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 19);
+export const GetBlockRequestBodySchema: GenMessage<GetBlockRequestBody, GetBlockRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 19);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequest
  */
-export type StreamGetBlockRequest =
-  Message<"yeying.api.asset.StreamGetBlockRequest"> & {
+export type StreamGetBlockRequest = Message<"yeying.api.asset.StreamGetBlockRequest"> & {
+  /**
+   * @generated from oneof yeying.api.asset.StreamGetBlockRequest.data
+   */
+  data: {
     /**
-     * @generated from oneof yeying.api.asset.StreamGetBlockRequest.data
+     * @generated from field: yeying.api.asset.StreamGetBlockRequestHead head = 2;
      */
-    data:
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamGetBlockRequestHead head = 2;
-           */
-          value: StreamGetBlockRequestHead;
-          case: "head";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamGetBlockRequestBody body = 3;
-           */
-          value: StreamGetBlockRequestBody;
-          case: "body";
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: StreamGetBlockRequestHead;
+    case: "head";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamGetBlockRequestBody body = 3;
+     */
+    value: StreamGetBlockRequestBody;
+    case: "body";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequest
@@ -867,26 +782,23 @@ export type StreamGetBlockRequestJson = {
  * Describes the message yeying.api.asset.StreamGetBlockRequest.
  * Use `create(StreamGetBlockRequestSchema)` to create a new message.
  */
-export const StreamGetBlockRequestSchema: GenMessage<
-  StreamGetBlockRequest,
-  StreamGetBlockRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 20);
+export const StreamGetBlockRequestSchema: GenMessage<StreamGetBlockRequest, StreamGetBlockRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 20);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestHead
  */
-export type StreamGetBlockRequestHead =
-  Message<"yeying.api.asset.StreamGetBlockRequestHead"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamGetBlockRequestHead = Message<"yeying.api.asset.StreamGetBlockRequestHead"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamGetBlockRequestHeadBody body = 2;
-     */
-    body?: StreamGetBlockRequestHeadBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamGetBlockRequestHeadBody body = 2;
+   */
+  body?: StreamGetBlockRequestHeadBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestHead
@@ -907,26 +819,23 @@ export type StreamGetBlockRequestHeadJson = {
  * Describes the message yeying.api.asset.StreamGetBlockRequestHead.
  * Use `create(StreamGetBlockRequestHeadSchema)` to create a new message.
  */
-export const StreamGetBlockRequestHeadSchema: GenMessage<
-  StreamGetBlockRequestHead,
-  StreamGetBlockRequestHeadJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 21);
+export const StreamGetBlockRequestHeadSchema: GenMessage<StreamGetBlockRequestHead, StreamGetBlockRequestHeadJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 21);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestHeadBody
  */
-export type StreamGetBlockRequestHeadBody =
-  Message<"yeying.api.asset.StreamGetBlockRequestHeadBody"> & {
-    /**
-     * @generated from field: string namespaceId = 1;
-     */
-    namespaceId: string;
+export type StreamGetBlockRequestHeadBody = Message<"yeying.api.asset.StreamGetBlockRequestHeadBody"> & {
+  /**
+   * @generated from field: string namespaceId = 1;
+   */
+  namespaceId: string;
 
-    /**
-     * @generated from field: string hash = 2;
-     */
-    hash: string;
-  };
+  /**
+   * @generated from field: string hash = 2;
+   */
+  hash: string;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestHeadBody
@@ -947,21 +856,18 @@ export type StreamGetBlockRequestHeadBodyJson = {
  * Describes the message yeying.api.asset.StreamGetBlockRequestHeadBody.
  * Use `create(StreamGetBlockRequestHeadBodySchema)` to create a new message.
  */
-export const StreamGetBlockRequestHeadBodySchema: GenMessage<
-  StreamGetBlockRequestHeadBody,
-  StreamGetBlockRequestHeadBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 22);
+export const StreamGetBlockRequestHeadBodySchema: GenMessage<StreamGetBlockRequestHeadBody, StreamGetBlockRequestHeadBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 22);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestBody
  */
-export type StreamGetBlockRequestBody =
-  Message<"yeying.api.asset.StreamGetBlockRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
-  };
+export type StreamGetBlockRequestBody = Message<"yeying.api.asset.StreamGetBlockRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockRequestBody
@@ -977,43 +883,36 @@ export type StreamGetBlockRequestBodyJson = {
  * Describes the message yeying.api.asset.StreamGetBlockRequestBody.
  * Use `create(StreamGetBlockRequestBodySchema)` to create a new message.
  */
-export const StreamGetBlockRequestBodySchema: GenMessage<
-  StreamGetBlockRequestBody,
-  StreamGetBlockRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 23);
+export const StreamGetBlockRequestBodySchema: GenMessage<StreamGetBlockRequestBody, StreamGetBlockRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 23);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponse
  */
-export type StreamGetBlockResponse =
-  Message<"yeying.api.asset.StreamGetBlockResponse"> & {
+export type StreamGetBlockResponse = Message<"yeying.api.asset.StreamGetBlockResponse"> & {
+  /**
+   * @generated from oneof yeying.api.asset.StreamGetBlockResponse.data
+   */
+  data: {
     /**
-     * @generated from oneof yeying.api.asset.StreamGetBlockResponse.data
+     * @generated from field: yeying.api.asset.StreamGetBlockResponseHead head = 2;
      */
-    data:
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamGetBlockResponseHead head = 2;
-           */
-          value: StreamGetBlockResponseHead;
-          case: "head";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamGetBlockResponseBody body = 3;
-           */
-          value: StreamGetBlockResponseBody;
-          case: "body";
-        }
-      | {
-          /**
-           * @generated from field: yeying.api.asset.StreamGetBlockResponseTail tail = 4;
-           */
-          value: StreamGetBlockResponseTail;
-          case: "tail";
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: StreamGetBlockResponseHead;
+    case: "head";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamGetBlockResponseBody body = 3;
+     */
+    value: StreamGetBlockResponseBody;
+    case: "body";
+  } | {
+    /**
+     * @generated from field: yeying.api.asset.StreamGetBlockResponseTail tail = 4;
+     */
+    value: StreamGetBlockResponseTail;
+    case: "tail";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponse
@@ -1039,26 +938,23 @@ export type StreamGetBlockResponseJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponse.
  * Use `create(StreamGetBlockResponseSchema)` to create a new message.
  */
-export const StreamGetBlockResponseSchema: GenMessage<
-  StreamGetBlockResponse,
-  StreamGetBlockResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 24);
+export const StreamGetBlockResponseSchema: GenMessage<StreamGetBlockResponse, StreamGetBlockResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 24);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseHead
  */
-export type StreamGetBlockResponseHead =
-  Message<"yeying.api.asset.StreamGetBlockResponseHead"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamGetBlockResponseHead = Message<"yeying.api.asset.StreamGetBlockResponseHead"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamGetBlockResponseHeadBody body = 2;
-     */
-    body?: StreamGetBlockResponseHeadBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamGetBlockResponseHeadBody body = 2;
+   */
+  body?: StreamGetBlockResponseHeadBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseHead
@@ -1079,26 +975,23 @@ export type StreamGetBlockResponseHeadJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponseHead.
  * Use `create(StreamGetBlockResponseHeadSchema)` to create a new message.
  */
-export const StreamGetBlockResponseHeadSchema: GenMessage<
-  StreamGetBlockResponseHead,
-  StreamGetBlockResponseHeadJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 25);
+export const StreamGetBlockResponseHeadSchema: GenMessage<StreamGetBlockResponseHead, StreamGetBlockResponseHeadJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 25);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseHeadBody
  */
-export type StreamGetBlockResponseHeadBody =
-  Message<"yeying.api.asset.StreamGetBlockResponseHeadBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type StreamGetBlockResponseHeadBody = Message<"yeying.api.asset.StreamGetBlockResponseHeadBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 2;
-     */
-    block?: BlockMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 2;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseHeadBody
@@ -1119,21 +1012,18 @@ export type StreamGetBlockResponseHeadBodyJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponseHeadBody.
  * Use `create(StreamGetBlockResponseHeadBodySchema)` to create a new message.
  */
-export const StreamGetBlockResponseHeadBodySchema: GenMessage<
-  StreamGetBlockResponseHeadBody,
-  StreamGetBlockResponseHeadBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 26);
+export const StreamGetBlockResponseHeadBodySchema: GenMessage<StreamGetBlockResponseHeadBody, StreamGetBlockResponseHeadBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 26);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseBody
  */
-export type StreamGetBlockResponseBody =
-  Message<"yeying.api.asset.StreamGetBlockResponseBody"> & {
-    /**
-     * @generated from field: bytes data = 1;
-     */
-    data: Uint8Array;
-  };
+export type StreamGetBlockResponseBody = Message<"yeying.api.asset.StreamGetBlockResponseBody"> & {
+  /**
+   * @generated from field: bytes data = 1;
+   */
+  data: Uint8Array;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseBody
@@ -1149,26 +1039,23 @@ export type StreamGetBlockResponseBodyJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponseBody.
  * Use `create(StreamGetBlockResponseBodySchema)` to create a new message.
  */
-export const StreamGetBlockResponseBodySchema: GenMessage<
-  StreamGetBlockResponseBody,
-  StreamGetBlockResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 27);
+export const StreamGetBlockResponseBodySchema: GenMessage<StreamGetBlockResponseBody, StreamGetBlockResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 27);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseTail
  */
-export type StreamGetBlockResponseTail =
-  Message<"yeying.api.asset.StreamGetBlockResponseTail"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type StreamGetBlockResponseTail = Message<"yeying.api.asset.StreamGetBlockResponseTail"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.asset.StreamGetBlockResponseTailBody body = 2;
-     */
-    body?: StreamGetBlockResponseTailBody;
-  };
+  /**
+   * @generated from field: yeying.api.asset.StreamGetBlockResponseTailBody body = 2;
+   */
+  body?: StreamGetBlockResponseTailBody;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseTail
@@ -1189,21 +1076,18 @@ export type StreamGetBlockResponseTailJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponseTail.
  * Use `create(StreamGetBlockResponseTailSchema)` to create a new message.
  */
-export const StreamGetBlockResponseTailSchema: GenMessage<
-  StreamGetBlockResponseTail,
-  StreamGetBlockResponseTailJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 28);
+export const StreamGetBlockResponseTailSchema: GenMessage<StreamGetBlockResponseTail, StreamGetBlockResponseTailJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 28);
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseTailBody
  */
-export type StreamGetBlockResponseTailBody =
-  Message<"yeying.api.asset.StreamGetBlockResponseTailBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type StreamGetBlockResponseTailBody = Message<"yeying.api.asset.StreamGetBlockResponseTailBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.asset.StreamGetBlockResponseTailBody
@@ -1219,26 +1103,23 @@ export type StreamGetBlockResponseTailBodyJson = {
  * Describes the message yeying.api.asset.StreamGetBlockResponseTailBody.
  * Use `create(StreamGetBlockResponseTailBodySchema)` to create a new message.
  */
-export const StreamGetBlockResponseTailBodySchema: GenMessage<
-  StreamGetBlockResponseTailBody,
-  StreamGetBlockResponseTailBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 29);
+export const StreamGetBlockResponseTailBodySchema: GenMessage<StreamGetBlockResponseTailBody, StreamGetBlockResponseTailBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 29);
 
 /**
  * @generated from message yeying.api.asset.GetBlockResponseBody
  */
-export type GetBlockResponseBody =
-  Message<"yeying.api.asset.GetBlockResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type GetBlockResponseBody = Message<"yeying.api.asset.GetBlockResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.asset.BlockMetadata block = 2;
-     */
-    block?: BlockMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.asset.BlockMetadata block = 2;
+   */
+  block?: BlockMetadata;
+};
 
 /**
  * @generated from message yeying.api.asset.GetBlockResponseBody
@@ -1259,10 +1140,8 @@ export type GetBlockResponseBodyJson = {
  * Describes the message yeying.api.asset.GetBlockResponseBody.
  * Use `create(GetBlockResponseBodySchema)` to create a new message.
  */
-export const GetBlockResponseBodySchema: GenMessage<
-  GetBlockResponseBody,
-  GetBlockResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 30);
+export const GetBlockResponseBodySchema: GenMessage<GetBlockResponseBody, GetBlockResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 30);
 
 /**
  * @generated from message yeying.api.asset.GetBlockResponse
@@ -1308,10 +1187,8 @@ export type GetBlockResponseJson = {
  * Describes the message yeying.api.asset.GetBlockResponse.
  * Use `create(GetBlockResponseSchema)` to create a new message.
  */
-export const GetBlockResponseSchema: GenMessage<
-  GetBlockResponse,
-  GetBlockResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_block, 31);
+export const GetBlockResponseSchema: GenMessage<GetBlockResponse, GetBlockResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_asset_block, 31);
 
 /**
  * @generated from message yeying.api.asset.BlockMetadata
@@ -1397,8 +1274,7 @@ export type BlockMetadataJson = {
  * Describes the message yeying.api.asset.BlockMetadata.
  * Use `create(BlockMetadataSchema)` to create a new message.
  */
-export const BlockMetadataSchema: GenMessage<BlockMetadata, BlockMetadataJson> =
-  /*@__PURE__*/
+export const BlockMetadataSchema: GenMessage<BlockMetadata, BlockMetadataJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_asset_block, 32);
 
 /**
@@ -1422,7 +1298,7 @@ export const Block: GenService<{
     methodKind: "unary";
     input: typeof PutBlockRequestSchema;
     output: typeof PutBlockResponseSchema;
-  };
+  },
   /**
    * *
    * 按块流式上传，1，发送chunk的简要信息；2，上传资产块的内容；3，确认资产块的完整信息；
@@ -1433,7 +1309,7 @@ export const Block: GenService<{
     methodKind: "bidi_streaming";
     input: typeof StreamPutBlockRequestSchema;
     output: typeof StreamPutBlockResponseSchema;
-  };
+  },
   /**
    * *
    * 检查该用户的资产块是否已经存在，如果存在则返回资产块元信息，如果不存在但是块哈希已存在则创建该用户的资产块
@@ -1444,7 +1320,7 @@ export const Block: GenService<{
     methodKind: "unary";
     input: typeof ConfirmBlockRequestSchema;
     output: typeof ConfirmBlockResponseSchema;
-  };
+  },
   /**
    * *
    * 前端浏览器不支持server stream，提供一个非流式的下载接口
@@ -1455,7 +1331,7 @@ export const Block: GenService<{
     methodKind: "unary";
     input: typeof GetBlockRequestSchema;
     output: typeof GetBlockResponseSchema;
-  };
+  },
   /**
    * *
    * 分块出库数字内容
@@ -1466,5 +1342,7 @@ export const Block: GenService<{
     methodKind: "bidi_streaming";
     input: typeof StreamGetBlockRequestSchema;
     output: typeof StreamGetBlockResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_asset_block, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_asset_block, 0);
+

@@ -53,11 +53,59 @@ beforeAll(async () => {
   await userProvider.add(identityMetadata.name, identityMetadata.avatar)
 })
 
+let mockDid: string = ""
+let mockVersion: number = 0
+
 describe('Application', () => {
   it('create', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const application = await applicationProvider.create(applicationMetadata as ApplicationMetadata)
     console.log(`Success to create application=${application.did}`)
+    mockDid = application.did
+    mockVersion = application.version
+  })
+
+  it('detail', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const mockApplication = applicationMetadata as ApplicationMetadata
+    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
+    console.log(`mockDid=${mockDid}`)
+    console.log(`mockVersion=${mockVersion}`)
+    const application = await applicationProvider.detail(mockDid, mockVersion)
+    console.log(`Success to detail application=${application}`)
+  })
+
+  it('audit', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
+    console.log(`mockDid=${mockDid}`)
+    console.log(`mockVersion=${mockVersion}`)
+    const appState = await applicationProvider.audit(mockDid, mockVersion, true, 'mock')
+    console.log(`Success to audit application=${appState}`)
+  })
+
+  it('online', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
+    console.log(`mockDid=${mockDid}`)
+    console.log(`mockVersion=${mockVersion}`)
+    const appState = await applicationProvider.online(mockDid, mockVersion)
+    console.log(`Success to online application=${appState}`)
+  })
+
+  it('offline', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
+    console.log(`mockDid=${mockDid}`)
+    console.log(`mockVersion=${mockVersion}`)
+    const appState = await applicationProvider.offline(mockDid, mockVersion)
+    console.log(`Success to offline application=${appState}`)
   })
 
   it('search', async () => {

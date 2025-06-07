@@ -2,52 +2,32 @@
 // @generated from file yeying/api/support/support.proto (package yeying.api.support, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  enumDesc,
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/support/support.proto.
  */
-export const file_yeying_api_support_support: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiB5ZXlpbmcvYXBpL3N1cHBvcnQvc3VwcG9ydC5wcm90bxISeWV5aW5nLmFwaS5zdXBwb3J0IoYBChVDb2xsZWN0U3VwcG9ydFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zdXBwb3J0LkNvbGxlY3RTdXBwb3J0UmVxdWVzdEJvZHkihgEKGUNvbGxlY3RTdXBwb3J0UmVxdWVzdEJvZHkSMQoEY29kZRgBIAEoDjIjLnlleWluZy5hcGkuc3VwcG9ydC5TdXBwb3J0Q29kZUVudW0SLgoDZmFxGAMgASgLMh8ueWV5aW5nLmFwaS5zdXBwb3J0LkZhcU1ldGFkYXRhSABCBgoEZGF0YSJyCgtGYXFNZXRhZGF0YRILCgNkaWQYASABKAkSDQoFZW1haWwYAiABKAkSDAoEdHlwZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIRCgljcmVhdGVkQXQYBSABKAkSEQoJc2lnbmF0dXJlGAYgASgJIogBChZDb2xsZWN0U3VwcG9ydFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPAoEYm9keRgCIAEoCzIuLnlleWluZy5hcGkuc3VwcG9ydC5Db2xsZWN0U3VwcG9ydFJlc3BvbnNlQm9keSJPChpDb2xsZWN0U3VwcG9ydFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cypTCg9TdXBwb3J0Q29kZUVudW0SFAoQU1VQUE9SVF9DT0RFX0ZBURAAEhQKEFNVUFBPUlRfQ09ERV9DU1IQARIUChBTVVBQT1JUX0NPREVfSVZSEAIybQoHU3VwcG9ydBJiCgdDb2xsZWN0EikueWV5aW5nLmFwaS5zdXBwb3J0LkNvbGxlY3RTdXBwb3J0UmVxdWVzdBoqLnlleWluZy5hcGkuc3VwcG9ydC5Db2xsZWN0U3VwcG9ydFJlc3BvbnNlIgBCFFoSeWV5aW5nL2FwaS9zdXBwb3J0YgZwcm90bzM",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_support_support: GenFile = /*@__PURE__*/
+  fileDesc("CiB5ZXlpbmcvYXBpL3N1cHBvcnQvc3VwcG9ydC5wcm90bxISeWV5aW5nLmFwaS5zdXBwb3J0IoYBChVDb2xsZWN0U3VwcG9ydFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zdXBwb3J0LkNvbGxlY3RTdXBwb3J0UmVxdWVzdEJvZHkihgEKGUNvbGxlY3RTdXBwb3J0UmVxdWVzdEJvZHkSMQoEY29kZRgBIAEoDjIjLnlleWluZy5hcGkuc3VwcG9ydC5TdXBwb3J0Q29kZUVudW0SLgoDZmFxGAMgASgLMh8ueWV5aW5nLmFwaS5zdXBwb3J0LkZhcU1ldGFkYXRhSABCBgoEZGF0YSJyCgtGYXFNZXRhZGF0YRILCgNkaWQYASABKAkSDQoFZW1haWwYAiABKAkSDAoEdHlwZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIRCgljcmVhdGVkQXQYBSABKAkSEQoJc2lnbmF0dXJlGAYgASgJIogBChZDb2xsZWN0U3VwcG9ydFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPAoEYm9keRgCIAEoCzIuLnlleWluZy5hcGkuc3VwcG9ydC5Db2xsZWN0U3VwcG9ydFJlc3BvbnNlQm9keSJPChpDb2xsZWN0U3VwcG9ydFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cypTCg9TdXBwb3J0Q29kZUVudW0SFAoQU1VQUE9SVF9DT0RFX0ZBURAAEhQKEFNVUFBPUlRfQ09ERV9DU1IQARIUChBTVVBQT1JUX0NPREVfSVZSEAIybQoHU3VwcG9ydBJiCgdDb2xsZWN0EikueWV5aW5nLmFwaS5zdXBwb3J0LkNvbGxlY3RTdXBwb3J0UmVxdWVzdBoqLnlleWluZy5hcGkuc3VwcG9ydC5Db2xsZWN0U3VwcG9ydFJlc3BvbnNlIgBCFFoSeWV5aW5nL2FwaS9zdXBwb3J0YgZwcm90bzM", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.support.CollectSupportRequest
  */
-export type CollectSupportRequest =
-  Message<"yeying.api.support.CollectSupportRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CollectSupportRequest = Message<"yeying.api.support.CollectSupportRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.support.CollectSupportRequestBody body = 2;
-     */
-    body?: CollectSupportRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.support.CollectSupportRequestBody body = 2;
+   */
+  body?: CollectSupportRequestBody;
+};
 
 /**
  * @generated from message yeying.api.support.CollectSupportRequest
@@ -68,34 +48,29 @@ export type CollectSupportRequestJson = {
  * Describes the message yeying.api.support.CollectSupportRequest.
  * Use `create(CollectSupportRequestSchema)` to create a new message.
  */
-export const CollectSupportRequestSchema: GenMessage<
-  CollectSupportRequest,
-  CollectSupportRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_support_support, 0);
+export const CollectSupportRequestSchema: GenMessage<CollectSupportRequest, CollectSupportRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_support_support, 0);
 
 /**
  * @generated from message yeying.api.support.CollectSupportRequestBody
  */
-export type CollectSupportRequestBody =
-  Message<"yeying.api.support.CollectSupportRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.support.SupportCodeEnum code = 1;
-     */
-    code: SupportCodeEnum;
+export type CollectSupportRequestBody = Message<"yeying.api.support.CollectSupportRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.support.SupportCodeEnum code = 1;
+   */
+  code: SupportCodeEnum;
 
+  /**
+   * @generated from oneof yeying.api.support.CollectSupportRequestBody.data
+   */
+  data: {
     /**
-     * @generated from oneof yeying.api.support.CollectSupportRequestBody.data
+     * @generated from field: yeying.api.support.FaqMetadata faq = 3;
      */
-    data:
-      | {
-          /**
-           * @generated from field: yeying.api.support.FaqMetadata faq = 3;
-           */
-          value: FaqMetadata;
-          case: "faq";
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: FaqMetadata;
+    case: "faq";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * @generated from message yeying.api.support.CollectSupportRequestBody
@@ -116,10 +91,8 @@ export type CollectSupportRequestBodyJson = {
  * Describes the message yeying.api.support.CollectSupportRequestBody.
  * Use `create(CollectSupportRequestBodySchema)` to create a new message.
  */
-export const CollectSupportRequestBodySchema: GenMessage<
-  CollectSupportRequestBody,
-  CollectSupportRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_support_support, 1);
+export const CollectSupportRequestBodySchema: GenMessage<CollectSupportRequestBody, CollectSupportRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_support_support, 1);
 
 /**
  * @generated from message yeying.api.support.FaqMetadata
@@ -195,25 +168,23 @@ export type FaqMetadataJson = {
  * Describes the message yeying.api.support.FaqMetadata.
  * Use `create(FaqMetadataSchema)` to create a new message.
  */
-export const FaqMetadataSchema: GenMessage<FaqMetadata, FaqMetadataJson> =
-  /*@__PURE__*/
+export const FaqMetadataSchema: GenMessage<FaqMetadata, FaqMetadataJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_support_support, 2);
 
 /**
  * @generated from message yeying.api.support.CollectSupportResponse
  */
-export type CollectSupportResponse =
-  Message<"yeying.api.support.CollectSupportResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CollectSupportResponse = Message<"yeying.api.support.CollectSupportResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.support.CollectSupportResponseBody body = 2;
-     */
-    body?: CollectSupportResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.support.CollectSupportResponseBody body = 2;
+   */
+  body?: CollectSupportResponseBody;
+};
 
 /**
  * @generated from message yeying.api.support.CollectSupportResponse
@@ -234,21 +205,18 @@ export type CollectSupportResponseJson = {
  * Describes the message yeying.api.support.CollectSupportResponse.
  * Use `create(CollectSupportResponseSchema)` to create a new message.
  */
-export const CollectSupportResponseSchema: GenMessage<
-  CollectSupportResponse,
-  CollectSupportResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_support_support, 3);
+export const CollectSupportResponseSchema: GenMessage<CollectSupportResponse, CollectSupportResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_support_support, 3);
 
 /**
  * @generated from message yeying.api.support.CollectSupportResponseBody
  */
-export type CollectSupportResponseBody =
-  Message<"yeying.api.support.CollectSupportResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type CollectSupportResponseBody = Message<"yeying.api.support.CollectSupportResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.support.CollectSupportResponseBody
@@ -264,10 +232,8 @@ export type CollectSupportResponseBodyJson = {
  * Describes the message yeying.api.support.CollectSupportResponseBody.
  * Use `create(CollectSupportResponseBodySchema)` to create a new message.
  */
-export const CollectSupportResponseBodySchema: GenMessage<
-  CollectSupportResponseBody,
-  CollectSupportResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_support_support, 4);
+export const CollectSupportResponseBodySchema: GenMessage<CollectSupportResponseBody, CollectSupportResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_support_support, 4);
 
 /**
  * @generated from enum yeying.api.support.SupportCodeEnum
@@ -298,18 +264,13 @@ export enum SupportCodeEnum {
 /**
  * @generated from enum yeying.api.support.SupportCodeEnum
  */
-export type SupportCodeEnumJson =
-  | "SUPPORT_CODE_FAQ"
-  | "SUPPORT_CODE_CSR"
-  | "SUPPORT_CODE_IVR";
+export type SupportCodeEnumJson = "SUPPORT_CODE_FAQ" | "SUPPORT_CODE_CSR" | "SUPPORT_CODE_IVR";
 
 /**
  * Describes the enum yeying.api.support.SupportCodeEnum.
  */
-export const SupportCodeEnumSchema: GenEnum<
-  SupportCodeEnum,
-  SupportCodeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_support_support, 0);
+export const SupportCodeEnumSchema: GenEnum<SupportCodeEnum, SupportCodeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_support_support, 0);
 
 /**
  * @generated from service yeying.api.support.Support
@@ -322,5 +283,7 @@ export const Support: GenService<{
     methodKind: "unary";
     input: typeof CollectSupportRequestSchema;
     output: typeof CollectSupportResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_support_support, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_support_support, 0);
+
