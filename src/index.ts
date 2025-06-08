@@ -27,6 +27,7 @@ export { AssetCipher } from "./client/warehouse/cipher";
 export { BlockProvider } from "./client/warehouse/block";
 export { ConfigProvider } from "./client/config/config";
 export { Authenticate } from "./client/common/authenticate";
+export { AuditProvider } from "./client/audit/audit";
 
 export * from "./yeying/api/common/model_pb";
 export * from "./yeying/api/common/code_pb";
@@ -44,6 +45,7 @@ export * from "./yeying/api/asset/block_pb";
 export * from "./yeying/api/llm/llm_pb";
 export * from "./yeying/api/llm/provider_pb";
 export * from "./yeying/api/application/application_pb";
+export * from "./yeying/api/audit/audit_pb";
 
 export * from "./common/error";
 export * from "./common/status";
