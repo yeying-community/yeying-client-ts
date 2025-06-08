@@ -43,6 +43,7 @@ export * from "./yeying/api/service/service_pb";
 export * from "./yeying/api/asset/block_pb";
 export * from "./yeying/api/llm/llm_pb";
 export * from "./yeying/api/llm/provider_pb";
+export * from "./yeying/api/application/application_pb";
 
 export * from "./common/error";
 export * from "./common/status";
