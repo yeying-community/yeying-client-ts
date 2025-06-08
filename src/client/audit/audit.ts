@@ -52,7 +52,7 @@ export class AuditProvider {
    *
    */
   create(meta: AuditMetadata) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<AuditMetadata>(async (resolve, reject) => {
       const body = create(CreateRequestBodySchema, {
         meta: meta,
       });
@@ -77,7 +77,7 @@ export class AuditProvider {
           res,
           CreateResponseBodySchema
         );
-        resolve();
+        resolve(res.body?.meta as AuditMetadata);
       } catch (err) {
         console.error("Fail to create audit", err);
         return reject(new NetworkUnavailable());
