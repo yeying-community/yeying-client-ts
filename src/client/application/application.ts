@@ -54,7 +54,7 @@ export class ApplicationProvider {
   private client: Client<typeof Application>;
 
   /**
-   * ServiceProvider 的构造函数，初始化身份认证和客户端实例。
+   * ApplicationProvider 的构造函数，初始化身份认证和客户端实例。
    *
    * @param option - 服务提供商的选项，包括代理设置等。
    * @example
