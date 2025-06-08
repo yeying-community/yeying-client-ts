@@ -1,5 +1,5 @@
 import {AuditProvider} from '../../../src/client/audit/audit.js'
-import {AuditMetadata, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
+import {AuditMetadata, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
@@ -9,7 +9,8 @@ import {
 } from "@yeying-community/yeying-web3";
 import {ApplicationMetadata} from "../../../src/yeying/api/common/model_pb";
 import {getProviderProxy} from "../common/common";
-import {convertApplicationMetadataFromIdentity} from "../../../src/model/model";
+import {convertAuditMetadataFrom, passedStatus, rejectStatus} from "../../../src/model/audit.js";
+import { id, target } from 'happy-dom/lib/PropertySymbol.js';
 
 let providerOption: ProviderOption | undefined
 
@@ -32,10 +33,19 @@ const applicationTemplate = {
 
 let auditMetadata: AuditMetadata | undefined
 
+const appName: string = generateUuid()
+const sourceDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96g'
+let targetDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96h'
+
+const sourceName: string = 'jack'
+const targetName: string = 'tom'
+
 beforeAll(async () => {
   const password = "123456"
   const serviceIdentity = await createIdentity(applicationTemplate, password)
   const identityMetadata = serviceIdentity.metadata as IdentityMetadata
+  targetDid = identityMetadata.did
+  auditMetadata = convertAuditMetadataFrom(appName, sourceDid, sourceName, targetDid, targetName)
   const blockAddress = await decryptBlockAddress(
       serviceIdentity.blockAddress,
       serviceIdentity.securityConfig?.algorithm as SecurityAlgorithm,
@@ -51,8 +61,6 @@ beforeAll(async () => {
   await userProvider.add(identityMetadata.name, identityMetadata.avatar)
 })
 
-let mockSourceDid: string = ""
-let mockTargetDid: string = ""
 let uid: string = ""
 
 describe('Audit', () => {
@@ -62,64 +70,54 @@ describe('Audit', () => {
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     const auditMeta = await auditProvider.create(auditMetadata as AuditMetadata)
     console.log(`Success to create audit=${JSON.stringify(auditMeta)}`)
-    mockSourceDid = auditMeta.sourceDid
-    mockTargetDid = auditMeta.targetDid
     uid = auditMeta.uid
   })
 
   it('detail', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
-    const mockApplication = applicationMetadata as ApplicationMetadata
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    const application = await applicationProvider.detail(mockDid, mockVersion)
-    console.log(`Success to detail application=${application}`)
+    const auditMeta = auditMetadata as AuditMetadata
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    const auditRecord = await auditProvider.detail(uid)
+    console.log(`Success to detail auditRecord=${JSON.stringify(auditRecord)}`)
   })
 
-  it('audit', async () => {
+  it('auditPassed', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    const appState = await applicationProvider.audit(mockDid, mockVersion, true, 'mock')
-    console.log(`Success to audit application=${appState}`)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`uid=${uid}`)
+    console.log(`targetDid=${targetDid}`)
+    console.log(`status=${JSON.stringify(passedStatus)}`)
+    const res = await auditProvider.audit(uid, "passed")
+    console.log(`Success to audit auditPassed=${res}`)
   })
 
-  it('online', async () => {
+  it('auditReject', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    const appState = await applicationProvider.online(mockDid, mockVersion)
-    console.log(`Success to online application=${appState}`)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`uid=${uid}`)
+    console.log(`status=${JSON.stringify(rejectStatus)}`)
+    const res = await auditProvider.audit(uid, "reject")
+    console.log(`Success to audit rejectStatus=${res}`)
   })
 
-  it('offline', async () => {
+  it('createAuditList', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    const appState = await applicationProvider.offline(mockDid, mockVersion)
-    console.log(`Success to offline application=${appState}`)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`sourceDid=${sourceDid}`)
+    const res = await auditProvider.createAuditList(sourceDid)
+    console.log(`Success to createAuditList=${res}`)
   })
 
-  it('search', async () => {
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    const applications = await applicationProvider.search( 1, 10)
-    console.log(`Success to search application with count=${applications.length}`)
-    assert.isAtLeast(applications.length, 1)
-    applications.map(i => console.log(`application, name=${i.name}, code=${i.code}`))
-  })
-
-  it('delete', async () => {
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    const application = applicationMetadata as ApplicationMetadata
-    await applicationProvider.delete(application.did, application.version)
-    console.log(`Success to delete application=${application.did}, version=${application.version}`)
+  it('auditList', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`targetDid=${targetDid}`)
+    const res = await auditProvider.auditList(targetDid)
+    console.log(`Success to auditList=${res}`)
   })
 })

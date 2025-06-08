@@ -1,5 +1,5 @@
-import { AuditStatus, CanceledStatus, PassedStatus, PendingStatus, RejectStatus } from "../yeying/api/audit/audit_pb";
-
+import { AuditMetadataSchema, AuditStatus, CanceledStatus, PassedStatus, PendingStatus, RejectStatus } from "../yeying/api/audit/audit_pb";
+import { create } from "@bufbuild/protobuf";
 
 /**
  * 类型守卫函数
@@ -125,4 +125,18 @@ export function ofAuditStatus(status: string): AuditStatus {
         default:
             throw Error("status not exists")
     }
+}
+
+export function convertAuditMetadataFrom(appName: string, sourceDid: string, sourceName: string, targetDid: string, targetName: string) {
+    return create(AuditMetadataSchema, {
+        appName: appName,
+        sourceDid: sourceDid,
+        sourceName: sourceName,
+        targetDid: targetDid,
+        targetName: targetName,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: pendingStatus,
+        reason: "申请应用会员权限"
+    });
 }
