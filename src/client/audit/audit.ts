@@ -8,7 +8,7 @@ import { isDeleted, isExisted } from "../../common/status";
 import {
   MessageHeader,
 } from "../../yeying/api/common/message_pb";
-import { Audit, AuditListRequestBodySchema, AuditListRequestSchema, AuditListResponseBodySchema, AuditMetadata, AuditRequestBodySchema, AuditRequestSchema, AuditResponseBodySchema, CreateAuditListRequestBodySchema, CreateAuditListRequestSchema, CreateAuditListResponseBodySchema, CreateRequestBodySchema, CreateRequestSchema, CreateResponseBodySchema, DetailRequestBodySchema, DetailRequestSchema, DetailResponseBodySchema } from "../../yeying/api/audit/audit_pb";
+import { Audit, AuditListRequestBodySchema, AuditListRequestSchema, AuditListResponseBodySchema, AuditMetadata, AuditRequestBodySchema, AuditRequestSchema, AuditResponseBodySchema, CancelRequestBodySchema, CancelRequestSchema, CancelResponseBodySchema, CreateAuditListRequestBodySchema, CreateAuditListRequestSchema, CreateAuditListResponseBodySchema, CreateRequestBodySchema, CreateRequestSchema, CreateResponseBodySchema, DetailRequestBodySchema, DetailRequestSchema, DetailResponseBodySchema, UnbindRequestBodySchema, UnbindRequestSchema, UnbindResponseBodySchema } from "../../yeying/api/audit/audit_pb";
 import {ofAuditStatus} from "../../model/audit"
 
 /**
@@ -257,6 +257,94 @@ export class AuditProvider {
           resolve();
         } catch (err) {
           console.error("Fail to auditList", err);
+          return reject(new NetworkUnavailable());
+        }
+      });
+  }
+
+  /**
+   * 撤销我申请的
+   *
+   * @param uid 主键 uid
+   *
+   * @returns 返回审批元信息列表。
+   *
+   * @throws  NetworkUnavailable
+   *
+   */
+  cancel(uid: string) {
+    return new Promise<void>(async (resolve, reject) => {
+        const body = create(CancelRequestBodySchema, {
+            uid: uid,
+        });
+  
+        let header: MessageHeader;
+        try {
+          header = await this.authenticate.createHeader(
+            toBinary(CancelRequestBodySchema, body),
+          );
+        } catch (err) {
+          console.error("Fail to cancel header for cancel audit application.", err);
+          return reject(err);
+        }
+  
+        const request = create(CancelRequestSchema, {
+          header: header,
+          body: body,
+        });
+        try {
+          const res = await this.client.cancel(request);
+          await this.authenticate.doResponse(
+            res,
+            CancelResponseBodySchema
+          );
+          resolve();
+        } catch (err) {
+          console.error("Fail to cancel", err);
+          return reject(new NetworkUnavailable());
+        }
+      });
+  }
+
+  /**
+   * 解绑我申请成功的应用
+   *
+   * @param uid 主键 uid
+   *
+   * @returns 成功/失败
+   *
+   * @throws  NetworkUnavailable
+   *
+   */
+  unbind(uid: string) {
+    return new Promise<void>(async (resolve, reject) => {
+        const body = create(UnbindRequestBodySchema, {
+            uid: uid,
+        });
+  
+        let header: MessageHeader;
+        try {
+          header = await this.authenticate.createHeader(
+            toBinary(UnbindRequestBodySchema, body),
+          );
+        } catch (err) {
+          console.error("Fail to unbind header for unbind audit application.", err);
+          return reject(err);
+        }
+  
+        const request = create(UnbindRequestSchema, {
+          header: header,
+          body: body,
+        });
+        try {
+          const res = await this.client.unbind(request);
+          await this.authenticate.doResponse(
+            res,
+            UnbindResponseBodySchema
+          );
+          resolve();
+        } catch (err) {
+          console.error("Fail to unbind", err);
           return reject(new NetworkUnavailable());
         }
       });

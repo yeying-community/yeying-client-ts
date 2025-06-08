@@ -34,7 +34,7 @@ const applicationTemplate = {
 let auditMetadata: AuditMetadata | undefined
 
 const appName: string = generateUuid()
-const sourceDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96g'
+let sourceDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96g'
 let targetDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96h'
 
 const sourceName: string = 'jack'
@@ -45,6 +45,7 @@ beforeAll(async () => {
   const serviceIdentity = await createIdentity(applicationTemplate, password)
   const identityMetadata = serviceIdentity.metadata as IdentityMetadata
   targetDid = identityMetadata.did
+  sourceDid  = identityMetadata.did
   auditMetadata = convertAuditMetadataFrom(appName, sourceDid, sourceName, targetDid, targetName)
   const blockAddress = await decryptBlockAddress(
       serviceIdentity.blockAddress,
@@ -119,5 +120,23 @@ describe('Audit', () => {
     console.log(`targetDid=${targetDid}`)
     const res = await auditProvider.auditList(targetDid)
     console.log(`Success to auditList=${res}`)
+  })
+
+  it('cancel', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`uid=${uid}`)
+    const res = await auditProvider.cancel(uid)
+    console.log(`Success to cancel=${res}`)
+  })
+
+  it('unbind', async () => {
+    console.log(providerOption?.blockAddress)
+    console.log(providerOption?.proxy)
+    const auditProvider = new AuditProvider(providerOption as ProviderOption)
+    console.log(`uid=${uid}`)
+    const res = await auditProvider.unbind(uid)
+    console.log(`Success to unbind=${res}`)
   })
 })
