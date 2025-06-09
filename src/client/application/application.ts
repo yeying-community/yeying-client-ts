@@ -34,6 +34,7 @@ import {
 } from "../../yeying/api/application/application_pb";
 import { NetworkUnavailable } from "../../common/error";
 import {
+  ApplicationDetailMetadata,
   ApplicationMetadata,
   ApplicationMetadataSchema,
 } from "../../yeying/api/common/model_pb";
@@ -136,7 +137,7 @@ export class ApplicationProvider {
    *
    */
   search(page: number, pageSize: number, condition?: SearchCondition) {
-    return new Promise<ApplicationMetadata[]>(async (resolve, reject) => {
+    return new Promise<ApplicationDetailMetadata[]>(async (resolve, reject) => {
       const body = create(SearchApplicationRequestBodySchema, {
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
         condition: condition,
@@ -164,13 +165,13 @@ export class ApplicationProvider {
         );
         const body = res.body as SearchApplicationResponseBody;
         const applications = [];
-        for (const application of body.applications) {
+        for (const application of body.detailMetadatas) {
           try {
-            await verifyApplicationMetadata(application);
+            await verifyApplicationMetadata(application.appMetadata);
             applications.push(application);
           } catch (err) {
             console.error(
-              `invalid application=${JSON.stringify(toJson(ApplicationMetadataSchema, application))} when searching application.`,
+              `invalid application=${JSON.stringify(toJson(ApplicationMetadataSchema, application.appMetadata as ApplicationMetadata))} when searching application.`,
               err,
             );
           }
@@ -234,7 +235,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   detail(did: string, version: number) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<ApplicationDetailMetadata>(async (resolve, reject) => {
       const body = create(ApplicationDetailRequestBodySchema, {
         did: did,
         version: version,
@@ -260,7 +261,7 @@ export class ApplicationProvider {
           res,
           ApplicationDetailResponseBodySchema,
         );
-        return resolve();
+        return resolve(res.body?.detailMetadata as ApplicationDetailMetadata);
       } catch (err) {
         console.error("Fail to detail application", err);
         return reject(new NetworkUnavailable());

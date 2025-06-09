@@ -15,7 +15,7 @@ let providerOption: ProviderOption | undefined
 
 const applicationTemplate = {
   language: LanguageCodeEnum[LanguageCodeEnum.LANGUAGE_CODE_ZH_CH],
-  parent: "",
+  parent: "test1",
   network: NetworkTypeEnum.NETWORK_TYPE_YEYING,
   name: "market",
   avatar: "",
