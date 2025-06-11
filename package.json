@@ -1,6 +1,6 @@
 {
   "name": "@yeying-community/yeying-client-ts",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "browser": "dist/yeying-client-ts.umd.js",
   "main": "dist/yeying-client-ts.cjs.js",
   "module": "dist/yeying-client-ts.esm.js",

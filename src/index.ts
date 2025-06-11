@@ -23,6 +23,10 @@ export { ConfigProvider } from "./client/config/config";
 export { Authenticate } from "./client/common/authenticate";
 export { AuditProvider } from "./client/audit/audit";
 
+export { UploadProcessor } from "./client/warehouse/processor/upload";
+export { DownloadProcessor } from "./client/warehouse/processor/download";
+export { StateProcessor } from "./client/warehouse/processor/state";
+
 export * from "./client/warehouse/model";
 
 export * from "./yeying/api/common/model_pb";
