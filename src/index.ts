@@ -13,12 +13,6 @@ export { RecycleProvider } from "./client/warehouse/recycle";
 export { NamespaceProvider } from "./client/warehouse/namespace";
 export { Uploader } from "./client/warehouse/uploader";
 export { Downloader } from "./client/warehouse/downloader";
-export {
-  DownloadCallback,
-  DownloadResult,
-  UploadCallback,
-  UploadResult,
-} from "./client/warehouse/model";
 export { MailProvider } from "./client/mail/mail";
 export { ProviderProvider } from "./client/llm/provider";
 export { LlmProvider } from "./client/llm/llm";
@@ -28,6 +22,8 @@ export { BlockProvider } from "./client/warehouse/block";
 export { ConfigProvider } from "./client/config/config";
 export { Authenticate } from "./client/common/authenticate";
 export { AuditProvider } from "./client/audit/audit";
+
+export * from "./client/warehouse/model";
 
 export * from "./yeying/api/common/model_pb";
 export * from "./yeying/api/common/code_pb";
