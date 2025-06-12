@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file yeying/api/common/model.proto.
  */
 export const file_yeying_api_common_model: GenFile = /*@__PURE__*/
-  fileDesc("Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLNAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCSKgAQoNU3RhdGVNZXRhZGF0YRILCgNkaWQYASABKAkSDwoHdmVyc2lvbhgCIAEoDRI4CgZzdGF0dXMYAyABKA4yKC55ZXlpbmcuYXBpLmNvbW1vbi5BcHBsaWNhdGlvblN0YXR1c0VudW0SEQoJc2lnbmF0dXJlGAQgASgJEhEKCWNyZWF0ZWRBdBgFIAEoCRIRCgl1cGRhdGVkQXQYBiABKAkikQEKGUFwcGxpY2F0aW9uRGV0YWlsTWV0YWRhdGESOwoLYXBwTWV0YWRhdGEYASABKAsyJi55ZXlpbmcuYXBpLmNvbW1vbi5BcHBsaWNhdGlvbk1ldGFkYXRhEjcKDXN0YXRlTWV0YWRhdGEYAiABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5TdGF0ZU1ldGFkYXRhQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM", [file_yeying_api_common_code]);
+  fileDesc("Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLNAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCSKgAQoNU3RhdGVNZXRhZGF0YRILCgNkaWQYASABKAkSDwoHdmVyc2lvbhgCIAEoDRI4CgZzdGF0dXMYAyABKA4yKC55ZXlpbmcuYXBpLmNvbW1vbi5BcHBsaWNhdGlvblN0YXR1c0VudW0SEQoJc2lnbmF0dXJlGAQgASgJEhEKCWNyZWF0ZWRBdBgFIAEoCRIRCgl1cGRhdGVkQXQYBiABKAlCE1oReWV5aW5nL2FwaS9jb21tb25iBnByb3RvMw", [file_yeying_api_common_code]);
 
 /**
  * @generated from message yeying.api.common.ApplicationMetadata
@@ -582,59 +582,4 @@ export type StateMetadataJson = {
  */
 export const StateMetadataSchema: GenMessage<StateMetadata, StateMetadataJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_common_model, 2);
-
-/**
- * *
- * 列表展示 && 详情展示
- *
- * @generated from message yeying.api.common.ApplicationDetailMetadata
- */
-export type ApplicationDetailMetadata = Message<"yeying.api.common.ApplicationDetailMetadata"> & {
-  /**
-   * *
-   * 应用元信息
-   *
-   * @generated from field: yeying.api.common.ApplicationMetadata appMetadata = 1;
-   */
-  appMetadata?: ApplicationMetadata;
-
-  /**
-   * *
-   * 应用状态元信息
-   *
-   * @generated from field: yeying.api.common.StateMetadata stateMetadata = 2;
-   */
-  stateMetadata?: StateMetadata;
-};
-
-/**
- * *
- * 列表展示 && 详情展示
- *
- * @generated from message yeying.api.common.ApplicationDetailMetadata
- */
-export type ApplicationDetailMetadataJson = {
-  /**
-   * *
-   * 应用元信息
-   *
-   * @generated from field: yeying.api.common.ApplicationMetadata appMetadata = 1;
-   */
-  appMetadata?: ApplicationMetadataJson;
-
-  /**
-   * *
-   * 应用状态元信息
-   *
-   * @generated from field: yeying.api.common.StateMetadata stateMetadata = 2;
-   */
-  stateMetadata?: StateMetadataJson;
-};
-
-/**
- * Describes the message yeying.api.common.ApplicationDetailMetadata.
- * Use `create(ApplicationDetailMetadataSchema)` to create a new message.
- */
-export const ApplicationDetailMetadataSchema: GenMessage<ApplicationDetailMetadata, ApplicationDetailMetadataJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_common_model, 3);
 

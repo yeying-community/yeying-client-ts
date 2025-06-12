@@ -62,16 +62,16 @@ beforeAll(async () => {
   await userProvider.add(identityMetadata.name, identityMetadata.avatar)
 })
 
-let uid: string = ""
+let uid: string|null|undefined = ""
 
 describe('Audit', () => {
   it('create', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    const auditMeta = await auditProvider.create(auditMetadata as AuditMetadata)
-    console.log(`Success to create audit=${JSON.stringify(auditMeta)}`)
-    uid = auditMeta.uid
+    const res = await auditProvider.create(auditMetadata as AuditMetadata)
+    console.log(`Success to create audit=${JSON.stringify(res)}`)
+    uid = res.meta?.uid
   })
 
   it('detail', async () => {
@@ -79,8 +79,11 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditMeta = auditMetadata as AuditMetadata
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    const auditRecord = await auditProvider.detail(uid)
-    console.log(`Success to detail auditRecord=${JSON.stringify(auditRecord)}`)
+    if (!uid) {
+      throw Error("uid is null")
+    }
+    const res = await auditProvider.detail(uid)
+    console.log(`Success to detail auditRecord=${JSON.stringify(res)}`)
   })
 
   it('auditPassed', async () => {
@@ -90,8 +93,11 @@ describe('Audit', () => {
     console.log(`uid=${uid}`)
     console.log(`targetDid=${targetDid}`)
     console.log(`status=${JSON.stringify(passedStatus)}`)
+    if (!uid) {
+      throw Error("uid is null")
+    }
     const res = await auditProvider.audit(uid, "passed")
-    console.log(`Success to audit auditPassed=${res}`)
+    console.log(`Success to audit auditPassed=${JSON.stringify(res)}`)
   })
 
   it('auditReject', async () => {
@@ -100,8 +106,11 @@ describe('Audit', () => {
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`uid=${uid}`)
     console.log(`status=${JSON.stringify(rejectStatus)}`)
+    if (!uid) {
+      throw Error("uid is null")
+    }
     const res = await auditProvider.audit(uid, "reject")
-    console.log(`Success to audit rejectStatus=${res}`)
+    console.log(`Success to audit rejectStatus=${JSON.stringify(res)}`)
   })
 
   it('createAuditList', async () => {
@@ -109,8 +118,8 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`sourceDid=${sourceDid}`)
-    const res = await auditProvider.createAuditList(sourceDid)
-    console.log(`Success to createAuditList=${res}`)
+    const res = await auditProvider.createAuditList(1, 10)
+    console.log(`Success to res=${JSON.stringify(res)}`)
   })
 
   it('auditList', async () => {
@@ -118,8 +127,8 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`targetDid=${targetDid}`)
-    const res = await auditProvider.auditList(targetDid)
-    console.log(`Success to auditList=${res}`)
+    const res = await auditProvider.auditList(1, 10)
+    console.log(`Success to res=${JSON.stringify(res)}`)
   })
 
   it('cancel', async () => {
@@ -127,8 +136,11 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`uid=${uid}`)
+    if (!uid) {
+      throw Error("uid is null")
+    }
     const res = await auditProvider.cancel(uid)
-    console.log(`Success to cancel=${res}`)
+    console.log(`Success to cancel=${JSON.stringify(res)}`)
   })
 
   it('unbind', async () => {
@@ -136,7 +148,10 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`uid=${uid}`)
+    if (!uid) {
+      throw Error("uid is null")
+    }
     const res = await auditProvider.unbind(uid)
-    console.log(`Success to unbind=${res}`)
+    console.log(`Success to unbind=${JSON.stringify(res)}`)
   })
 })

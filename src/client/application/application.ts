@@ -31,10 +31,15 @@ import {
   AuditApplicationResponseBodySchema,
   SearchCondition,
   ApplicationCommentSchema,
+  ApplicationDetailResponseBody,
+  CreateApplicationResponseBody,
+  DeleteApplicationResponseBody,
+  OfflineApplicationResponseBody,
+  OnlineApplicationResponseBody,
+  AuditApplicationResponseBody,
 } from "../../yeying/api/application/application_pb";
 import { NetworkUnavailable } from "../../common/error";
 import {
-  ApplicationDetailMetadata,
   ApplicationMetadata,
   ApplicationMetadataSchema,
 } from "../../yeying/api/common/model_pb";
@@ -46,6 +51,7 @@ import { isDeleted, isExisted } from "../../common/status";
 import {
   MessageHeader,
   RequestPageSchema,
+  ResponseStatus,
 } from "../../yeying/api/common/message_pb";
 /**
  * ApplicationProvider 管理应用。
@@ -88,7 +94,7 @@ export class ApplicationProvider {
    *
    */
   create(application: ApplicationMetadata) {
-    return new Promise<ApplicationMetadata>(async (resolve, reject) => {
+    return new Promise<CreateApplicationResponseBody>(async (resolve, reject) => {
       const body = create(CreateApplicationRequestBodySchema, {
         application: application,
       });
@@ -116,7 +122,7 @@ export class ApplicationProvider {
           isExisted,
         );
         await verifyApplicationMetadata(res.body?.application);
-        resolve(res.body?.application as ApplicationMetadata);
+        resolve(res.body as CreateApplicationResponseBody);
       } catch (err) {
         console.error("Fail to create application", err);
         return reject(new NetworkUnavailable());
@@ -137,7 +143,7 @@ export class ApplicationProvider {
    *
    */
   search(page: number, pageSize: number, condition?: SearchCondition) {
-    return new Promise<ApplicationDetailMetadata[]>(async (resolve, reject) => {
+    return new Promise<SearchApplicationResponseBody>(async (resolve, reject) => {
       const body = create(SearchApplicationRequestBodySchema, {
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
         condition: condition,
@@ -165,18 +171,18 @@ export class ApplicationProvider {
         );
         const body = res.body as SearchApplicationResponseBody;
         const applications = [];
-        for (const application of body.detailMetadatas) {
+        for (const application of body.applications) {
           try {
-            await verifyApplicationMetadata(application.appMetadata);
+            await verifyApplicationMetadata(application);
             applications.push(application);
           } catch (err) {
             console.error(
-              `invalid application=${JSON.stringify(toJson(ApplicationMetadataSchema, application.appMetadata as ApplicationMetadata))} when searching application.`,
+              `invalid application=${JSON.stringify(toJson(ApplicationMetadataSchema, application))} when searching application.`,
               err,
             );
           }
         }
-        resolve(applications);
+        resolve(body as SearchApplicationResponseBody);
       } catch (err) {
         console.error("Fail to search application", err);
         return reject(new NetworkUnavailable());
@@ -192,7 +198,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   delete(did: string, version: number) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<DeleteApplicationResponseBody>(async (resolve, reject) => {
       const body = create(DeleteApplicationRequestBodySchema, {
         did: did,
         version: version,
@@ -219,7 +225,8 @@ export class ApplicationProvider {
           DeleteApplicationResponseBodySchema,
           isDeleted,
         );
-        return resolve();
+        
+        return resolve(res.body as DeleteApplicationResponseBody);
       } catch (err) {
         console.error("Fail to delete application", err);
         return reject(new NetworkUnavailable());
@@ -235,7 +242,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   detail(did: string, version: number) {
-    return new Promise<ApplicationDetailMetadata>(async (resolve, reject) => {
+    return new Promise<ApplicationDetailResponseBody>(async (resolve, reject) => {
       const body = create(ApplicationDetailRequestBodySchema, {
         did: did,
         version: version,
@@ -261,7 +268,7 @@ export class ApplicationProvider {
           res,
           ApplicationDetailResponseBodySchema,
         );
-        return resolve(res.body?.detailMetadata as ApplicationDetailMetadata);
+        return resolve(res.body as ApplicationDetailResponseBody);
       } catch (err) {
         console.error("Fail to detail application", err);
         return reject(new NetworkUnavailable());
@@ -277,7 +284,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   offline(did: string, version: number) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<OfflineApplicationResponseBody>(async (resolve, reject) => {
       const body = create(OfflineApplicationRequestBodySchema, {
         did: did,
         version: version,
@@ -303,7 +310,7 @@ export class ApplicationProvider {
           res,
           OfflineApplicationResponseBodySchema,
         );
-        return resolve();
+        return resolve(res.body as OfflineApplicationResponseBody);
       } catch (err) {
         console.error("Fail to offline application", err);
         return reject(new NetworkUnavailable());
@@ -319,7 +326,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   online(did: string, version: number) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<OnlineApplicationResponseBody>(async (resolve, reject) => {
       const body = create(OnlineApplicationRequestBodySchema, {
         did: did,
         version: version,
@@ -345,7 +352,7 @@ export class ApplicationProvider {
           res,
           OnlineApplicationResponseBodySchema,
         );
-        return resolve();
+        return resolve(res.body as OnlineApplicationResponseBody);
       } catch (err) {
         console.error("Fail to online application", err);
         return reject(new NetworkUnavailable());
@@ -365,7 +372,7 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    */
   audit(did: string, version: number, passed: boolean, signature?: string, auditor?: string, comment?: string) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<AuditApplicationResponseBody>(async (resolve, reject) => {
       const commentMeta = create(ApplicationCommentSchema, {
         auditor: auditor,
         comment: comment,
@@ -398,7 +405,7 @@ export class ApplicationProvider {
           res,
           AuditApplicationResponseBodySchema,
         );
-        return resolve();
+        return resolve(res.body as AuditApplicationResponseBody);
       } catch (err) {
         console.error("Fail to audit application", err);
         return reject(new NetworkUnavailable());

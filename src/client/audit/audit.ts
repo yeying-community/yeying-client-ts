@@ -7,9 +7,11 @@ import { NetworkUnavailable } from "../../common/error";
 import { isDeleted, isExisted } from "../../common/status";
 import {
   MessageHeader,
+  RequestPageSchema,
 } from "../../yeying/api/common/message_pb";
-import { Audit, AuditListRequestBodySchema, AuditListRequestSchema, AuditListResponseBodySchema, AuditMetadata, AuditRequestBodySchema, AuditRequestSchema, AuditResponseBodySchema, CancelRequestBodySchema, CancelRequestSchema, CancelResponseBodySchema, CreateAuditListRequestBodySchema, CreateAuditListRequestSchema, CreateAuditListResponseBodySchema, CreateRequestBodySchema, CreateRequestSchema, CreateResponseBodySchema, DetailRequestBodySchema, DetailRequestSchema, DetailResponseBodySchema, UnbindRequestBodySchema, UnbindRequestSchema, UnbindResponseBodySchema } from "../../yeying/api/audit/audit_pb";
+import { Audit, AuditListRequestBodySchema, AuditListRequestSchema, AuditListResponseBody, AuditListResponseBodySchema, AuditMetadata, AuditRequestBodySchema, AuditRequestSchema, AuditResponseBody, AuditResponseBodySchema, AuditSearchCondition, CancelRequestBodySchema, CancelRequestSchema, CancelResponseBody, CancelResponseBodySchema, CreateAuditListRequestBody, CreateAuditListRequestBodySchema, CreateAuditListRequestSchema, CreateAuditListResponseBody, CreateAuditListResponseBodySchema, CreateRequestBodySchema, CreateRequestSchema, CreateResponseBody, CreateResponseBodySchema, DetailRequestBodySchema, DetailRequestSchema, DetailResponseBody, DetailResponseBodySchema, UnbindRequestBodySchema, UnbindRequestSchema, UnbindResponseBody, UnbindResponseBodySchema } from "../../yeying/api/audit/audit_pb";
 import {ofAuditStatus} from "../../model/audit"
+import { cpp } from "@bufbuild/protobuf/wkt";
 
 /**
  * AuditProvider 应用审批
@@ -52,7 +54,7 @@ export class AuditProvider {
    *
    */
   create(meta: AuditMetadata) {
-    return new Promise<AuditMetadata>(async (resolve, reject) => {
+    return new Promise<CreateResponseBody>(async (resolve, reject) => {
       const body = create(CreateRequestBodySchema, {
         meta: meta,
       });
@@ -77,7 +79,7 @@ export class AuditProvider {
           res,
           CreateResponseBodySchema
         );
-        resolve(res.body?.meta as AuditMetadata);
+        resolve(res.body as CreateResponseBody);
       } catch (err) {
         console.error("Fail to create audit", err);
         return reject(new NetworkUnavailable());
@@ -96,7 +98,7 @@ export class AuditProvider {
    *
    */
   detail(uid: string) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<DetailResponseBody>(async (resolve, reject) => {
       const body = create(DetailRequestBodySchema, {
         uid: uid,
       });
@@ -121,7 +123,7 @@ export class AuditProvider {
           res,
           DetailResponseBodySchema
         );
-        resolve();
+        resolve(res.body as DetailResponseBody);
       } catch (err) {
         console.error("Fail to detail audit", err);
         return reject(new NetworkUnavailable());
@@ -140,7 +142,7 @@ export class AuditProvider {
    *
    */
   audit(uid: string, status: string) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<AuditResponseBody>(async (resolve, reject) => {
       const body = create(AuditRequestBodySchema, {
         uid: uid,
         status: ofAuditStatus(status)
@@ -166,7 +168,7 @@ export class AuditProvider {
           res,
           AuditResponseBodySchema
         );
-        resolve();
+        resolve(res.body as AuditResponseBody);
       } catch (err) {
         console.error("Fail to audit", err);
         return reject(new NetworkUnavailable());
@@ -184,10 +186,11 @@ export class AuditProvider {
    * @throws  NetworkUnavailable
    *
    */
-  createAuditList(sourceDid: string) {
-    return new Promise<void>(async (resolve, reject) => {
+  createAuditList(page: number, pageSize: number, condition?: AuditSearchCondition) {
+    return new Promise<CreateAuditListResponseBody>(async (resolve, reject) => {
         const body = create(CreateAuditListRequestBodySchema, {
-          sourceDid: sourceDid,
+          page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
+          condition: condition,
         });
   
         let header: MessageHeader;
@@ -210,7 +213,7 @@ export class AuditProvider {
             res,
             CreateAuditListResponseBodySchema
           );
-          resolve();
+          resolve(res.body as CreateAuditListResponseBody);
         } catch (err) {
           console.error("Fail to createAuditList", err);
           return reject(new NetworkUnavailable());
@@ -228,10 +231,11 @@ export class AuditProvider {
    * @throws  NetworkUnavailable
    *
    */
-  auditList(targetDid: string) {
-    return new Promise<void>(async (resolve, reject) => {
+  auditList(page: number, pageSize: number, condition?: AuditSearchCondition) {
+    return new Promise<AuditListResponseBody>(async (resolve, reject) => {
         const body = create(AuditListRequestBodySchema, {
-            targetDid: targetDid,
+          page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
+          condition: condition,
         });
   
         let header: MessageHeader;
@@ -254,7 +258,7 @@ export class AuditProvider {
             res,
             AuditListResponseBodySchema
           );
-          resolve();
+          resolve(res.body as AuditListResponseBody);
         } catch (err) {
           console.error("Fail to auditList", err);
           return reject(new NetworkUnavailable());
@@ -273,7 +277,7 @@ export class AuditProvider {
    *
    */
   cancel(uid: string) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<CancelResponseBody>(async (resolve, reject) => {
         const body = create(CancelRequestBodySchema, {
             uid: uid,
         });
@@ -298,7 +302,7 @@ export class AuditProvider {
             res,
             CancelResponseBodySchema
           );
-          resolve();
+          resolve(res.body as CancelResponseBody);
         } catch (err) {
           console.error("Fail to cancel", err);
           return reject(new NetworkUnavailable());
@@ -317,7 +321,7 @@ export class AuditProvider {
    *
    */
   unbind(uid: string) {
-    return new Promise<void>(async (resolve, reject) => {
+    return new Promise<UnbindResponseBody>(async (resolve, reject) => {
         const body = create(UnbindRequestBodySchema, {
             uid: uid,
         });
@@ -342,7 +346,7 @@ export class AuditProvider {
             res,
             UnbindResponseBodySchema
           );
-          resolve();
+          resolve(res.body as UnbindResponseBody);
         } catch (err) {
           console.error("Fail to unbind", err);
           return reject(new NetworkUnavailable());
