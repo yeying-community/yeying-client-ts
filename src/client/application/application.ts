@@ -51,7 +51,6 @@ import { isDeleted, isExisted } from "../../common/status";
 import {
   MessageHeader,
   RequestPageSchema,
-  ResponseStatus,
 } from "../../yeying/api/common/message_pb";
 /**
  * ApplicationProvider 管理应用。

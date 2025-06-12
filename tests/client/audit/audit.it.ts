@@ -7,10 +7,8 @@ import {
   NetworkTypeEnum,
   SecurityAlgorithm
 } from "@yeying-community/yeying-web3";
-import {ApplicationMetadata} from "../../../src/yeying/api/common/model_pb";
 import {getProviderProxy} from "../common/common";
 import {convertAuditMetadataFrom, passedStatus, rejectStatus} from "../../../src/model/audit.js";
-import { id, target } from 'happy-dom/lib/PropertySymbol.js';
 
 let providerOption: ProviderOption | undefined
 
