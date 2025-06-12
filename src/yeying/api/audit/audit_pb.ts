@@ -4,8 +4,9 @@
 
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponsePage, ResponsePageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
+import type { AuditTypeEnum, AuditTypeEnumJson } from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
 import { file_yeying_api_common_model } from "../common/model_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -14,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file yeying/api/audit/audit.proto.
  */
 export const file_yeying_api_audit_audit: GenFile = /*@__PURE__*/
-  fileDesc("Chx5ZXlpbmcvYXBpL2F1ZGl0L2F1ZGl0LnByb3RvEhB5ZXlpbmcuYXBpLmF1ZGl0IuUBCgtBdWRpdFN0YXR1cxIyCgdwZW5kaW5nGAEgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5QZW5kaW5nU3RhdHVzSAASNAoIY2FuY2VsZWQYAiABKAsyIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbGVkU3RhdHVzSAASMAoGcGFzc2VkGAMgASgLMh4ueWV5aW5nLmFwaS5hdWRpdC5QYXNzZWRTdGF0dXNIABIwCgZyZWplY3QYBCABKAsyHi55ZXlpbmcuYXBpLmF1ZGl0LlJlamVjdFN0YXR1c0gAQggKBnN0YXR1cyIdCg1QZW5kaW5nU3RhdHVzEgwKBHRleHQYAiABKAkiHgoOQ2FuY2VsZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxQYXNzZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxSZWplY3RTdGF0dXMSDAoEdGV4dBgCIAEoCSJ0Cg1DcmVhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlUmVxdWVzdEJvZHkiQgoRQ3JlYXRlUmVxdWVzdEJvZHkSLQoEbWV0YRgBIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ2Cg5DcmVhdGVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZVJlc3BvbnNlQm9keSJ2ChJDcmVhdGVSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLQoEbWV0YRgCIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ0Cg1EZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdEJvZHkiIAoRRGV0YWlsUmVxdWVzdEJvZHkSCwoDdWlkGAEgASgJInYKDkRldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMgoEYm9keRgCIAEoCzIkLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2VCb2R5InYKEkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhInQKDUNhbmNlbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXF1ZXN0Qm9keSIgChFDYW5jZWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkidgoOQ2FuY2VsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXNwb25zZUJvZHkidgoSQ2FuY2VsUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi0KBG1ldGEYAiABKAsyHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TWV0YWRhdGEidAoNVW5iaW5kUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlcXVlc3RCb2R5IiAKEVVuYmluZFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSJ2Cg5VbmJpbmRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlc3BvbnNlQm9keSJHChJVbmJpbmRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMicgoMQXVkaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMAoEYm9keRgCIAEoCzIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRSZXF1ZXN0Qm9keSJOChBBdWRpdFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCRItCgZzdGF0dXMYAiABKAsyHS55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U3RhdHVzInQKDUF1ZGl0UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlc3BvbnNlQm9keSJ1ChFBdWRpdFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhIoYBChZDcmVhdGVBdWRpdExpc3RSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlQXVkaXRMaXN0UmVxdWVzdEJvZHkiLwoaQ3JlYXRlQXVkaXRMaXN0UmVxdWVzdEJvZHkSEQoJc291cmNlRGlkGAEgASgJIogBChdDcmVhdGVBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZUF1ZGl0TGlzdFJlc3BvbnNlQm9keSKBAQobQ3JlYXRlQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ6ChBBdWRpdExpc3RSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNAoEYm9keRgCIAEoCzImLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVxdWVzdEJvZHkiKQoUQXVkaXRMaXN0UmVxdWVzdEJvZHkSEQoJdGFyZ2V0RGlkGAEgASgJInwKEUF1ZGl0TGlzdFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVzcG9uc2VCb2R5InsKFUF1ZGl0TGlzdFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIvCgZhdWRpdHMYAiADKAsyHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TWV0YWRhdGEi4AEKDUF1ZGl0TWV0YWRhdGESCwoDdWlkGAEgASgJEg8KB2FwcE5hbWUYAiABKAkSEQoJc291cmNlRGlkGAMgASgJEhIKCnNvdXJjZU5hbWUYBCABKAkSEQoJdGFyZ2V0RGlkGAUgASgJEhIKCnRhcmdldE5hbWUYBiABKAkSDgoGcmVhc29uGAcgASgJEi0KBnN0YXR1cxgIIAEoCzIdLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTdGF0dXMSEQoJY3JlYXRlZEF0GAkgASgJEhEKCXVwZGF0ZWRBdBgKIAEoCTLMBAoFQXVkaXQSTQoGQ3JlYXRlEh8ueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXNwb25zZSIAEk0KBkRldGFpbBIfLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdBogLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2UiABJNCgZDYW5jZWwSHy55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlcXVlc3QaIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlc3BvbnNlIgASTQoGVW5iaW5kEh8ueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXNwb25zZSIAEkoKBUF1ZGl0Eh4ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlcXVlc3QaHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0UmVzcG9uc2UiABJjCgpDcmVhdGVMaXN0EigueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXF1ZXN0GikueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXNwb25zZSIAElYKCUF1ZGl0TGlzdBIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVxdWVzdBojLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2F1ZGl0YgZwcm90bzM", [file_yeying_api_common_message, file_yeying_api_common_code, file_yeying_api_common_model]);
+  fileDesc("Chx5ZXlpbmcvYXBpL2F1ZGl0L2F1ZGl0LnByb3RvEhB5ZXlpbmcuYXBpLmF1ZGl0IuUBCgtBdWRpdFN0YXR1cxIyCgdwZW5kaW5nGAEgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5QZW5kaW5nU3RhdHVzSAASNAoIY2FuY2VsZWQYAiABKAsyIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbGVkU3RhdHVzSAASMAoGcGFzc2VkGAMgASgLMh4ueWV5aW5nLmFwaS5hdWRpdC5QYXNzZWRTdGF0dXNIABIwCgZyZWplY3QYBCABKAsyHi55ZXlpbmcuYXBpLmF1ZGl0LlJlamVjdFN0YXR1c0gAQggKBnN0YXR1cyIdCg1QZW5kaW5nU3RhdHVzEgwKBHRleHQYAiABKAkiHgoOQ2FuY2VsZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxQYXNzZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxSZWplY3RTdGF0dXMSDAoEdGV4dBgCIAEoCSJ0Cg1DcmVhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlUmVxdWVzdEJvZHkiQgoRQ3JlYXRlUmVxdWVzdEJvZHkSLQoEbWV0YRgBIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ2Cg5DcmVhdGVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZVJlc3BvbnNlQm9keSJ2ChJDcmVhdGVSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLQoEbWV0YRgCIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ0Cg1EZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdEJvZHkiIAoRRGV0YWlsUmVxdWVzdEJvZHkSCwoDdWlkGAEgASgJInYKDkRldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMgoEYm9keRgCIAEoCzIkLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2VCb2R5InYKEkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhInQKDUNhbmNlbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXF1ZXN0Qm9keSIgChFDYW5jZWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkidgoOQ2FuY2VsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXNwb25zZUJvZHkidgoSQ2FuY2VsUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi0KBG1ldGEYAiABKAsyHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TWV0YWRhdGEidAoNVW5iaW5kUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlcXVlc3RCb2R5IiAKEVVuYmluZFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSJ2Cg5VbmJpbmRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlc3BvbnNlQm9keSJHChJVbmJpbmRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMicgoMQXVkaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMAoEYm9keRgCIAEoCzIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRSZXF1ZXN0Qm9keSJOChBBdWRpdFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCRItCgZzdGF0dXMYAiABKAsyHS55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U3RhdHVzInQKDUF1ZGl0UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlc3BvbnNlQm9keSJ1ChFBdWRpdFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhIoYBChZDcmVhdGVBdWRpdExpc3RSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlQXVkaXRMaXN0UmVxdWVzdEJvZHkihQEKGkNyZWF0ZUF1ZGl0TGlzdFJlcXVlc3RCb2R5EjkKCWNvbmRpdGlvbhgBIAEoCzImLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTZWFyY2hDb25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIogBChdDcmVhdGVBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZUF1ZGl0TGlzdFJlc3BvbnNlQm9keSKwAQobQ3JlYXRlQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlInoKEEF1ZGl0TGlzdFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hdWRpdC5BdWRpdExpc3RSZXF1ZXN0Qm9keSJ/ChRBdWRpdExpc3RSZXF1ZXN0Qm9keRI5Cgljb25kaXRpb24YASABKAsyJi55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U2VhcmNoQ29uZGl0aW9uEiwKBHBhZ2UYAiABKAsyHi55ZXlpbmcuYXBpLmNvbW1vbi5SZXF1ZXN0UGFnZSJ8ChFBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TGlzdFJlc3BvbnNlQm9keSKqAQoVQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlIp4BChRBdWRpdFNlYXJjaENvbmRpdGlvbhIRCglzb3VyY2VEaWQYASABKAkSDAoEbmFtZRgCIAEoCRIRCglzdGFydFRpbWUYAyABKAkSDwoHZW5kVGltZRgEIAEoCRIuCgR0eXBlGAUgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bRIRCgl0YXJnZXREaWQYBiABKAkikAIKDUF1ZGl0TWV0YWRhdGESCwoDdWlkGAEgASgJEg8KB2FwcE5hbWUYAiABKAkSEQoJc291cmNlRGlkGAMgASgJEhIKCnNvdXJjZU5hbWUYBCABKAkSEQoJdGFyZ2V0RGlkGAUgASgJEhIKCnRhcmdldE5hbWUYBiABKAkSDgoGcmVhc29uGAcgASgJEi0KBnN0YXR1cxgIIAEoCzIdLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTdGF0dXMSEQoJY3JlYXRlZEF0GAkgASgJEhEKCXVwZGF0ZWRBdBgKIAEoCRIuCgR0eXBlGAsgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bTLMBAoFQXVkaXQSTQoGQ3JlYXRlEh8ueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXNwb25zZSIAEk0KBkRldGFpbBIfLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdBogLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2UiABJNCgZDYW5jZWwSHy55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlcXVlc3QaIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlc3BvbnNlIgASTQoGVW5iaW5kEh8ueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXNwb25zZSIAEkoKBUF1ZGl0Eh4ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlcXVlc3QaHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0UmVzcG9uc2UiABJjCgpDcmVhdGVMaXN0EigueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXF1ZXN0GikueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXNwb25zZSIAElYKCUF1ZGl0TGlzdBIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVxdWVzdBojLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2F1ZGl0YgZwcm90bzM", [file_yeying_api_common_message, file_yeying_api_common_code, file_yeying_api_common_model]);
 
 /**
  * *
@@ -952,9 +953,14 @@ export const CreateAuditListRequestSchema: GenMessage<CreateAuditListRequest, Cr
  */
 export type CreateAuditListRequestBody = Message<"yeying.api.audit.CreateAuditListRequestBody"> & {
   /**
-   * @generated from field: string sourceDid = 1;
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
    */
-  sourceDid: string;
+  condition?: AuditSearchCondition;
+
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
 };
 
 /**
@@ -962,9 +968,14 @@ export type CreateAuditListRequestBody = Message<"yeying.api.audit.CreateAuditLi
  */
 export type CreateAuditListRequestBodyJson = {
   /**
-   * @generated from field: string sourceDid = 1;
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
    */
-  sourceDid?: string;
+  condition?: AuditSearchConditionJson;
+
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPageJson;
 };
 
 /**
@@ -1024,6 +1035,11 @@ export type CreateAuditListResponseBody = Message<"yeying.api.audit.CreateAuditL
    * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
    */
   audits: AuditMetadata[];
+
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePage;
 };
 
 /**
@@ -1039,6 +1055,11 @@ export type CreateAuditListResponseBodyJson = {
    * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
    */
   audits?: AuditMetadataJson[];
+
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePageJson;
 };
 
 /**
@@ -1090,9 +1111,14 @@ export const AuditListRequestSchema: GenMessage<AuditListRequest, AuditListReque
  */
 export type AuditListRequestBody = Message<"yeying.api.audit.AuditListRequestBody"> & {
   /**
-   * @generated from field: string targetDid = 1;
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
    */
-  targetDid: string;
+  condition?: AuditSearchCondition;
+
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
 };
 
 /**
@@ -1100,9 +1126,14 @@ export type AuditListRequestBody = Message<"yeying.api.audit.AuditListRequestBod
  */
 export type AuditListRequestBodyJson = {
   /**
-   * @generated from field: string targetDid = 1;
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
    */
-  targetDid?: string;
+  condition?: AuditSearchConditionJson;
+
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPageJson;
 };
 
 /**
@@ -1162,6 +1193,11 @@ export type AuditListResponseBody = Message<"yeying.api.audit.AuditListResponseB
    * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
    */
   audits: AuditMetadata[];
+
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePage;
 };
 
 /**
@@ -1177,6 +1213,11 @@ export type AuditListResponseBodyJson = {
    * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
    */
   audits?: AuditMetadataJson[];
+
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePageJson;
 };
 
 /**
@@ -1185,6 +1226,127 @@ export type AuditListResponseBodyJson = {
  */
 export const AuditListResponseBodySchema: GenMessage<AuditListResponseBody, AuditListResponseBodyJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 32);
+
+/**
+ * *
+ * 我的申请列表查询条件
+ * 我的审批列表查询条件
+ *
+ * @generated from message yeying.api.audit.AuditSearchCondition
+ */
+export type AuditSearchCondition = Message<"yeying.api.audit.AuditSearchCondition"> & {
+  /**
+   * *
+   * 申请人 did
+   *
+   * @generated from field: string sourceDid = 1;
+   */
+  sourceDid: string;
+
+  /**
+   * *
+   * 应用/服务名称
+   *
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * *
+   * 申请时间-开始时间
+   *
+   * @generated from field: string startTime = 3;
+   */
+  startTime: string;
+
+  /**
+   * *
+   * 申请时间-结束时间
+   *
+   * @generated from field: string endTime = 4;
+   */
+  endTime: string;
+
+  /**
+   * *
+   * 申请类型[应用/服务]
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 5;
+   */
+  type: AuditTypeEnum;
+
+  /**
+   * *
+   * 审批人 did
+   *
+   * @generated from field: string targetDid = 6;
+   */
+  targetDid: string;
+};
+
+/**
+ * *
+ * 我的申请列表查询条件
+ * 我的审批列表查询条件
+ *
+ * @generated from message yeying.api.audit.AuditSearchCondition
+ */
+export type AuditSearchConditionJson = {
+  /**
+   * *
+   * 申请人 did
+   *
+   * @generated from field: string sourceDid = 1;
+   */
+  sourceDid?: string;
+
+  /**
+   * *
+   * 应用/服务名称
+   *
+   * @generated from field: string name = 2;
+   */
+  name?: string;
+
+  /**
+   * *
+   * 申请时间-开始时间
+   *
+   * @generated from field: string startTime = 3;
+   */
+  startTime?: string;
+
+  /**
+   * *
+   * 申请时间-结束时间
+   *
+   * @generated from field: string endTime = 4;
+   */
+  endTime?: string;
+
+  /**
+   * *
+   * 申请类型[应用/服务]
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 5;
+   */
+  type?: AuditTypeEnumJson;
+
+  /**
+   * *
+   * 审批人 did
+   *
+   * @generated from field: string targetDid = 6;
+   */
+  targetDid?: string;
+};
+
+/**
+ * Describes the message yeying.api.audit.AuditSearchCondition.
+ * Use `create(AuditSearchConditionSchema)` to create a new message.
+ */
+export const AuditSearchConditionSchema: GenMessage<AuditSearchCondition, AuditSearchConditionJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 33);
 
 /**
  * @generated from message yeying.api.audit.AuditMetadata
@@ -1269,6 +1431,14 @@ export type AuditMetadata = Message<"yeying.api.audit.AuditMetadata"> & {
    * @generated from field: string updatedAt = 10;
    */
   updatedAt: string;
+
+  /**
+   * *
+   * 申请类型[应用/服务]
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 11;
+   */
+  type: AuditTypeEnum;
 };
 
 /**
@@ -1354,6 +1524,14 @@ export type AuditMetadataJson = {
    * @generated from field: string updatedAt = 10;
    */
   updatedAt?: string;
+
+  /**
+   * *
+   * 申请类型[应用/服务]
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 11;
+   */
+  type?: AuditTypeEnumJson;
 };
 
 /**
@@ -1361,7 +1539,7 @@ export type AuditMetadataJson = {
  * Use `create(AuditMetadataSchema)` to create a new message.
  */
 export const AuditMetadataSchema: GenMessage<AuditMetadata, AuditMetadataJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_audit_audit, 33);
+  messageDesc(file_yeying_api_audit_audit, 34);
 
 /**
  * *
