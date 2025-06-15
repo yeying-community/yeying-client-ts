@@ -46,6 +46,7 @@ export function convertApplicationMetadataFromIdentity(identity: Identity) {
     avatar: metadata.avatar,
     createdAt: metadata.createdAt,
     updatedAt: metadata.updatedAt,
+    codePackagePath: "http://codePackagePath"
   });
 }
 
@@ -81,5 +82,6 @@ export function convertServiceMetadataFromIdentity(identity: Identity) {
     avatar: metadata.avatar,
     createdAt: metadata.createdAt,
     updatedAt: metadata.updatedAt,
+    codePackagePath: "http://codePackagePath"
   });
 }

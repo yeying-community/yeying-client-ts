@@ -4,7 +4,7 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { ApiCodeEnum, ApiCodeEnumJson, ApplicationCodeEnum, ApplicationCodeEnumJson, ApplicationStatusEnum, ApplicationStatusEnumJson, ServiceCodeEnum, ServiceCodeEnumJson } from "./code_pb";
+import type { ApiCodeEnum, ApiCodeEnumJson, ApplicationCodeEnum, ApplicationCodeEnumJson, ApplicationStatusEnum, ApplicationStatusEnumJson, AuditTypeEnum, AuditTypeEnumJson, ServiceCodeEnum, ServiceCodeEnumJson } from "./code_pb";
 import { file_yeying_api_common_code } from "./code_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file yeying/api/common/model.proto.
  */
 export const file_yeying_api_common_model: GenFile = /*@__PURE__*/
-  fileDesc("Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLNAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCSKgAQoNU3RhdGVNZXRhZGF0YRILCgNkaWQYASABKAkSDwoHdmVyc2lvbhgCIAEoDRI4CgZzdGF0dXMYAyABKA4yKC55ZXlpbmcuYXBpLmNvbW1vbi5BcHBsaWNhdGlvblN0YXR1c0VudW0SEQoJc2lnbmF0dXJlGAQgASgJEhEKCWNyZWF0ZWRBdBgFIAEoCRIRCgl1cGRhdGVkQXQYBiABKAlCE1oReWV5aW5nL2FwaS9jb21tb25iBnByb3RvMw", [file_yeying_api_common_code]);
+  fileDesc("Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLmAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCRIXCg9jb2RlUGFja2FnZVBhdGgYECABKAki0AEKDVN0YXRlTWV0YWRhdGESCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0SOAoGc3RhdHVzGAMgASgOMigueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25TdGF0dXNFbnVtEhEKCXNpZ25hdHVyZRgEIAEoCRIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEi4KBHR5cGUYByABKA4yIC55ZXlpbmcuYXBpLmNvbW1vbi5BdWRpdFR5cGVFbnVtQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM", [file_yeying_api_common_code]);
 
 /**
  * @generated from message yeying.api.common.ApplicationMetadata
@@ -363,6 +363,13 @@ export type ServiceMetadata = Message<"yeying.api.common.ServiceMetadata"> & {
    * @generated from field: string signature = 15;
    */
   signature: string;
+
+  /**
+   * 代码包下载路径
+   *
+   * @generated from field: string codePackagePath = 16;
+   */
+  codePackagePath: string;
 };
 
 /**
@@ -473,6 +480,13 @@ export type ServiceMetadataJson = {
    * @generated from field: string signature = 15;
    */
   signature?: string;
+
+  /**
+   * 代码包下载路径
+   *
+   * @generated from field: string codePackagePath = 16;
+   */
+  codePackagePath?: string;
 };
 
 /**
@@ -527,6 +541,13 @@ export type StateMetadata = Message<"yeying.api.common.StateMetadata"> & {
    * @generated from field: string updatedAt = 6;
    */
   updatedAt: string;
+
+  /**
+   * 类型：应用/服务 
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 7;
+   */
+  type: AuditTypeEnum;
 };
 
 /**
@@ -574,6 +595,13 @@ export type StateMetadataJson = {
    * @generated from field: string updatedAt = 6;
    */
   updatedAt?: string;
+
+  /**
+   * 类型：应用/服务 
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 7;
+   */
+  type?: AuditTypeEnumJson;
 };
 
 /**

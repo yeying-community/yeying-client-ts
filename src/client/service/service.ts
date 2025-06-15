@@ -1,10 +1,10 @@
 import { Authenticate } from "../common/authenticate";
 import { ProviderOption } from "../common/model";
 import {
-  RegisterServiceRequestBodySchema,
-  RegisterServiceRequestSchema,
-  RegisterServiceResponseBody,
-  RegisterServiceResponseBodySchema,
+  CreateServiceRequestBodySchema,
+  CreateServiceRequestSchema,
+  CreateServiceResponseBody,
+  CreateServiceResponseBodySchema,
   SearchServiceCondition,
   SearchServiceConditionSchema,
   SearchServiceRequestBodySchema,
@@ -12,10 +12,26 @@ import {
   SearchServiceResponseBody,
   SearchServiceResponseBodySchema,
   Service,
-  UnregisterServiceRequestBodySchema,
-  UnregisterServiceRequestSchema,
-  UnregisterServiceResponseBody,
-  UnregisterServiceResponseBodySchema,
+  OfflineServiceRequestBodySchema,
+  OfflineServiceRequestSchema,
+  OfflineServiceResponseBody,
+  OfflineServiceResponseBodySchema,
+  DetailServiceRequestBodySchema,
+  DetailServiceRequestSchema,
+  DetailServiceResponseBody,
+  OfflineServiceResponse,
+  CreateServiceResponse,
+  DetailServiceResponse,
+  SearchServiceResponse,
+  OnlineServiceResponse,
+  OnlineServiceRequestSchema,
+  OnlineServiceRequestBodySchema,
+  OnlineServiceResponseBodySchema,
+  DeleteServiceResponse,
+  DeleteServiceResponseBodySchema,
+  DeleteServiceRequestSchema,
+  DeleteServiceRequestBodySchema,
+  DetailServiceResponseBodySchema,
 } from "../../yeying/api/service/service_pb";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
@@ -32,7 +48,7 @@ import { isDeleted, isExisted } from "../../common/status";
 import { verifyServiceMetadata } from "../model/model";
 
 /**
- * 提供服务管理功能的类，支持注册、搜索和注销服务。
+ * 提供服务管理功能的类，支持创建、详情、上线、搜索和下线、删除服务。
  */
 export class ServiceProvider {
   private authenticate: Authenticate;
@@ -59,47 +75,89 @@ export class ServiceProvider {
   }
 
   /**
-   * 注册服务
+   * 创建服务
    * @param service - 服务元数据对象
-   * @returns 返回注册服务的响应体
+   * @returns 返回创建服务的响应体
    * @example
    * ```ts
    * const serviceMetadata = { did: 'example-did', name: 'example-service', description: 'This is a service' }
-   * serviceProvider.register(serviceMetadata)
+   * serviceProvider.create(serviceMetadata)
    *   .then(response => console.log(response))
    *   .catch(err => console.error(err))
    * ```
    */
-  register(service: ServiceMetadata) {
-    return new Promise<ServiceMetadata>(async (resolve, reject) => {
-      const body = create(RegisterServiceRequestBodySchema, {
+  create(service: ServiceMetadata) {
+    return new Promise<CreateServiceResponse>(async (resolve, reject) => {
+      const body = create(CreateServiceRequestBodySchema, {
         service: service,
       });
 
       let header: MessageHeader;
       try {
         header = await this.authenticate.createHeader(
-          toBinary(RegisterServiceRequestBodySchema, body),
+          toBinary(CreateServiceRequestBodySchema, body),
         );
       } catch (err) {
-        console.error("Fail to create header for registering service.", err);
+        console.error("Fail to create header for create service.", err);
         return reject(err);
       }
 
-      const request = create(RegisterServiceRequestSchema, {
+      const request = create(CreateServiceRequestSchema, {
         header: header,
         body: body,
       });
       try {
-        const res = await this.client.register(request);
+        const res = await this.client.create(request);
         await this.authenticate.doResponse(
           res,
-          RegisterServiceResponseBodySchema,
+          CreateServiceResponseBodySchema,
           isExisted,
         );
-        resolve(res.body?.service as ServiceMetadata);
+        resolve(res as CreateServiceResponse);
       } catch (err) {
-        console.error("Fail to register service", err);
+        console.error("Fail to create service", err);
+        return reject(err);
+      }
+    });
+  }
+
+  /**
+   * 服务详情
+   * @param did, version
+   * @returns  DetailServiceResponseBody
+   */
+  detail(did: string, version: number) {
+    return new Promise<DetailServiceResponse>(async (resolve, reject) => {
+      const body = create(DetailServiceRequestBodySchema, {
+        did: did,
+        version: version
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(DetailServiceRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for detail service.", err);
+        return reject(err);
+      }
+
+      const request = create(DetailServiceRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.detail(request);
+        console.log(`res=${JSON.stringify(res)}`)
+        await this.authenticate.doResponse(
+          res,
+          DetailServiceResponseBodySchema,
+          isDeleted
+        );
+        resolve(res as DetailServiceResponse);
+      } catch (err) {
+        console.error("Fail to detail service", err);
         return reject(err);
       }
     });
@@ -113,7 +171,7 @@ export class ServiceProvider {
    * @returns 返回搜索服务的响应体
    * @example
    * ```ts
-   * const condition = { code: 'example-code', owner: 'example-owner' }
+   * const condition = { code: 'example-code', owner: 'example-owner', name: 'example-name' }
    * serviceProvider.search(condition, 1, 10)
    *   .then(response => console.log(response))
    *   .catch(err => console.error(err))
@@ -124,11 +182,12 @@ export class ServiceProvider {
     page: number,
     pageSize: number,
   ) {
-    return new Promise<ServiceMetadata[]>(async (resolve, reject) => {
+    return new Promise<SearchServiceResponse>(async (resolve, reject) => {
       const body = create(SearchServiceRequestBodySchema, {
         condition: create(SearchServiceConditionSchema, {
           code: condition.code,
           owner: condition.owner,
+          name: condition.name
         }),
 
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
@@ -167,7 +226,7 @@ export class ServiceProvider {
           }
         }
 
-        resolve(services);
+        resolve(res as SearchServiceResponse);
       } catch (err) {
         console.error("Fail to search service", err);
         return reject(err);
@@ -176,17 +235,17 @@ export class ServiceProvider {
   }
 
   /**
-   * 根据服务的 DID 和版本号发送注销请求
+   * 根据服务的 DID 和版本号发送下线请求
    *
    * @param did - 服务的 DID
    * @param version - 服务的版本号
    *
-   * @returns 返回注销服务的响应体
+   * @returns 返回下线服务的响应体
    *
    */
-  unregister(did: string, version: number) {
-    return new Promise<void>(async (resolve, reject) => {
-      const body = create(UnregisterServiceRequestBodySchema, {
+  offline(did: string, version: number) {
+    return new Promise<OfflineServiceResponse>(async (resolve, reject) => {
+      const body = create(OfflineServiceRequestBodySchema, {
         did: did,
         version: version,
       });
@@ -194,27 +253,117 @@ export class ServiceProvider {
       let header: MessageHeader;
       try {
         header = await this.authenticate.createHeader(
-          toBinary(UnregisterServiceRequestBodySchema, body),
+          toBinary(OfflineServiceRequestBodySchema, body),
         );
       } catch (err) {
-        console.error("Fail to create header for unregistering service.", err);
+        console.error("Fail to create header for offline service.", err);
         return reject(err);
       }
 
-      const request = create(UnregisterServiceRequestSchema, {
+      const request = create(OfflineServiceRequestSchema, {
         header: header,
         body: body,
       });
       try {
-        const res = await this.client.unregister(request);
+        const res = await this.client.offline(request);
         await this.authenticate.doResponse(
           res,
-          UnregisterServiceResponseBodySchema,
+          OfflineServiceResponseBodySchema,
           isDeleted,
         );
-        resolve();
+        resolve(res as OfflineServiceResponse);
       } catch (err) {
-        console.error("Fail to unregister service", err);
+        console.error("Fail to offline service", err);
+        return reject(err);
+      }
+    });
+  }
+
+  /**
+   * 根据服务的 DID 和版本号发送上线请求
+   *
+   * @param did - 服务的 DID
+   * @param version - 服务的版本号
+   *
+   * @returns 返回上线服务的响应体
+   *
+   */
+  online(did: string, version: number) {
+    return new Promise<OnlineServiceResponse>(async (resolve, reject) => {
+      const body = create(OnlineServiceRequestBodySchema, {
+        did: did,
+        version: version,
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(OnlineServiceRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for online service.", err);
+        return reject(err);
+      }
+
+      const request = create(OnlineServiceRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.online(request);
+        await this.authenticate.doResponse(
+          res,
+          OnlineServiceResponseBodySchema,
+          isDeleted,
+        );
+        resolve(res as OnlineServiceResponse);
+      } catch (err) {
+        console.error("Fail to online service", err);
+        return reject(err);
+      }
+    });
+  }
+
+  /**
+   * 根据服务的 DID 和版本号发送删除元数据请求
+   *
+   * @param did - 服务的 DID
+   * @param version - 服务的版本号
+   *
+   * @returns 返回删除服务的响应体
+   *
+   */
+  delete(did: string, version: number) {
+    return new Promise<DeleteServiceResponse>(async (resolve, reject) => {
+      const body = create(DeleteServiceRequestBodySchema, {
+        did: did,
+        version: version,
+      });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(DeleteServiceRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to create header for delete service.", err);
+        return reject(err);
+      }
+
+      const request = create(DeleteServiceRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.delete(request);
+        await this.authenticate.doResponse(
+          res,
+          DeleteServiceResponseBodySchema,
+          isDeleted,
+        );
+        resolve(res as DeleteServiceResponse);
+      } catch (err) {
+        console.error("Fail to delete service", err);
         return reject(err);
       }
     });

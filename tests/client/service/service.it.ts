@@ -59,18 +59,38 @@ beforeAll(async () => {
     await signServiceMetadata(new Authenticate(blockAddress), serviceMetadata)
 })
 
+let mockDId: string = ""
+let mockVersion: number = 0
 describe('Service', () => {
-    it('register', async () => {
+    it('create', async () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const service = await serviceProvider.register(serviceMetadata as ServiceMetadata)
-        console.log(`Success to register identity=${JSON.stringify(toJson(ServiceMetadataSchema, service))}`)
+        const res = await serviceProvider.create(serviceMetadata as ServiceMetadata)
+        const service = res.body?.service
         assert.isDefined(service)
+        mockDId = service.did
+        mockVersion = service.version
+        console.log(`Success to create identity=${JSON.stringify(toJson(ServiceMetadataSchema, service))}`)
+        console.log(`res=${JSON.stringify(res)}`)
+    })
+
+    it('detail', async () => {
+        const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
+        console.log(`did=${mockDId}`)
+        console.log(`version=${mockVersion}`)
+        const res = await serviceProvider.detail(mockDId, mockVersion)
+        const service = res.body?.service
+        assert.isDefined(service)
+        console.log(`Success to detail identity=${JSON.stringify(toJson(ServiceMetadataSchema, service))}`)
+        console.log(`res=${JSON.stringify(res)}`)
     })
 
     it('search', async () => {
         const service = serviceMetadata as ServiceMetadata
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const services = await serviceProvider.search({code: ServiceCodeEnum.SERVICE_CODE_MCP}, 1, 10)
+        const res = await serviceProvider.search({code: ServiceCodeEnum.SERVICE_CODE_MCP, name: "mcp"}, 1, 10)
+        console.log(`search res=${JSON.stringify(res)}`)
+        const services = res.body?.services
+        assert.isDefined(services)
         assert.isTrue(services.length > 0)
         const existing = services.find(i => {
             console.log(`Success to get node identity=${i.name}, did=${i.did}`)
@@ -79,10 +99,27 @@ describe('Service', () => {
         assert.isDefined(existing)
     })
 
-    it('unregister', async () => {
+    it('online', async () => {
         const service = serviceMetadata as ServiceMetadata
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        await serviceProvider.unregister(service.did, service.version)
-        console.log(`Success to unregister service=${service.did}`)
+        const res = await serviceProvider.online(service.did, service.version)
+        console.log(`res=${JSON.stringify(res)}`)
+        console.log(`Success to online service did=${service.did} r=${service.version}`)
+    })
+
+    it('offline', async () => {
+        const service = serviceMetadata as ServiceMetadata
+        const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
+        const res = await serviceProvider.offline(service.did, service.version)
+        console.log(`res=${JSON.stringify(res)}`)
+        console.log(`Success to offline service did=${service.did} r=${service.version}`)
+    })
+
+    it('delete', async () => {
+        const service = serviceMetadata as ServiceMetadata
+        const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
+        const res = await serviceProvider.delete(service.did, service.version)
+        console.log(`res=${JSON.stringify(res)}`)
+        console.log(`Success to delete service did=${service.did} r=${service.version}`)
     })
 })
