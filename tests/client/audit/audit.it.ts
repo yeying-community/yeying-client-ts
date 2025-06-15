@@ -69,7 +69,7 @@ describe('Audit', () => {
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     const res = await auditProvider.create(auditMetadata as AuditMetadata)
     console.log(`Success to create audit=${JSON.stringify(res)}`)
-    uid = res.meta?.uid
+    uid = res.body?.meta?.uid
   })
 
   it('detail', async () => {

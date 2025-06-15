@@ -62,9 +62,9 @@ describe('Application', () => {
     console.log(providerOption?.proxy)
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const res = await applicationProvider.create(applicationMetadata as ApplicationMetadata)
-    console.log(`Success to create application=${res.application?.did}`)
-    mockDid = res.application?.did
-    mockVersion = res.application?.version
+    console.log(`Success to create application=${res.body?.application?.did}`)
+    mockDid = res.body?.application?.did
+    mockVersion = res.body?.application?.version
     console.log(`mockDid=${mockDid}`)
     console.log(`mockVersion=${mockVersion}`)
     console.log(`res=${JSON.stringify(res)}`)
@@ -81,7 +81,7 @@ describe('Application', () => {
       throw Error("mockDid is undefined or mockVersion is undefined")
     }
     const res = await applicationProvider.detail(mockDid, mockVersion)
-    console.log(`Success to detail application=${res.application}`)
+    console.log(`Success to detail application=${res.body?.application}`)
     console.log(`res=${JSON.stringify(res)}`)
   })
 
@@ -95,7 +95,7 @@ describe('Application', () => {
       throw Error("mockDid is undefined or mockVersion is undefined")
     }
     const res = await applicationProvider.audit(mockDid, mockVersion, true, 'mock')
-    console.log(`Success to audit application=${res.status}`)
+    console.log(`Success to audit application=${res.body?.status}`)
     console.log(`res=${JSON.stringify(res)}`)
   })
 
@@ -109,7 +109,7 @@ describe('Application', () => {
       throw Error("mockDid is undefined or mockVersion is undefined")
     }
     const res = await applicationProvider.online(mockDid, mockVersion)
-    console.log(`Success to online application=${res.status}`)
+    console.log(`Success to online application=${res.body?.status}`)
     console.log(`res=${JSON.stringify(res)}`)
   })
 
@@ -123,16 +123,17 @@ describe('Application', () => {
       throw Error("mockDid is undefined or mockVersion is undefined")
     }
     const res = await applicationProvider.offline(mockDid, mockVersion)
-    console.log(`Success to offline application=${res.status}`)
+    console.log(`Success to offline application=${res.body?.status}`)
     console.log(`res=${JSON.stringify(res)}`)
   })
 
   it('search', async () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const res = await applicationProvider.search( 1, 10)
-    console.log(`Success to search application with count=${res.applications.length}`)
-    assert.isAtLeast(res.applications.length, 1)
-    res.applications.map(i => console.log(`application, name=${i.name}, code=${i.code}`))
+    console.log(`Success to search application with count=${res.body?.applications.length}`)
+    const len = res.body?.applications?.length
+    assert.isAtLeast(len == undefined ? 0 : len, 1)
+    res.body?.applications.map(i => console.log(`application, name=${i.name}, code=${i.code}`))
     console.log(`res=${JSON.stringify(res)}`)
   })
 
@@ -140,7 +141,7 @@ describe('Application', () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const application = applicationMetadata as ApplicationMetadata
     const res = await applicationProvider.delete(application.did, application.version)
-    console.log(`res=${res.status}`)
+    console.log(`res=${res.body?.status}`)
     console.log(`Success to delete application=${application.did}, version=${application.version}`)
     console.log(`res=${JSON.stringify(res)}`)
   })
