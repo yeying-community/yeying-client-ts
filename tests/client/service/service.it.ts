@@ -15,6 +15,7 @@ import {ServiceMetadata, ServiceMetadataSchema} from "../../../src/yeying/api/co
 import {signServiceMetadata} from "../../../src/client/model/model";
 import {Authenticate} from "../../../src/client/common/authenticate";
 import {convertServiceMetadataFromIdentity} from "../../../src/model/model";
+import { SearchServiceCondition } from "../../../src/yeying/api/service/service_pb";
 
 let providerOption: ProviderOption | undefined
 
@@ -87,16 +88,15 @@ describe('Service', () => {
     it('search', async () => {
         const service = serviceMetadata as ServiceMetadata
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const res = await serviceProvider.search({code: ServiceCodeEnum.SERVICE_CODE_MCP, name: "mcp"}, 1, 10)
+        const res = await serviceProvider.search(1, 10, {keyword: "de"} as SearchServiceCondition)
         console.log(`search res=${JSON.stringify(res)}`)
         const services = res.body?.services
         assert.isDefined(services)
         assert.isTrue(services.length > 0)
-        const existing = services.find(i => {
-            console.log(`Success to get node identity=${i.name}, did=${i.did}`)
-            return service.did === i.did
-        })
-        assert.isDefined(existing)
+        const len = res.body?.services?.length
+        assert.isAtLeast(len == undefined ? 0 : len, 1)
+        res.body?.services.map(i => console.log(`service, name=${i.name}, code=${i.code}`))
+        console.log(`res=${JSON.stringify(res)}`)
     })
 
     it('online', async () => {

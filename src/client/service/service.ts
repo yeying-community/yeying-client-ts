@@ -178,18 +178,13 @@ export class ServiceProvider {
    * ```
    */
   search(
-    condition: Partial<SearchServiceCondition>,
     page: number,
     pageSize: number,
+    condition?: SearchServiceCondition
   ) {
     return new Promise<SearchServiceResponse>(async (resolve, reject) => {
       const body = create(SearchServiceRequestBodySchema, {
-        condition: create(SearchServiceConditionSchema, {
-          code: condition.code,
-          owner: condition.owner,
-          name: condition.name
-        }),
-
+        condition: condition,
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
       });
 
