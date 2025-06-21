@@ -2,7 +2,7 @@ import { Authenticate } from "../common/authenticate";
 import { ProviderOption } from "../common/model";
 import { Client, createClient, type Transport } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary, toJson } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary, toJson } from "@bufbuild/protobuf";
 import {
   CreateNamespaceRequestBodySchema,
   CreateNamespaceRequestSchema,
@@ -11,6 +11,7 @@ import {
   NamespaceMetadata,
   NamespaceMetadataSchema,
   SearchNamespaceCondition,
+  SearchNamespaceConditionJson,
   SearchNamespaceConditionSchema,
   SearchNamespaceRequestBodySchema,
   SearchNamespaceRequestSchema,
@@ -95,13 +96,11 @@ export class NamespaceProvider {
   search(
     page: number,
     pageSize: number,
-    condition?: Partial<SearchNamespaceCondition>,
+    condition?: SearchNamespaceConditionJson,
   ) {
     return new Promise<NamespaceMetadata[]>(async (resolve, reject) => {
       const body = create(SearchNamespaceRequestBodySchema, {
-        condition: create(SearchNamespaceConditionSchema, {
-          name: condition?.name,
-        }),
+        condition: fromJson(SearchNamespaceConditionSchema, condition ?? {}),
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
       });
 

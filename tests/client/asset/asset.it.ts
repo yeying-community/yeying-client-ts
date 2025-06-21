@@ -5,7 +5,7 @@ import {UserProvider} from "../../../src/client/user/user";
 import {Uploader} from "../../../src/client/warehouse/uploader";
 import {Downloader} from "../../../src/client/warehouse/downloader";
 import {readFile, ResultDataType} from "../../../src/common/file";
-import {AssetMetadataSchema} from "../../../src/yeying/api/asset/asset_pb";
+import {AssetMetadataSchema, SearchAssetConditionJson} from "../../../src/yeying/api/asset/asset_pb";
 import {BlockMetadataSchema} from "../../../src/yeying/api/asset/block_pb";
 import {ProviderOption} from "../../../src/client/common/model";
 import {toJson} from "@bufbuild/protobuf";
@@ -52,9 +52,9 @@ describe('Asset', () => {
 
     it('search', async () => {
         const assetProvider = new AssetProvider(providerOption)
-        const assets = await assetProvider.search({
-            format: DigitalFormatEnum.DIGITAL_FORMAT_OTHER,
-        }, 1, 10)
+        const assets = await assetProvider.search(1, 10, {
+            format: "DIGITAL_FORMAT_OTHER",
+        } as SearchAssetConditionJson)
 
         console.log(`Success to search assets=${assets.length}`)
         assets.forEach(a => {

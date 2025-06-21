@@ -38,12 +38,10 @@ beforeAll(async () => {
 describe('Recycle', () => {
     it('search from trash', async () => {
         const recycleProvider = new RecycleProvider(providerOption)
-        const condition: Partial<SearchAssetCondition> = {
-            format: DigitalFormatEnum.DIGITAL_FORMAT_TEXT,
+        const deletedAssets = await recycleProvider.search(1, 10, {
+            format: "DIGITAL_FORMAT_TEXT",
             namespaceId: asset.namespaceId,
-        }
-
-        const deletedAssets = await recycleProvider.search(condition, 1, 10)
+        })
         console.log(`Success to search deleted assets=${deletedAssets.length} from trash`)
         deletedAssets.forEach(a => {
             console.log(`deleted asset=${JSON.stringify(toJson(DeletedAssetMetadataSchema, a))}`)

@@ -19,6 +19,7 @@ import {
   LinkVisitorRequestSchema,
   LinkVisitorResponseBodySchema,
   SearchLinkCondition,
+  SearchLinkConditionJson,
   SearchLinkConditionSchema,
   SearchLinkRequestBodySchema,
   SearchLinkRequestSchema,
@@ -29,7 +30,7 @@ import {
 } from "../../yeying/api/asset/link_pb";
 import { ProviderOption } from "../common/model";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary, toJson } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary, toJson } from "@bufbuild/protobuf";
 import { generateUuid } from "../../common/string";
 import { RequestPageSchema } from "../../yeying/api/common/message_pb";
 import {
@@ -157,13 +158,11 @@ export class LinkProvider {
   search(
     page: number = 1,
     pageSize: number = 10,
-    condition?: Partial<SearchLinkCondition>,
+    condition?: SearchLinkConditionJson,
   ) {
     return new Promise<LinkMetadata[]>(async (resolve, reject) => {
       const body = create(SearchLinkRequestBodySchema, {
-        condition: create(SearchLinkConditionSchema, {
-          hash: condition ? condition.hash : undefined,
-        }),
+        condition: fromJson(SearchLinkConditionSchema, condition ?? {}),
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
       });
 

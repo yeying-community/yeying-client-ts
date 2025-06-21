@@ -4,230 +4,246 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { ApiCodeEnum, ApiCodeEnumJson, ApplicationCodeEnum, ApplicationCodeEnumJson, ApplicationStatusEnum, ApplicationStatusEnumJson, AuditTypeEnum, AuditTypeEnumJson, ServiceCodeEnum, ServiceCodeEnumJson } from "./code_pb";
+import type {
+  ApiCodeEnum,
+  ApiCodeEnumJson,
+  ApplicationCodeEnum,
+  ApplicationCodeEnumJson,
+  ApplicationStatusEnum,
+  ApplicationStatusEnumJson,
+  AuditTypeEnum,
+  AuditTypeEnumJson,
+  ServiceCodeEnum,
+  ServiceCodeEnumJson,
+} from "./code_pb";
 import { file_yeying_api_common_code } from "./code_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/common/model.proto.
  */
-export const file_yeying_api_common_model: GenFile = /*@__PURE__*/
-  fileDesc("Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLmAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCRIXCg9jb2RlUGFja2FnZVBhdGgYECABKAki0AEKDVN0YXRlTWV0YWRhdGESCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0SOAoGc3RhdHVzGAMgASgOMigueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25TdGF0dXNFbnVtEhEKCXNpZ25hdHVyZRgEIAEoCRIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEi4KBHR5cGUYByABKA4yIC55ZXlpbmcuYXBpLmNvbW1vbi5BdWRpdFR5cGVFbnVtQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM", [file_yeying_api_common_code]);
+export const file_yeying_api_common_model: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "Ch15ZXlpbmcvYXBpL2NvbW1vbi9tb2RlbC5wcm90bxIReWV5aW5nLmFwaS5jb21tb24i+QIKE0FwcGxpY2F0aW9uTWV0YWRhdGESDQoFb3duZXIYASABKAkSDwoHbmV0d29yaxgCIAEoCRIPCgdhZGRyZXNzGAMgASgJEgsKA2RpZBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBGhhc2gYBiABKAkSDAoEbmFtZRgHIAEoCRI0CgRjb2RlGAggASgOMiYueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25Db2RlRW51bRITCgtkZXNjcmlwdGlvbhgJIAEoCRIQCghsb2NhdGlvbhgKIAEoCRI4CgxzZXJ2aWNlQ29kZXMYCyADKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SDgoGYXZhdGFyGAwgASgJEhEKCWNyZWF0ZWRBdBgNIAEoCRIRCgl1cGRhdGVkQXQYDiABKAkSEQoJc2lnbmF0dXJlGA8gASgJEhcKD2NvZGVQYWNrYWdlUGF0aBgQIAEoCSLmAgoPU2VydmljZU1ldGFkYXRhEg0KBW93bmVyGAEgASgJEg8KB25ldHdvcmsYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRILCgNkaWQYBCABKAkSDwoHdmVyc2lvbhgFIAEoDRIMCgRuYW1lGAYgASgJEhMKC2Rlc2NyaXB0aW9uGAcgASgJEjAKBGNvZGUYCCABKA4yIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlQ29kZUVudW0SMAoIYXBpQ29kZXMYCSADKA4yHi55ZXlpbmcuYXBpLmNvbW1vbi5BcGlDb2RlRW51bRINCgVwcm94eRgKIAEoCRIMCgRncnBjGAsgASgJEg4KBmF2YXRhchgMIAEoCRIRCgljcmVhdGVkQXQYDSABKAkSEQoJdXBkYXRlZEF0GA4gASgJEhEKCXNpZ25hdHVyZRgPIAEoCRIXCg9jb2RlUGFja2FnZVBhdGgYECABKAki0AEKDVN0YXRlTWV0YWRhdGESCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0SOAoGc3RhdHVzGAMgASgOMigueWV5aW5nLmFwaS5jb21tb24uQXBwbGljYXRpb25TdGF0dXNFbnVtEhEKCXNpZ25hdHVyZRgEIAEoCRIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEi4KBHR5cGUYByABKA4yIC55ZXlpbmcuYXBpLmNvbW1vbi5BdWRpdFR5cGVFbnVtQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM",
+    [file_yeying_api_common_code],
+  );
 
 /**
  * @generated from message yeying.api.common.ApplicationMetadata
  */
-export type ApplicationMetadata = Message<"yeying.api.common.ApplicationMetadata"> & {
-  /**
-   * 应用所有者 
-   *
-   * @generated from field: string owner = 1;
-   */
-  owner: string;
+export type ApplicationMetadata =
+  Message<"yeying.api.common.ApplicationMetadata"> & {
+    /**
+     * 应用所有者
+     *
+     * @generated from field: string owner = 1;
+     */
+    owner: string;
 
-  /**
-   * 身份所在网络 
-   *
-   * @generated from field: string network = 2;
-   */
-  network: string;
+    /**
+     * 身份所在网络
+     *
+     * @generated from field: string network = 2;
+     */
+    network: string;
 
-  /**
-   * 身份地址 
-   *
-   * @generated from field: string address = 3;
-   */
-  address: string;
+    /**
+     * 身份地址
+     *
+     * @generated from field: string address = 3;
+     */
+    address: string;
 
-  /**
-   * 应用身份 
-   *
-   * @generated from field: string did = 4;
-   */
-  did: string;
+    /**
+     * 应用身份
+     *
+     * @generated from field: string did = 4;
+     */
+    did: string;
 
-  /**
-   * 应用版本 
-   *
-   * @generated from field: uint32 version = 5;
-   */
-  version: number;
+    /**
+     * 应用版本
+     *
+     * @generated from field: uint32 version = 5;
+     */
+    version: number;
 
-  /**
-   * 应用哈希 
-   *
-   * @generated from field: string hash = 6;
-   */
-  hash: string;
+    /**
+     * 应用哈希
+     *
+     * @generated from field: string hash = 6;
+     */
+    hash: string;
 
-  /**
-   * 应用名称 
-   *
-   * @generated from field: string name = 7;
-   */
-  name: string;
+    /**
+     * 应用名称
+     *
+     * @generated from field: string name = 7;
+     */
+    name: string;
 
-  /**
-   * 应用编号 
-   *
-   * @generated from field: yeying.api.common.ApplicationCodeEnum code = 8;
-   */
-  code: ApplicationCodeEnum;
+    /**
+     * 应用编号
+     *
+     * @generated from field: yeying.api.common.ApplicationCodeEnum code = 8;
+     */
+    code: ApplicationCodeEnum;
 
-  /**
-   * 应用描述 
-   *
-   * @generated from field: string description = 9;
-   */
-  description: string;
+    /**
+     * 应用描述
+     *
+     * @generated from field: string description = 9;
+     */
+    description: string;
 
-  /**
-   * 访问路径 
-   *
-   * @generated from field: string location = 10;
-   */
-  location: string;
+    /**
+     * 访问路径
+     *
+     * @generated from field: string location = 10;
+     */
+    location: string;
 
-  /**
-   * 应用依赖的服务编码，用,隔开 
-   *
-   * @generated from field: repeated yeying.api.common.ServiceCodeEnum serviceCodes = 11;
-   */
-  serviceCodes: ServiceCodeEnum[];
+    /**
+     * 应用依赖的服务编码，用,隔开
+     *
+     * @generated from field: repeated yeying.api.common.ServiceCodeEnum serviceCodes = 11;
+     */
+    serviceCodes: ServiceCodeEnum[];
 
-  /**
-   * 应用头像 
-   *
-   * @generated from field: string avatar = 12;
-   */
-  avatar: string;
+    /**
+     * 应用头像
+     *
+     * @generated from field: string avatar = 12;
+     */
+    avatar: string;
 
-  /**
-   * 应用创建时间 
-   *
-   * @generated from field: string createdAt = 13;
-   */
-  createdAt: string;
+    /**
+     * 应用创建时间
+     *
+     * @generated from field: string createdAt = 13;
+     */
+    createdAt: string;
 
-  /**
-   * 应用更新时间 
-   *
-   * @generated from field: string updatedAt = 14;
-   */
-  updatedAt: string;
+    /**
+     * 应用更新时间
+     *
+     * @generated from field: string updatedAt = 14;
+     */
+    updatedAt: string;
 
-  /**
-   * 签名
-   *
-   * @generated from field: string signature = 15;
-   */
-  signature: string;
+    /**
+     * 签名
+     *
+     * @generated from field: string signature = 15;
+     */
+    signature: string;
 
-  /**
-   * 代码包下载路径
-   *
-   * @generated from field: string codePackagePath = 16;
-   */
-  codePackagePath: string;
-};
+    /**
+     * 代码包下载路径
+     *
+     * @generated from field: string codePackagePath = 16;
+     */
+    codePackagePath: string;
+  };
 
 /**
  * @generated from message yeying.api.common.ApplicationMetadata
  */
 export type ApplicationMetadataJson = {
   /**
-   * 应用所有者 
+   * 应用所有者
    *
    * @generated from field: string owner = 1;
    */
   owner?: string;
 
   /**
-   * 身份所在网络 
+   * 身份所在网络
    *
    * @generated from field: string network = 2;
    */
   network?: string;
 
   /**
-   * 身份地址 
+   * 身份地址
    *
    * @generated from field: string address = 3;
    */
   address?: string;
 
   /**
-   * 应用身份 
+   * 应用身份
    *
    * @generated from field: string did = 4;
    */
   did?: string;
 
   /**
-   * 应用版本 
+   * 应用版本
    *
    * @generated from field: uint32 version = 5;
    */
   version?: number;
 
   /**
-   * 应用哈希 
+   * 应用哈希
    *
    * @generated from field: string hash = 6;
    */
   hash?: string;
 
   /**
-   * 应用名称 
+   * 应用名称
    *
    * @generated from field: string name = 7;
    */
   name?: string;
 
   /**
-   * 应用编号 
+   * 应用编号
    *
    * @generated from field: yeying.api.common.ApplicationCodeEnum code = 8;
    */
   code?: ApplicationCodeEnumJson;
 
   /**
-   * 应用描述 
+   * 应用描述
    *
    * @generated from field: string description = 9;
    */
   description?: string;
 
   /**
-   * 访问路径 
+   * 访问路径
    *
    * @generated from field: string location = 10;
    */
   location?: string;
 
   /**
-   * 应用依赖的服务编码，用,隔开 
+   * 应用依赖的服务编码，用,隔开
    *
    * @generated from field: repeated yeying.api.common.ServiceCodeEnum serviceCodes = 11;
    */
   serviceCodes?: ServiceCodeEnumJson[];
 
   /**
-   * 应用头像 
+   * 应用头像
    *
    * @generated from field: string avatar = 12;
    */
   avatar?: string;
 
   /**
-   * 应用创建时间 
+   * 应用创建时间
    *
    * @generated from field: string createdAt = 13;
    */
   createdAt?: string;
 
   /**
-   * 应用更新时间 
+   * 应用更新时间
    *
    * @generated from field: string updatedAt = 14;
    */
@@ -252,106 +268,108 @@ export type ApplicationMetadataJson = {
  * Describes the message yeying.api.common.ApplicationMetadata.
  * Use `create(ApplicationMetadataSchema)` to create a new message.
  */
-export const ApplicationMetadataSchema: GenMessage<ApplicationMetadata, ApplicationMetadataJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_common_model, 0);
+export const ApplicationMetadataSchema: GenMessage<
+  ApplicationMetadata,
+  ApplicationMetadataJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_common_model, 0);
 
 /**
  * @generated from message yeying.api.common.ServiceMetadata
  */
 export type ServiceMetadata = Message<"yeying.api.common.ServiceMetadata"> & {
   /**
-   * 服务所有者 
+   * 服务所有者
    *
    * @generated from field: string owner = 1;
    */
   owner: string;
 
   /**
-   * 服务所在网络 
+   * 服务所在网络
    *
    * @generated from field: string network = 2;
    */
   network: string;
 
   /**
-   * 服务所在网络地址 
+   * 服务所在网络地址
    *
    * @generated from field: string address = 3;
    */
   address: string;
 
   /**
-   * 服务身份 
+   * 服务身份
    *
    * @generated from field: string did = 4;
    */
   did: string;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: uint32 version = 5;
    */
   version: number;
 
   /**
-   * 服务名称 
+   * 服务名称
    *
    * @generated from field: string name = 6;
    */
   name: string;
 
   /**
-   * 服务描述 
+   * 服务描述
    *
    * @generated from field: string description = 7;
    */
   description: string;
 
   /**
-   * 服务编码 
+   * 服务编码
    *
    * @generated from field: yeying.api.common.ServiceCodeEnum code = 8;
    */
   code: ServiceCodeEnum;
 
   /**
-   * 服务apis 
+   * 服务apis
    *
    * @generated from field: repeated yeying.api.common.ApiCodeEnum apiCodes = 9;
    */
   apiCodes: ApiCodeEnum[];
 
   /**
-   * 服务代理 
+   * 服务代理
    *
    * @generated from field: string proxy = 10;
    */
   proxy: string;
 
   /**
-   * 服务grpc地址 
+   * 服务grpc地址
    *
    * @generated from field: string grpc = 11;
    */
   grpc: string;
 
   /**
-   * 服务头像 
+   * 服务头像
    *
    * @generated from field: string avatar = 12;
    */
   avatar: string;
 
   /**
-   * 服务创建时间点 
+   * 服务创建时间点
    *
    * @generated from field: string createdAt = 13;
    */
   createdAt: string;
 
   /**
-   * 服务修改时间点 
+   * 服务修改时间点
    *
    * @generated from field: string updatedAt = 14;
    */
@@ -377,98 +395,98 @@ export type ServiceMetadata = Message<"yeying.api.common.ServiceMetadata"> & {
  */
 export type ServiceMetadataJson = {
   /**
-   * 服务所有者 
+   * 服务所有者
    *
    * @generated from field: string owner = 1;
    */
   owner?: string;
 
   /**
-   * 服务所在网络 
+   * 服务所在网络
    *
    * @generated from field: string network = 2;
    */
   network?: string;
 
   /**
-   * 服务所在网络地址 
+   * 服务所在网络地址
    *
    * @generated from field: string address = 3;
    */
   address?: string;
 
   /**
-   * 服务身份 
+   * 服务身份
    *
    * @generated from field: string did = 4;
    */
   did?: string;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: uint32 version = 5;
    */
   version?: number;
 
   /**
-   * 服务名称 
+   * 服务名称
    *
    * @generated from field: string name = 6;
    */
   name?: string;
 
   /**
-   * 服务描述 
+   * 服务描述
    *
    * @generated from field: string description = 7;
    */
   description?: string;
 
   /**
-   * 服务编码 
+   * 服务编码
    *
    * @generated from field: yeying.api.common.ServiceCodeEnum code = 8;
    */
   code?: ServiceCodeEnumJson;
 
   /**
-   * 服务apis 
+   * 服务apis
    *
    * @generated from field: repeated yeying.api.common.ApiCodeEnum apiCodes = 9;
    */
   apiCodes?: ApiCodeEnumJson[];
 
   /**
-   * 服务代理 
+   * 服务代理
    *
    * @generated from field: string proxy = 10;
    */
   proxy?: string;
 
   /**
-   * 服务grpc地址 
+   * 服务grpc地址
    *
    * @generated from field: string grpc = 11;
    */
   grpc?: string;
 
   /**
-   * 服务头像 
+   * 服务头像
    *
    * @generated from field: string avatar = 12;
    */
   avatar?: string;
 
   /**
-   * 服务创建时间点 
+   * 服务创建时间点
    *
    * @generated from field: string createdAt = 13;
    */
   createdAt?: string;
 
   /**
-   * 服务修改时间点 
+   * 服务修改时间点
    *
    * @generated from field: string updatedAt = 14;
    */
@@ -493,57 +511,59 @@ export type ServiceMetadataJson = {
  * Describes the message yeying.api.common.ServiceMetadata.
  * Use `create(ServiceMetadataSchema)` to create a new message.
  */
-export const ServiceMetadataSchema: GenMessage<ServiceMetadata, ServiceMetadataJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_common_model, 1);
+export const ServiceMetadataSchema: GenMessage<
+  ServiceMetadata,
+  ServiceMetadataJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_common_model, 1);
 
 /**
  * @generated from message yeying.api.common.StateMetadata
  */
 export type StateMetadata = Message<"yeying.api.common.StateMetadata"> & {
   /**
-   * 服务身份 
+   * 服务身份
    *
    * @generated from field: string did = 1;
    */
   did: string;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: uint32 version = 2;
    */
   version: number;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: yeying.api.common.ApplicationStatusEnum status = 3;
    */
   status: ApplicationStatusEnum;
 
   /**
-   * 服务名称 
+   * 服务名称
    *
    * @generated from field: string signature = 4;
    */
   signature: string;
 
   /**
-   * 服务创建时间点 
+   * 服务创建时间点
    *
    * @generated from field: string createdAt = 5;
    */
   createdAt: string;
 
   /**
-   * 服务修改时间点 
+   * 服务修改时间点
    *
    * @generated from field: string updatedAt = 6;
    */
   updatedAt: string;
 
   /**
-   * 类型：应用/服务 
+   * 类型：应用/服务
    *
    * @generated from field: yeying.api.common.AuditTypeEnum type = 7;
    */
@@ -555,49 +575,49 @@ export type StateMetadata = Message<"yeying.api.common.StateMetadata"> & {
  */
 export type StateMetadataJson = {
   /**
-   * 服务身份 
+   * 服务身份
    *
    * @generated from field: string did = 1;
    */
   did?: string;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: uint32 version = 2;
    */
   version?: number;
 
   /**
-   * 服务版本 
+   * 服务版本
    *
    * @generated from field: yeying.api.common.ApplicationStatusEnum status = 3;
    */
   status?: ApplicationStatusEnumJson;
 
   /**
-   * 服务名称 
+   * 服务名称
    *
    * @generated from field: string signature = 4;
    */
   signature?: string;
 
   /**
-   * 服务创建时间点 
+   * 服务创建时间点
    *
    * @generated from field: string createdAt = 5;
    */
   createdAt?: string;
 
   /**
-   * 服务修改时间点 
+   * 服务修改时间点
    *
    * @generated from field: string updatedAt = 6;
    */
   updatedAt?: string;
 
   /**
-   * 类型：应用/服务 
+   * 类型：应用/服务
    *
    * @generated from field: yeying.api.common.AuditTypeEnum type = 7;
    */
@@ -608,6 +628,6 @@ export type StateMetadataJson = {
  * Describes the message yeying.api.common.StateMetadata.
  * Use `create(StateMetadataSchema)` to create a new message.
  */
-export const StateMetadataSchema: GenMessage<StateMetadata, StateMetadataJson> = /*@__PURE__*/
+export const StateMetadataSchema: GenMessage<StateMetadata, StateMetadataJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_common_model, 2);
-

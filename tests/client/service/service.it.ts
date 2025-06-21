@@ -88,7 +88,7 @@ describe('Service', () => {
     it('search', async () => {
         const service = serviceMetadata as ServiceMetadata
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const res = await serviceProvider.search(1, 10, {keyword: "de"} as SearchServiceCondition)
+        const res = await serviceProvider.search(1, 10, {keyword: "de"})
         console.log(`search res=${JSON.stringify(res)}`)
         const services = res.body?.services
         assert.isDefined(services)
