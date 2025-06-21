@@ -2,34 +2,17 @@
 // @generated from file yeying/api/certificate/certificate.proto (package yeying.api.certificate, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/certificate/certificate.proto.
  */
-export const file_yeying_api_certificate_certificate: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Cih5ZXlpbmcvYXBpL2NlcnRpZmljYXRlL2NlcnRpZmljYXRlLnByb3RvEhZ5ZXlpbmcuYXBpLmNlcnRpZmljYXRlInYKC1NpZ25SZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuY2VydGlmaWNhdGUuU2lnblJlcXVlc3RCb2R5Ii4KD1NpZ25SZXF1ZXN0Qm9keRIOCgZkb21haW4YASABKAkSCwoDY3NyGAIgASgJIngKDFNpZ25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLlNpZ25SZXNwb25zZUJvZHkiLgoTQ2VydGlmaWNhdGVNZXRhZGF0YRILCgNjcnQYASABKAkSCgoCY2EYAiABKAkihwEKEFNpZ25SZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSQAoLY2VydGlmaWNhdGUYAiABKAsyKy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkNlcnRpZmljYXRlTWV0YWRhdGEiPgoKR2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyInYKC0dldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuY2VydGlmaWNhdGUuR2V0UmVzcG9uc2VCb2R5IoYBCg9HZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSQAoLY2VydGlmaWNhdGUYAiABKAsyKy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkNlcnRpZmljYXRlTWV0YWRhdGEytAEKC0NlcnRpZmljYXRlElMKBFNpZ24SIy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLlNpZ25SZXF1ZXN0GiQueWV5aW5nLmFwaS5jZXJ0aWZpY2F0ZS5TaWduUmVzcG9uc2UiABJQCgNHZXQSIi55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkdldFJlcXVlc3QaIy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkdldFJlc3BvbnNlIgBCGFoWeWV5aW5nL2FwaS9jZXJ0aWZpY2F0ZWIGcHJvdG8z",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_certificate_certificate: GenFile = /*@__PURE__*/
+  fileDesc("Cih5ZXlpbmcvYXBpL2NlcnRpZmljYXRlL2NlcnRpZmljYXRlLnByb3RvEhZ5ZXlpbmcuYXBpLmNlcnRpZmljYXRlInYKC1NpZ25SZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuY2VydGlmaWNhdGUuU2lnblJlcXVlc3RCb2R5Ii4KD1NpZ25SZXF1ZXN0Qm9keRIOCgZkb21haW4YASABKAkSCwoDY3NyGAIgASgJIngKDFNpZ25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLlNpZ25SZXNwb25zZUJvZHkiLgoTQ2VydGlmaWNhdGVNZXRhZGF0YRILCgNjcnQYASABKAkSCgoCY2EYAiABKAkihwEKEFNpZ25SZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSQAoLY2VydGlmaWNhdGUYAiABKAsyKy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkNlcnRpZmljYXRlTWV0YWRhdGEiPgoKR2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyInYKC0dldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuY2VydGlmaWNhdGUuR2V0UmVzcG9uc2VCb2R5IoYBCg9HZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSQAoLY2VydGlmaWNhdGUYAiABKAsyKy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkNlcnRpZmljYXRlTWV0YWRhdGEytAEKC0NlcnRpZmljYXRlElMKBFNpZ24SIy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLlNpZ25SZXF1ZXN0GiQueWV5aW5nLmFwaS5jZXJ0aWZpY2F0ZS5TaWduUmVzcG9uc2UiABJQCgNHZXQSIi55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkdldFJlcXVlc3QaIy55ZXlpbmcuYXBpLmNlcnRpZmljYXRlLkdldFJlc3BvbnNlIgBCGFoWeWV5aW5nL2FwaS9jZXJ0aWZpY2F0ZWIGcHJvdG8z", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.certificate.SignRequest
@@ -65,25 +48,23 @@ export type SignRequestJson = {
  * Describes the message yeying.api.certificate.SignRequest.
  * Use `create(SignRequestSchema)` to create a new message.
  */
-export const SignRequestSchema: GenMessage<SignRequest, SignRequestJson> =
-  /*@__PURE__*/
+export const SignRequestSchema: GenMessage<SignRequest, SignRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_certificate_certificate, 0);
 
 /**
  * @generated from message yeying.api.certificate.SignRequestBody
  */
-export type SignRequestBody =
-  Message<"yeying.api.certificate.SignRequestBody"> & {
-    /**
-     * @generated from field: string domain = 1;
-     */
-    domain: string;
+export type SignRequestBody = Message<"yeying.api.certificate.SignRequestBody"> & {
+  /**
+   * @generated from field: string domain = 1;
+   */
+  domain: string;
 
-    /**
-     * @generated from field: string csr = 2;
-     */
-    csr: string;
-  };
+  /**
+   * @generated from field: string csr = 2;
+   */
+  csr: string;
+};
 
 /**
  * @generated from message yeying.api.certificate.SignRequestBody
@@ -104,10 +85,8 @@ export type SignRequestBodyJson = {
  * Describes the message yeying.api.certificate.SignRequestBody.
  * Use `create(SignRequestBodySchema)` to create a new message.
  */
-export const SignRequestBodySchema: GenMessage<
-  SignRequestBody,
-  SignRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_certificate_certificate, 1);
+export const SignRequestBodySchema: GenMessage<SignRequestBody, SignRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_certificate_certificate, 1);
 
 /**
  * @generated from message yeying.api.certificate.SignResponse
@@ -143,25 +122,23 @@ export type SignResponseJson = {
  * Describes the message yeying.api.certificate.SignResponse.
  * Use `create(SignResponseSchema)` to create a new message.
  */
-export const SignResponseSchema: GenMessage<SignResponse, SignResponseJson> =
-  /*@__PURE__*/
+export const SignResponseSchema: GenMessage<SignResponse, SignResponseJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_certificate_certificate, 2);
 
 /**
  * @generated from message yeying.api.certificate.CertificateMetadata
  */
-export type CertificateMetadata =
-  Message<"yeying.api.certificate.CertificateMetadata"> & {
-    /**
-     * @generated from field: string crt = 1;
-     */
-    crt: string;
+export type CertificateMetadata = Message<"yeying.api.certificate.CertificateMetadata"> & {
+  /**
+   * @generated from field: string crt = 1;
+   */
+  crt: string;
 
-    /**
-     * @generated from field: string ca = 2;
-     */
-    ca: string;
-  };
+  /**
+   * @generated from field: string ca = 2;
+   */
+  ca: string;
+};
 
 /**
  * @generated from message yeying.api.certificate.CertificateMetadata
@@ -182,26 +159,23 @@ export type CertificateMetadataJson = {
  * Describes the message yeying.api.certificate.CertificateMetadata.
  * Use `create(CertificateMetadataSchema)` to create a new message.
  */
-export const CertificateMetadataSchema: GenMessage<
-  CertificateMetadata,
-  CertificateMetadataJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_certificate_certificate, 3);
+export const CertificateMetadataSchema: GenMessage<CertificateMetadata, CertificateMetadataJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_certificate_certificate, 3);
 
 /**
  * @generated from message yeying.api.certificate.SignResponseBody
  */
-export type SignResponseBody =
-  Message<"yeying.api.certificate.SignResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SignResponseBody = Message<"yeying.api.certificate.SignResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.certificate.CertificateMetadata certificate = 2;
-     */
-    certificate?: CertificateMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.certificate.CertificateMetadata certificate = 2;
+   */
+  certificate?: CertificateMetadata;
+};
 
 /**
  * @generated from message yeying.api.certificate.SignResponseBody
@@ -222,10 +196,8 @@ export type SignResponseBodyJson = {
  * Describes the message yeying.api.certificate.SignResponseBody.
  * Use `create(SignResponseBodySchema)` to create a new message.
  */
-export const SignResponseBodySchema: GenMessage<
-  SignResponseBody,
-  SignResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_certificate_certificate, 4);
+export const SignResponseBodySchema: GenMessage<SignResponseBody, SignResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_certificate_certificate, 4);
 
 /**
  * @generated from message yeying.api.certificate.GetRequest
@@ -251,8 +223,7 @@ export type GetRequestJson = {
  * Describes the message yeying.api.certificate.GetRequest.
  * Use `create(GetRequestSchema)` to create a new message.
  */
-export const GetRequestSchema: GenMessage<GetRequest, GetRequestJson> =
-  /*@__PURE__*/
+export const GetRequestSchema: GenMessage<GetRequest, GetRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_certificate_certificate, 5);
 
 /**
@@ -289,25 +260,23 @@ export type GetResponseJson = {
  * Describes the message yeying.api.certificate.GetResponse.
  * Use `create(GetResponseSchema)` to create a new message.
  */
-export const GetResponseSchema: GenMessage<GetResponse, GetResponseJson> =
-  /*@__PURE__*/
+export const GetResponseSchema: GenMessage<GetResponse, GetResponseJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_certificate_certificate, 6);
 
 /**
  * @generated from message yeying.api.certificate.GetResponseBody
  */
-export type GetResponseBody =
-  Message<"yeying.api.certificate.GetResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type GetResponseBody = Message<"yeying.api.certificate.GetResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.certificate.CertificateMetadata certificate = 2;
-     */
-    certificate?: CertificateMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.certificate.CertificateMetadata certificate = 2;
+   */
+  certificate?: CertificateMetadata;
+};
 
 /**
  * @generated from message yeying.api.certificate.GetResponseBody
@@ -328,10 +297,8 @@ export type GetResponseBodyJson = {
  * Describes the message yeying.api.certificate.GetResponseBody.
  * Use `create(GetResponseBodySchema)` to create a new message.
  */
-export const GetResponseBodySchema: GenMessage<
-  GetResponseBody,
-  GetResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_certificate_certificate, 7);
+export const GetResponseBodySchema: GenMessage<GetResponseBody, GetResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_certificate_certificate, 7);
 
 /**
  * @generated from service yeying.api.certificate.Certificate
@@ -344,7 +311,7 @@ export const Certificate: GenService<{
     methodKind: "unary";
     input: typeof SignRequestSchema;
     output: typeof SignResponseSchema;
-  };
+  },
   /**
    * @generated from rpc yeying.api.certificate.Certificate.Get
    */
@@ -352,5 +319,7 @@ export const Certificate: GenService<{
     methodKind: "unary";
     input: typeof GetRequestSchema;
     output: typeof GetResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_certificate_certificate, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_certificate_certificate, 0);
+

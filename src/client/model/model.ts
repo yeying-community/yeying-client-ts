@@ -1,60 +1,34 @@
+import { AssetMetadata, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
+import { toBinary } from '@bufbuild/protobuf'
+import { DataTampering } from '../../common/error'
+import { Authenticate } from '../common/authenticate'
+import { ConfigMetadata, ConfigMetadataSchema } from '../../yeying/api/config/config_pb'
+import { NamespaceMetadata, NamespaceMetadataSchema } from '../../yeying/api/asset/namespace_pb'
+import { BlockMetadata, BlockMetadataSchema } from '../../yeying/api/asset/block_pb'
+import { UserMetadata, UserMetadataSchema, UserState, UserStateSchema } from '../../yeying/api/user/user_pb'
+import { InvitationMetadata, InvitationMetadataSchema } from '../../yeying/api/invitation/invitation_pb'
 import {
-  AssetMetadata,
-  AssetMetadataSchema,
-} from "../../yeying/api/asset/asset_pb";
-import { toBinary } from "@bufbuild/protobuf";
-import { DataTampering } from "../../common/error";
-import { Authenticate } from "../common/authenticate";
+    ProviderMetadata,
+    ProviderMetadataSchema,
+    ProviderState,
+    ProviderStateSchema
+} from '../../yeying/api/llm/provider_pb'
+import { SessionMetadata, SessionMetadataSchema } from '../../yeying/api/session/session_pb'
 import {
-  ConfigMetadata,
-  ConfigMetadataSchema,
-} from "../../yeying/api/config/config_pb";
+    LinkMetadata,
+    LinkMetadataSchema,
+    UrlMetadata,
+    UrlMetadataSchema,
+    VisitorMetadata,
+    VisitorMetadataSchema
+} from '../../yeying/api/asset/link_pb'
 import {
-  NamespaceMetadata,
-  NamespaceMetadataSchema,
-} from "../../yeying/api/asset/namespace_pb";
-import {
-  BlockMetadata,
-  BlockMetadataSchema,
-} from "../../yeying/api/asset/block_pb";
-import {
-  UserMetadata,
-  UserMetadataSchema,
-  UserState,
-  UserStateSchema,
-} from "../../yeying/api/user/user_pb";
-import {
-  InvitationMetadata,
-  InvitationMetadataSchema,
-} from "../../yeying/api/invitation/invitation_pb";
-import {
-  ProviderMetadata,
-  ProviderMetadataSchema,
-  ProviderState,
-  ProviderStateSchema,
-} from "../../yeying/api/llm/provider_pb";
-import {
-  SessionMetadata,
-  SessionMetadataSchema,
-} from "../../yeying/api/session/session_pb";
-import {
-  LinkMetadata,
-  LinkMetadataSchema,
-  UrlMetadata,
-  UrlMetadataSchema,
-  VisitorMetadata,
-  VisitorMetadataSchema,
-} from "../../yeying/api/asset/link_pb";
-import {
-  ApplicationMetadata,
-  ApplicationMetadataSchema,
-  ServiceMetadata,
-  ServiceMetadataSchema,
-} from "../../yeying/api/common/model_pb";
-import {
-  SolutionMetadata,
-  SolutionMetadataSchema,
-} from "../../yeying/api/bulletin/bulletin_pb";
+    ApplicationMetadata,
+    ApplicationMetadataSchema,
+    ServiceMetadata,
+    ServiceMetadataSchema
+} from '../../yeying/api/common/model_pb'
+import { SolutionMetadata, SolutionMetadataSchema } from '../../yeying/api/bulletin/bulletin_pb'
 
 /**
  * 对资产元数据进行签名，并更新元数据的`signature`字段。
@@ -65,14 +39,9 @@ import {
  * @returns 无返回
  *
  */
-export async function signAssetMetadata(
-  authenticate: Authenticate,
-  asset: AssetMetadata,
-) {
-  asset.signature = "";
-  asset.signature = await authenticate.sign(
-    toBinary(AssetMetadataSchema, asset),
-  );
+export async function signAssetMetadata(authenticate: Authenticate, asset: AssetMetadata) {
+    asset.signature = ''
+    asset.signature = await authenticate.sign(toBinary(AssetMetadataSchema, asset))
 }
 
 /**
@@ -86,25 +55,19 @@ export async function signAssetMetadata(
  *
  */
 export async function verifyAssetMetadata(asset?: AssetMetadata) {
-  if (asset === undefined) {
-    throw new DataTampering("empty asset.");
-  }
-
-  const signature = asset.signature;
-  try {
-    asset.signature = "";
-    if (
-      !(await Authenticate.verify(
-        asset.owner,
-        toBinary(AssetMetadataSchema, asset),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid asset.");
+    if (asset === undefined) {
+        throw new DataTampering('empty asset.')
     }
-  } finally {
-    asset.signature = signature;
-  }
+
+    const signature = asset.signature
+    try {
+        asset.signature = ''
+        if (!(await Authenticate.verify(asset.owner, toBinary(AssetMetadataSchema, asset), signature))) {
+            throw new DataTampering('invalid asset.')
+        }
+    } finally {
+        asset.signature = signature
+    }
 }
 
 /**
@@ -116,14 +79,9 @@ export async function verifyAssetMetadata(asset?: AssetMetadata) {
  * @returns 无返回
  *
  */
-export async function signConfigMetadata(
-  authenticate: Authenticate,
-  config: ConfigMetadata,
-) {
-  config.signature = "";
-  config.signature = await authenticate.sign(
-    toBinary(ConfigMetadataSchema, config),
-  );
+export async function signConfigMetadata(authenticate: Authenticate, config: ConfigMetadata) {
+    config.signature = ''
+    config.signature = await authenticate.sign(toBinary(ConfigMetadataSchema, config))
 }
 
 /**
@@ -137,25 +95,19 @@ export async function signConfigMetadata(
  *
  */
 export async function verifyConfigMetadata(config?: ConfigMetadata) {
-  if (config === undefined) {
-    throw new DataTampering("empty config");
-  }
-
-  const signature = config.signature;
-  try {
-    config.signature = "";
-    if (
-      !(await Authenticate.verify(
-        config.owner,
-        toBinary(ConfigMetadataSchema, config),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid config");
+    if (config === undefined) {
+        throw new DataTampering('empty config')
     }
-  } finally {
-    config.signature = signature;
-  }
+
+    const signature = config.signature
+    try {
+        config.signature = ''
+        if (!(await Authenticate.verify(config.owner, toBinary(ConfigMetadataSchema, config), signature))) {
+            throw new DataTampering('invalid config')
+        }
+    } finally {
+        config.signature = signature
+    }
 }
 
 /**
@@ -167,14 +119,9 @@ export async function verifyConfigMetadata(config?: ConfigMetadata) {
  * @returns 无返回
  *
  */
-export async function signNamespaceMetadata(
-  authenticate: Authenticate,
-  namespace: NamespaceMetadata,
-) {
-  namespace.signature = "";
-  namespace.signature = await authenticate.sign(
-    toBinary(NamespaceMetadataSchema, namespace),
-  );
+export async function signNamespaceMetadata(authenticate: Authenticate, namespace: NamespaceMetadata) {
+    namespace.signature = ''
+    namespace.signature = await authenticate.sign(toBinary(NamespaceMetadataSchema, namespace))
 }
 
 /**
@@ -188,25 +135,19 @@ export async function signNamespaceMetadata(
  *
  */
 export async function verifyNamespaceMetadata(namespace?: NamespaceMetadata) {
-  if (namespace === undefined) {
-    throw new DataTampering("empty namespace");
-  }
-
-  const signature = namespace.signature;
-  try {
-    namespace.signature = "";
-    if (
-      !(await Authenticate.verify(
-        namespace.owner,
-        toBinary(NamespaceMetadataSchema, namespace),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid namespace");
+    if (namespace === undefined) {
+        throw new DataTampering('empty namespace')
     }
-  } finally {
-    namespace.signature = signature;
-  }
+
+    const signature = namespace.signature
+    try {
+        namespace.signature = ''
+        if (!(await Authenticate.verify(namespace.owner, toBinary(NamespaceMetadataSchema, namespace), signature))) {
+            throw new DataTampering('invalid namespace')
+        }
+    } finally {
+        namespace.signature = signature
+    }
 }
 
 /**
@@ -217,13 +158,8 @@ export async function verifyNamespaceMetadata(namespace?: NamespaceMetadata) {
  *
  * @returns 无返回
  */
-export async function signBlockMetadata(
-  authenticate: Authenticate,
-  block: BlockMetadata,
-) {
-  block.signature = await authenticate.sign(
-    toBinary(BlockMetadataSchema, block),
-  );
+export async function signBlockMetadata(authenticate: Authenticate, block: BlockMetadata) {
+    block.signature = await authenticate.sign(toBinary(BlockMetadataSchema, block))
 }
 
 /**
@@ -237,25 +173,19 @@ export async function signBlockMetadata(
  *
  */
 export async function verifyBlockMetadata(block?: BlockMetadata) {
-  if (block === undefined) {
-    throw new DataTampering("empty block");
-  }
-
-  const signature = block.signature;
-  try {
-    block.signature = "";
-    if (
-      !(await Authenticate.verify(
-        block.owner,
-        toBinary(BlockMetadataSchema, block),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid block");
+    if (block === undefined) {
+        throw new DataTampering('empty block')
     }
-  } finally {
-    block.signature = signature;
-  }
+
+    const signature = block.signature
+    try {
+        block.signature = ''
+        if (!(await Authenticate.verify(block.owner, toBinary(BlockMetadataSchema, block), signature))) {
+            throw new DataTampering('invalid block')
+        }
+    } finally {
+        block.signature = signature
+    }
 }
 
 /**
@@ -266,12 +196,9 @@ export async function verifyBlockMetadata(block?: BlockMetadata) {
  *
  * @returns 无返回
  */
-export async function signUserMetadata(
-  authenticate: Authenticate,
-  user: UserMetadata,
-) {
-  user.signature = "";
-  user.signature = await authenticate.sign(toBinary(UserMetadataSchema, user));
+export async function signUserMetadata(authenticate: Authenticate, user: UserMetadata) {
+    user.signature = ''
+    user.signature = await authenticate.sign(toBinary(UserMetadataSchema, user))
 }
 
 /**
@@ -284,25 +211,19 @@ export async function signUserMetadata(
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyUserMetadata(user?: UserMetadata) {
-  if (user === undefined) {
-    throw new DataTampering("empty user.");
-  }
-
-  const signature = user.signature;
-  try {
-    user.signature = "";
-    if (
-      !(await Authenticate.verify(
-        user.did,
-        toBinary(UserMetadataSchema, user),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid user.");
+    if (user === undefined) {
+        throw new DataTampering('empty user.')
     }
-  } finally {
-    user.signature = signature;
-  }
+
+    const signature = user.signature
+    try {
+        user.signature = ''
+        if (!(await Authenticate.verify(user.did, toBinary(UserMetadataSchema, user), signature))) {
+            throw new DataTampering('invalid user.')
+        }
+    } finally {
+        user.signature = signature
+    }
 }
 
 /**
@@ -315,25 +236,19 @@ export async function verifyUserMetadata(user?: UserMetadata) {
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyUserState(state?: UserState) {
-  if (state === undefined) {
-    throw new DataTampering("empty user state.");
-  }
-
-  const signature = state.signature;
-  try {
-    state.signature = "";
-    if (
-      !(await Authenticate.verify(
-        state.owner,
-        toBinary(UserStateSchema, state),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid user state.");
+    if (state === undefined) {
+        throw new DataTampering('empty user state.')
     }
-  } finally {
-    state.signature = signature;
-  }
+
+    const signature = state.signature
+    try {
+        state.signature = ''
+        if (!(await Authenticate.verify(state.owner, toBinary(UserStateSchema, state), signature))) {
+            throw new DataTampering('invalid user state.')
+        }
+    } finally {
+        state.signature = signature
+    }
 }
 
 /**
@@ -344,14 +259,9 @@ export async function verifyUserState(state?: UserState) {
  *
  * @returns 无返回
  */
-export async function signInvitationMetadata(
-  authenticate: Authenticate,
-  invitation: InvitationMetadata,
-) {
-  invitation.signature = "";
-  invitation.signature = await authenticate.sign(
-    toBinary(InvitationMetadataSchema, invitation),
-  );
+export async function signInvitationMetadata(authenticate: Authenticate, invitation: InvitationMetadata) {
+    invitation.signature = ''
+    invitation.signature = await authenticate.sign(toBinary(InvitationMetadataSchema, invitation))
 }
 
 /**
@@ -363,28 +273,22 @@ export async function signInvitationMetadata(
  *
  * @throws DataTampering 元数据被篡改
  */
-export async function verifyInvitationMetadata(
-  invitation?: InvitationMetadata,
-) {
-  if (invitation === undefined) {
-    throw new DataTampering("empty invitation.");
-  }
-
-  const signature = invitation.signature;
-  try {
-    invitation.signature = "";
-    if (
-      !(await Authenticate.verify(
-        invitation.inviter,
-        toBinary(InvitationMetadataSchema, invitation),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid invitation.");
+export async function verifyInvitationMetadata(invitation?: InvitationMetadata) {
+    if (invitation === undefined) {
+        throw new DataTampering('empty invitation.')
     }
-  } finally {
-    invitation.signature = signature;
-  }
+
+    const signature = invitation.signature
+    try {
+        invitation.signature = ''
+        if (
+            !(await Authenticate.verify(invitation.inviter, toBinary(InvitationMetadataSchema, invitation), signature))
+        ) {
+            throw new DataTampering('invalid invitation.')
+        }
+    } finally {
+        invitation.signature = signature
+    }
 }
 
 /**
@@ -395,14 +299,9 @@ export async function verifyInvitationMetadata(
  *
  * @returns 无返回
  */
-export async function signProviderMetadata(
-  authenticate: Authenticate,
-  provider: ProviderMetadata,
-) {
-  provider.signature = "";
-  provider.signature = await authenticate.sign(
-    toBinary(ProviderMetadataSchema, provider),
-  );
+export async function signProviderMetadata(authenticate: Authenticate, provider: ProviderMetadata) {
+    provider.signature = ''
+    provider.signature = await authenticate.sign(toBinary(ProviderMetadataSchema, provider))
 }
 
 /**
@@ -415,25 +314,19 @@ export async function signProviderMetadata(
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyProviderMetadata(provider?: ProviderMetadata) {
-  if (provider === undefined) {
-    throw new DataTampering("empty provider.");
-  }
-
-  const signature = provider.signature;
-  try {
-    provider.signature = "";
-    if (
-      !(await Authenticate.verify(
-        provider.owner,
-        toBinary(ProviderMetadataSchema, provider),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid provider.");
+    if (provider === undefined) {
+        throw new DataTampering('empty provider.')
     }
-  } finally {
-    provider.signature = signature;
-  }
+
+    const signature = provider.signature
+    try {
+        provider.signature = ''
+        if (!(await Authenticate.verify(provider.owner, toBinary(ProviderMetadataSchema, provider), signature))) {
+            throw new DataTampering('invalid provider.')
+        }
+    } finally {
+        provider.signature = signature
+    }
 }
 
 /**
@@ -446,25 +339,19 @@ export async function verifyProviderMetadata(provider?: ProviderMetadata) {
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyProviderState(state?: ProviderState) {
-  if (state === undefined) {
-    throw new DataTampering("empty provider state.");
-  }
-
-  const signature = state.signature;
-  try {
-    state.signature = "";
-    if (
-      !(await Authenticate.verify(
-        state.serviceDid,
-        toBinary(ProviderStateSchema, state),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid provider state.");
+    if (state === undefined) {
+        throw new DataTampering('empty provider state.')
     }
-  } finally {
-    state.signature = signature;
-  }
+
+    const signature = state.signature
+    try {
+        state.signature = ''
+        if (!(await Authenticate.verify(state.serviceDid, toBinary(ProviderStateSchema, state), signature))) {
+            throw new DataTampering('invalid provider state.')
+        }
+    } finally {
+        state.signature = signature
+    }
 }
 
 /**
@@ -475,14 +362,9 @@ export async function verifyProviderState(state?: ProviderState) {
  *
  * @returns 无返回
  */
-export async function signSessionMetadata(
-  authenticate: Authenticate,
-  provider: SessionMetadata,
-) {
-  provider.signature = "";
-  provider.signature = await authenticate.sign(
-    toBinary(SessionMetadataSchema, provider),
-  );
+export async function signSessionMetadata(authenticate: Authenticate, provider: SessionMetadata) {
+    provider.signature = ''
+    provider.signature = await authenticate.sign(toBinary(SessionMetadataSchema, provider))
 }
 
 /**
@@ -495,25 +377,19 @@ export async function signSessionMetadata(
  * @throws DataTampering 元数据被篡改
  */
 export async function verifySessionMetadata(session?: SessionMetadata) {
-  if (session === undefined) {
-    throw new DataTampering("empty session.");
-  }
-
-  const signature = session.signature;
-  try {
-    session.signature = "";
-    if (
-      !(await Authenticate.verify(
-        session.owner,
-        toBinary(SessionMetadataSchema, session),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid session.");
+    if (session === undefined) {
+        throw new DataTampering('empty session.')
     }
-  } finally {
-    session.signature = signature;
-  }
+
+    const signature = session.signature
+    try {
+        session.signature = ''
+        if (!(await Authenticate.verify(session.owner, toBinary(SessionMetadataSchema, session), signature))) {
+            throw new DataTampering('invalid session.')
+        }
+    } finally {
+        session.signature = signature
+    }
 }
 
 /**
@@ -524,12 +400,9 @@ export async function verifySessionMetadata(session?: SessionMetadata) {
  *
  * @returns 无返回
  */
-export async function signLinkMetadata(
-  authenticate: Authenticate,
-  link: LinkMetadata,
-) {
-  link.signature = "";
-  link.signature = await authenticate.sign(toBinary(LinkMetadataSchema, link));
+export async function signLinkMetadata(authenticate: Authenticate, link: LinkMetadata) {
+    link.signature = ''
+    link.signature = await authenticate.sign(toBinary(LinkMetadataSchema, link))
 }
 
 /**
@@ -542,25 +415,19 @@ export async function signLinkMetadata(
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyLinkMetadata(link?: LinkMetadata) {
-  if (link === undefined) {
-    throw new DataTampering("empty link.");
-  }
-
-  const signature = link.signature;
-  try {
-    link.signature = "";
-    if (
-      !(await Authenticate.verify(
-        link.owner,
-        toBinary(LinkMetadataSchema, link),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid link.");
+    if (link === undefined) {
+        throw new DataTampering('empty link.')
     }
-  } finally {
-    link.signature = signature;
-  }
+
+    const signature = link.signature
+    try {
+        link.signature = ''
+        if (!(await Authenticate.verify(link.owner, toBinary(LinkMetadataSchema, link), signature))) {
+            throw new DataTampering('invalid link.')
+        }
+    } finally {
+        link.signature = signature
+    }
 }
 
 /**
@@ -573,47 +440,35 @@ export async function verifyLinkMetadata(link?: LinkMetadata) {
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyUrlMetadata(url?: UrlMetadata) {
-  if (url === undefined) {
-    throw new DataTampering("empty url.");
-  }
-
-  const signature = url.signature;
-  try {
-    url.signature = "";
-    if (
-      !(await Authenticate.verify(
-        url.serviceDid,
-        toBinary(UrlMetadataSchema, url),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid url.");
+    if (url === undefined) {
+        throw new DataTampering('empty url.')
     }
-  } finally {
-    url.signature = signature;
-  }
+
+    const signature = url.signature
+    try {
+        url.signature = ''
+        if (!(await Authenticate.verify(url.serviceDid, toBinary(UrlMetadataSchema, url), signature))) {
+            throw new DataTampering('invalid url.')
+        }
+    } finally {
+        url.signature = signature
+    }
 }
 
 export async function verifyVisitorMetadata(visitor?: VisitorMetadata) {
-  if (visitor === undefined) {
-    throw new DataTampering("empty visitor.");
-  }
-
-  const signature = visitor.signature;
-  try {
-    visitor.signature = "";
-    if (
-      !(await Authenticate.verify(
-        visitor.did,
-        toBinary(VisitorMetadataSchema, visitor),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid visitor.");
+    if (visitor === undefined) {
+        throw new DataTampering('empty visitor.')
     }
-  } finally {
-    visitor.signature = signature;
-  }
+
+    const signature = visitor.signature
+    try {
+        visitor.signature = ''
+        if (!(await Authenticate.verify(visitor.did, toBinary(VisitorMetadataSchema, visitor), signature))) {
+            throw new DataTampering('invalid visitor.')
+        }
+    } finally {
+        visitor.signature = signature
+    }
 }
 
 /**
@@ -624,14 +479,9 @@ export async function verifyVisitorMetadata(visitor?: VisitorMetadata) {
  *
  * @returns 无返回
  */
-export async function signApplicationMetadata(
-  authenticate: Authenticate,
-  application: ApplicationMetadata,
-) {
-  application.signature = "";
-  application.signature = await authenticate.sign(
-    toBinary(ApplicationMetadataSchema, application),
-  );
+export async function signApplicationMetadata(authenticate: Authenticate, application: ApplicationMetadata) {
+    application.signature = ''
+    application.signature = await authenticate.sign(toBinary(ApplicationMetadataSchema, application))
 }
 
 /**
@@ -643,28 +493,22 @@ export async function signApplicationMetadata(
  *
  * @throws DataTampering 元数据被篡改
  */
-export async function verifyApplicationMetadata(
-  application?: ApplicationMetadata,
-) {
-  if (application === undefined) {
-    throw new DataTampering("empty application.");
-  }
-
-  const signature = application.signature;
-  try {
-    application.signature = "";
-    if (
-      !(await Authenticate.verify(
-        application.did,
-        toBinary(ApplicationMetadataSchema, application),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid application.");
+export async function verifyApplicationMetadata(application?: ApplicationMetadata) {
+    if (application === undefined) {
+        throw new DataTampering('empty application.')
     }
-  } finally {
-    application.signature = signature;
-  }
+
+    const signature = application.signature
+    try {
+        application.signature = ''
+        if (
+            !(await Authenticate.verify(application.did, toBinary(ApplicationMetadataSchema, application), signature))
+        ) {
+            throw new DataTampering('invalid application.')
+        }
+    } finally {
+        application.signature = signature
+    }
 }
 
 /**
@@ -675,14 +519,9 @@ export async function verifyApplicationMetadata(
  *
  * @returns 无返回
  */
-export async function signServiceMetadata(
-  authenticate: Authenticate,
-  service: ServiceMetadata,
-) {
-  service.signature = "";
-  service.signature = await authenticate.sign(
-    toBinary(ServiceMetadataSchema, service),
-  );
+export async function signServiceMetadata(authenticate: Authenticate, service: ServiceMetadata) {
+    service.signature = ''
+    service.signature = await authenticate.sign(toBinary(ServiceMetadataSchema, service))
 }
 
 /**
@@ -695,45 +534,33 @@ export async function signServiceMetadata(
  * @throws DataTampering 元数据被篡改
  */
 export async function verifyServiceMetadata(service?: ServiceMetadata) {
-  if (service === undefined) {
-    throw new DataTampering("empty service.");
-  }
-
-  const signature = service.signature;
-  try {
-    service.signature = "";
-    if (
-      !(await Authenticate.verify(
-        service.did,
-        toBinary(ServiceMetadataSchema, service),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid service.");
+    if (service === undefined) {
+        throw new DataTampering('empty service.')
     }
-  } finally {
-    service.signature = signature;
-  }
+
+    const signature = service.signature
+    try {
+        service.signature = ''
+        if (!(await Authenticate.verify(service.did, toBinary(ServiceMetadataSchema, service), signature))) {
+            throw new DataTampering('invalid service.')
+        }
+    } finally {
+        service.signature = signature
+    }
 }
 
 export async function verifySolutionMetadata(solution?: SolutionMetadata) {
-  if (solution === undefined) {
-    throw new DataTampering("empty solution.");
-  }
-
-  const signature = solution.signature;
-  try {
-    solution.signature = "";
-    if (
-      !(await Authenticate.verify(
-        solution.publisher,
-        toBinary(SolutionMetadataSchema, solution),
-        signature,
-      ))
-    ) {
-      throw new DataTampering("invalid solution.");
+    if (solution === undefined) {
+        throw new DataTampering('empty solution.')
     }
-  } finally {
-    solution.signature = signature;
-  }
+
+    const signature = solution.signature
+    try {
+        solution.signature = ''
+        if (!(await Authenticate.verify(solution.publisher, toBinary(SolutionMetadataSchema, solution), signature))) {
+            throw new DataTampering('invalid solution.')
+        }
+    } finally {
+        solution.signature = signature
+    }
 }

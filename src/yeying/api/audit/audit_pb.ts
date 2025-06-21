@@ -2,26 +2,9 @@
 // @generated from file yeying/api/audit/audit.proto (package yeying.api.audit, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  RequestPage,
-  RequestPageJson,
-  ResponsePage,
-  ResponsePageJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponsePage, ResponsePageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { AuditTypeEnum, AuditTypeEnumJson } from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
@@ -31,16 +14,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file yeying/api/audit/audit.proto.
  */
-export const file_yeying_api_audit_audit: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Chx5ZXlpbmcvYXBpL2F1ZGl0L2F1ZGl0LnByb3RvEhB5ZXlpbmcuYXBpLmF1ZGl0IuUBCgtBdWRpdFN0YXR1cxIyCgdwZW5kaW5nGAEgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5QZW5kaW5nU3RhdHVzSAASNAoIY2FuY2VsZWQYAiABKAsyIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbGVkU3RhdHVzSAASMAoGcGFzc2VkGAMgASgLMh4ueWV5aW5nLmFwaS5hdWRpdC5QYXNzZWRTdGF0dXNIABIwCgZyZWplY3QYBCABKAsyHi55ZXlpbmcuYXBpLmF1ZGl0LlJlamVjdFN0YXR1c0gAQggKBnN0YXR1cyIdCg1QZW5kaW5nU3RhdHVzEgwKBHRleHQYAiABKAkiHgoOQ2FuY2VsZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxQYXNzZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxSZWplY3RTdGF0dXMSDAoEdGV4dBgCIAEoCSJ0Cg1DcmVhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlUmVxdWVzdEJvZHkiQgoRQ3JlYXRlUmVxdWVzdEJvZHkSLQoEbWV0YRgBIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ2Cg5DcmVhdGVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZVJlc3BvbnNlQm9keSJ2ChJDcmVhdGVSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLQoEbWV0YRgCIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ0Cg1EZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdEJvZHkiIAoRRGV0YWlsUmVxdWVzdEJvZHkSCwoDdWlkGAEgASgJInYKDkRldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMgoEYm9keRgCIAEoCzIkLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2VCb2R5InYKEkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhInQKDUNhbmNlbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXF1ZXN0Qm9keSIgChFDYW5jZWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkidgoOQ2FuY2VsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXNwb25zZUJvZHkidgoSQ2FuY2VsUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi0KBG1ldGEYAiABKAsyHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TWV0YWRhdGEidAoNVW5iaW5kUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlcXVlc3RCb2R5IiAKEVVuYmluZFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSJ2Cg5VbmJpbmRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlc3BvbnNlQm9keSJHChJVbmJpbmRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMicgoMQXVkaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMAoEYm9keRgCIAEoCzIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRSZXF1ZXN0Qm9keSJOChBBdWRpdFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCRItCgZzdGF0dXMYAiABKAsyHS55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U3RhdHVzInQKDUF1ZGl0UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlc3BvbnNlQm9keSJ1ChFBdWRpdFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhIoYBChZDcmVhdGVBdWRpdExpc3RSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlQXVkaXRMaXN0UmVxdWVzdEJvZHkihQEKGkNyZWF0ZUF1ZGl0TGlzdFJlcXVlc3RCb2R5EjkKCWNvbmRpdGlvbhgBIAEoCzImLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTZWFyY2hDb25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIogBChdDcmVhdGVBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZUF1ZGl0TGlzdFJlc3BvbnNlQm9keSKwAQobQ3JlYXRlQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlInoKEEF1ZGl0TGlzdFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hdWRpdC5BdWRpdExpc3RSZXF1ZXN0Qm9keSJ/ChRBdWRpdExpc3RSZXF1ZXN0Qm9keRI5Cgljb25kaXRpb24YASABKAsyJi55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U2VhcmNoQ29uZGl0aW9uEiwKBHBhZ2UYAiABKAsyHi55ZXlpbmcuYXBpLmNvbW1vbi5SZXF1ZXN0UGFnZSJ8ChFBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TGlzdFJlc3BvbnNlQm9keSKqAQoVQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlIp4BChRBdWRpdFNlYXJjaENvbmRpdGlvbhIRCglzb3VyY2VEaWQYASABKAkSDAoEbmFtZRgCIAEoCRIRCglzdGFydFRpbWUYAyABKAkSDwoHZW5kVGltZRgEIAEoCRIuCgR0eXBlGAUgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bRIRCgl0YXJnZXREaWQYBiABKAkikAIKDUF1ZGl0TWV0YWRhdGESCwoDdWlkGAEgASgJEg8KB2FwcE5hbWUYAiABKAkSEQoJc291cmNlRGlkGAMgASgJEhIKCnNvdXJjZU5hbWUYBCABKAkSEQoJdGFyZ2V0RGlkGAUgASgJEhIKCnRhcmdldE5hbWUYBiABKAkSDgoGcmVhc29uGAcgASgJEi0KBnN0YXR1cxgIIAEoCzIdLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTdGF0dXMSEQoJY3JlYXRlZEF0GAkgASgJEhEKCXVwZGF0ZWRBdBgKIAEoCRIuCgR0eXBlGAsgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bTLMBAoFQXVkaXQSTQoGQ3JlYXRlEh8ueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXNwb25zZSIAEk0KBkRldGFpbBIfLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdBogLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2UiABJNCgZDYW5jZWwSHy55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlcXVlc3QaIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlc3BvbnNlIgASTQoGVW5iaW5kEh8ueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXNwb25zZSIAEkoKBUF1ZGl0Eh4ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlcXVlc3QaHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0UmVzcG9uc2UiABJjCgpDcmVhdGVMaXN0EigueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXF1ZXN0GikueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXNwb25zZSIAElYKCUF1ZGl0TGlzdBIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVxdWVzdBojLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2F1ZGl0YgZwcm90bzM",
-    [
-      file_yeying_api_common_message,
-      file_yeying_api_common_code,
-      file_yeying_api_common_model,
-    ],
-  );
+export const file_yeying_api_audit_audit: GenFile = /*@__PURE__*/
+  fileDesc("Chx5ZXlpbmcvYXBpL2F1ZGl0L2F1ZGl0LnByb3RvEhB5ZXlpbmcuYXBpLmF1ZGl0IuUBCgtBdWRpdFN0YXR1cxIyCgdwZW5kaW5nGAEgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5QZW5kaW5nU3RhdHVzSAASNAoIY2FuY2VsZWQYAiABKAsyIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbGVkU3RhdHVzSAASMAoGcGFzc2VkGAMgASgLMh4ueWV5aW5nLmFwaS5hdWRpdC5QYXNzZWRTdGF0dXNIABIwCgZyZWplY3QYBCABKAsyHi55ZXlpbmcuYXBpLmF1ZGl0LlJlamVjdFN0YXR1c0gAQggKBnN0YXR1cyIdCg1QZW5kaW5nU3RhdHVzEgwKBHRleHQYAiABKAkiHgoOQ2FuY2VsZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxQYXNzZWRTdGF0dXMSDAoEdGV4dBgCIAEoCSIcCgxSZWplY3RTdGF0dXMSDAoEdGV4dBgCIAEoCSJ0Cg1DcmVhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlUmVxdWVzdEJvZHkiQgoRQ3JlYXRlUmVxdWVzdEJvZHkSLQoEbWV0YRgBIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ2Cg5DcmVhdGVSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZVJlc3BvbnNlQm9keSJ2ChJDcmVhdGVSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLQoEbWV0YRgCIAEoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YSJ0Cg1EZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdEJvZHkiIAoRRGV0YWlsUmVxdWVzdEJvZHkSCwoDdWlkGAEgASgJInYKDkRldGFpbFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMgoEYm9keRgCIAEoCzIkLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2VCb2R5InYKEkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhInQKDUNhbmNlbFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXF1ZXN0Qm9keSIgChFDYW5jZWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkidgoOQ2FuY2VsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIyCgRib2R5GAIgASgLMiQueWV5aW5nLmFwaS5hdWRpdC5DYW5jZWxSZXNwb25zZUJvZHkidgoSQ2FuY2VsUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi0KBG1ldGEYAiABKAsyHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TWV0YWRhdGEidAoNVW5iaW5kUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlcXVlc3RCb2R5IiAKEVVuYmluZFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSJ2Cg5VbmJpbmRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjIKBGJvZHkYAiABKAsyJC55ZXlpbmcuYXBpLmF1ZGl0LlVuYmluZFJlc3BvbnNlQm9keSJHChJVbmJpbmRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMicgoMQXVkaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMAoEYm9keRgCIAEoCzIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRSZXF1ZXN0Qm9keSJOChBBdWRpdFJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCRItCgZzdGF0dXMYAiABKAsyHS55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U3RhdHVzInQKDUF1ZGl0UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchIxCgRib2R5GAIgASgLMiMueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlc3BvbnNlQm9keSJ1ChFBdWRpdFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgRtZXRhGAIgASgLMh8ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdE1ldGFkYXRhIoYBChZDcmVhdGVBdWRpdExpc3RSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuYXVkaXQuQ3JlYXRlQXVkaXRMaXN0UmVxdWVzdEJvZHkihQEKGkNyZWF0ZUF1ZGl0TGlzdFJlcXVlc3RCb2R5EjkKCWNvbmRpdGlvbhgBIAEoCzImLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTZWFyY2hDb25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIogBChdDcmVhdGVBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLmF1ZGl0LkNyZWF0ZUF1ZGl0TGlzdFJlc3BvbnNlQm9keSKwAQobQ3JlYXRlQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlInoKEEF1ZGl0TGlzdFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hdWRpdC5BdWRpdExpc3RSZXF1ZXN0Qm9keSJ/ChRBdWRpdExpc3RSZXF1ZXN0Qm9keRI5Cgljb25kaXRpb24YASABKAsyJi55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0U2VhcmNoQ29uZGl0aW9uEiwKBHBhZ2UYAiABKAsyHi55ZXlpbmcuYXBpLmNvbW1vbi5SZXF1ZXN0UGFnZSJ8ChFBdWRpdExpc3RSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0TGlzdFJlc3BvbnNlQm9keSKqAQoVQXVkaXRMaXN0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEi8KBmF1ZGl0cxgCIAMoCzIfLnlleWluZy5hcGkuYXVkaXQuQXVkaXRNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlIp4BChRBdWRpdFNlYXJjaENvbmRpdGlvbhIRCglzb3VyY2VEaWQYASABKAkSDAoEbmFtZRgCIAEoCRIRCglzdGFydFRpbWUYAyABKAkSDwoHZW5kVGltZRgEIAEoCRIuCgR0eXBlGAUgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bRIRCgl0YXJnZXREaWQYBiABKAkikAIKDUF1ZGl0TWV0YWRhdGESCwoDdWlkGAEgASgJEg8KB2FwcE5hbWUYAiABKAkSEQoJc291cmNlRGlkGAMgASgJEhIKCnNvdXJjZU5hbWUYBCABKAkSEQoJdGFyZ2V0RGlkGAUgASgJEhIKCnRhcmdldE5hbWUYBiABKAkSDgoGcmVhc29uGAcgASgJEi0KBnN0YXR1cxgIIAEoCzIdLnlleWluZy5hcGkuYXVkaXQuQXVkaXRTdGF0dXMSEQoJY3JlYXRlZEF0GAkgASgJEhEKCXVwZGF0ZWRBdBgKIAEoCRIuCgR0eXBlGAsgASgOMiAueWV5aW5nLmFwaS5jb21tb24uQXVkaXRUeXBlRW51bTLMBAoFQXVkaXQSTQoGQ3JlYXRlEh8ueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVSZXNwb25zZSIAEk0KBkRldGFpbBIfLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVxdWVzdBogLnlleWluZy5hcGkuYXVkaXQuRGV0YWlsUmVzcG9uc2UiABJNCgZDYW5jZWwSHy55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlcXVlc3QaIC55ZXlpbmcuYXBpLmF1ZGl0LkNhbmNlbFJlc3BvbnNlIgASTQoGVW5iaW5kEh8ueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXF1ZXN0GiAueWV5aW5nLmFwaS5hdWRpdC5VbmJpbmRSZXNwb25zZSIAEkoKBUF1ZGl0Eh4ueWV5aW5nLmFwaS5hdWRpdC5BdWRpdFJlcXVlc3QaHy55ZXlpbmcuYXBpLmF1ZGl0LkF1ZGl0UmVzcG9uc2UiABJjCgpDcmVhdGVMaXN0EigueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXF1ZXN0GikueWV5aW5nLmFwaS5hdWRpdC5DcmVhdGVBdWRpdExpc3RSZXNwb25zZSIAElYKCUF1ZGl0TGlzdBIiLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVxdWVzdBojLnlleWluZy5hcGkuYXVkaXQuQXVkaXRMaXN0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2F1ZGl0YgZwcm90bzM", [file_yeying_api_common_message, file_yeying_api_common_code, file_yeying_api_common_model]);
 
 /**
  * *
@@ -52,48 +27,43 @@ export type AuditStatus = Message<"yeying.api.audit.AuditStatus"> & {
   /**
    * @generated from oneof yeying.api.audit.AuditStatus.status
    */
-  status:
-    | {
-        /**
-         * *
-         * 申请中
-         *
-         * @generated from field: yeying.api.audit.PendingStatus pending = 1;
-         */
-        value: PendingStatus;
-        case: "pending";
-      }
-    | {
-        /**
-         * *
-         * 已取消
-         *
-         * @generated from field: yeying.api.audit.CanceledStatus canceled = 2;
-         */
-        value: CanceledStatus;
-        case: "canceled";
-      }
-    | {
-        /**
-         * *
-         * 申请通过
-         *
-         * @generated from field: yeying.api.audit.PassedStatus passed = 3;
-         */
-        value: PassedStatus;
-        case: "passed";
-      }
-    | {
-        /**
-         * *
-         * 申请驳回
-         *
-         * @generated from field: yeying.api.audit.RejectStatus reject = 4;
-         */
-        value: RejectStatus;
-        case: "reject";
-      }
-    | { case: undefined; value?: undefined };
+  status: {
+    /**
+     * *
+     * 申请中
+     *
+     * @generated from field: yeying.api.audit.PendingStatus pending = 1;
+     */
+    value: PendingStatus;
+    case: "pending";
+  } | {
+    /**
+     * *
+     * 已取消
+     *
+     * @generated from field: yeying.api.audit.CanceledStatus canceled = 2;
+     */
+    value: CanceledStatus;
+    case: "canceled";
+  } | {
+    /**
+     * *
+     * 申请通过
+     *
+     * @generated from field: yeying.api.audit.PassedStatus passed = 3;
+     */
+    value: PassedStatus;
+    case: "passed";
+  } | {
+    /**
+     * *
+     * 申请驳回
+     *
+     * @generated from field: yeying.api.audit.RejectStatus reject = 4;
+     */
+    value: RejectStatus;
+    case: "reject";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
@@ -140,8 +110,7 @@ export type AuditStatusJson = {
  * Describes the message yeying.api.audit.AuditStatus.
  * Use `create(AuditStatusSchema)` to create a new message.
  */
-export const AuditStatusSchema: GenMessage<AuditStatus, AuditStatusJson> =
-  /*@__PURE__*/
+export const AuditStatusSchema: GenMessage<AuditStatus, AuditStatusJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 0);
 
 /**
@@ -168,8 +137,7 @@ export type PendingStatusJson = {
  * Describes the message yeying.api.audit.PendingStatus.
  * Use `create(PendingStatusSchema)` to create a new message.
  */
-export const PendingStatusSchema: GenMessage<PendingStatus, PendingStatusJson> =
-  /*@__PURE__*/
+export const PendingStatusSchema: GenMessage<PendingStatus, PendingStatusJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 1);
 
 /**
@@ -196,10 +164,8 @@ export type CanceledStatusJson = {
  * Describes the message yeying.api.audit.CanceledStatus.
  * Use `create(CanceledStatusSchema)` to create a new message.
  */
-export const CanceledStatusSchema: GenMessage<
-  CanceledStatus,
-  CanceledStatusJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 2);
+export const CanceledStatusSchema: GenMessage<CanceledStatus, CanceledStatusJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 2);
 
 /**
  * @generated from message yeying.api.audit.PassedStatus
@@ -225,8 +191,7 @@ export type PassedStatusJson = {
  * Describes the message yeying.api.audit.PassedStatus.
  * Use `create(PassedStatusSchema)` to create a new message.
  */
-export const PassedStatusSchema: GenMessage<PassedStatus, PassedStatusJson> =
-  /*@__PURE__*/
+export const PassedStatusSchema: GenMessage<PassedStatus, PassedStatusJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 3);
 
 /**
@@ -253,8 +218,7 @@ export type RejectStatusJson = {
  * Describes the message yeying.api.audit.RejectStatus.
  * Use `create(RejectStatusSchema)` to create a new message.
  */
-export const RejectStatusSchema: GenMessage<RejectStatus, RejectStatusJson> =
-  /*@__PURE__*/
+export const RejectStatusSchema: GenMessage<RejectStatus, RejectStatusJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 4);
 
 /**
@@ -291,20 +255,18 @@ export type CreateRequestJson = {
  * Describes the message yeying.api.audit.CreateRequest.
  * Use `create(CreateRequestSchema)` to create a new message.
  */
-export const CreateRequestSchema: GenMessage<CreateRequest, CreateRequestJson> =
-  /*@__PURE__*/
+export const CreateRequestSchema: GenMessage<CreateRequest, CreateRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 5);
 
 /**
  * @generated from message yeying.api.audit.CreateRequestBody
  */
-export type CreateRequestBody =
-  Message<"yeying.api.audit.CreateRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.audit.AuditMetadata meta = 1;
-     */
-    meta?: AuditMetadata;
-  };
+export type CreateRequestBody = Message<"yeying.api.audit.CreateRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.audit.AuditMetadata meta = 1;
+   */
+  meta?: AuditMetadata;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateRequestBody
@@ -320,10 +282,8 @@ export type CreateRequestBodyJson = {
  * Describes the message yeying.api.audit.CreateRequestBody.
  * Use `create(CreateRequestBodySchema)` to create a new message.
  */
-export const CreateRequestBodySchema: GenMessage<
-  CreateRequestBody,
-  CreateRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 6);
+export const CreateRequestBodySchema: GenMessage<CreateRequestBody, CreateRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 6);
 
 /**
  * @generated from message yeying.api.audit.CreateResponse
@@ -359,26 +319,23 @@ export type CreateResponseJson = {
  * Describes the message yeying.api.audit.CreateResponse.
  * Use `create(CreateResponseSchema)` to create a new message.
  */
-export const CreateResponseSchema: GenMessage<
-  CreateResponse,
-  CreateResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 7);
+export const CreateResponseSchema: GenMessage<CreateResponse, CreateResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 7);
 
 /**
  * @generated from message yeying.api.audit.CreateResponseBody
  */
-export type CreateResponseBody =
-  Message<"yeying.api.audit.CreateResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type CreateResponseBody = Message<"yeying.api.audit.CreateResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
-     */
-    meta?: AuditMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
+   */
+  meta?: AuditMetadata;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateResponseBody
@@ -399,10 +356,8 @@ export type CreateResponseBodyJson = {
  * Describes the message yeying.api.audit.CreateResponseBody.
  * Use `create(CreateResponseBodySchema)` to create a new message.
  */
-export const CreateResponseBodySchema: GenMessage<
-  CreateResponseBody,
-  CreateResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 8);
+export const CreateResponseBodySchema: GenMessage<CreateResponseBody, CreateResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 8);
 
 /**
  * @generated from message yeying.api.audit.DetailRequest
@@ -438,20 +393,18 @@ export type DetailRequestJson = {
  * Describes the message yeying.api.audit.DetailRequest.
  * Use `create(DetailRequestSchema)` to create a new message.
  */
-export const DetailRequestSchema: GenMessage<DetailRequest, DetailRequestJson> =
-  /*@__PURE__*/
+export const DetailRequestSchema: GenMessage<DetailRequest, DetailRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 9);
 
 /**
  * @generated from message yeying.api.audit.DetailRequestBody
  */
-export type DetailRequestBody =
-  Message<"yeying.api.audit.DetailRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type DetailRequestBody = Message<"yeying.api.audit.DetailRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.audit.DetailRequestBody
@@ -467,10 +420,8 @@ export type DetailRequestBodyJson = {
  * Describes the message yeying.api.audit.DetailRequestBody.
  * Use `create(DetailRequestBodySchema)` to create a new message.
  */
-export const DetailRequestBodySchema: GenMessage<
-  DetailRequestBody,
-  DetailRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 10);
+export const DetailRequestBodySchema: GenMessage<DetailRequestBody, DetailRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 10);
 
 /**
  * @generated from message yeying.api.audit.DetailResponse
@@ -506,26 +457,23 @@ export type DetailResponseJson = {
  * Describes the message yeying.api.audit.DetailResponse.
  * Use `create(DetailResponseSchema)` to create a new message.
  */
-export const DetailResponseSchema: GenMessage<
-  DetailResponse,
-  DetailResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 11);
+export const DetailResponseSchema: GenMessage<DetailResponse, DetailResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 11);
 
 /**
  * @generated from message yeying.api.audit.DetailResponseBody
  */
-export type DetailResponseBody =
-  Message<"yeying.api.audit.DetailResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type DetailResponseBody = Message<"yeying.api.audit.DetailResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
-     */
-    meta?: AuditMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
+   */
+  meta?: AuditMetadata;
+};
 
 /**
  * @generated from message yeying.api.audit.DetailResponseBody
@@ -546,10 +494,8 @@ export type DetailResponseBodyJson = {
  * Describes the message yeying.api.audit.DetailResponseBody.
  * Use `create(DetailResponseBodySchema)` to create a new message.
  */
-export const DetailResponseBodySchema: GenMessage<
-  DetailResponseBody,
-  DetailResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 12);
+export const DetailResponseBodySchema: GenMessage<DetailResponseBody, DetailResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 12);
 
 /**
  * @generated from message yeying.api.audit.CancelRequest
@@ -585,20 +531,18 @@ export type CancelRequestJson = {
  * Describes the message yeying.api.audit.CancelRequest.
  * Use `create(CancelRequestSchema)` to create a new message.
  */
-export const CancelRequestSchema: GenMessage<CancelRequest, CancelRequestJson> =
-  /*@__PURE__*/
+export const CancelRequestSchema: GenMessage<CancelRequest, CancelRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 13);
 
 /**
  * @generated from message yeying.api.audit.CancelRequestBody
  */
-export type CancelRequestBody =
-  Message<"yeying.api.audit.CancelRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type CancelRequestBody = Message<"yeying.api.audit.CancelRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.audit.CancelRequestBody
@@ -614,10 +558,8 @@ export type CancelRequestBodyJson = {
  * Describes the message yeying.api.audit.CancelRequestBody.
  * Use `create(CancelRequestBodySchema)` to create a new message.
  */
-export const CancelRequestBodySchema: GenMessage<
-  CancelRequestBody,
-  CancelRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 14);
+export const CancelRequestBodySchema: GenMessage<CancelRequestBody, CancelRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 14);
 
 /**
  * @generated from message yeying.api.audit.CancelResponse
@@ -653,26 +595,23 @@ export type CancelResponseJson = {
  * Describes the message yeying.api.audit.CancelResponse.
  * Use `create(CancelResponseSchema)` to create a new message.
  */
-export const CancelResponseSchema: GenMessage<
-  CancelResponse,
-  CancelResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 15);
+export const CancelResponseSchema: GenMessage<CancelResponse, CancelResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 15);
 
 /**
  * @generated from message yeying.api.audit.CancelResponseBody
  */
-export type CancelResponseBody =
-  Message<"yeying.api.audit.CancelResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type CancelResponseBody = Message<"yeying.api.audit.CancelResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
-     */
-    meta?: AuditMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
+   */
+  meta?: AuditMetadata;
+};
 
 /**
  * @generated from message yeying.api.audit.CancelResponseBody
@@ -693,10 +632,8 @@ export type CancelResponseBodyJson = {
  * Describes the message yeying.api.audit.CancelResponseBody.
  * Use `create(CancelResponseBodySchema)` to create a new message.
  */
-export const CancelResponseBodySchema: GenMessage<
-  CancelResponseBody,
-  CancelResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 16);
+export const CancelResponseBodySchema: GenMessage<CancelResponseBody, CancelResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 16);
 
 /**
  * @generated from message yeying.api.audit.UnbindRequest
@@ -732,20 +669,18 @@ export type UnbindRequestJson = {
  * Describes the message yeying.api.audit.UnbindRequest.
  * Use `create(UnbindRequestSchema)` to create a new message.
  */
-export const UnbindRequestSchema: GenMessage<UnbindRequest, UnbindRequestJson> =
-  /*@__PURE__*/
+export const UnbindRequestSchema: GenMessage<UnbindRequest, UnbindRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 17);
 
 /**
  * @generated from message yeying.api.audit.UnbindRequestBody
  */
-export type UnbindRequestBody =
-  Message<"yeying.api.audit.UnbindRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type UnbindRequestBody = Message<"yeying.api.audit.UnbindRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.audit.UnbindRequestBody
@@ -761,10 +696,8 @@ export type UnbindRequestBodyJson = {
  * Describes the message yeying.api.audit.UnbindRequestBody.
  * Use `create(UnbindRequestBodySchema)` to create a new message.
  */
-export const UnbindRequestBodySchema: GenMessage<
-  UnbindRequestBody,
-  UnbindRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 18);
+export const UnbindRequestBodySchema: GenMessage<UnbindRequestBody, UnbindRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 18);
 
 /**
  * @generated from message yeying.api.audit.UnbindResponse
@@ -800,21 +733,18 @@ export type UnbindResponseJson = {
  * Describes the message yeying.api.audit.UnbindResponse.
  * Use `create(UnbindResponseSchema)` to create a new message.
  */
-export const UnbindResponseSchema: GenMessage<
-  UnbindResponse,
-  UnbindResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 19);
+export const UnbindResponseSchema: GenMessage<UnbindResponse, UnbindResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 19);
 
 /**
  * @generated from message yeying.api.audit.UnbindResponseBody
  */
-export type UnbindResponseBody =
-  Message<"yeying.api.audit.UnbindResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type UnbindResponseBody = Message<"yeying.api.audit.UnbindResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.audit.UnbindResponseBody
@@ -830,10 +760,8 @@ export type UnbindResponseBodyJson = {
  * Describes the message yeying.api.audit.UnbindResponseBody.
  * Use `create(UnbindResponseBodySchema)` to create a new message.
  */
-export const UnbindResponseBodySchema: GenMessage<
-  UnbindResponseBody,
-  UnbindResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 20);
+export const UnbindResponseBodySchema: GenMessage<UnbindResponseBody, UnbindResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 20);
 
 /**
  * @generated from message yeying.api.audit.AuditRequest
@@ -869,8 +797,7 @@ export type AuditRequestJson = {
  * Describes the message yeying.api.audit.AuditRequest.
  * Use `create(AuditRequestSchema)` to create a new message.
  */
-export const AuditRequestSchema: GenMessage<AuditRequest, AuditRequestJson> =
-  /*@__PURE__*/
+export const AuditRequestSchema: GenMessage<AuditRequest, AuditRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 21);
 
 /**
@@ -907,10 +834,8 @@ export type AuditRequestBodyJson = {
  * Describes the message yeying.api.audit.AuditRequestBody.
  * Use `create(AuditRequestBodySchema)` to create a new message.
  */
-export const AuditRequestBodySchema: GenMessage<
-  AuditRequestBody,
-  AuditRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 22);
+export const AuditRequestBodySchema: GenMessage<AuditRequestBody, AuditRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 22);
 
 /**
  * @generated from message yeying.api.audit.AuditResponse
@@ -946,25 +871,23 @@ export type AuditResponseJson = {
  * Describes the message yeying.api.audit.AuditResponse.
  * Use `create(AuditResponseSchema)` to create a new message.
  */
-export const AuditResponseSchema: GenMessage<AuditResponse, AuditResponseJson> =
-  /*@__PURE__*/
+export const AuditResponseSchema: GenMessage<AuditResponse, AuditResponseJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 23);
 
 /**
  * @generated from message yeying.api.audit.AuditResponseBody
  */
-export type AuditResponseBody =
-  Message<"yeying.api.audit.AuditResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type AuditResponseBody = Message<"yeying.api.audit.AuditResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
-     */
-    meta?: AuditMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.audit.AuditMetadata meta = 2;
+   */
+  meta?: AuditMetadata;
+};
 
 /**
  * @generated from message yeying.api.audit.AuditResponseBody
@@ -985,26 +908,23 @@ export type AuditResponseBodyJson = {
  * Describes the message yeying.api.audit.AuditResponseBody.
  * Use `create(AuditResponseBodySchema)` to create a new message.
  */
-export const AuditResponseBodySchema: GenMessage<
-  AuditResponseBody,
-  AuditResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 24);
+export const AuditResponseBodySchema: GenMessage<AuditResponseBody, AuditResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 24);
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListRequest
  */
-export type CreateAuditListRequest =
-  Message<"yeying.api.audit.CreateAuditListRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateAuditListRequest = Message<"yeying.api.audit.CreateAuditListRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.audit.CreateAuditListRequestBody body = 2;
-     */
-    body?: CreateAuditListRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.audit.CreateAuditListRequestBody body = 2;
+   */
+  body?: CreateAuditListRequestBody;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListRequest
@@ -1025,26 +945,23 @@ export type CreateAuditListRequestJson = {
  * Describes the message yeying.api.audit.CreateAuditListRequest.
  * Use `create(CreateAuditListRequestSchema)` to create a new message.
  */
-export const CreateAuditListRequestSchema: GenMessage<
-  CreateAuditListRequest,
-  CreateAuditListRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 25);
+export const CreateAuditListRequestSchema: GenMessage<CreateAuditListRequest, CreateAuditListRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 25);
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListRequestBody
  */
-export type CreateAuditListRequestBody =
-  Message<"yeying.api.audit.CreateAuditListRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
-     */
-    condition?: AuditSearchCondition;
+export type CreateAuditListRequestBody = Message<"yeying.api.audit.CreateAuditListRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
+   */
+  condition?: AuditSearchCondition;
 
-    /**
-     * @generated from field: yeying.api.common.RequestPage page = 2;
-     */
-    page?: RequestPage;
-  };
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListRequestBody
@@ -1065,26 +982,23 @@ export type CreateAuditListRequestBodyJson = {
  * Describes the message yeying.api.audit.CreateAuditListRequestBody.
  * Use `create(CreateAuditListRequestBodySchema)` to create a new message.
  */
-export const CreateAuditListRequestBodySchema: GenMessage<
-  CreateAuditListRequestBody,
-  CreateAuditListRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 26);
+export const CreateAuditListRequestBodySchema: GenMessage<CreateAuditListRequestBody, CreateAuditListRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 26);
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListResponse
  */
-export type CreateAuditListResponse =
-  Message<"yeying.api.audit.CreateAuditListResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateAuditListResponse = Message<"yeying.api.audit.CreateAuditListResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.audit.CreateAuditListResponseBody body = 2;
-     */
-    body?: CreateAuditListResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.audit.CreateAuditListResponseBody body = 2;
+   */
+  body?: CreateAuditListResponseBody;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListResponse
@@ -1105,31 +1019,28 @@ export type CreateAuditListResponseJson = {
  * Describes the message yeying.api.audit.CreateAuditListResponse.
  * Use `create(CreateAuditListResponseSchema)` to create a new message.
  */
-export const CreateAuditListResponseSchema: GenMessage<
-  CreateAuditListResponse,
-  CreateAuditListResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 27);
+export const CreateAuditListResponseSchema: GenMessage<CreateAuditListResponse, CreateAuditListResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 27);
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListResponseBody
  */
-export type CreateAuditListResponseBody =
-  Message<"yeying.api.audit.CreateAuditListResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type CreateAuditListResponseBody = Message<"yeying.api.audit.CreateAuditListResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
-     */
-    audits: AuditMetadata[];
+  /**
+   * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
+   */
+  audits: AuditMetadata[];
 
-    /**
-     * @generated from field: yeying.api.common.ResponsePage page = 3;
-     */
-    page?: ResponsePage;
-  };
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePage;
+};
 
 /**
  * @generated from message yeying.api.audit.CreateAuditListResponseBody
@@ -1155,10 +1066,8 @@ export type CreateAuditListResponseBodyJson = {
  * Describes the message yeying.api.audit.CreateAuditListResponseBody.
  * Use `create(CreateAuditListResponseBodySchema)` to create a new message.
  */
-export const CreateAuditListResponseBodySchema: GenMessage<
-  CreateAuditListResponseBody,
-  CreateAuditListResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 28);
+export const CreateAuditListResponseBodySchema: GenMessage<CreateAuditListResponseBody, CreateAuditListResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 28);
 
 /**
  * @generated from message yeying.api.audit.AuditListRequest
@@ -1194,26 +1103,23 @@ export type AuditListRequestJson = {
  * Describes the message yeying.api.audit.AuditListRequest.
  * Use `create(AuditListRequestSchema)` to create a new message.
  */
-export const AuditListRequestSchema: GenMessage<
-  AuditListRequest,
-  AuditListRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 29);
+export const AuditListRequestSchema: GenMessage<AuditListRequest, AuditListRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 29);
 
 /**
  * @generated from message yeying.api.audit.AuditListRequestBody
  */
-export type AuditListRequestBody =
-  Message<"yeying.api.audit.AuditListRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
-     */
-    condition?: AuditSearchCondition;
+export type AuditListRequestBody = Message<"yeying.api.audit.AuditListRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.audit.AuditSearchCondition condition = 1;
+   */
+  condition?: AuditSearchCondition;
 
-    /**
-     * @generated from field: yeying.api.common.RequestPage page = 2;
-     */
-    page?: RequestPage;
-  };
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
+};
 
 /**
  * @generated from message yeying.api.audit.AuditListRequestBody
@@ -1234,26 +1140,23 @@ export type AuditListRequestBodyJson = {
  * Describes the message yeying.api.audit.AuditListRequestBody.
  * Use `create(AuditListRequestBodySchema)` to create a new message.
  */
-export const AuditListRequestBodySchema: GenMessage<
-  AuditListRequestBody,
-  AuditListRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 30);
+export const AuditListRequestBodySchema: GenMessage<AuditListRequestBody, AuditListRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 30);
 
 /**
  * @generated from message yeying.api.audit.AuditListResponse
  */
-export type AuditListResponse =
-  Message<"yeying.api.audit.AuditListResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type AuditListResponse = Message<"yeying.api.audit.AuditListResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.audit.AuditListResponseBody body = 2;
-     */
-    body?: AuditListResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.audit.AuditListResponseBody body = 2;
+   */
+  body?: AuditListResponseBody;
+};
 
 /**
  * @generated from message yeying.api.audit.AuditListResponse
@@ -1274,31 +1177,28 @@ export type AuditListResponseJson = {
  * Describes the message yeying.api.audit.AuditListResponse.
  * Use `create(AuditListResponseSchema)` to create a new message.
  */
-export const AuditListResponseSchema: GenMessage<
-  AuditListResponse,
-  AuditListResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 31);
+export const AuditListResponseSchema: GenMessage<AuditListResponse, AuditListResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 31);
 
 /**
  * @generated from message yeying.api.audit.AuditListResponseBody
  */
-export type AuditListResponseBody =
-  Message<"yeying.api.audit.AuditListResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type AuditListResponseBody = Message<"yeying.api.audit.AuditListResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
-     */
-    audits: AuditMetadata[];
+  /**
+   * @generated from field: repeated yeying.api.audit.AuditMetadata audits = 2;
+   */
+  audits: AuditMetadata[];
 
-    /**
-     * @generated from field: yeying.api.common.ResponsePage page = 3;
-     */
-    page?: ResponsePage;
-  };
+  /**
+   * @generated from field: yeying.api.common.ResponsePage page = 3;
+   */
+  page?: ResponsePage;
+};
 
 /**
  * @generated from message yeying.api.audit.AuditListResponseBody
@@ -1324,10 +1224,8 @@ export type AuditListResponseBodyJson = {
  * Describes the message yeying.api.audit.AuditListResponseBody.
  * Use `create(AuditListResponseBodySchema)` to create a new message.
  */
-export const AuditListResponseBodySchema: GenMessage<
-  AuditListResponseBody,
-  AuditListResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 32);
+export const AuditListResponseBodySchema: GenMessage<AuditListResponseBody, AuditListResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 32);
 
 /**
  * *
@@ -1336,56 +1234,55 @@ export const AuditListResponseBodySchema: GenMessage<
  *
  * @generated from message yeying.api.audit.AuditSearchCondition
  */
-export type AuditSearchCondition =
-  Message<"yeying.api.audit.AuditSearchCondition"> & {
-    /**
-     * *
-     * 申请人 did
-     *
-     * @generated from field: string sourceDid = 1;
-     */
-    sourceDid: string;
+export type AuditSearchCondition = Message<"yeying.api.audit.AuditSearchCondition"> & {
+  /**
+   * *
+   * 申请人 did
+   *
+   * @generated from field: string sourceDid = 1;
+   */
+  sourceDid: string;
 
-    /**
-     * *
-     * 应用/服务名称
-     *
-     * @generated from field: string name = 2;
-     */
-    name: string;
+  /**
+   * *
+   * 应用/服务名称
+   *
+   * @generated from field: string name = 2;
+   */
+  name: string;
 
-    /**
-     * *
-     * 申请时间-开始时间
-     *
-     * @generated from field: string startTime = 3;
-     */
-    startTime: string;
+  /**
+   * *
+   * 申请时间-开始时间
+   *
+   * @generated from field: string startTime = 3;
+   */
+  startTime: string;
 
-    /**
-     * *
-     * 申请时间-结束时间
-     *
-     * @generated from field: string endTime = 4;
-     */
-    endTime: string;
+  /**
+   * *
+   * 申请时间-结束时间
+   *
+   * @generated from field: string endTime = 4;
+   */
+  endTime: string;
 
-    /**
-     * *
-     * 申请类型[应用/服务]
-     *
-     * @generated from field: yeying.api.common.AuditTypeEnum type = 5;
-     */
-    type: AuditTypeEnum;
+  /**
+   * *
+   * 申请类型[应用/服务]
+   *
+   * @generated from field: yeying.api.common.AuditTypeEnum type = 5;
+   */
+  type: AuditTypeEnum;
 
-    /**
-     * *
-     * 审批人 did
-     *
-     * @generated from field: string targetDid = 6;
-     */
-    targetDid: string;
-  };
+  /**
+   * *
+   * 审批人 did
+   *
+   * @generated from field: string targetDid = 6;
+   */
+  targetDid: string;
+};
 
 /**
  * *
@@ -1448,10 +1345,8 @@ export type AuditSearchConditionJson = {
  * Describes the message yeying.api.audit.AuditSearchCondition.
  * Use `create(AuditSearchConditionSchema)` to create a new message.
  */
-export const AuditSearchConditionSchema: GenMessage<
-  AuditSearchCondition,
-  AuditSearchConditionJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_audit_audit, 33);
+export const AuditSearchConditionSchema: GenMessage<AuditSearchCondition, AuditSearchConditionJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_audit_audit, 33);
 
 /**
  * @generated from message yeying.api.audit.AuditMetadata
@@ -1643,8 +1538,7 @@ export type AuditMetadataJson = {
  * Describes the message yeying.api.audit.AuditMetadata.
  * Use `create(AuditMetadataSchema)` to create a new message.
  */
-export const AuditMetadataSchema: GenMessage<AuditMetadata, AuditMetadataJson> =
-  /*@__PURE__*/
+export const AuditMetadataSchema: GenMessage<AuditMetadata, AuditMetadataJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_audit_audit, 34);
 
 /**
@@ -1657,7 +1551,7 @@ export const AuditMetadataSchema: GenMessage<AuditMetadata, AuditMetadataJson> =
  */
 export const Audit: GenService<{
   /**
-   * 发起申请
+   * 发起申请 
    *
    * @generated from rpc yeying.api.audit.Audit.Create
    */
@@ -1665,9 +1559,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof CreateRequestSchema;
     output: typeof CreateResponseSchema;
-  };
+  },
   /**
-   * 查看申请详情
+   * 查看申请详情 
    *
    * @generated from rpc yeying.api.audit.Audit.Detail
    */
@@ -1675,9 +1569,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof DetailRequestSchema;
     output: typeof DetailResponseSchema;
-  };
+  },
   /**
-   * 撤销申请
+   * 撤销申请 
    *
    * @generated from rpc yeying.api.audit.Audit.Cancel
    */
@@ -1685,9 +1579,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof CancelRequestSchema;
     output: typeof CancelResponseSchema;
-  };
+  },
   /**
-   * 解绑应用-移除申请成功的应用，不需要访问了
+   * 解绑应用-移除申请成功的应用，不需要访问了 
    *
    * @generated from rpc yeying.api.audit.Audit.Unbind
    */
@@ -1695,9 +1589,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof UnbindRequestSchema;
     output: typeof UnbindResponseSchema;
-  };
+  },
   /**
-   * 审批-通过/拒绝
+   * 审批-通过/拒绝 
    *
    * @generated from rpc yeying.api.audit.Audit.Audit
    */
@@ -1705,9 +1599,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof AuditRequestSchema;
     output: typeof AuditResponseSchema;
-  };
+  },
   /**
-   * 发起人申请列表
+   * 发起人申请列表 
    *
    * @generated from rpc yeying.api.audit.Audit.CreateList
    */
@@ -1715,9 +1609,9 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof CreateAuditListRequestSchema;
     output: typeof CreateAuditListResponseSchema;
-  };
+  },
   /**
-   * 审批人审批列表
+   * 审批人审批列表 
    *
    * @generated from rpc yeying.api.audit.Audit.AuditList
    */
@@ -1725,5 +1619,7 @@ export const Audit: GenService<{
     methodKind: "unary";
     input: typeof AuditListRequestSchema;
     output: typeof AuditListResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_audit_audit, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_audit_audit, 0);
+

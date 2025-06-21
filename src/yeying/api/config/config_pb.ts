@@ -2,36 +2,17 @@
 // @generated from file yeying/api/config/config.proto (package yeying.api.config, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  enumDesc,
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/config/config.proto.
  */
-export const file_yeying_api_config_config: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Ch55ZXlpbmcvYXBpL2NvbmZpZy9jb25maWcucHJvdG8SEXlleWluZy5hcGkuY29uZmlnInsKEEdldENvbmZpZ1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5jb25maWcuR2V0Q29uZmlnUmVxdWVzdEJvZHkiVAoUR2V0Q29uZmlnUmVxdWVzdEJvZHkSCwoDa2V5GAEgASgJEi8KBHR5cGUYAiABKA4yIS55ZXlpbmcuYXBpLmNvbmZpZy5Db25maWdUeXBlRW51bSJ9ChFHZXRDb25maWdSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmNvbmZpZy5HZXRDb25maWdSZXNwb25zZUJvZHkifQoVR2V0Q29uZmlnUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjEKBmNvbmZpZxgCIAEoCzIhLnlleWluZy5hcGkuY29uZmlnLkNvbmZpZ01ldGFkYXRhInsKEFNldENvbmZpZ1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5jb25maWcuU2V0Q29uZmlnUmVxdWVzdEJvZHkiSQoUU2V0Q29uZmlnUmVxdWVzdEJvZHkSMQoGY29uZmlnGAEgASgLMiEueWV5aW5nLmFwaS5jb25maWcuQ29uZmlnTWV0YWRhdGEifQoRU2V0Q29uZmlnUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5jb25maWcuU2V0Q29uZmlnUmVzcG9uc2VCb2R5In0KFVNldENvbmZpZ1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIxCgZjb25maWcYAiABKAsyIS55ZXlpbmcuYXBpLmNvbmZpZy5Db25maWdNZXRhZGF0YSJ0Cg5Db25maWdNZXRhZGF0YRINCgVvd25lchgBIAEoCRILCgNrZXkYAiABKAkSDQoFdmFsdWUYAyABKAkSEQoJY3JlYXRlZEF0GAQgASgJEhEKCXVwZGF0ZWRBdBgFIAEoCRIRCglzaWduYXR1cmUYBiABKAkqVwoOQ29uZmlnVHlwZUVudW0SFwoTQ09ORklHX1RZUEVfVU5LTk9XThAAEhYKEkNPTkZJR19UWVBFX1NZU1RFTRABEhQKEENPTkZJR19UWVBFX1VTRVIQAjKwAQoGQ29uZmlnElIKA1NldBIjLnlleWluZy5hcGkuY29uZmlnLlNldENvbmZpZ1JlcXVlc3QaJC55ZXlpbmcuYXBpLmNvbmZpZy5TZXRDb25maWdSZXNwb25zZSIAElIKA0dldBIjLnlleWluZy5hcGkuY29uZmlnLkdldENvbmZpZ1JlcXVlc3QaJC55ZXlpbmcuYXBpLmNvbmZpZy5HZXRDb25maWdSZXNwb25zZSIAQhNaEXlleWluZy9hcGkvY29uZmlnYgZwcm90bzM",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_config_config: GenFile = /*@__PURE__*/
+  fileDesc("Ch55ZXlpbmcvYXBpL2NvbmZpZy9jb25maWcucHJvdG8SEXlleWluZy5hcGkuY29uZmlnInsKEEdldENvbmZpZ1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5jb25maWcuR2V0Q29uZmlnUmVxdWVzdEJvZHkiVAoUR2V0Q29uZmlnUmVxdWVzdEJvZHkSCwoDa2V5GAEgASgJEi8KBHR5cGUYAiABKA4yIS55ZXlpbmcuYXBpLmNvbmZpZy5Db25maWdUeXBlRW51bSJ9ChFHZXRDb25maWdSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmNvbmZpZy5HZXRDb25maWdSZXNwb25zZUJvZHkifQoVR2V0Q29uZmlnUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjEKBmNvbmZpZxgCIAEoCzIhLnlleWluZy5hcGkuY29uZmlnLkNvbmZpZ01ldGFkYXRhInsKEFNldENvbmZpZ1JlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5jb25maWcuU2V0Q29uZmlnUmVxdWVzdEJvZHkiSQoUU2V0Q29uZmlnUmVxdWVzdEJvZHkSMQoGY29uZmlnGAEgASgLMiEueWV5aW5nLmFwaS5jb25maWcuQ29uZmlnTWV0YWRhdGEifQoRU2V0Q29uZmlnUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5jb25maWcuU2V0Q29uZmlnUmVzcG9uc2VCb2R5In0KFVNldENvbmZpZ1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIxCgZjb25maWcYAiABKAsyIS55ZXlpbmcuYXBpLmNvbmZpZy5Db25maWdNZXRhZGF0YSJ0Cg5Db25maWdNZXRhZGF0YRINCgVvd25lchgBIAEoCRILCgNrZXkYAiABKAkSDQoFdmFsdWUYAyABKAkSEQoJY3JlYXRlZEF0GAQgASgJEhEKCXVwZGF0ZWRBdBgFIAEoCRIRCglzaWduYXR1cmUYBiABKAkqVwoOQ29uZmlnVHlwZUVudW0SFwoTQ09ORklHX1RZUEVfVU5LTk9XThAAEhYKEkNPTkZJR19UWVBFX1NZU1RFTRABEhQKEENPTkZJR19UWVBFX1VTRVIQAjKwAQoGQ29uZmlnElIKA1NldBIjLnlleWluZy5hcGkuY29uZmlnLlNldENvbmZpZ1JlcXVlc3QaJC55ZXlpbmcuYXBpLmNvbmZpZy5TZXRDb25maWdSZXNwb25zZSIAElIKA0dldBIjLnlleWluZy5hcGkuY29uZmlnLkdldENvbmZpZ1JlcXVlc3QaJC55ZXlpbmcuYXBpLmNvbmZpZy5HZXRDb25maWdSZXNwb25zZSIAQhNaEXlleWluZy9hcGkvY29uZmlnYgZwcm90bzM", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.config.GetConfigRequest
@@ -67,26 +48,23 @@ export type GetConfigRequestJson = {
  * Describes the message yeying.api.config.GetConfigRequest.
  * Use `create(GetConfigRequestSchema)` to create a new message.
  */
-export const GetConfigRequestSchema: GenMessage<
-  GetConfigRequest,
-  GetConfigRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 0);
+export const GetConfigRequestSchema: GenMessage<GetConfigRequest, GetConfigRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 0);
 
 /**
  * @generated from message yeying.api.config.GetConfigRequestBody
  */
-export type GetConfigRequestBody =
-  Message<"yeying.api.config.GetConfigRequestBody"> & {
-    /**
-     * @generated from field: string key = 1;
-     */
-    key: string;
+export type GetConfigRequestBody = Message<"yeying.api.config.GetConfigRequestBody"> & {
+  /**
+   * @generated from field: string key = 1;
+   */
+  key: string;
 
-    /**
-     * @generated from field: yeying.api.config.ConfigTypeEnum type = 2;
-     */
-    type: ConfigTypeEnum;
-  };
+  /**
+   * @generated from field: yeying.api.config.ConfigTypeEnum type = 2;
+   */
+  type: ConfigTypeEnum;
+};
 
 /**
  * @generated from message yeying.api.config.GetConfigRequestBody
@@ -107,26 +85,23 @@ export type GetConfigRequestBodyJson = {
  * Describes the message yeying.api.config.GetConfigRequestBody.
  * Use `create(GetConfigRequestBodySchema)` to create a new message.
  */
-export const GetConfigRequestBodySchema: GenMessage<
-  GetConfigRequestBody,
-  GetConfigRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 1);
+export const GetConfigRequestBodySchema: GenMessage<GetConfigRequestBody, GetConfigRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 1);
 
 /**
  * @generated from message yeying.api.config.GetConfigResponse
  */
-export type GetConfigResponse =
-  Message<"yeying.api.config.GetConfigResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type GetConfigResponse = Message<"yeying.api.config.GetConfigResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.config.GetConfigResponseBody body = 2;
-     */
-    body?: GetConfigResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.config.GetConfigResponseBody body = 2;
+   */
+  body?: GetConfigResponseBody;
+};
 
 /**
  * @generated from message yeying.api.config.GetConfigResponse
@@ -147,26 +122,23 @@ export type GetConfigResponseJson = {
  * Describes the message yeying.api.config.GetConfigResponse.
  * Use `create(GetConfigResponseSchema)` to create a new message.
  */
-export const GetConfigResponseSchema: GenMessage<
-  GetConfigResponse,
-  GetConfigResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 2);
+export const GetConfigResponseSchema: GenMessage<GetConfigResponse, GetConfigResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 2);
 
 /**
  * @generated from message yeying.api.config.GetConfigResponseBody
  */
-export type GetConfigResponseBody =
-  Message<"yeying.api.config.GetConfigResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type GetConfigResponseBody = Message<"yeying.api.config.GetConfigResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.config.ConfigMetadata config = 2;
-     */
-    config?: ConfigMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.config.ConfigMetadata config = 2;
+   */
+  config?: ConfigMetadata;
+};
 
 /**
  * @generated from message yeying.api.config.GetConfigResponseBody
@@ -187,10 +159,8 @@ export type GetConfigResponseBodyJson = {
  * Describes the message yeying.api.config.GetConfigResponseBody.
  * Use `create(GetConfigResponseBodySchema)` to create a new message.
  */
-export const GetConfigResponseBodySchema: GenMessage<
-  GetConfigResponseBody,
-  GetConfigResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 3);
+export const GetConfigResponseBodySchema: GenMessage<GetConfigResponseBody, GetConfigResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 3);
 
 /**
  * @generated from message yeying.api.config.SetConfigRequest
@@ -226,21 +196,18 @@ export type SetConfigRequestJson = {
  * Describes the message yeying.api.config.SetConfigRequest.
  * Use `create(SetConfigRequestSchema)` to create a new message.
  */
-export const SetConfigRequestSchema: GenMessage<
-  SetConfigRequest,
-  SetConfigRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 4);
+export const SetConfigRequestSchema: GenMessage<SetConfigRequest, SetConfigRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 4);
 
 /**
  * @generated from message yeying.api.config.SetConfigRequestBody
  */
-export type SetConfigRequestBody =
-  Message<"yeying.api.config.SetConfigRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.config.ConfigMetadata config = 1;
-     */
-    config?: ConfigMetadata;
-  };
+export type SetConfigRequestBody = Message<"yeying.api.config.SetConfigRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.config.ConfigMetadata config = 1;
+   */
+  config?: ConfigMetadata;
+};
 
 /**
  * @generated from message yeying.api.config.SetConfigRequestBody
@@ -256,26 +223,23 @@ export type SetConfigRequestBodyJson = {
  * Describes the message yeying.api.config.SetConfigRequestBody.
  * Use `create(SetConfigRequestBodySchema)` to create a new message.
  */
-export const SetConfigRequestBodySchema: GenMessage<
-  SetConfigRequestBody,
-  SetConfigRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 5);
+export const SetConfigRequestBodySchema: GenMessage<SetConfigRequestBody, SetConfigRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 5);
 
 /**
  * @generated from message yeying.api.config.SetConfigResponse
  */
-export type SetConfigResponse =
-  Message<"yeying.api.config.SetConfigResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SetConfigResponse = Message<"yeying.api.config.SetConfigResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.config.SetConfigResponseBody body = 2;
-     */
-    body?: SetConfigResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.config.SetConfigResponseBody body = 2;
+   */
+  body?: SetConfigResponseBody;
+};
 
 /**
  * @generated from message yeying.api.config.SetConfigResponse
@@ -296,26 +260,23 @@ export type SetConfigResponseJson = {
  * Describes the message yeying.api.config.SetConfigResponse.
  * Use `create(SetConfigResponseSchema)` to create a new message.
  */
-export const SetConfigResponseSchema: GenMessage<
-  SetConfigResponse,
-  SetConfigResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 6);
+export const SetConfigResponseSchema: GenMessage<SetConfigResponse, SetConfigResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 6);
 
 /**
  * @generated from message yeying.api.config.SetConfigResponseBody
  */
-export type SetConfigResponseBody =
-  Message<"yeying.api.config.SetConfigResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SetConfigResponseBody = Message<"yeying.api.config.SetConfigResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.config.ConfigMetadata config = 2;
-     */
-    config?: ConfigMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.config.ConfigMetadata config = 2;
+   */
+  config?: ConfigMetadata;
+};
 
 /**
  * @generated from message yeying.api.config.SetConfigResponseBody
@@ -336,10 +297,8 @@ export type SetConfigResponseBodyJson = {
  * Describes the message yeying.api.config.SetConfigResponseBody.
  * Use `create(SetConfigResponseBodySchema)` to create a new message.
  */
-export const SetConfigResponseBodySchema: GenMessage<
-  SetConfigResponseBody,
-  SetConfigResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 7);
+export const SetConfigResponseBodySchema: GenMessage<SetConfigResponseBody, SetConfigResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 7);
 
 /**
  * @generated from message yeying.api.config.ConfigMetadata
@@ -415,10 +374,8 @@ export type ConfigMetadataJson = {
  * Describes the message yeying.api.config.ConfigMetadata.
  * Use `create(ConfigMetadataSchema)` to create a new message.
  */
-export const ConfigMetadataSchema: GenMessage<
-  ConfigMetadata,
-  ConfigMetadataJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_config_config, 8);
+export const ConfigMetadataSchema: GenMessage<ConfigMetadata, ConfigMetadataJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_config_config, 8);
 
 /**
  * @generated from enum yeying.api.config.ConfigTypeEnum
@@ -449,16 +406,12 @@ export enum ConfigTypeEnum {
 /**
  * @generated from enum yeying.api.config.ConfigTypeEnum
  */
-export type ConfigTypeEnumJson =
-  | "CONFIG_TYPE_UNKNOWN"
-  | "CONFIG_TYPE_SYSTEM"
-  | "CONFIG_TYPE_USER";
+export type ConfigTypeEnumJson = "CONFIG_TYPE_UNKNOWN" | "CONFIG_TYPE_SYSTEM" | "CONFIG_TYPE_USER";
 
 /**
  * Describes the enum yeying.api.config.ConfigTypeEnum.
  */
-export const ConfigTypeEnumSchema: GenEnum<ConfigTypeEnum, ConfigTypeEnumJson> =
-  /*@__PURE__*/
+export const ConfigTypeEnumSchema: GenEnum<ConfigTypeEnum, ConfigTypeEnumJson> = /*@__PURE__*/
   enumDesc(file_yeying_api_config_config, 0);
 
 /**
@@ -472,7 +425,7 @@ export const Config: GenService<{
     methodKind: "unary";
     input: typeof SetConfigRequestSchema;
     output: typeof SetConfigResponseSchema;
-  };
+  },
   /**
    * @generated from rpc yeying.api.config.Config.Get
    */
@@ -480,5 +433,7 @@ export const Config: GenService<{
     methodKind: "unary";
     input: typeof GetConfigRequestSchema;
     output: typeof GetConfigResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_config_config, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_config_config, 0);
+

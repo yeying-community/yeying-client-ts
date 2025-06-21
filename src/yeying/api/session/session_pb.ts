@@ -2,52 +2,32 @@
 // @generated from file yeying/api/session/session.proto (package yeying.api.session, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  RequestPage,
-  RequestPageJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/session/session.proto.
  */
-export const file_yeying_api_session_session: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiB5ZXlpbmcvYXBpL3Nlc3Npb24vc2Vzc2lvbi5wcm90bxISeWV5aW5nLmFwaS5zZXNzaW9uIoQBChRDcmVhdGVTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uQ3JlYXRlU2Vzc2lvblJlcXVlc3RCb2R5IlAKGENyZWF0ZVNlc3Npb25SZXF1ZXN0Qm9keRI0CgdzZXNzaW9uGAEgASgLMiMueWV5aW5nLmFwaS5zZXNzaW9uLlNlc3Npb25NZXRhZGF0YSKGAQoVQ3JlYXRlU2Vzc2lvblJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuc2Vzc2lvbi5DcmVhdGVTZXNzaW9uUmVzcG9uc2VCb2R5IoQBChlDcmVhdGVTZXNzaW9uUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjQKB3Nlc3Npb24YAiABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoQBChRTZXNzaW9uRGV0YWlsUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlcXVlc3RCb2R5IicKGFNlc3Npb25EZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihgEKFVNlc3Npb25EZXRhaWxSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlc3BvbnNlQm9keSKBAQoZU2Vzc2lvbkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIxCgZkZXRhaWwYAiABKAsyIS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbCJFCg1TZXNzaW9uRGV0YWlsEjQKB3Nlc3Npb24YASABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoQBChREZWxldGVTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uRGVsZXRlU2Vzc2lvblJlcXVlc3RCb2R5IicKGERlbGV0ZVNlc3Npb25SZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihgEKFURlbGV0ZVNlc3Npb25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uRGVsZXRlU2Vzc2lvblJlc3BvbnNlQm9keSJOChlEZWxldGVTZXNzaW9uUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIoQBChRTZWFyY2hTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uU2VhcmNoU2Vzc2lvblJlcXVlc3RCb2R5IocBChhTZWFyY2hTZXNzaW9uUmVxdWVzdEJvZHkSPQoJY29uZGl0aW9uGAEgASgLMioueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25Db25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIjMKFlNlYXJjaFNlc3Npb25Db25kaXRpb24SDAoEbmFtZRgBIAEoCRILCgN1aWQYAiABKAkihgEKFVNlYXJjaFNlc3Npb25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uU2VhcmNoU2Vzc2lvblJlc3BvbnNlQm9keSKFAQoZU2VhcmNoU2Vzc2lvblJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI1CghzZXNzaW9ucxgCIAMoCzIjLnlleWluZy5hcGkuc2Vzc2lvbi5TZXNzaW9uTWV0YWRhdGEihAEKFFVwZGF0ZVNlc3Npb25SZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVxdWVzdEJvZHkiUAoYVXBkYXRlU2Vzc2lvblJlcXVlc3RCb2R5EjQKB3Nlc3Npb24YASABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoYBChVVcGRhdGVTZXNzaW9uUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zZXNzaW9uLlVwZGF0ZVNlc3Npb25SZXNwb25zZUJvZHkihAEKGVVwZGF0ZVNlc3Npb25SZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNAoHc2Vzc2lvbhgCIAEoCzIjLnlleWluZy5hcGkuc2Vzc2lvbi5TZXNzaW9uTWV0YWRhdGEimQEKD1Nlc3Npb25NZXRhZGF0YRILCgN1aWQYASABKAkSDQoFb3duZXIYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIOCgZjb25maWcYBSABKAkSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXVwZGF0ZWRBdBgHIAEoCRIRCglzaWduYXR1cmUYCCABKAky7gMKB1Nlc3Npb24SXwoGQ3JlYXRlEigueWV5aW5nLmFwaS5zZXNzaW9uLkNyZWF0ZVNlc3Npb25SZXF1ZXN0GikueWV5aW5nLmFwaS5zZXNzaW9uLkNyZWF0ZVNlc3Npb25SZXNwb25zZSIAEl8KBkRlbGV0ZRIoLnlleWluZy5hcGkuc2Vzc2lvbi5EZWxldGVTZXNzaW9uUmVxdWVzdBopLnlleWluZy5hcGkuc2Vzc2lvbi5EZWxldGVTZXNzaW9uUmVzcG9uc2UiABJfCgZEZXRhaWwSKC55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlcXVlc3QaKS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlc3BvbnNlIgASXwoGU2VhcmNoEigueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25SZXF1ZXN0GikueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25SZXNwb25zZSIAEl8KBlVwZGF0ZRIoLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVxdWVzdBopLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVzcG9uc2UiAEIUWhJ5ZXlpbmcvYXBpL3Nlc3Npb25iBnByb3RvMw",
-    [file_yeying_api_common_message],
-  );
+export const file_yeying_api_session_session: GenFile = /*@__PURE__*/
+  fileDesc("CiB5ZXlpbmcvYXBpL3Nlc3Npb24vc2Vzc2lvbi5wcm90bxISeWV5aW5nLmFwaS5zZXNzaW9uIoQBChRDcmVhdGVTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uQ3JlYXRlU2Vzc2lvblJlcXVlc3RCb2R5IlAKGENyZWF0ZVNlc3Npb25SZXF1ZXN0Qm9keRI0CgdzZXNzaW9uGAEgASgLMiMueWV5aW5nLmFwaS5zZXNzaW9uLlNlc3Npb25NZXRhZGF0YSKGAQoVQ3JlYXRlU2Vzc2lvblJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuc2Vzc2lvbi5DcmVhdGVTZXNzaW9uUmVzcG9uc2VCb2R5IoQBChlDcmVhdGVTZXNzaW9uUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjQKB3Nlc3Npb24YAiABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoQBChRTZXNzaW9uRGV0YWlsUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlcXVlc3RCb2R5IicKGFNlc3Npb25EZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihgEKFVNlc3Npb25EZXRhaWxSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlc3BvbnNlQm9keSKBAQoZU2Vzc2lvbkRldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIxCgZkZXRhaWwYAiABKAsyIS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbCJFCg1TZXNzaW9uRGV0YWlsEjQKB3Nlc3Npb24YASABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoQBChREZWxldGVTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uRGVsZXRlU2Vzc2lvblJlcXVlc3RCb2R5IicKGERlbGV0ZVNlc3Npb25SZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihgEKFURlbGV0ZVNlc3Npb25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uRGVsZXRlU2Vzc2lvblJlc3BvbnNlQm9keSJOChlEZWxldGVTZXNzaW9uUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIoQBChRTZWFyY2hTZXNzaW9uUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlc3Npb24uU2VhcmNoU2Vzc2lvblJlcXVlc3RCb2R5IocBChhTZWFyY2hTZXNzaW9uUmVxdWVzdEJvZHkSPQoJY29uZGl0aW9uGAEgASgLMioueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25Db25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIjMKFlNlYXJjaFNlc3Npb25Db25kaXRpb24SDAoEbmFtZRgBIAEoCRILCgN1aWQYAiABKAkihgEKFVNlYXJjaFNlc3Npb25SZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlc3Npb24uU2VhcmNoU2Vzc2lvblJlc3BvbnNlQm9keSKFAQoZU2VhcmNoU2Vzc2lvblJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI1CghzZXNzaW9ucxgCIAMoCzIjLnlleWluZy5hcGkuc2Vzc2lvbi5TZXNzaW9uTWV0YWRhdGEihAEKFFVwZGF0ZVNlc3Npb25SZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOgoEYm9keRgCIAEoCzIsLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVxdWVzdEJvZHkiUAoYVXBkYXRlU2Vzc2lvblJlcXVlc3RCb2R5EjQKB3Nlc3Npb24YASABKAsyIy55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbk1ldGFkYXRhIoYBChVVcGRhdGVTZXNzaW9uUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zZXNzaW9uLlVwZGF0ZVNlc3Npb25SZXNwb25zZUJvZHkihAEKGVVwZGF0ZVNlc3Npb25SZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSNAoHc2Vzc2lvbhgCIAEoCzIjLnlleWluZy5hcGkuc2Vzc2lvbi5TZXNzaW9uTWV0YWRhdGEimQEKD1Nlc3Npb25NZXRhZGF0YRILCgN1aWQYASABKAkSDQoFb3duZXIYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIOCgZjb25maWcYBSABKAkSEQoJY3JlYXRlZEF0GAYgASgJEhEKCXVwZGF0ZWRBdBgHIAEoCRIRCglzaWduYXR1cmUYCCABKAky7gMKB1Nlc3Npb24SXwoGQ3JlYXRlEigueWV5aW5nLmFwaS5zZXNzaW9uLkNyZWF0ZVNlc3Npb25SZXF1ZXN0GikueWV5aW5nLmFwaS5zZXNzaW9uLkNyZWF0ZVNlc3Npb25SZXNwb25zZSIAEl8KBkRlbGV0ZRIoLnlleWluZy5hcGkuc2Vzc2lvbi5EZWxldGVTZXNzaW9uUmVxdWVzdBopLnlleWluZy5hcGkuc2Vzc2lvbi5EZWxldGVTZXNzaW9uUmVzcG9uc2UiABJfCgZEZXRhaWwSKC55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlcXVlc3QaKS55ZXlpbmcuYXBpLnNlc3Npb24uU2Vzc2lvbkRldGFpbFJlc3BvbnNlIgASXwoGU2VhcmNoEigueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25SZXF1ZXN0GikueWV5aW5nLmFwaS5zZXNzaW9uLlNlYXJjaFNlc3Npb25SZXNwb25zZSIAEl8KBlVwZGF0ZRIoLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVxdWVzdBopLnlleWluZy5hcGkuc2Vzc2lvbi5VcGRhdGVTZXNzaW9uUmVzcG9uc2UiAEIUWhJ5ZXlpbmcvYXBpL3Nlc3Npb25iBnByb3RvMw", [file_yeying_api_common_message]);
 
 /**
  * @generated from message yeying.api.session.CreateSessionRequest
  */
-export type CreateSessionRequest =
-  Message<"yeying.api.session.CreateSessionRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateSessionRequest = Message<"yeying.api.session.CreateSessionRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.CreateSessionRequestBody body = 2;
-     */
-    body?: CreateSessionRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.CreateSessionRequestBody body = 2;
+   */
+  body?: CreateSessionRequestBody;
+};
 
 /**
  * @generated from message yeying.api.session.CreateSessionRequest
@@ -68,21 +48,18 @@ export type CreateSessionRequestJson = {
  * Describes the message yeying.api.session.CreateSessionRequest.
  * Use `create(CreateSessionRequestSchema)` to create a new message.
  */
-export const CreateSessionRequestSchema: GenMessage<
-  CreateSessionRequest,
-  CreateSessionRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 0);
+export const CreateSessionRequestSchema: GenMessage<CreateSessionRequest, CreateSessionRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 0);
 
 /**
  * @generated from message yeying.api.session.CreateSessionRequestBody
  */
-export type CreateSessionRequestBody =
-  Message<"yeying.api.session.CreateSessionRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.session.SessionMetadata session = 1;
-     */
-    session?: SessionMetadata;
-  };
+export type CreateSessionRequestBody = Message<"yeying.api.session.CreateSessionRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.session.SessionMetadata session = 1;
+   */
+  session?: SessionMetadata;
+};
 
 /**
  * @generated from message yeying.api.session.CreateSessionRequestBody
@@ -98,26 +75,23 @@ export type CreateSessionRequestBodyJson = {
  * Describes the message yeying.api.session.CreateSessionRequestBody.
  * Use `create(CreateSessionRequestBodySchema)` to create a new message.
  */
-export const CreateSessionRequestBodySchema: GenMessage<
-  CreateSessionRequestBody,
-  CreateSessionRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 1);
+export const CreateSessionRequestBodySchema: GenMessage<CreateSessionRequestBody, CreateSessionRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 1);
 
 /**
  * @generated from message yeying.api.session.CreateSessionResponse
  */
-export type CreateSessionResponse =
-  Message<"yeying.api.session.CreateSessionResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type CreateSessionResponse = Message<"yeying.api.session.CreateSessionResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.CreateSessionResponseBody body = 2;
-     */
-    body?: CreateSessionResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.CreateSessionResponseBody body = 2;
+   */
+  body?: CreateSessionResponseBody;
+};
 
 /**
  * @generated from message yeying.api.session.CreateSessionResponse
@@ -138,26 +112,23 @@ export type CreateSessionResponseJson = {
  * Describes the message yeying.api.session.CreateSessionResponse.
  * Use `create(CreateSessionResponseSchema)` to create a new message.
  */
-export const CreateSessionResponseSchema: GenMessage<
-  CreateSessionResponse,
-  CreateSessionResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 2);
+export const CreateSessionResponseSchema: GenMessage<CreateSessionResponse, CreateSessionResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 2);
 
 /**
  * @generated from message yeying.api.session.CreateSessionResponseBody
  */
-export type CreateSessionResponseBody =
-  Message<"yeying.api.session.CreateSessionResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type CreateSessionResponseBody = Message<"yeying.api.session.CreateSessionResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.session.SessionMetadata session = 2;
-     */
-    session?: SessionMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.session.SessionMetadata session = 2;
+   */
+  session?: SessionMetadata;
+};
 
 /**
  * @generated from message yeying.api.session.CreateSessionResponseBody
@@ -178,26 +149,23 @@ export type CreateSessionResponseBodyJson = {
  * Describes the message yeying.api.session.CreateSessionResponseBody.
  * Use `create(CreateSessionResponseBodySchema)` to create a new message.
  */
-export const CreateSessionResponseBodySchema: GenMessage<
-  CreateSessionResponseBody,
-  CreateSessionResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 3);
+export const CreateSessionResponseBodySchema: GenMessage<CreateSessionResponseBody, CreateSessionResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 3);
 
 /**
  * @generated from message yeying.api.session.SessionDetailRequest
  */
-export type SessionDetailRequest =
-  Message<"yeying.api.session.SessionDetailRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SessionDetailRequest = Message<"yeying.api.session.SessionDetailRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.SessionDetailRequestBody body = 2;
-     */
-    body?: SessionDetailRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.SessionDetailRequestBody body = 2;
+   */
+  body?: SessionDetailRequestBody;
+};
 
 /**
  * @generated from message yeying.api.session.SessionDetailRequest
@@ -218,21 +186,18 @@ export type SessionDetailRequestJson = {
  * Describes the message yeying.api.session.SessionDetailRequest.
  * Use `create(SessionDetailRequestSchema)` to create a new message.
  */
-export const SessionDetailRequestSchema: GenMessage<
-  SessionDetailRequest,
-  SessionDetailRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 4);
+export const SessionDetailRequestSchema: GenMessage<SessionDetailRequest, SessionDetailRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 4);
 
 /**
  * @generated from message yeying.api.session.SessionDetailRequestBody
  */
-export type SessionDetailRequestBody =
-  Message<"yeying.api.session.SessionDetailRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type SessionDetailRequestBody = Message<"yeying.api.session.SessionDetailRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.session.SessionDetailRequestBody
@@ -248,26 +213,23 @@ export type SessionDetailRequestBodyJson = {
  * Describes the message yeying.api.session.SessionDetailRequestBody.
  * Use `create(SessionDetailRequestBodySchema)` to create a new message.
  */
-export const SessionDetailRequestBodySchema: GenMessage<
-  SessionDetailRequestBody,
-  SessionDetailRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 5);
+export const SessionDetailRequestBodySchema: GenMessage<SessionDetailRequestBody, SessionDetailRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 5);
 
 /**
  * @generated from message yeying.api.session.SessionDetailResponse
  */
-export type SessionDetailResponse =
-  Message<"yeying.api.session.SessionDetailResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SessionDetailResponse = Message<"yeying.api.session.SessionDetailResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.SessionDetailResponseBody body = 2;
-     */
-    body?: SessionDetailResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.SessionDetailResponseBody body = 2;
+   */
+  body?: SessionDetailResponseBody;
+};
 
 /**
  * @generated from message yeying.api.session.SessionDetailResponse
@@ -288,26 +250,23 @@ export type SessionDetailResponseJson = {
  * Describes the message yeying.api.session.SessionDetailResponse.
  * Use `create(SessionDetailResponseSchema)` to create a new message.
  */
-export const SessionDetailResponseSchema: GenMessage<
-  SessionDetailResponse,
-  SessionDetailResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 6);
+export const SessionDetailResponseSchema: GenMessage<SessionDetailResponse, SessionDetailResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 6);
 
 /**
  * @generated from message yeying.api.session.SessionDetailResponseBody
  */
-export type SessionDetailResponseBody =
-  Message<"yeying.api.session.SessionDetailResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SessionDetailResponseBody = Message<"yeying.api.session.SessionDetailResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.session.SessionDetail detail = 2;
-     */
-    detail?: SessionDetail;
-  };
+  /**
+   * @generated from field: yeying.api.session.SessionDetail detail = 2;
+   */
+  detail?: SessionDetail;
+};
 
 /**
  * @generated from message yeying.api.session.SessionDetailResponseBody
@@ -328,10 +287,8 @@ export type SessionDetailResponseBodyJson = {
  * Describes the message yeying.api.session.SessionDetailResponseBody.
  * Use `create(SessionDetailResponseBodySchema)` to create a new message.
  */
-export const SessionDetailResponseBodySchema: GenMessage<
-  SessionDetailResponseBody,
-  SessionDetailResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 7);
+export const SessionDetailResponseBodySchema: GenMessage<SessionDetailResponseBody, SessionDetailResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 7);
 
 /**
  * @generated from message yeying.api.session.SessionDetail
@@ -357,25 +314,23 @@ export type SessionDetailJson = {
  * Describes the message yeying.api.session.SessionDetail.
  * Use `create(SessionDetailSchema)` to create a new message.
  */
-export const SessionDetailSchema: GenMessage<SessionDetail, SessionDetailJson> =
-  /*@__PURE__*/
+export const SessionDetailSchema: GenMessage<SessionDetail, SessionDetailJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_session_session, 8);
 
 /**
  * @generated from message yeying.api.session.DeleteSessionRequest
  */
-export type DeleteSessionRequest =
-  Message<"yeying.api.session.DeleteSessionRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type DeleteSessionRequest = Message<"yeying.api.session.DeleteSessionRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.DeleteSessionRequestBody body = 2;
-     */
-    body?: DeleteSessionRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.DeleteSessionRequestBody body = 2;
+   */
+  body?: DeleteSessionRequestBody;
+};
 
 /**
  * @generated from message yeying.api.session.DeleteSessionRequest
@@ -396,21 +351,18 @@ export type DeleteSessionRequestJson = {
  * Describes the message yeying.api.session.DeleteSessionRequest.
  * Use `create(DeleteSessionRequestSchema)` to create a new message.
  */
-export const DeleteSessionRequestSchema: GenMessage<
-  DeleteSessionRequest,
-  DeleteSessionRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 9);
+export const DeleteSessionRequestSchema: GenMessage<DeleteSessionRequest, DeleteSessionRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 9);
 
 /**
  * @generated from message yeying.api.session.DeleteSessionRequestBody
  */
-export type DeleteSessionRequestBody =
-  Message<"yeying.api.session.DeleteSessionRequestBody"> & {
-    /**
-     * @generated from field: string uid = 1;
-     */
-    uid: string;
-  };
+export type DeleteSessionRequestBody = Message<"yeying.api.session.DeleteSessionRequestBody"> & {
+  /**
+   * @generated from field: string uid = 1;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.session.DeleteSessionRequestBody
@@ -426,26 +378,23 @@ export type DeleteSessionRequestBodyJson = {
  * Describes the message yeying.api.session.DeleteSessionRequestBody.
  * Use `create(DeleteSessionRequestBodySchema)` to create a new message.
  */
-export const DeleteSessionRequestBodySchema: GenMessage<
-  DeleteSessionRequestBody,
-  DeleteSessionRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 10);
+export const DeleteSessionRequestBodySchema: GenMessage<DeleteSessionRequestBody, DeleteSessionRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 10);
 
 /**
  * @generated from message yeying.api.session.DeleteSessionResponse
  */
-export type DeleteSessionResponse =
-  Message<"yeying.api.session.DeleteSessionResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type DeleteSessionResponse = Message<"yeying.api.session.DeleteSessionResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.DeleteSessionResponseBody body = 2;
-     */
-    body?: DeleteSessionResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.DeleteSessionResponseBody body = 2;
+   */
+  body?: DeleteSessionResponseBody;
+};
 
 /**
  * @generated from message yeying.api.session.DeleteSessionResponse
@@ -466,21 +415,18 @@ export type DeleteSessionResponseJson = {
  * Describes the message yeying.api.session.DeleteSessionResponse.
  * Use `create(DeleteSessionResponseSchema)` to create a new message.
  */
-export const DeleteSessionResponseSchema: GenMessage<
-  DeleteSessionResponse,
-  DeleteSessionResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 11);
+export const DeleteSessionResponseSchema: GenMessage<DeleteSessionResponse, DeleteSessionResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 11);
 
 /**
  * @generated from message yeying.api.session.DeleteSessionResponseBody
  */
-export type DeleteSessionResponseBody =
-  Message<"yeying.api.session.DeleteSessionResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type DeleteSessionResponseBody = Message<"yeying.api.session.DeleteSessionResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.session.DeleteSessionResponseBody
@@ -496,26 +442,23 @@ export type DeleteSessionResponseBodyJson = {
  * Describes the message yeying.api.session.DeleteSessionResponseBody.
  * Use `create(DeleteSessionResponseBodySchema)` to create a new message.
  */
-export const DeleteSessionResponseBodySchema: GenMessage<
-  DeleteSessionResponseBody,
-  DeleteSessionResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 12);
+export const DeleteSessionResponseBodySchema: GenMessage<DeleteSessionResponseBody, DeleteSessionResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 12);
 
 /**
  * @generated from message yeying.api.session.SearchSessionRequest
  */
-export type SearchSessionRequest =
-  Message<"yeying.api.session.SearchSessionRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchSessionRequest = Message<"yeying.api.session.SearchSessionRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.SearchSessionRequestBody body = 2;
-     */
-    body?: SearchSessionRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.SearchSessionRequestBody body = 2;
+   */
+  body?: SearchSessionRequestBody;
+};
 
 /**
  * @generated from message yeying.api.session.SearchSessionRequest
@@ -536,26 +479,23 @@ export type SearchSessionRequestJson = {
  * Describes the message yeying.api.session.SearchSessionRequest.
  * Use `create(SearchSessionRequestSchema)` to create a new message.
  */
-export const SearchSessionRequestSchema: GenMessage<
-  SearchSessionRequest,
-  SearchSessionRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 13);
+export const SearchSessionRequestSchema: GenMessage<SearchSessionRequest, SearchSessionRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 13);
 
 /**
  * @generated from message yeying.api.session.SearchSessionRequestBody
  */
-export type SearchSessionRequestBody =
-  Message<"yeying.api.session.SearchSessionRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.session.SearchSessionCondition condition = 1;
-     */
-    condition?: SearchSessionCondition;
+export type SearchSessionRequestBody = Message<"yeying.api.session.SearchSessionRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.session.SearchSessionCondition condition = 1;
+   */
+  condition?: SearchSessionCondition;
 
-    /**
-     * @generated from field: yeying.api.common.RequestPage page = 2;
-     */
-    page?: RequestPage;
-  };
+  /**
+   * @generated from field: yeying.api.common.RequestPage page = 2;
+   */
+  page?: RequestPage;
+};
 
 /**
  * @generated from message yeying.api.session.SearchSessionRequestBody
@@ -576,26 +516,23 @@ export type SearchSessionRequestBodyJson = {
  * Describes the message yeying.api.session.SearchSessionRequestBody.
  * Use `create(SearchSessionRequestBodySchema)` to create a new message.
  */
-export const SearchSessionRequestBodySchema: GenMessage<
-  SearchSessionRequestBody,
-  SearchSessionRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 14);
+export const SearchSessionRequestBodySchema: GenMessage<SearchSessionRequestBody, SearchSessionRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 14);
 
 /**
  * @generated from message yeying.api.session.SearchSessionCondition
  */
-export type SearchSessionCondition =
-  Message<"yeying.api.session.SearchSessionCondition"> & {
-    /**
-     * @generated from field: string name = 1;
-     */
-    name: string;
+export type SearchSessionCondition = Message<"yeying.api.session.SearchSessionCondition"> & {
+  /**
+   * @generated from field: string name = 1;
+   */
+  name: string;
 
-    /**
-     * @generated from field: string uid = 2;
-     */
-    uid: string;
-  };
+  /**
+   * @generated from field: string uid = 2;
+   */
+  uid: string;
+};
 
 /**
  * @generated from message yeying.api.session.SearchSessionCondition
@@ -616,26 +553,23 @@ export type SearchSessionConditionJson = {
  * Describes the message yeying.api.session.SearchSessionCondition.
  * Use `create(SearchSessionConditionSchema)` to create a new message.
  */
-export const SearchSessionConditionSchema: GenMessage<
-  SearchSessionCondition,
-  SearchSessionConditionJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 15);
+export const SearchSessionConditionSchema: GenMessage<SearchSessionCondition, SearchSessionConditionJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 15);
 
 /**
  * @generated from message yeying.api.session.SearchSessionResponse
  */
-export type SearchSessionResponse =
-  Message<"yeying.api.session.SearchSessionResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type SearchSessionResponse = Message<"yeying.api.session.SearchSessionResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.SearchSessionResponseBody body = 2;
-     */
-    body?: SearchSessionResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.SearchSessionResponseBody body = 2;
+   */
+  body?: SearchSessionResponseBody;
+};
 
 /**
  * @generated from message yeying.api.session.SearchSessionResponse
@@ -656,26 +590,23 @@ export type SearchSessionResponseJson = {
  * Describes the message yeying.api.session.SearchSessionResponse.
  * Use `create(SearchSessionResponseSchema)` to create a new message.
  */
-export const SearchSessionResponseSchema: GenMessage<
-  SearchSessionResponse,
-  SearchSessionResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 16);
+export const SearchSessionResponseSchema: GenMessage<SearchSessionResponse, SearchSessionResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 16);
 
 /**
  * @generated from message yeying.api.session.SearchSessionResponseBody
  */
-export type SearchSessionResponseBody =
-  Message<"yeying.api.session.SearchSessionResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type SearchSessionResponseBody = Message<"yeying.api.session.SearchSessionResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: repeated yeying.api.session.SessionMetadata sessions = 2;
-     */
-    sessions: SessionMetadata[];
-  };
+  /**
+   * @generated from field: repeated yeying.api.session.SessionMetadata sessions = 2;
+   */
+  sessions: SessionMetadata[];
+};
 
 /**
  * @generated from message yeying.api.session.SearchSessionResponseBody
@@ -696,26 +627,23 @@ export type SearchSessionResponseBodyJson = {
  * Describes the message yeying.api.session.SearchSessionResponseBody.
  * Use `create(SearchSessionResponseBodySchema)` to create a new message.
  */
-export const SearchSessionResponseBodySchema: GenMessage<
-  SearchSessionResponseBody,
-  SearchSessionResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 17);
+export const SearchSessionResponseBodySchema: GenMessage<SearchSessionResponseBody, SearchSessionResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 17);
 
 /**
  * @generated from message yeying.api.session.UpdateSessionRequest
  */
-export type UpdateSessionRequest =
-  Message<"yeying.api.session.UpdateSessionRequest"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type UpdateSessionRequest = Message<"yeying.api.session.UpdateSessionRequest"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.UpdateSessionRequestBody body = 2;
-     */
-    body?: UpdateSessionRequestBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.UpdateSessionRequestBody body = 2;
+   */
+  body?: UpdateSessionRequestBody;
+};
 
 /**
  * @generated from message yeying.api.session.UpdateSessionRequest
@@ -736,21 +664,18 @@ export type UpdateSessionRequestJson = {
  * Describes the message yeying.api.session.UpdateSessionRequest.
  * Use `create(UpdateSessionRequestSchema)` to create a new message.
  */
-export const UpdateSessionRequestSchema: GenMessage<
-  UpdateSessionRequest,
-  UpdateSessionRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 18);
+export const UpdateSessionRequestSchema: GenMessage<UpdateSessionRequest, UpdateSessionRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 18);
 
 /**
  * @generated from message yeying.api.session.UpdateSessionRequestBody
  */
-export type UpdateSessionRequestBody =
-  Message<"yeying.api.session.UpdateSessionRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.session.SessionMetadata session = 1;
-     */
-    session?: SessionMetadata;
-  };
+export type UpdateSessionRequestBody = Message<"yeying.api.session.UpdateSessionRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.session.SessionMetadata session = 1;
+   */
+  session?: SessionMetadata;
+};
 
 /**
  * @generated from message yeying.api.session.UpdateSessionRequestBody
@@ -766,26 +691,23 @@ export type UpdateSessionRequestBodyJson = {
  * Describes the message yeying.api.session.UpdateSessionRequestBody.
  * Use `create(UpdateSessionRequestBodySchema)` to create a new message.
  */
-export const UpdateSessionRequestBodySchema: GenMessage<
-  UpdateSessionRequestBody,
-  UpdateSessionRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 19);
+export const UpdateSessionRequestBodySchema: GenMessage<UpdateSessionRequestBody, UpdateSessionRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 19);
 
 /**
  * @generated from message yeying.api.session.UpdateSessionResponse
  */
-export type UpdateSessionResponse =
-  Message<"yeying.api.session.UpdateSessionResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
+export type UpdateSessionResponse = Message<"yeying.api.session.UpdateSessionResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
 
-    /**
-     * @generated from field: yeying.api.session.UpdateSessionResponseBody body = 2;
-     */
-    body?: UpdateSessionResponseBody;
-  };
+  /**
+   * @generated from field: yeying.api.session.UpdateSessionResponseBody body = 2;
+   */
+  body?: UpdateSessionResponseBody;
+};
 
 /**
  * @generated from message yeying.api.session.UpdateSessionResponse
@@ -806,26 +728,23 @@ export type UpdateSessionResponseJson = {
  * Describes the message yeying.api.session.UpdateSessionResponse.
  * Use `create(UpdateSessionResponseSchema)` to create a new message.
  */
-export const UpdateSessionResponseSchema: GenMessage<
-  UpdateSessionResponse,
-  UpdateSessionResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 20);
+export const UpdateSessionResponseSchema: GenMessage<UpdateSessionResponse, UpdateSessionResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 20);
 
 /**
  * @generated from message yeying.api.session.UpdateSessionResponseBody
  */
-export type UpdateSessionResponseBody =
-  Message<"yeying.api.session.UpdateSessionResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type UpdateSessionResponseBody = Message<"yeying.api.session.UpdateSessionResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: yeying.api.session.SessionMetadata session = 2;
-     */
-    session?: SessionMetadata;
-  };
+  /**
+   * @generated from field: yeying.api.session.SessionMetadata session = 2;
+   */
+  session?: SessionMetadata;
+};
 
 /**
  * @generated from message yeying.api.session.UpdateSessionResponseBody
@@ -846,59 +765,57 @@ export type UpdateSessionResponseBodyJson = {
  * Describes the message yeying.api.session.UpdateSessionResponseBody.
  * Use `create(UpdateSessionResponseBodySchema)` to create a new message.
  */
-export const UpdateSessionResponseBodySchema: GenMessage<
-  UpdateSessionResponseBody,
-  UpdateSessionResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 21);
+export const UpdateSessionResponseBodySchema: GenMessage<UpdateSessionResponseBody, UpdateSessionResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 21);
 
 /**
  * @generated from message yeying.api.session.SessionMetadata
  */
 export type SessionMetadata = Message<"yeying.api.session.SessionMetadata"> & {
   /**
-   * 会话唯一ID
+   * 会话唯一ID 
    *
    * @generated from field: string uid = 1;
    */
   uid: string;
 
   /**
-   * 会话所有者
+   * 会话所有者 
    *
    * @generated from field: string owner = 2;
    */
   owner: string;
 
   /**
-   * 会话名称
+   * 会话名称 
    *
    * @generated from field: string name = 3;
    */
   name: string;
 
   /**
-   * 会话描述
+   * 会话描述 
    *
    * @generated from field: string description = 4;
    */
   description: string;
 
   /**
-   * 会话配置
+   * 会话配置 
    *
    * @generated from field: string config = 5;
    */
   config: string;
 
   /**
-   * 应用创建时间
+   * 应用创建时间 
    *
    * @generated from field: string createdAt = 6;
    */
   createdAt: string;
 
   /**
-   * 应用更新时间
+   * 应用更新时间 
    *
    * @generated from field: string updatedAt = 7;
    */
@@ -917,49 +834,49 @@ export type SessionMetadata = Message<"yeying.api.session.SessionMetadata"> & {
  */
 export type SessionMetadataJson = {
   /**
-   * 会话唯一ID
+   * 会话唯一ID 
    *
    * @generated from field: string uid = 1;
    */
   uid?: string;
 
   /**
-   * 会话所有者
+   * 会话所有者 
    *
    * @generated from field: string owner = 2;
    */
   owner?: string;
 
   /**
-   * 会话名称
+   * 会话名称 
    *
    * @generated from field: string name = 3;
    */
   name?: string;
 
   /**
-   * 会话描述
+   * 会话描述 
    *
    * @generated from field: string description = 4;
    */
   description?: string;
 
   /**
-   * 会话配置
+   * 会话配置 
    *
    * @generated from field: string config = 5;
    */
   config?: string;
 
   /**
-   * 应用创建时间
+   * 应用创建时间 
    *
    * @generated from field: string createdAt = 6;
    */
   createdAt?: string;
 
   /**
-   * 应用更新时间
+   * 应用更新时间 
    *
    * @generated from field: string updatedAt = 7;
    */
@@ -977,10 +894,8 @@ export type SessionMetadataJson = {
  * Describes the message yeying.api.session.SessionMetadata.
  * Use `create(SessionMetadataSchema)` to create a new message.
  */
-export const SessionMetadataSchema: GenMessage<
-  SessionMetadata,
-  SessionMetadataJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_session_session, 22);
+export const SessionMetadataSchema: GenMessage<SessionMetadata, SessionMetadataJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_session_session, 22);
 
 /**
  * @generated from service yeying.api.session.Session
@@ -995,7 +910,7 @@ export const Session: GenService<{
     methodKind: "unary";
     input: typeof CreateSessionRequestSchema;
     output: typeof CreateSessionResponseSchema;
-  };
+  },
   /**
    * 删除会话
    *
@@ -1005,7 +920,7 @@ export const Session: GenService<{
     methodKind: "unary";
     input: typeof DeleteSessionRequestSchema;
     output: typeof DeleteSessionResponseSchema;
-  };
+  },
   /**
    * 搜索会话
    *
@@ -1015,7 +930,7 @@ export const Session: GenService<{
     methodKind: "unary";
     input: typeof SessionDetailRequestSchema;
     output: typeof SessionDetailResponseSchema;
-  };
+  },
   /**
    * 搜索会话
    *
@@ -1025,7 +940,7 @@ export const Session: GenService<{
     methodKind: "unary";
     input: typeof SearchSessionRequestSchema;
     output: typeof SearchSessionResponseSchema;
-  };
+  },
   /**
    * 更新会话
    *
@@ -1035,5 +950,7 @@ export const Session: GenService<{
     methodKind: "unary";
     input: typeof UpdateSessionRequestSchema;
     output: typeof UpdateSessionResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_session_session, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_session_session, 0);
+

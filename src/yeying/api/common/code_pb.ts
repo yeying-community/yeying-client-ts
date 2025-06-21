@@ -15,11 +15,8 @@ import { enumDesc, fileDesc } from "@bufbuild/protobuf/codegenv1";
 /**
  * Describes the file yeying/api/common/code.proto.
  */
-export const file_yeying_api_common_code: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "Chx5ZXlpbmcvYXBpL2NvbW1vbi9jb2RlLnByb3RvEhF5ZXlpbmcuYXBpLmNvbW1vbiqeAgoQUmVzcG9uc2VDb2RlRW51bRIZChVSRVNQT05TRV9DT0RFX1VOS05PV04QABIGCgJPSxABEhQKEElOVkFMSURfQVJHVU1FTlQQAhITCg9VTkFVVEhFTlRJQ0FURUQQAxIVChFQRVJNSVNTSU9OX0RFTklFRBAEEg0KCU5PVF9GT1VORBAFEhIKDkFMUkVBRFlfRVhJU1RTEAYSEgoOTElNSVRfRVhDRUVERUQQBxIPCgtVTkFWQUlMQUJMRRAIEhEKDVVOS05PV05fRVJST1IQCRIRCg1ORVRXT1JLX0VSUk9SEAoSEAoMSU5WQUxJRF9DRVJUEAsSEQoNTk9UX1NVUFBPUlRFRBAMEhIKDkRBVEFfQ09SUlVQVEVEEA0qrAEKEkNvbnRyYWN0U3RhdHVzRW51bRIbChdDT05UUkFDVF9TVEFUVVNfVU5LTk9XThAAEh8KG0NPTlRSQUNUX1NUQVRVU19JTkFDVElWQVRFRBABEh0KGUNPTlRSQUNUX1NUQVRVU19BQ1RJVkFURUQQAhIbChdDT05UUkFDVF9TVEFUVVNfRVhQSVJFRBADEhwKGENPTlRSQUNUX1NUQVRVU19DQU5DRUxFRBAEKl8KEExhbmd1YWdlQ29kZUVudW0SGQoVTEFOR1VBR0VfQ09ERV9VTktOT1dOEAASFwoTTEFOR1VBR0VfQ09ERV9aSF9DSBABEhcKE0xBTkdVQUdFX0NPREVfRU5fVVMQAirmAQoTQXBwbGljYXRpb25Db2RlRW51bRIcChhBUFBMSUNBVElPTl9DT0RFX1VOS05PV04QABIbChdBUFBMSUNBVElPTl9DT0RFX01BUktFVBABEhoKFkFQUExJQ0FUSU9OX0NPREVfQVNTRVQQAhIeChpBUFBMSUNBVElPTl9DT0RFX0tOT1dMRURHRRADEhsKF0FQUExJQ0FUSU9OX0NPREVfS0VFUEVSEAQSGwoXQVBQTElDQVRJT05fQ09ERV9TT0NJQUwQBRIeChpBUFBMSUNBVElPTl9DT0RFX1dPUktCRU5DSBAGKowBCg9TZXJ2aWNlQ29kZUVudW0SGAoUU0VSVklDRV9DT0RFX1VOS05PV04QABIVChFTRVJWSUNFX0NPREVfTk9ERRABEhoKFlNFUlZJQ0VfQ09ERV9XQVJFSE9VU0UQAhIWChJTRVJWSUNFX0NPREVfQUdFTlQQAxIUChBTRVJWSUNFX0NPREVfTUNQEAQqmAMKC0FwaUNvZGVFbnVtEhQKEEFQSV9DT0RFX1VOS05PV04QABIRCg1BUElfQ09ERV9VU0VSEAESFQoRQVBJX0NPREVfSURFTlRJVFkQAhIYChRBUElfQ09ERV9MTE1fU0VSVklDRRADEhkKFUFQSV9DT0RFX0xMTV9QUk9WSURFUhAEEhoKFkFQSV9DT0RFX0FTU0VUX1NFUlZJQ0UQBRIYChRBUElfQ09ERV9BU1NFVF9CTE9DSxAGEhcKE0FQSV9DT0RFX0FTU0VUX0xJTksQBxIcChhBUElfQ09ERV9BU1NFVF9OQU1FU1BBQ0UQCBIaChZBUElfQ09ERV9BU1NFVF9SRUNZQ0xFEAkSGAoUQVBJX0NPREVfQ0VSVElGSUNBVEUQChIUChBBUElfQ09ERV9TVE9SQUdFEAsSGAoUQVBJX0NPREVfQVBQTElDQVRJT04QDBISCg5BUElfQ09ERV9FVkVOVBANEhcKE0FQSV9DT0RFX0lOVklUQVRJT04QDhIUChBBUElfQ09ERV9TRVJWSUNFEA8qQQoPSW1hZ2VGb3JtYXRFbnVtEhgKFElNQUdFX0ZPUk1BVF9VTktOT1dOEAASFAoQSU1BR0VfRk9STUFUX1BORxABKskBChFEaWdpdGFsRm9ybWF0RW51bRIaChZESUdJVEFMX0ZPUk1BVF9VTktOT1dOEAASFwoTRElHSVRBTF9GT1JNQVRfVEVYVBABEhgKFERJR0lUQUxfRk9STUFUX0lNQUdFEAISGAoURElHSVRBTF9GT1JNQVRfVklERU8QAxIYChRESUdJVEFMX0ZPUk1BVF9BVURJTxAEEhYKEkRJR0lUQUxfRk9STUFUX0FQUBAFEhkKFERJR0lUQUxfRk9STUFUX09USEVSEJBOKmIKEUNvbnRlbnRGb3JtYXRFbnVtEhoKFkNPTlRFTlRfRk9STUFUX1VOS05PV04QABIWChJDT05URU5UX0ZPUk1BVF9VUkwQARIZChVDT05URU5UX0ZPUk1BVF9CQVNFNjQQAiqDAQoQU2Vzc2lvblNjZW5lRW51bRIZChVTRVNTSU9OX1NDRU5FX1VOS05PV04QABIaChZTRVNTSU9OX1NDRU5FX0RJQUxPR1VFEAESGQoVU0VTU0lPTl9TQ0VORV9EUkFXSU5HEAISHQoZU0VTU0lPTl9TQ0VORV9UUkFOU0xBVElPThADKmEKD1Nlc3Npb25Sb2xlRW51bRIYChRTRVNTSU9OX1JPTEVfVU5LTk9XThAAEhwKGFNFU1NJT05fUk9MRV9QQVJUSUNJUEFOVBABEhYKElNFU1NJT05fUk9MRV9BRE1JThACKm4KE1BhcnRpY2lwYW50VHlwZUVudW0SHAoYUEFSVElDSVBBTlRfVFlQRV9VTktOT1dOEAASHAoYUEFSVElDSVBBTlRfVFlQRV9TRVJWSUNFEAESGwoXUEFSVElDSVBBTlRfVFlQRV9QRU9QTEUQAipbCg1BdWRpdFR5cGVFbnVtEhoKFkFVRElUX1RZUEVfQVBQTElDQVRJT04QABIWChJBVURJVF9UWVBFX1NFUlZJQ0UQARIWChJBVURJVF9UWVBFX1VOS05PV04QAirWAQoVQXBwbGljYXRpb25TdGF0dXNFbnVtEh4KGkFQUExJQ0FUSU9OX1NUQVRVU19VTktOT1dOEAASHgoaQVBQTElDQVRJT05fU1RBVFVTX0NSRUFURUQQARIeChpBUFBMSUNBVElPTl9TVEFUVVNfQVVESVRFRBACEh4KGkFQUExJQ0FUSU9OX1NUQVRVU19SRUZVU0VEEAMSHgoaQVBQTElDQVRJT05fU1RBVFVTX09GRkxJTkUQBBIdChlBUFBMSUNBVElPTl9TVEFUVVNfT05MSU5FEAUqRgoOQ2lwaGVyVHlwZUVudW0SFwoTQ0lQSEVSX1RZUEVfVU5LTk9XThAAEhsKF0NJUEhFUl9UWVBFX0FFU19HQ01fMjU2EAEqbgoUQXV0aGVudGljYXRlVHlwZUVudW0SHQoZQVVUSEVOVElDQVRFX1RZUEVfVU5LTk9XThAAEhoKFkFVVEhFTlRJQ0FURV9UWVBFX0NFUlQQARIbChdBVVRIRU5USUNBVEVfVFlQRV9UT0tFThACQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM",
-  );
+export const file_yeying_api_common_code: GenFile = /*@__PURE__*/
+  fileDesc("Chx5ZXlpbmcvYXBpL2NvbW1vbi9jb2RlLnByb3RvEhF5ZXlpbmcuYXBpLmNvbW1vbiqeAgoQUmVzcG9uc2VDb2RlRW51bRIZChVSRVNQT05TRV9DT0RFX1VOS05PV04QABIGCgJPSxABEhQKEElOVkFMSURfQVJHVU1FTlQQAhITCg9VTkFVVEhFTlRJQ0FURUQQAxIVChFQRVJNSVNTSU9OX0RFTklFRBAEEg0KCU5PVF9GT1VORBAFEhIKDkFMUkVBRFlfRVhJU1RTEAYSEgoOTElNSVRfRVhDRUVERUQQBxIPCgtVTkFWQUlMQUJMRRAIEhEKDVVOS05PV05fRVJST1IQCRIRCg1ORVRXT1JLX0VSUk9SEAoSEAoMSU5WQUxJRF9DRVJUEAsSEQoNTk9UX1NVUFBPUlRFRBAMEhIKDkRBVEFfQ09SUlVQVEVEEA0qrAEKEkNvbnRyYWN0U3RhdHVzRW51bRIbChdDT05UUkFDVF9TVEFUVVNfVU5LTk9XThAAEh8KG0NPTlRSQUNUX1NUQVRVU19JTkFDVElWQVRFRBABEh0KGUNPTlRSQUNUX1NUQVRVU19BQ1RJVkFURUQQAhIbChdDT05UUkFDVF9TVEFUVVNfRVhQSVJFRBADEhwKGENPTlRSQUNUX1NUQVRVU19DQU5DRUxFRBAEKl8KEExhbmd1YWdlQ29kZUVudW0SGQoVTEFOR1VBR0VfQ09ERV9VTktOT1dOEAASFwoTTEFOR1VBR0VfQ09ERV9aSF9DSBABEhcKE0xBTkdVQUdFX0NPREVfRU5fVVMQAirmAQoTQXBwbGljYXRpb25Db2RlRW51bRIcChhBUFBMSUNBVElPTl9DT0RFX1VOS05PV04QABIbChdBUFBMSUNBVElPTl9DT0RFX01BUktFVBABEhoKFkFQUExJQ0FUSU9OX0NPREVfQVNTRVQQAhIeChpBUFBMSUNBVElPTl9DT0RFX0tOT1dMRURHRRADEhsKF0FQUExJQ0FUSU9OX0NPREVfS0VFUEVSEAQSGwoXQVBQTElDQVRJT05fQ09ERV9TT0NJQUwQBRIeChpBUFBMSUNBVElPTl9DT0RFX1dPUktCRU5DSBAGKowBCg9TZXJ2aWNlQ29kZUVudW0SGAoUU0VSVklDRV9DT0RFX1VOS05PV04QABIVChFTRVJWSUNFX0NPREVfTk9ERRABEhoKFlNFUlZJQ0VfQ09ERV9XQVJFSE9VU0UQAhIWChJTRVJWSUNFX0NPREVfQUdFTlQQAxIUChBTRVJWSUNFX0NPREVfTUNQEAQqmAMKC0FwaUNvZGVFbnVtEhQKEEFQSV9DT0RFX1VOS05PV04QABIRCg1BUElfQ09ERV9VU0VSEAESFQoRQVBJX0NPREVfSURFTlRJVFkQAhIYChRBUElfQ09ERV9MTE1fU0VSVklDRRADEhkKFUFQSV9DT0RFX0xMTV9QUk9WSURFUhAEEhoKFkFQSV9DT0RFX0FTU0VUX1NFUlZJQ0UQBRIYChRBUElfQ09ERV9BU1NFVF9CTE9DSxAGEhcKE0FQSV9DT0RFX0FTU0VUX0xJTksQBxIcChhBUElfQ09ERV9BU1NFVF9OQU1FU1BBQ0UQCBIaChZBUElfQ09ERV9BU1NFVF9SRUNZQ0xFEAkSGAoUQVBJX0NPREVfQ0VSVElGSUNBVEUQChIUChBBUElfQ09ERV9TVE9SQUdFEAsSGAoUQVBJX0NPREVfQVBQTElDQVRJT04QDBISCg5BUElfQ09ERV9FVkVOVBANEhcKE0FQSV9DT0RFX0lOVklUQVRJT04QDhIUChBBUElfQ09ERV9TRVJWSUNFEA8qQQoPSW1hZ2VGb3JtYXRFbnVtEhgKFElNQUdFX0ZPUk1BVF9VTktOT1dOEAASFAoQSU1BR0VfRk9STUFUX1BORxABKskBChFEaWdpdGFsRm9ybWF0RW51bRIaChZESUdJVEFMX0ZPUk1BVF9VTktOT1dOEAASFwoTRElHSVRBTF9GT1JNQVRfVEVYVBABEhgKFERJR0lUQUxfRk9STUFUX0lNQUdFEAISGAoURElHSVRBTF9GT1JNQVRfVklERU8QAxIYChRESUdJVEFMX0ZPUk1BVF9BVURJTxAEEhYKEkRJR0lUQUxfRk9STUFUX0FQUBAFEhkKFERJR0lUQUxfRk9STUFUX09USEVSEJBOKmIKEUNvbnRlbnRGb3JtYXRFbnVtEhoKFkNPTlRFTlRfRk9STUFUX1VOS05PV04QABIWChJDT05URU5UX0ZPUk1BVF9VUkwQARIZChVDT05URU5UX0ZPUk1BVF9CQVNFNjQQAiqDAQoQU2Vzc2lvblNjZW5lRW51bRIZChVTRVNTSU9OX1NDRU5FX1VOS05PV04QABIaChZTRVNTSU9OX1NDRU5FX0RJQUxPR1VFEAESGQoVU0VTU0lPTl9TQ0VORV9EUkFXSU5HEAISHQoZU0VTU0lPTl9TQ0VORV9UUkFOU0xBVElPThADKmEKD1Nlc3Npb25Sb2xlRW51bRIYChRTRVNTSU9OX1JPTEVfVU5LTk9XThAAEhwKGFNFU1NJT05fUk9MRV9QQVJUSUNJUEFOVBABEhYKElNFU1NJT05fUk9MRV9BRE1JThACKm4KE1BhcnRpY2lwYW50VHlwZUVudW0SHAoYUEFSVElDSVBBTlRfVFlQRV9VTktOT1dOEAASHAoYUEFSVElDSVBBTlRfVFlQRV9TRVJWSUNFEAESGwoXUEFSVElDSVBBTlRfVFlQRV9QRU9QTEUQAipbCg1BdWRpdFR5cGVFbnVtEhoKFkFVRElUX1RZUEVfQVBQTElDQVRJT04QABIWChJBVURJVF9UWVBFX1NFUlZJQ0UQARIWChJBVURJVF9UWVBFX1VOS05PV04QAirWAQoVQXBwbGljYXRpb25TdGF0dXNFbnVtEh4KGkFQUExJQ0FUSU9OX1NUQVRVU19VTktOT1dOEAASHgoaQVBQTElDQVRJT05fU1RBVFVTX0NSRUFURUQQARIeChpBUFBMSUNBVElPTl9TVEFUVVNfQVVESVRFRBACEh4KGkFQUExJQ0FUSU9OX1NUQVRVU19SRUZVU0VEEAMSHgoaQVBQTElDQVRJT05fU1RBVFVTX09GRkxJTkUQBBIdChlBUFBMSUNBVElPTl9TVEFUVVNfT05MSU5FEAUqRgoOQ2lwaGVyVHlwZUVudW0SFwoTQ0lQSEVSX1RZUEVfVU5LTk9XThAAEhsKF0NJUEhFUl9UWVBFX0FFU19HQ01fMjU2EAEqbgoUQXV0aGVudGljYXRlVHlwZUVudW0SHQoZQVVUSEVOVElDQVRFX1RZUEVfVU5LTk9XThAAEhoKFkFVVEhFTlRJQ0FURV9UWVBFX0NFUlQQARIbChdBVVRIRU5USUNBVEVfVFlQRV9UT0tFThACQhNaEXlleWluZy9hcGkvY29tbW9uYgZwcm90bzM");
 
 /**
  * *
@@ -167,29 +164,13 @@ export enum ResponseCodeEnum {
  *
  * @generated from enum yeying.api.common.ResponseCodeEnum
  */
-export type ResponseCodeEnumJson =
-  | "RESPONSE_CODE_UNKNOWN"
-  | "OK"
-  | "INVALID_ARGUMENT"
-  | "UNAUTHENTICATED"
-  | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | "ALREADY_EXISTS"
-  | "LIMIT_EXCEEDED"
-  | "UNAVAILABLE"
-  | "UNKNOWN_ERROR"
-  | "NETWORK_ERROR"
-  | "INVALID_CERT"
-  | "NOT_SUPPORTED"
-  | "DATA_CORRUPTED";
+export type ResponseCodeEnumJson = "RESPONSE_CODE_UNKNOWN" | "OK" | "INVALID_ARGUMENT" | "UNAUTHENTICATED" | "PERMISSION_DENIED" | "NOT_FOUND" | "ALREADY_EXISTS" | "LIMIT_EXCEEDED" | "UNAVAILABLE" | "UNKNOWN_ERROR" | "NETWORK_ERROR" | "INVALID_CERT" | "NOT_SUPPORTED" | "DATA_CORRUPTED";
 
 /**
  * Describes the enum yeying.api.common.ResponseCodeEnum.
  */
-export const ResponseCodeEnumSchema: GenEnum<
-  ResponseCodeEnum,
-  ResponseCodeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 0);
+export const ResponseCodeEnumSchema: GenEnum<ResponseCodeEnum, ResponseCodeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 0);
 
 /**
  * *
@@ -248,20 +229,13 @@ export enum ContractStatusEnum {
  *
  * @generated from enum yeying.api.common.ContractStatusEnum
  */
-export type ContractStatusEnumJson =
-  | "CONTRACT_STATUS_UNKNOWN"
-  | "CONTRACT_STATUS_INACTIVATED"
-  | "CONTRACT_STATUS_ACTIVATED"
-  | "CONTRACT_STATUS_EXPIRED"
-  | "CONTRACT_STATUS_CANCELED";
+export type ContractStatusEnumJson = "CONTRACT_STATUS_UNKNOWN" | "CONTRACT_STATUS_INACTIVATED" | "CONTRACT_STATUS_ACTIVATED" | "CONTRACT_STATUS_EXPIRED" | "CONTRACT_STATUS_CANCELED";
 
 /**
  * Describes the enum yeying.api.common.ContractStatusEnum.
  */
-export const ContractStatusEnumSchema: GenEnum<
-  ContractStatusEnum,
-  ContractStatusEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 1);
+export const ContractStatusEnumSchema: GenEnum<ContractStatusEnum, ContractStatusEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 1);
 
 /**
  * 语言类型
@@ -296,18 +270,13 @@ export enum LanguageCodeEnum {
  *
  * @generated from enum yeying.api.common.LanguageCodeEnum
  */
-export type LanguageCodeEnumJson =
-  | "LANGUAGE_CODE_UNKNOWN"
-  | "LANGUAGE_CODE_ZH_CH"
-  | "LANGUAGE_CODE_EN_US";
+export type LanguageCodeEnumJson = "LANGUAGE_CODE_UNKNOWN" | "LANGUAGE_CODE_ZH_CH" | "LANGUAGE_CODE_EN_US";
 
 /**
  * Describes the enum yeying.api.common.LanguageCodeEnum.
  */
-export const LanguageCodeEnumSchema: GenEnum<
-  LanguageCodeEnum,
-  LanguageCodeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 2);
+export const LanguageCodeEnumSchema: GenEnum<LanguageCodeEnum, LanguageCodeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 2);
 
 /**
  * 应用编码，每个应用都有一个类别，每个应用都可以绑定都个服务编码。
@@ -370,22 +339,13 @@ export enum ApplicationCodeEnum {
  *
  * @generated from enum yeying.api.common.ApplicationCodeEnum
  */
-export type ApplicationCodeEnumJson =
-  | "APPLICATION_CODE_UNKNOWN"
-  | "APPLICATION_CODE_MARKET"
-  | "APPLICATION_CODE_ASSET"
-  | "APPLICATION_CODE_KNOWLEDGE"
-  | "APPLICATION_CODE_KEEPER"
-  | "APPLICATION_CODE_SOCIAL"
-  | "APPLICATION_CODE_WORKBENCH";
+export type ApplicationCodeEnumJson = "APPLICATION_CODE_UNKNOWN" | "APPLICATION_CODE_MARKET" | "APPLICATION_CODE_ASSET" | "APPLICATION_CODE_KNOWLEDGE" | "APPLICATION_CODE_KEEPER" | "APPLICATION_CODE_SOCIAL" | "APPLICATION_CODE_WORKBENCH";
 
 /**
  * Describes the enum yeying.api.common.ApplicationCodeEnum.
  */
-export const ApplicationCodeEnumSchema: GenEnum<
-  ApplicationCodeEnum,
-  ApplicationCodeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 3);
+export const ApplicationCodeEnumSchema: GenEnum<ApplicationCodeEnum, ApplicationCodeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 3);
 
 /**
  * 服务编码，每个服务都可以绑定多个API编码，对外提供多套服务接口
@@ -434,20 +394,13 @@ export enum ServiceCodeEnum {
  *
  * @generated from enum yeying.api.common.ServiceCodeEnum
  */
-export type ServiceCodeEnumJson =
-  | "SERVICE_CODE_UNKNOWN"
-  | "SERVICE_CODE_NODE"
-  | "SERVICE_CODE_WAREHOUSE"
-  | "SERVICE_CODE_AGENT"
-  | "SERVICE_CODE_MCP";
+export type ServiceCodeEnumJson = "SERVICE_CODE_UNKNOWN" | "SERVICE_CODE_NODE" | "SERVICE_CODE_WAREHOUSE" | "SERVICE_CODE_AGENT" | "SERVICE_CODE_MCP";
 
 /**
  * Describes the enum yeying.api.common.ServiceCodeEnum.
  */
-export const ServiceCodeEnumSchema: GenEnum<
-  ServiceCodeEnum,
-  ServiceCodeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 4);
+export const ServiceCodeEnumSchema: GenEnum<ServiceCodeEnum, ServiceCodeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 4);
 
 /**
  * API编码，针对服务做一些原子的、标准化的工作，方便第三方接入区块链网络，也方便服务使用者集成使用
@@ -573,29 +526,12 @@ export enum ApiCodeEnum {
  *
  * @generated from enum yeying.api.common.ApiCodeEnum
  */
-export type ApiCodeEnumJson =
-  | "API_CODE_UNKNOWN"
-  | "API_CODE_USER"
-  | "API_CODE_IDENTITY"
-  | "API_CODE_LLM_SERVICE"
-  | "API_CODE_LLM_PROVIDER"
-  | "API_CODE_ASSET_SERVICE"
-  | "API_CODE_ASSET_BLOCK"
-  | "API_CODE_ASSET_LINK"
-  | "API_CODE_ASSET_NAMESPACE"
-  | "API_CODE_ASSET_RECYCLE"
-  | "API_CODE_CERTIFICATE"
-  | "API_CODE_STORAGE"
-  | "API_CODE_APPLICATION"
-  | "API_CODE_EVENT"
-  | "API_CODE_INVITATION"
-  | "API_CODE_SERVICE";
+export type ApiCodeEnumJson = "API_CODE_UNKNOWN" | "API_CODE_USER" | "API_CODE_IDENTITY" | "API_CODE_LLM_SERVICE" | "API_CODE_LLM_PROVIDER" | "API_CODE_ASSET_SERVICE" | "API_CODE_ASSET_BLOCK" | "API_CODE_ASSET_LINK" | "API_CODE_ASSET_NAMESPACE" | "API_CODE_ASSET_RECYCLE" | "API_CODE_CERTIFICATE" | "API_CODE_STORAGE" | "API_CODE_APPLICATION" | "API_CODE_EVENT" | "API_CODE_INVITATION" | "API_CODE_SERVICE";
 
 /**
  * Describes the enum yeying.api.common.ApiCodeEnum.
  */
-export const ApiCodeEnumSchema: GenEnum<ApiCodeEnum, ApiCodeEnumJson> =
-  /*@__PURE__*/
+export const ApiCodeEnumSchema: GenEnum<ApiCodeEnum, ApiCodeEnumJson> = /*@__PURE__*/
   enumDesc(file_yeying_api_common_code, 5);
 
 /**
@@ -629,10 +565,8 @@ export type ImageFormatEnumJson = "IMAGE_FORMAT_UNKNOWN" | "IMAGE_FORMAT_PNG";
 /**
  * Describes the enum yeying.api.common.ImageFormatEnum.
  */
-export const ImageFormatEnumSchema: GenEnum<
-  ImageFormatEnum,
-  ImageFormatEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 6);
+export const ImageFormatEnumSchema: GenEnum<ImageFormatEnum, ImageFormatEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 6);
 
 /**
  * 数字格式
@@ -695,22 +629,13 @@ export enum DigitalFormatEnum {
  *
  * @generated from enum yeying.api.common.DigitalFormatEnum
  */
-export type DigitalFormatEnumJson =
-  | "DIGITAL_FORMAT_UNKNOWN"
-  | "DIGITAL_FORMAT_TEXT"
-  | "DIGITAL_FORMAT_IMAGE"
-  | "DIGITAL_FORMAT_VIDEO"
-  | "DIGITAL_FORMAT_AUDIO"
-  | "DIGITAL_FORMAT_APP"
-  | "DIGITAL_FORMAT_OTHER";
+export type DigitalFormatEnumJson = "DIGITAL_FORMAT_UNKNOWN" | "DIGITAL_FORMAT_TEXT" | "DIGITAL_FORMAT_IMAGE" | "DIGITAL_FORMAT_VIDEO" | "DIGITAL_FORMAT_AUDIO" | "DIGITAL_FORMAT_APP" | "DIGITAL_FORMAT_OTHER";
 
 /**
  * Describes the enum yeying.api.common.DigitalFormatEnum.
  */
-export const DigitalFormatEnumSchema: GenEnum<
-  DigitalFormatEnum,
-  DigitalFormatEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 7);
+export const DigitalFormatEnumSchema: GenEnum<DigitalFormatEnum, DigitalFormatEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 7);
 
 /**
  * 内容格式
@@ -739,18 +664,13 @@ export enum ContentFormatEnum {
  *
  * @generated from enum yeying.api.common.ContentFormatEnum
  */
-export type ContentFormatEnumJson =
-  | "CONTENT_FORMAT_UNKNOWN"
-  | "CONTENT_FORMAT_URL"
-  | "CONTENT_FORMAT_BASE64";
+export type ContentFormatEnumJson = "CONTENT_FORMAT_UNKNOWN" | "CONTENT_FORMAT_URL" | "CONTENT_FORMAT_BASE64";
 
 /**
  * Describes the enum yeying.api.common.ContentFormatEnum.
  */
-export const ContentFormatEnumSchema: GenEnum<
-  ContentFormatEnum,
-  ContentFormatEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 8);
+export const ContentFormatEnumSchema: GenEnum<ContentFormatEnum, ContentFormatEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 8);
 
 /**
  * 会话场景
@@ -792,19 +712,13 @@ export enum SessionSceneEnum {
  *
  * @generated from enum yeying.api.common.SessionSceneEnum
  */
-export type SessionSceneEnumJson =
-  | "SESSION_SCENE_UNKNOWN"
-  | "SESSION_SCENE_DIALOGUE"
-  | "SESSION_SCENE_DRAWING"
-  | "SESSION_SCENE_TRANSLATION";
+export type SessionSceneEnumJson = "SESSION_SCENE_UNKNOWN" | "SESSION_SCENE_DIALOGUE" | "SESSION_SCENE_DRAWING" | "SESSION_SCENE_TRANSLATION";
 
 /**
  * Describes the enum yeying.api.common.SessionSceneEnum.
  */
-export const SessionSceneEnumSchema: GenEnum<
-  SessionSceneEnum,
-  SessionSceneEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 9);
+export const SessionSceneEnumSchema: GenEnum<SessionSceneEnum, SessionSceneEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 9);
 
 /**
  * 会话角色
@@ -839,18 +753,13 @@ export enum SessionRoleEnum {
  *
  * @generated from enum yeying.api.common.SessionRoleEnum
  */
-export type SessionRoleEnumJson =
-  | "SESSION_ROLE_UNKNOWN"
-  | "SESSION_ROLE_PARTICIPANT"
-  | "SESSION_ROLE_ADMIN";
+export type SessionRoleEnumJson = "SESSION_ROLE_UNKNOWN" | "SESSION_ROLE_PARTICIPANT" | "SESSION_ROLE_ADMIN";
 
 /**
  * Describes the enum yeying.api.common.SessionRoleEnum.
  */
-export const SessionRoleEnumSchema: GenEnum<
-  SessionRoleEnum,
-  SessionRoleEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 10);
+export const SessionRoleEnumSchema: GenEnum<SessionRoleEnum, SessionRoleEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 10);
 
 /**
  * 参与类型
@@ -885,18 +794,13 @@ export enum ParticipantTypeEnum {
  *
  * @generated from enum yeying.api.common.ParticipantTypeEnum
  */
-export type ParticipantTypeEnumJson =
-  | "PARTICIPANT_TYPE_UNKNOWN"
-  | "PARTICIPANT_TYPE_SERVICE"
-  | "PARTICIPANT_TYPE_PEOPLE";
+export type ParticipantTypeEnumJson = "PARTICIPANT_TYPE_UNKNOWN" | "PARTICIPANT_TYPE_SERVICE" | "PARTICIPANT_TYPE_PEOPLE";
 
 /**
  * Describes the enum yeying.api.common.ParticipantTypeEnum.
  */
-export const ParticipantTypeEnumSchema: GenEnum<
-  ParticipantTypeEnum,
-  ParticipantTypeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 11);
+export const ParticipantTypeEnumSchema: GenEnum<ParticipantTypeEnum, ParticipantTypeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 11);
 
 /**
  * @generated from enum yeying.api.common.AuditTypeEnum
@@ -927,16 +831,12 @@ export enum AuditTypeEnum {
 /**
  * @generated from enum yeying.api.common.AuditTypeEnum
  */
-export type AuditTypeEnumJson =
-  | "AUDIT_TYPE_APPLICATION"
-  | "AUDIT_TYPE_SERVICE"
-  | "AUDIT_TYPE_UNKNOWN";
+export type AuditTypeEnumJson = "AUDIT_TYPE_APPLICATION" | "AUDIT_TYPE_SERVICE" | "AUDIT_TYPE_UNKNOWN";
 
 /**
  * Describes the enum yeying.api.common.AuditTypeEnum.
  */
-export const AuditTypeEnumSchema: GenEnum<AuditTypeEnum, AuditTypeEnumJson> =
-  /*@__PURE__*/
+export const AuditTypeEnumSchema: GenEnum<AuditTypeEnum, AuditTypeEnumJson> = /*@__PURE__*/
   enumDesc(file_yeying_api_common_code, 12);
 
 /**
@@ -993,21 +893,13 @@ export enum ApplicationStatusEnum {
  *
  * @generated from enum yeying.api.common.ApplicationStatusEnum
  */
-export type ApplicationStatusEnumJson =
-  | "APPLICATION_STATUS_UNKNOWN"
-  | "APPLICATION_STATUS_CREATED"
-  | "APPLICATION_STATUS_AUDITED"
-  | "APPLICATION_STATUS_REFUSED"
-  | "APPLICATION_STATUS_OFFLINE"
-  | "APPLICATION_STATUS_ONLINE";
+export type ApplicationStatusEnumJson = "APPLICATION_STATUS_UNKNOWN" | "APPLICATION_STATUS_CREATED" | "APPLICATION_STATUS_AUDITED" | "APPLICATION_STATUS_REFUSED" | "APPLICATION_STATUS_OFFLINE" | "APPLICATION_STATUS_ONLINE";
 
 /**
  * Describes the enum yeying.api.common.ApplicationStatusEnum.
  */
-export const ApplicationStatusEnumSchema: GenEnum<
-  ApplicationStatusEnum,
-  ApplicationStatusEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 13);
+export const ApplicationStatusEnumSchema: GenEnum<ApplicationStatusEnum, ApplicationStatusEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 13);
 
 /**
  * 密码学类型
@@ -1035,15 +927,12 @@ export enum CipherTypeEnum {
  *
  * @generated from enum yeying.api.common.CipherTypeEnum
  */
-export type CipherTypeEnumJson =
-  | "CIPHER_TYPE_UNKNOWN"
-  | "CIPHER_TYPE_AES_GCM_256";
+export type CipherTypeEnumJson = "CIPHER_TYPE_UNKNOWN" | "CIPHER_TYPE_AES_GCM_256";
 
 /**
  * Describes the enum yeying.api.common.CipherTypeEnum.
  */
-export const CipherTypeEnumSchema: GenEnum<CipherTypeEnum, CipherTypeEnumJson> =
-  /*@__PURE__*/
+export const CipherTypeEnumSchema: GenEnum<CipherTypeEnum, CipherTypeEnumJson> = /*@__PURE__*/
   enumDesc(file_yeying_api_common_code, 14);
 
 /**
@@ -1079,15 +968,11 @@ export enum AuthenticateTypeEnum {
  *
  * @generated from enum yeying.api.common.AuthenticateTypeEnum
  */
-export type AuthenticateTypeEnumJson =
-  | "AUTHENTICATE_TYPE_UNKNOWN"
-  | "AUTHENTICATE_TYPE_CERT"
-  | "AUTHENTICATE_TYPE_TOKEN";
+export type AuthenticateTypeEnumJson = "AUTHENTICATE_TYPE_UNKNOWN" | "AUTHENTICATE_TYPE_CERT" | "AUTHENTICATE_TYPE_TOKEN";
 
 /**
  * Describes the enum yeying.api.common.AuthenticateTypeEnum.
  */
-export const AuthenticateTypeEnumSchema: GenEnum<
-  AuthenticateTypeEnum,
-  AuthenticateTypeEnumJson
-> = /*@__PURE__*/ enumDesc(file_yeying_api_common_code, 15);
+export const AuthenticateTypeEnumSchema: GenEnum<AuthenticateTypeEnum, AuthenticateTypeEnumJson> = /*@__PURE__*/
+  enumDesc(file_yeying_api_common_code, 15);
+
