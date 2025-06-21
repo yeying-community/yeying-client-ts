@@ -27,7 +27,7 @@ import {
   AuditApplicationRequestSchema,
   AuditApplicationRequestBodySchema,
   AuditApplicationResponseBodySchema,
-  SearchCondition,
+  SearchApplicationCondition,
   ApplicationCommentSchema,
   ApplicationDetailResponseBody,
   CreateApplicationResponseBody,
@@ -42,8 +42,8 @@ import {
   OfflineApplicationResponse,
   OnlineApplicationResponse,
   AuditApplicationResponse,
-  SearchConditionJson,
-  SearchConditionSchema,
+  SearchApplicationConditionJson,
+  SearchApplicationConditionSchema,
 } from "../../yeying/api/application/application_pb";
 import { NetworkUnavailable } from "../../common/error";
 import {
@@ -148,11 +148,15 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    *
    */
-  search(page: number, pageSize: number, condition?: SearchConditionJson) {
+  search(
+    page: number,
+    pageSize: number,
+    condition?: SearchApplicationConditionJson,
+  ) {
     return new Promise<SearchApplicationResponse>(async (resolve, reject) => {
       const body = create(SearchApplicationRequestBodySchema, {
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-        condition: fromJson(SearchConditionSchema, condition ?? {}),
+        condition: fromJson(SearchApplicationConditionSchema, condition ?? {}),
       });
 
       let header: MessageHeader;
