@@ -2,22 +2,9 @@
 // @generated from file yeying/api/identity/identity.proto (package yeying.api.identity, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenFile,
-  GenMessage,
-  GenService,
-} from "@bufbuild/protobuf/codegenv1";
-import {
-  fileDesc,
-  messageDesc,
-  serviceDesc,
-} from "@bufbuild/protobuf/codegenv1";
-import type {
-  MessageHeader,
-  MessageHeaderJson,
-  ResponseStatus,
-  ResponseStatusJson,
-} from "../common/message_pb";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
+import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { ServiceCodeEnum, ServiceCodeEnumJson } from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
@@ -26,12 +13,8 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file yeying/api/identity/identity.proto.
  */
-export const file_yeying_api_identity_identity: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    "CiJ5ZXlpbmcvYXBpL2lkZW50aXR5L2lkZW50aXR5LnByb3RvEhN5ZXlpbmcuYXBpLmlkZW50aXR5InkKDkRlcG9zaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuaWRlbnRpdHkuRGVwb3NpdFJlcXVlc3RCb2R5IjYKEkRlcG9zaXRSZXF1ZXN0Qm9keRIOCgZjaXBoZXIYASABKAkSEAoIcHJvdG9jb2wYAiABKAkiewoPRGVwb3NpdFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuaWRlbnRpdHkuRGVwb3NpdFJlc3BvbnNlQm9keSJIChNEZXBvc2l0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgCIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIkMKD1JldHJpZXZlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIkQKEFJldHJpZXZlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJACgxTaGFyZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJBCg1TaGFyZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXIidQoMUXVlcnlSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMwoEYm9keRgCIAEoCzIlLnlleWluZy5hcGkuaWRlbnRpdHkuUXVlcnlSZXF1ZXN0Qm9keSJLChBRdWVyeVJlcXVlc3RCb2R5EjcKC3NlcnZpY2VDb2RlGAEgASgOMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZUNvZGVFbnVtIncKDVF1ZXJ5UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5pZGVudGl0eS5RdWVyeVJlc3BvbnNlQm9keSJoChFRdWVyeVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIOCgZjaXBoZXIYAiABKAkSEAoIcHJvdG9jb2wYAyABKAkidwoNQ2FuY2VsUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjQKBGJvZHkYAiABKAsyJi55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlcXVlc3RCb2R5IiAKEUNhbmNlbFJlcXVlc3RCb2R5EgsKA2RpZBgBIAEoCSJ5Cg5DYW5jZWxSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlc3BvbnNlQm9keSJHChJDYW5jZWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMytgMKCElkZW50aXR5ElYKB0RlcG9zaXQSIy55ZXlpbmcuYXBpLmlkZW50aXR5LkRlcG9zaXRSZXF1ZXN0GiQueWV5aW5nLmFwaS5pZGVudGl0eS5EZXBvc2l0UmVzcG9uc2UiABJZCghSZXRyaWV2ZRIkLnlleWluZy5hcGkuaWRlbnRpdHkuUmV0cmlldmVSZXF1ZXN0GiUueWV5aW5nLmFwaS5pZGVudGl0eS5SZXRyaWV2ZVJlc3BvbnNlIgASUAoFUXVlcnkSIS55ZXlpbmcuYXBpLmlkZW50aXR5LlF1ZXJ5UmVxdWVzdBoiLnlleWluZy5hcGkuaWRlbnRpdHkuUXVlcnlSZXNwb25zZSIAElAKBVNoYXJlEiEueWV5aW5nLmFwaS5pZGVudGl0eS5TaGFyZVJlcXVlc3QaIi55ZXlpbmcuYXBpLmlkZW50aXR5LlNoYXJlUmVzcG9uc2UiABJTCgZDYW5jZWwSIi55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlcXVlc3QaIy55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlc3BvbnNlIgBCFVoTeWV5aW5nL2FwaS9pZGVudGl0eWIGcHJvdG8z",
-    [file_yeying_api_common_message, file_yeying_api_common_code],
-  );
+export const file_yeying_api_identity_identity: GenFile = /*@__PURE__*/
+  fileDesc("CiJ5ZXlpbmcvYXBpL2lkZW50aXR5L2lkZW50aXR5LnByb3RvEhN5ZXlpbmcuYXBpLmlkZW50aXR5InkKDkRlcG9zaXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNQoEYm9keRgCIAEoCzInLnlleWluZy5hcGkuaWRlbnRpdHkuRGVwb3NpdFJlcXVlc3RCb2R5IjYKEkRlcG9zaXRSZXF1ZXN0Qm9keRIOCgZjaXBoZXIYASABKAkSEAoIcHJvdG9jb2wYAiABKAkiewoPRGVwb3NpdFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuaWRlbnRpdHkuRGVwb3NpdFJlc3BvbnNlQm9keSJIChNEZXBvc2l0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgCIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIkMKD1JldHJpZXZlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyIkQKEFJldHJpZXZlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJACgxTaGFyZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlciJBCg1TaGFyZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXIidQoMUXVlcnlSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMwoEYm9keRgCIAEoCzIlLnlleWluZy5hcGkuaWRlbnRpdHkuUXVlcnlSZXF1ZXN0Qm9keSJLChBRdWVyeVJlcXVlc3RCb2R5EjcKC3NlcnZpY2VDb2RlGAEgASgOMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZUNvZGVFbnVtIncKDVF1ZXJ5UmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5pZGVudGl0eS5RdWVyeVJlc3BvbnNlQm9keSJoChFRdWVyeVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIOCgZjaXBoZXIYAiABKAkSEAoIcHJvdG9jb2wYAyABKAkidwoNQ2FuY2VsUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjQKBGJvZHkYAiABKAsyJi55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlcXVlc3RCb2R5IiAKEUNhbmNlbFJlcXVlc3RCb2R5EgsKA2RpZBgBIAEoCSJ5Cg5DYW5jZWxSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlc3BvbnNlQm9keSJHChJDYW5jZWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMytgMKCElkZW50aXR5ElYKB0RlcG9zaXQSIy55ZXlpbmcuYXBpLmlkZW50aXR5LkRlcG9zaXRSZXF1ZXN0GiQueWV5aW5nLmFwaS5pZGVudGl0eS5EZXBvc2l0UmVzcG9uc2UiABJZCghSZXRyaWV2ZRIkLnlleWluZy5hcGkuaWRlbnRpdHkuUmV0cmlldmVSZXF1ZXN0GiUueWV5aW5nLmFwaS5pZGVudGl0eS5SZXRyaWV2ZVJlc3BvbnNlIgASUAoFUXVlcnkSIS55ZXlpbmcuYXBpLmlkZW50aXR5LlF1ZXJ5UmVxdWVzdBoiLnlleWluZy5hcGkuaWRlbnRpdHkuUXVlcnlSZXNwb25zZSIAElAKBVNoYXJlEiEueWV5aW5nLmFwaS5pZGVudGl0eS5TaGFyZVJlcXVlc3QaIi55ZXlpbmcuYXBpLmlkZW50aXR5LlNoYXJlUmVzcG9uc2UiABJTCgZDYW5jZWwSIi55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlcXVlc3QaIy55ZXlpbmcuYXBpLmlkZW50aXR5LkNhbmNlbFJlc3BvbnNlIgBCFVoTeWV5aW5nL2FwaS9pZGVudGl0eWIGcHJvdG8z", [file_yeying_api_common_message, file_yeying_api_common_code]);
 
 /**
  * @generated from message yeying.api.identity.DepositRequest
@@ -67,26 +50,23 @@ export type DepositRequestJson = {
  * Describes the message yeying.api.identity.DepositRequest.
  * Use `create(DepositRequestSchema)` to create a new message.
  */
-export const DepositRequestSchema: GenMessage<
-  DepositRequest,
-  DepositRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 0);
+export const DepositRequestSchema: GenMessage<DepositRequest, DepositRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 0);
 
 /**
  * @generated from message yeying.api.identity.DepositRequestBody
  */
-export type DepositRequestBody =
-  Message<"yeying.api.identity.DepositRequestBody"> & {
-    /**
-     * @generated from field: string cipher = 1;
-     */
-    cipher: string;
+export type DepositRequestBody = Message<"yeying.api.identity.DepositRequestBody"> & {
+  /**
+   * @generated from field: string cipher = 1;
+   */
+  cipher: string;
 
-    /**
-     * @generated from field: string protocol = 2;
-     */
-    protocol: string;
-  };
+  /**
+   * @generated from field: string protocol = 2;
+   */
+  protocol: string;
+};
 
 /**
  * @generated from message yeying.api.identity.DepositRequestBody
@@ -107,10 +87,8 @@ export type DepositRequestBodyJson = {
  * Describes the message yeying.api.identity.DepositRequestBody.
  * Use `create(DepositRequestBodySchema)` to create a new message.
  */
-export const DepositRequestBodySchema: GenMessage<
-  DepositRequestBody,
-  DepositRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 1);
+export const DepositRequestBodySchema: GenMessage<DepositRequestBody, DepositRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 1);
 
 /**
  * @generated from message yeying.api.identity.DepositResponse
@@ -146,21 +124,18 @@ export type DepositResponseJson = {
  * Describes the message yeying.api.identity.DepositResponse.
  * Use `create(DepositResponseSchema)` to create a new message.
  */
-export const DepositResponseSchema: GenMessage<
-  DepositResponse,
-  DepositResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 2);
+export const DepositResponseSchema: GenMessage<DepositResponse, DepositResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 2);
 
 /**
  * @generated from message yeying.api.identity.DepositResponseBody
  */
-export type DepositResponseBody =
-  Message<"yeying.api.identity.DepositResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 2;
-     */
-    status?: ResponseStatus;
-  };
+export type DepositResponseBody = Message<"yeying.api.identity.DepositResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 2;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.identity.DepositResponseBody
@@ -176,10 +151,8 @@ export type DepositResponseBodyJson = {
  * Describes the message yeying.api.identity.DepositResponseBody.
  * Use `create(DepositResponseBodySchema)` to create a new message.
  */
-export const DepositResponseBodySchema: GenMessage<
-  DepositResponseBody,
-  DepositResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 3);
+export const DepositResponseBodySchema: GenMessage<DepositResponseBody, DepositResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 3);
 
 /**
  * @generated from message yeying.api.identity.RetrieveRequest
@@ -205,21 +178,18 @@ export type RetrieveRequestJson = {
  * Describes the message yeying.api.identity.RetrieveRequest.
  * Use `create(RetrieveRequestSchema)` to create a new message.
  */
-export const RetrieveRequestSchema: GenMessage<
-  RetrieveRequest,
-  RetrieveRequestJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 4);
+export const RetrieveRequestSchema: GenMessage<RetrieveRequest, RetrieveRequestJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 4);
 
 /**
  * @generated from message yeying.api.identity.RetrieveResponse
  */
-export type RetrieveResponse =
-  Message<"yeying.api.identity.RetrieveResponse"> & {
-    /**
-     * @generated from field: yeying.api.common.MessageHeader header = 1;
-     */
-    header?: MessageHeader;
-  };
+export type RetrieveResponse = Message<"yeying.api.identity.RetrieveResponse"> & {
+  /**
+   * @generated from field: yeying.api.common.MessageHeader header = 1;
+   */
+  header?: MessageHeader;
+};
 
 /**
  * @generated from message yeying.api.identity.RetrieveResponse
@@ -235,10 +205,8 @@ export type RetrieveResponseJson = {
  * Describes the message yeying.api.identity.RetrieveResponse.
  * Use `create(RetrieveResponseSchema)` to create a new message.
  */
-export const RetrieveResponseSchema: GenMessage<
-  RetrieveResponse,
-  RetrieveResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 5);
+export const RetrieveResponseSchema: GenMessage<RetrieveResponse, RetrieveResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 5);
 
 /**
  * @generated from message yeying.api.identity.ShareRequest
@@ -264,8 +232,7 @@ export type ShareRequestJson = {
  * Describes the message yeying.api.identity.ShareRequest.
  * Use `create(ShareRequestSchema)` to create a new message.
  */
-export const ShareRequestSchema: GenMessage<ShareRequest, ShareRequestJson> =
-  /*@__PURE__*/
+export const ShareRequestSchema: GenMessage<ShareRequest, ShareRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_identity_identity, 6);
 
 /**
@@ -292,8 +259,7 @@ export type ShareResponseJson = {
  * Describes the message yeying.api.identity.ShareResponse.
  * Use `create(ShareResponseSchema)` to create a new message.
  */
-export const ShareResponseSchema: GenMessage<ShareResponse, ShareResponseJson> =
-  /*@__PURE__*/
+export const ShareResponseSchema: GenMessage<ShareResponse, ShareResponseJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_identity_identity, 7);
 
 /**
@@ -330,20 +296,18 @@ export type QueryRequestJson = {
  * Describes the message yeying.api.identity.QueryRequest.
  * Use `create(QueryRequestSchema)` to create a new message.
  */
-export const QueryRequestSchema: GenMessage<QueryRequest, QueryRequestJson> =
-  /*@__PURE__*/
+export const QueryRequestSchema: GenMessage<QueryRequest, QueryRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_identity_identity, 8);
 
 /**
  * @generated from message yeying.api.identity.QueryRequestBody
  */
-export type QueryRequestBody =
-  Message<"yeying.api.identity.QueryRequestBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ServiceCodeEnum serviceCode = 1;
-     */
-    serviceCode: ServiceCodeEnum;
-  };
+export type QueryRequestBody = Message<"yeying.api.identity.QueryRequestBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ServiceCodeEnum serviceCode = 1;
+   */
+  serviceCode: ServiceCodeEnum;
+};
 
 /**
  * @generated from message yeying.api.identity.QueryRequestBody
@@ -359,10 +323,8 @@ export type QueryRequestBodyJson = {
  * Describes the message yeying.api.identity.QueryRequestBody.
  * Use `create(QueryRequestBodySchema)` to create a new message.
  */
-export const QueryRequestBodySchema: GenMessage<
-  QueryRequestBody,
-  QueryRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 9);
+export const QueryRequestBodySchema: GenMessage<QueryRequestBody, QueryRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 9);
 
 /**
  * @generated from message yeying.api.identity.QueryResponse
@@ -398,30 +360,28 @@ export type QueryResponseJson = {
  * Describes the message yeying.api.identity.QueryResponse.
  * Use `create(QueryResponseSchema)` to create a new message.
  */
-export const QueryResponseSchema: GenMessage<QueryResponse, QueryResponseJson> =
-  /*@__PURE__*/
+export const QueryResponseSchema: GenMessage<QueryResponse, QueryResponseJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_identity_identity, 10);
 
 /**
  * @generated from message yeying.api.identity.QueryResponseBody
  */
-export type QueryResponseBody =
-  Message<"yeying.api.identity.QueryResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
+export type QueryResponseBody = Message<"yeying.api.identity.QueryResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
 
-    /**
-     * @generated from field: string cipher = 2;
-     */
-    cipher: string;
+  /**
+   * @generated from field: string cipher = 2;
+   */
+  cipher: string;
 
-    /**
-     * @generated from field: string protocol = 3;
-     */
-    protocol: string;
-  };
+  /**
+   * @generated from field: string protocol = 3;
+   */
+  protocol: string;
+};
 
 /**
  * @generated from message yeying.api.identity.QueryResponseBody
@@ -447,10 +407,8 @@ export type QueryResponseBodyJson = {
  * Describes the message yeying.api.identity.QueryResponseBody.
  * Use `create(QueryResponseBodySchema)` to create a new message.
  */
-export const QueryResponseBodySchema: GenMessage<
-  QueryResponseBody,
-  QueryResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 11);
+export const QueryResponseBodySchema: GenMessage<QueryResponseBody, QueryResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 11);
 
 /**
  * @generated from message yeying.api.identity.CancelRequest
@@ -486,20 +444,18 @@ export type CancelRequestJson = {
  * Describes the message yeying.api.identity.CancelRequest.
  * Use `create(CancelRequestSchema)` to create a new message.
  */
-export const CancelRequestSchema: GenMessage<CancelRequest, CancelRequestJson> =
-  /*@__PURE__*/
+export const CancelRequestSchema: GenMessage<CancelRequest, CancelRequestJson> = /*@__PURE__*/
   messageDesc(file_yeying_api_identity_identity, 12);
 
 /**
  * @generated from message yeying.api.identity.CancelRequestBody
  */
-export type CancelRequestBody =
-  Message<"yeying.api.identity.CancelRequestBody"> & {
-    /**
-     * @generated from field: string did = 1;
-     */
-    did: string;
-  };
+export type CancelRequestBody = Message<"yeying.api.identity.CancelRequestBody"> & {
+  /**
+   * @generated from field: string did = 1;
+   */
+  did: string;
+};
 
 /**
  * @generated from message yeying.api.identity.CancelRequestBody
@@ -515,10 +471,8 @@ export type CancelRequestBodyJson = {
  * Describes the message yeying.api.identity.CancelRequestBody.
  * Use `create(CancelRequestBodySchema)` to create a new message.
  */
-export const CancelRequestBodySchema: GenMessage<
-  CancelRequestBody,
-  CancelRequestBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 13);
+export const CancelRequestBodySchema: GenMessage<CancelRequestBody, CancelRequestBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 13);
 
 /**
  * @generated from message yeying.api.identity.CancelResponse
@@ -554,21 +508,18 @@ export type CancelResponseJson = {
  * Describes the message yeying.api.identity.CancelResponse.
  * Use `create(CancelResponseSchema)` to create a new message.
  */
-export const CancelResponseSchema: GenMessage<
-  CancelResponse,
-  CancelResponseJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 14);
+export const CancelResponseSchema: GenMessage<CancelResponse, CancelResponseJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 14);
 
 /**
  * @generated from message yeying.api.identity.CancelResponseBody
  */
-export type CancelResponseBody =
-  Message<"yeying.api.identity.CancelResponseBody"> & {
-    /**
-     * @generated from field: yeying.api.common.ResponseStatus status = 1;
-     */
-    status?: ResponseStatus;
-  };
+export type CancelResponseBody = Message<"yeying.api.identity.CancelResponseBody"> & {
+  /**
+   * @generated from field: yeying.api.common.ResponseStatus status = 1;
+   */
+  status?: ResponseStatus;
+};
 
 /**
  * @generated from message yeying.api.identity.CancelResponseBody
@@ -584,10 +535,8 @@ export type CancelResponseBodyJson = {
  * Describes the message yeying.api.identity.CancelResponseBody.
  * Use `create(CancelResponseBodySchema)` to create a new message.
  */
-export const CancelResponseBodySchema: GenMessage<
-  CancelResponseBody,
-  CancelResponseBodyJson
-> = /*@__PURE__*/ messageDesc(file_yeying_api_identity_identity, 15);
+export const CancelResponseBodySchema: GenMessage<CancelResponseBody, CancelResponseBodyJson> = /*@__PURE__*/
+  messageDesc(file_yeying_api_identity_identity, 15);
 
 /**
  * 提供身份托管和维护服务，目前还不支持托管加密的身份，需要有资质，需要补齐的能力；
@@ -610,7 +559,7 @@ export const Identity: GenService<{
     methodKind: "unary";
     input: typeof DepositRequestSchema;
     output: typeof DepositResponseSchema;
-  };
+  },
   /**
    * 取回身份
    *
@@ -620,7 +569,7 @@ export const Identity: GenService<{
     methodKind: "unary";
     input: typeof RetrieveRequestSchema;
     output: typeof RetrieveResponseSchema;
-  };
+  },
   /**
    * 查询身份名片
    *
@@ -630,7 +579,7 @@ export const Identity: GenService<{
     methodKind: "unary";
     input: typeof QueryRequestSchema;
     output: typeof QueryResponseSchema;
-  };
+  },
   /**
    * 分享身份名片
    *
@@ -640,7 +589,7 @@ export const Identity: GenService<{
     methodKind: "unary";
     input: typeof ShareRequestSchema;
     output: typeof ShareResponseSchema;
-  };
+  },
   /**
    * 取消托管
    *
@@ -650,5 +599,7 @@ export const Identity: GenService<{
     methodKind: "unary";
     input: typeof CancelRequestSchema;
     output: typeof CancelResponseSchema;
-  };
-}> = /*@__PURE__*/ serviceDesc(file_yeying_api_identity_identity, 0);
+  },
+}> = /*@__PURE__*/
+  serviceDesc(file_yeying_api_identity_identity, 0);
+
