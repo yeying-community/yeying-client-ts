@@ -2,7 +2,7 @@ import { Authenticate } from "../common/authenticate";
 import { ProviderOption } from "../common/model";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary } from "@bufbuild/protobuf";
 import {
   DeletedAssetMetadata,
   RecoverDeletedAssetRequestBodySchema,
@@ -18,6 +18,7 @@ import {
 } from "../../yeying/api/asset/recycle_pb";
 import {
   SearchAssetCondition,
+  SearchAssetConditionJson,
   SearchAssetConditionSchema,
 } from "../../yeying/api/asset/asset_pb";
 import { RequestPageSchema } from "../../yeying/api/common/message_pb";
@@ -69,21 +70,16 @@ export class RecycleProvider {
    *
    */
   search(
-    condition: Partial<SearchAssetCondition>,
     page: number,
     pageSize: number,
+    condition: SearchAssetConditionJson,
   ): Promise<DeletedAssetMetadata[]> {
     return new Promise<DeletedAssetMetadata[]>(async (resolve, reject) => {
       const requestPage = create(RequestPageSchema, {
         page: page,
         pageSize: pageSize,
       });
-      const c = create(SearchAssetConditionSchema, {
-        namespaceId: condition.namespaceId,
-        format: condition.format,
-        hash: condition.hash,
-      });
-
+      const c = fromJson(SearchAssetConditionSchema, condition ?? {});
       const body = create(SearchDeletedAssetRequestBodySchema, {
         condition: c,
         page: requestPage,

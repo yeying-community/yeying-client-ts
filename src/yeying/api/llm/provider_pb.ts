@@ -2,27 +2,49 @@
 // @generated from file yeying/api/llm/provider.proto (package yeying.api.llm, syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type {
+  GenEnum,
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  enumDesc,
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
+import type {
+  MessageHeader,
+  MessageHeaderJson,
+  RequestPage,
+  RequestPageJson,
+  ResponseStatus,
+  ResponseStatusJson,
+} from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/llm/provider.proto.
  */
-export const file_yeying_api_llm_provider: GenFile = /*@__PURE__*/
-  fileDesc("Ch15ZXlpbmcvYXBpL2xsbS9wcm92aWRlci5wcm90bxIOeWV5aW5nLmFwaS5sbG0iTwobUHJvdmlkZXJEZXNjcmlwdGlvbnNSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXIikAEKHFByb3ZpZGVyRGVzY3JpcHRpb25zUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXNjcmlwdGlvbnNSZXNwb25zZUJvZHkikAEKIFByb3ZpZGVyRGVzY3JpcHRpb25zUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjkKDGRlc2NyaXB0aW9ucxgCIAMoCzIjLnlleWluZy5hcGkubGxtLlByb3ZpZGVyRGVzY3JpcHRpb24iggEKFVByb3ZpZGVyTW9kZWxzUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjcKBGJvZHkYAiABKAsyKS55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1vZGVsc1JlcXVlc3RCb2R5In0KGVByb3ZpZGVyTW9kZWxzUmVxdWVzdEJvZHkSLgoEY29kZRgBIAEoDjIgLnlleWluZy5hcGkubGxtLlByb3ZpZGVyQ29kZUVudW0SMAoJbW9kZWxUeXBlGAIgASgOMh0ueWV5aW5nLmFwaS5sbG0uTW9kZWxUeXBlRW51bSKEAQoWUHJvdmlkZXJNb2RlbHNSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjgKBGJvZHkYAiABKAsyKi55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1vZGVsc1Jlc3BvbnNlQm9keSJ+ChpQcm92aWRlck1vZGVsc1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgZtb2RlbHMYAiADKAsyHS55ZXlpbmcuYXBpLmxsbS5Nb2RlbE1ldGFkYXRhIoIBChVEZWxldGVQcm92aWRlclJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI3CgRib2R5GAIgASgLMikueWV5aW5nLmFwaS5sbG0uRGVsZXRlUHJvdmlkZXJSZXF1ZXN0Qm9keSIoChlEZWxldGVQcm92aWRlclJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSKEAQoWRGVsZXRlUHJvdmlkZXJSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjgKBGJvZHkYAiABKAsyKi55ZXlpbmcuYXBpLmxsbS5EZWxldGVQcm92aWRlclJlc3BvbnNlQm9keSJPChpEZWxldGVQcm92aWRlclJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyKCAQoVU2VhcmNoUHJvdmlkZXJSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVxdWVzdEJvZHkihQEKGVNlYXJjaFByb3ZpZGVyUmVxdWVzdEJvZHkSLAoEcGFnZRgBIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlEjoKCWNvbmRpdGlvbhgCIAEoCzInLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyQ29uZGl0aW9uIoQBChZTZWFyY2hQcm92aWRlclJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOAoEYm9keRgCIAEoCzIqLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVzcG9uc2VCb2R5IoQBChpTZWFyY2hQcm92aWRlclJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCglwcm92aWRlcnMYAiADKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhInwKEkFkZFByb3ZpZGVyUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjQKBGJvZHkYAiABKAsyJi55ZXlpbmcuYXBpLmxsbS5BZGRQcm92aWRlclJlcXVlc3RCb2R5IkwKFkFkZFByb3ZpZGVyUmVxdWVzdEJvZHkSMgoIcHJvdmlkZXIYASABKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhIn4KE0FkZFByb3ZpZGVyUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXNwb25zZUJvZHkigAEKF0FkZFByb3ZpZGVyUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjIKCHByb3ZpZGVyGAIgASgLMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNZXRhZGF0YSKCAQoVUHJvdmlkZXJEZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkubGxtLlByb3ZpZGVyRGV0YWlsUmVxdWVzdEJvZHkiKAoZUHJvdmlkZXJEZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihAEKFlByb3ZpZGVyRGV0YWlsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI4CgRib2R5GAIgASgLMioueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXRhaWxSZXNwb25zZUJvZHkifwoaUHJvdmlkZXJEZXRhaWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoGZGV0YWlsGAIgASgLMh4ueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXRhaWwicgoOUHJvdmlkZXJEZXRhaWwSMgoIcHJvdmlkZXIYASABKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhEiwKBXN0YXRlGAIgASgLMh0ueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJTdGF0ZSK0AQoTUHJvdmlkZXJEZXNjcmlwdGlvbhIuCgRjb2RlGAEgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bRIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEjoKE3N1cHBvcnRlZE1vZGVsVHlwZXMYBCADKA4yHS55ZXlpbmcuYXBpLmxsbS5Nb2RlbFR5cGVFbnVtEg4KBmF2YXRhchgFIAEoCSJJChdTZWFyY2hQcm92aWRlckNvbmRpdGlvbhIuCgRjb2RlGAEgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bSL7AQoQUHJvdmlkZXJNZXRhZGF0YRILCgN1aWQYASABKAkSDQoFb3duZXIYAiABKAkSDAoEbmFtZRgDIAEoCRIuCgRjb2RlGAQgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bRIOCgZjb25maWcYBSABKAkSMAoJcXVvdGFUeXBlGAYgASgOMh0ueWV5aW5nLmFwaS5sbG0uUXVvdGFUeXBlRW51bRISCgpxdW90YUxpbWl0GAcgASgEEhEKCWNyZWF0ZWRBdBgIIAEoCRIRCgl1cGRhdGVkQXQYCSABKAkSEQoJc2lnbmF0dXJlGAogASgJIrYBCg1Nb2RlbE1ldGFkYXRhEjYKDHByb3ZpZGVyQ29kZRgBIAEoDjIgLnlleWluZy5hcGkubGxtLlByb3ZpZGVyQ29kZUVudW0SKwoEdHlwZRgCIAEoDjIdLnlleWluZy5hcGkubGxtLk1vZGVsVHlwZUVudW0SDAoEbmFtZRgDIAEoCRIyCghmZWF0dXJlcxgEIAMoDjIgLnlleWluZy5hcGkubGxtLk1vZGVsRmVhdHVyZUVudW0isAEKDVByb3ZpZGVyU3RhdGUSEgoKc2VydmljZURpZBgBIAEoCRILCgN1aWQYAiABKAkSMgoGc3RhdHVzGAMgASgOMiIueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJTdGF0dXNFbnVtEhEKCXF1b3RhVXNlZBgEIAEoBBIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEhEKCXNpZ25hdHVyZRgHIAEoCSrXAQoNTW9kZWxUeXBlRW51bRIWChJNT0RFTF9UWVBFX1VOS05PV04QABISCg5NT0RFTF9UWVBFX0xMTRABEh0KGU1PREVMX1RZUEVfVEVYVF9FTUJFRERJTkcQAhIVChFNT0RFTF9UWVBFX1JFUkFOSxADEhoKFk1PREVMX1RZUEVfU1BFRUNIMlRFWFQQBBISCg5NT0RFTF9UWVBFX1RUUxAFEhkKFU1PREVMX1RZUEVfTU9ERVJBVElPThAGEhkKFU1PREVMX1RZUEVfVEVYVDJJTUFHRRAHKv8BChBNb2RlbEZlYXR1cmVFbnVtEh8KG01PREVMX0ZFQVRVUkVfQUdFTlRfVEhPVUdIVBAAEhgKFE1PREVMX0ZFQVRVUkVfVklTSU9OEAISGwoXTU9ERUxfRkVBVFVSRV9UT09MX0NBTEwQAxIhCh1NT0RFTF9GRUFUVVJFX01VTFRJX1RPT0xfQ0FMTBAEEiIKHk1PREVMX0ZFQVRVUkVfU1RSRUFNX1RPT0xfQ0FMTBAFEhoKFk1PREVMX0ZFQVRVUkVfRE9DVU1FTlQQBhIXChNNT0RFTF9GRUFUVVJFX1ZJREVPEAcSFwoTTU9ERUxfRkVBVFVSRV9BVURJTxAIKrABChBQcm92aWRlckNvZGVFbnVtEhkKFVBST1ZJREVSX0NPREVfVU5LTk9XThAAEhgKFFBST1ZJREVSX0NPREVfT1BFTkFJEAESGAoUUFJPVklERVJfQ09ERV9UT05HWUkQAhIZChVQUk9WSURFUl9DT0RFX1pISVBVQUkQAxIWChJQUk9WSURFUl9DT0RFX0dST0sQBBIaChZQUk9WSURFUl9DT0RFX0RFRVBTRUVLEAUqcQoSUHJvdmlkZXJTdGF0dXNFbnVtEhsKF1BST1ZJREVSX1NUQVRVU19VTktOT1dOEAASHwobUFJPVklERVJfU1RBVFVTX1VOQVZBSUxBQkxFEAESHQoZUFJPVklERVJfU1RBVFVTX0FWQUlMQUJMRRACKmcKDVF1b3RhVHlwZUVudW0SFgoSUVVPVEFfVFlQRV9VTktOT1dOEAASEwoPUVVPVEFfVFlQRV9QQUlEEAESEwoPUVVPVEFfVFlQRV9GUkVFEAISFAoQUVVPVEFfVFlQRV9UUklBTBADMrUECghQcm92aWRlchJrCgxEZXNjcmlwdGlvbnMSKy55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRlc2NyaXB0aW9uc1JlcXVlc3QaLC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRlc2NyaXB0aW9uc1Jlc3BvbnNlIgASWQoGTW9kZWxzEiUueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNb2RlbHNSZXF1ZXN0GiYueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNb2RlbHNSZXNwb25zZSIAElkKBlNlYXJjaBIlLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVxdWVzdBomLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVzcG9uc2UiABJZCgZEZXRhaWwSJS55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRldGFpbFJlcXVlc3QaJi55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRldGFpbFJlc3BvbnNlIgASUAoDQWRkEiIueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXF1ZXN0GiMueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXNwb25zZSIAElkKBkRlbGV0ZRIlLnlleWluZy5hcGkubGxtLkRlbGV0ZVByb3ZpZGVyUmVxdWVzdBomLnlleWluZy5hcGkubGxtLkRlbGV0ZVByb3ZpZGVyUmVzcG9uc2UiAEIQWg55ZXlpbmcvYXBpL2xsbWIGcHJvdG8z", [file_yeying_api_common_message]);
+export const file_yeying_api_llm_provider: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "Ch15ZXlpbmcvYXBpL2xsbS9wcm92aWRlci5wcm90bxIOeWV5aW5nLmFwaS5sbG0iTwobUHJvdmlkZXJEZXNjcmlwdGlvbnNSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXIikAEKHFByb3ZpZGVyRGVzY3JpcHRpb25zUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI+CgRib2R5GAIgASgLMjAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXNjcmlwdGlvbnNSZXNwb25zZUJvZHkikAEKIFByb3ZpZGVyRGVzY3JpcHRpb25zUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjkKDGRlc2NyaXB0aW9ucxgCIAMoCzIjLnlleWluZy5hcGkubGxtLlByb3ZpZGVyRGVzY3JpcHRpb24iggEKFVByb3ZpZGVyTW9kZWxzUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjcKBGJvZHkYAiABKAsyKS55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1vZGVsc1JlcXVlc3RCb2R5In0KGVByb3ZpZGVyTW9kZWxzUmVxdWVzdEJvZHkSLgoEY29kZRgBIAEoDjIgLnlleWluZy5hcGkubGxtLlByb3ZpZGVyQ29kZUVudW0SMAoJbW9kZWxUeXBlGAIgASgOMh0ueWV5aW5nLmFwaS5sbG0uTW9kZWxUeXBlRW51bSKEAQoWUHJvdmlkZXJNb2RlbHNSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjgKBGJvZHkYAiABKAsyKi55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1vZGVsc1Jlc3BvbnNlQm9keSJ+ChpQcm92aWRlck1vZGVsc1Jlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxItCgZtb2RlbHMYAiADKAsyHS55ZXlpbmcuYXBpLmxsbS5Nb2RlbE1ldGFkYXRhIoIBChVEZWxldGVQcm92aWRlclJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI3CgRib2R5GAIgASgLMikueWV5aW5nLmFwaS5sbG0uRGVsZXRlUHJvdmlkZXJSZXF1ZXN0Qm9keSIoChlEZWxldGVQcm92aWRlclJlcXVlc3RCb2R5EgsKA3VpZBgBIAEoCSKEAQoWRGVsZXRlUHJvdmlkZXJSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjgKBGJvZHkYAiABKAsyKi55ZXlpbmcuYXBpLmxsbS5EZWxldGVQcm92aWRlclJlc3BvbnNlQm9keSJPChpEZWxldGVQcm92aWRlclJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cyKCAQoVU2VhcmNoUHJvdmlkZXJSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVxdWVzdEJvZHkihQEKGVNlYXJjaFByb3ZpZGVyUmVxdWVzdEJvZHkSLAoEcGFnZRgBIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlEjoKCWNvbmRpdGlvbhgCIAEoCzInLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyQ29uZGl0aW9uIoQBChZTZWFyY2hQcm92aWRlclJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOAoEYm9keRgCIAEoCzIqLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVzcG9uc2VCb2R5IoQBChpTZWFyY2hQcm92aWRlclJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCglwcm92aWRlcnMYAiADKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhInwKEkFkZFByb3ZpZGVyUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjQKBGJvZHkYAiABKAsyJi55ZXlpbmcuYXBpLmxsbS5BZGRQcm92aWRlclJlcXVlc3RCb2R5IkwKFkFkZFByb3ZpZGVyUmVxdWVzdEJvZHkSMgoIcHJvdmlkZXIYASABKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhIn4KE0FkZFByb3ZpZGVyUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI1CgRib2R5GAIgASgLMicueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXNwb25zZUJvZHkigAEKF0FkZFByb3ZpZGVyUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjIKCHByb3ZpZGVyGAIgASgLMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNZXRhZGF0YSKCAQoVUHJvdmlkZXJEZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkubGxtLlByb3ZpZGVyRGV0YWlsUmVxdWVzdEJvZHkiKAoZUHJvdmlkZXJEZXRhaWxSZXF1ZXN0Qm9keRILCgN1aWQYASABKAkihAEKFlByb3ZpZGVyRGV0YWlsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI4CgRib2R5GAIgASgLMioueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXRhaWxSZXNwb25zZUJvZHkifwoaUHJvdmlkZXJEZXRhaWxSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoGZGV0YWlsGAIgASgLMh4ueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJEZXRhaWwicgoOUHJvdmlkZXJEZXRhaWwSMgoIcHJvdmlkZXIYASABKAsyIC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlck1ldGFkYXRhEiwKBXN0YXRlGAIgASgLMh0ueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJTdGF0ZSK0AQoTUHJvdmlkZXJEZXNjcmlwdGlvbhIuCgRjb2RlGAEgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bRIMCgRuYW1lGAIgASgJEhMKC2Rlc2NyaXB0aW9uGAMgASgJEjoKE3N1cHBvcnRlZE1vZGVsVHlwZXMYBCADKA4yHS55ZXlpbmcuYXBpLmxsbS5Nb2RlbFR5cGVFbnVtEg4KBmF2YXRhchgFIAEoCSJJChdTZWFyY2hQcm92aWRlckNvbmRpdGlvbhIuCgRjb2RlGAEgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bSL7AQoQUHJvdmlkZXJNZXRhZGF0YRILCgN1aWQYASABKAkSDQoFb3duZXIYAiABKAkSDAoEbmFtZRgDIAEoCRIuCgRjb2RlGAQgASgOMiAueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJDb2RlRW51bRIOCgZjb25maWcYBSABKAkSMAoJcXVvdGFUeXBlGAYgASgOMh0ueWV5aW5nLmFwaS5sbG0uUXVvdGFUeXBlRW51bRISCgpxdW90YUxpbWl0GAcgASgEEhEKCWNyZWF0ZWRBdBgIIAEoCRIRCgl1cGRhdGVkQXQYCSABKAkSEQoJc2lnbmF0dXJlGAogASgJIrYBCg1Nb2RlbE1ldGFkYXRhEjYKDHByb3ZpZGVyQ29kZRgBIAEoDjIgLnlleWluZy5hcGkubGxtLlByb3ZpZGVyQ29kZUVudW0SKwoEdHlwZRgCIAEoDjIdLnlleWluZy5hcGkubGxtLk1vZGVsVHlwZUVudW0SDAoEbmFtZRgDIAEoCRIyCghmZWF0dXJlcxgEIAMoDjIgLnlleWluZy5hcGkubGxtLk1vZGVsRmVhdHVyZUVudW0isAEKDVByb3ZpZGVyU3RhdGUSEgoKc2VydmljZURpZBgBIAEoCRILCgN1aWQYAiABKAkSMgoGc3RhdHVzGAMgASgOMiIueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJTdGF0dXNFbnVtEhEKCXF1b3RhVXNlZBgEIAEoBBIRCgljcmVhdGVkQXQYBSABKAkSEQoJdXBkYXRlZEF0GAYgASgJEhEKCXNpZ25hdHVyZRgHIAEoCSrXAQoNTW9kZWxUeXBlRW51bRIWChJNT0RFTF9UWVBFX1VOS05PV04QABISCg5NT0RFTF9UWVBFX0xMTRABEh0KGU1PREVMX1RZUEVfVEVYVF9FTUJFRERJTkcQAhIVChFNT0RFTF9UWVBFX1JFUkFOSxADEhoKFk1PREVMX1RZUEVfU1BFRUNIMlRFWFQQBBISCg5NT0RFTF9UWVBFX1RUUxAFEhkKFU1PREVMX1RZUEVfTU9ERVJBVElPThAGEhkKFU1PREVMX1RZUEVfVEVYVDJJTUFHRRAHKv8BChBNb2RlbEZlYXR1cmVFbnVtEh8KG01PREVMX0ZFQVRVUkVfQUdFTlRfVEhPVUdIVBAAEhgKFE1PREVMX0ZFQVRVUkVfVklTSU9OEAISGwoXTU9ERUxfRkVBVFVSRV9UT09MX0NBTEwQAxIhCh1NT0RFTF9GRUFUVVJFX01VTFRJX1RPT0xfQ0FMTBAEEiIKHk1PREVMX0ZFQVRVUkVfU1RSRUFNX1RPT0xfQ0FMTBAFEhoKFk1PREVMX0ZFQVRVUkVfRE9DVU1FTlQQBhIXChNNT0RFTF9GRUFUVVJFX1ZJREVPEAcSFwoTTU9ERUxfRkVBVFVSRV9BVURJTxAIKrABChBQcm92aWRlckNvZGVFbnVtEhkKFVBST1ZJREVSX0NPREVfVU5LTk9XThAAEhgKFFBST1ZJREVSX0NPREVfT1BFTkFJEAESGAoUUFJPVklERVJfQ09ERV9UT05HWUkQAhIZChVQUk9WSURFUl9DT0RFX1pISVBVQUkQAxIWChJQUk9WSURFUl9DT0RFX0dST0sQBBIaChZQUk9WSURFUl9DT0RFX0RFRVBTRUVLEAUqcQoSUHJvdmlkZXJTdGF0dXNFbnVtEhsKF1BST1ZJREVSX1NUQVRVU19VTktOT1dOEAASHwobUFJPVklERVJfU1RBVFVTX1VOQVZBSUxBQkxFEAESHQoZUFJPVklERVJfU1RBVFVTX0FWQUlMQUJMRRACKmcKDVF1b3RhVHlwZUVudW0SFgoSUVVPVEFfVFlQRV9VTktOT1dOEAASEwoPUVVPVEFfVFlQRV9QQUlEEAESEwoPUVVPVEFfVFlQRV9GUkVFEAISFAoQUVVPVEFfVFlQRV9UUklBTBADMrUECghQcm92aWRlchJrCgxEZXNjcmlwdGlvbnMSKy55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRlc2NyaXB0aW9uc1JlcXVlc3QaLC55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRlc2NyaXB0aW9uc1Jlc3BvbnNlIgASWQoGTW9kZWxzEiUueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNb2RlbHNSZXF1ZXN0GiYueWV5aW5nLmFwaS5sbG0uUHJvdmlkZXJNb2RlbHNSZXNwb25zZSIAElkKBlNlYXJjaBIlLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVxdWVzdBomLnlleWluZy5hcGkubGxtLlNlYXJjaFByb3ZpZGVyUmVzcG9uc2UiABJZCgZEZXRhaWwSJS55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRldGFpbFJlcXVlc3QaJi55ZXlpbmcuYXBpLmxsbS5Qcm92aWRlckRldGFpbFJlc3BvbnNlIgASUAoDQWRkEiIueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXF1ZXN0GiMueWV5aW5nLmFwaS5sbG0uQWRkUHJvdmlkZXJSZXNwb25zZSIAElkKBkRlbGV0ZRIlLnlleWluZy5hcGkubGxtLkRlbGV0ZVByb3ZpZGVyUmVxdWVzdBomLnlleWluZy5hcGkubGxtLkRlbGV0ZVByb3ZpZGVyUmVzcG9uc2UiAEIQWg55ZXlpbmcvYXBpL2xsbWIGcHJvdG8z",
+    [file_yeying_api_common_message],
+  );
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsRequest
  */
-export type ProviderDescriptionsRequest = Message<"yeying.api.llm.ProviderDescriptionsRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
-};
+export type ProviderDescriptionsRequest =
+  Message<"yeying.api.llm.ProviderDescriptionsRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsRequest
@@ -38,23 +60,26 @@ export type ProviderDescriptionsRequestJson = {
  * Describes the message yeying.api.llm.ProviderDescriptionsRequest.
  * Use `create(ProviderDescriptionsRequestSchema)` to create a new message.
  */
-export const ProviderDescriptionsRequestSchema: GenMessage<ProviderDescriptionsRequest, ProviderDescriptionsRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 0);
+export const ProviderDescriptionsRequestSchema: GenMessage<
+  ProviderDescriptionsRequest,
+  ProviderDescriptionsRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 0);
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsResponse
  */
-export type ProviderDescriptionsResponse = Message<"yeying.api.llm.ProviderDescriptionsResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type ProviderDescriptionsResponse =
+  Message<"yeying.api.llm.ProviderDescriptionsResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderDescriptionsResponseBody body = 2;
-   */
-  body?: ProviderDescriptionsResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderDescriptionsResponseBody body = 2;
+     */
+    body?: ProviderDescriptionsResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsResponse
@@ -75,23 +100,26 @@ export type ProviderDescriptionsResponseJson = {
  * Describes the message yeying.api.llm.ProviderDescriptionsResponse.
  * Use `create(ProviderDescriptionsResponseSchema)` to create a new message.
  */
-export const ProviderDescriptionsResponseSchema: GenMessage<ProviderDescriptionsResponse, ProviderDescriptionsResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 1);
+export const ProviderDescriptionsResponseSchema: GenMessage<
+  ProviderDescriptionsResponse,
+  ProviderDescriptionsResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 1);
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsResponseBody
  */
-export type ProviderDescriptionsResponseBody = Message<"yeying.api.llm.ProviderDescriptionsResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type ProviderDescriptionsResponseBody =
+  Message<"yeying.api.llm.ProviderDescriptionsResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: repeated yeying.api.llm.ProviderDescription descriptions = 2;
-   */
-  descriptions: ProviderDescription[];
-};
+    /**
+     * @generated from field: repeated yeying.api.llm.ProviderDescription descriptions = 2;
+     */
+    descriptions: ProviderDescription[];
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDescriptionsResponseBody
@@ -112,23 +140,26 @@ export type ProviderDescriptionsResponseBodyJson = {
  * Describes the message yeying.api.llm.ProviderDescriptionsResponseBody.
  * Use `create(ProviderDescriptionsResponseBodySchema)` to create a new message.
  */
-export const ProviderDescriptionsResponseBodySchema: GenMessage<ProviderDescriptionsResponseBody, ProviderDescriptionsResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 2);
+export const ProviderDescriptionsResponseBodySchema: GenMessage<
+  ProviderDescriptionsResponseBody,
+  ProviderDescriptionsResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 2);
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsRequest
  */
-export type ProviderModelsRequest = Message<"yeying.api.llm.ProviderModelsRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type ProviderModelsRequest =
+  Message<"yeying.api.llm.ProviderModelsRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderModelsRequestBody body = 2;
-   */
-  body?: ProviderModelsRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderModelsRequestBody body = 2;
+     */
+    body?: ProviderModelsRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsRequest
@@ -149,23 +180,26 @@ export type ProviderModelsRequestJson = {
  * Describes the message yeying.api.llm.ProviderModelsRequest.
  * Use `create(ProviderModelsRequestSchema)` to create a new message.
  */
-export const ProviderModelsRequestSchema: GenMessage<ProviderModelsRequest, ProviderModelsRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 3);
+export const ProviderModelsRequestSchema: GenMessage<
+  ProviderModelsRequest,
+  ProviderModelsRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 3);
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsRequestBody
  */
-export type ProviderModelsRequestBody = Message<"yeying.api.llm.ProviderModelsRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
-   */
-  code: ProviderCodeEnum;
+export type ProviderModelsRequestBody =
+  Message<"yeying.api.llm.ProviderModelsRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
+     */
+    code: ProviderCodeEnum;
 
-  /**
-   * @generated from field: yeying.api.llm.ModelTypeEnum modelType = 2;
-   */
-  modelType: ModelTypeEnum;
-};
+    /**
+     * @generated from field: yeying.api.llm.ModelTypeEnum modelType = 2;
+     */
+    modelType: ModelTypeEnum;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsRequestBody
@@ -186,23 +220,26 @@ export type ProviderModelsRequestBodyJson = {
  * Describes the message yeying.api.llm.ProviderModelsRequestBody.
  * Use `create(ProviderModelsRequestBodySchema)` to create a new message.
  */
-export const ProviderModelsRequestBodySchema: GenMessage<ProviderModelsRequestBody, ProviderModelsRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 4);
+export const ProviderModelsRequestBodySchema: GenMessage<
+  ProviderModelsRequestBody,
+  ProviderModelsRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 4);
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsResponse
  */
-export type ProviderModelsResponse = Message<"yeying.api.llm.ProviderModelsResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type ProviderModelsResponse =
+  Message<"yeying.api.llm.ProviderModelsResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderModelsResponseBody body = 2;
-   */
-  body?: ProviderModelsResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderModelsResponseBody body = 2;
+     */
+    body?: ProviderModelsResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsResponse
@@ -223,23 +260,26 @@ export type ProviderModelsResponseJson = {
  * Describes the message yeying.api.llm.ProviderModelsResponse.
  * Use `create(ProviderModelsResponseSchema)` to create a new message.
  */
-export const ProviderModelsResponseSchema: GenMessage<ProviderModelsResponse, ProviderModelsResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 5);
+export const ProviderModelsResponseSchema: GenMessage<
+  ProviderModelsResponse,
+  ProviderModelsResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 5);
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsResponseBody
  */
-export type ProviderModelsResponseBody = Message<"yeying.api.llm.ProviderModelsResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type ProviderModelsResponseBody =
+  Message<"yeying.api.llm.ProviderModelsResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: repeated yeying.api.llm.ModelMetadata models = 2;
-   */
-  models: ModelMetadata[];
-};
+    /**
+     * @generated from field: repeated yeying.api.llm.ModelMetadata models = 2;
+     */
+    models: ModelMetadata[];
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderModelsResponseBody
@@ -260,23 +300,26 @@ export type ProviderModelsResponseBodyJson = {
  * Describes the message yeying.api.llm.ProviderModelsResponseBody.
  * Use `create(ProviderModelsResponseBodySchema)` to create a new message.
  */
-export const ProviderModelsResponseBodySchema: GenMessage<ProviderModelsResponseBody, ProviderModelsResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 6);
+export const ProviderModelsResponseBodySchema: GenMessage<
+  ProviderModelsResponseBody,
+  ProviderModelsResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 6);
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderRequest
  */
-export type DeleteProviderRequest = Message<"yeying.api.llm.DeleteProviderRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteProviderRequest =
+  Message<"yeying.api.llm.DeleteProviderRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.DeleteProviderRequestBody body = 2;
-   */
-  body?: DeleteProviderRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.DeleteProviderRequestBody body = 2;
+     */
+    body?: DeleteProviderRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderRequest
@@ -297,18 +340,21 @@ export type DeleteProviderRequestJson = {
  * Describes the message yeying.api.llm.DeleteProviderRequest.
  * Use `create(DeleteProviderRequestSchema)` to create a new message.
  */
-export const DeleteProviderRequestSchema: GenMessage<DeleteProviderRequest, DeleteProviderRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 7);
+export const DeleteProviderRequestSchema: GenMessage<
+  DeleteProviderRequest,
+  DeleteProviderRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 7);
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderRequestBody
  */
-export type DeleteProviderRequestBody = Message<"yeying.api.llm.DeleteProviderRequestBody"> & {
-  /**
-   * @generated from field: string uid = 1;
-   */
-  uid: string;
-};
+export type DeleteProviderRequestBody =
+  Message<"yeying.api.llm.DeleteProviderRequestBody"> & {
+    /**
+     * @generated from field: string uid = 1;
+     */
+    uid: string;
+  };
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderRequestBody
@@ -324,23 +370,26 @@ export type DeleteProviderRequestBodyJson = {
  * Describes the message yeying.api.llm.DeleteProviderRequestBody.
  * Use `create(DeleteProviderRequestBodySchema)` to create a new message.
  */
-export const DeleteProviderRequestBodySchema: GenMessage<DeleteProviderRequestBody, DeleteProviderRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 8);
+export const DeleteProviderRequestBodySchema: GenMessage<
+  DeleteProviderRequestBody,
+  DeleteProviderRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 8);
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderResponse
  */
-export type DeleteProviderResponse = Message<"yeying.api.llm.DeleteProviderResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteProviderResponse =
+  Message<"yeying.api.llm.DeleteProviderResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.DeleteProviderResponseBody body = 2;
-   */
-  body?: DeleteProviderResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.DeleteProviderResponseBody body = 2;
+     */
+    body?: DeleteProviderResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderResponse
@@ -361,18 +410,21 @@ export type DeleteProviderResponseJson = {
  * Describes the message yeying.api.llm.DeleteProviderResponse.
  * Use `create(DeleteProviderResponseSchema)` to create a new message.
  */
-export const DeleteProviderResponseSchema: GenMessage<DeleteProviderResponse, DeleteProviderResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 9);
+export const DeleteProviderResponseSchema: GenMessage<
+  DeleteProviderResponse,
+  DeleteProviderResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 9);
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderResponseBody
  */
-export type DeleteProviderResponseBody = Message<"yeying.api.llm.DeleteProviderResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type DeleteProviderResponseBody =
+  Message<"yeying.api.llm.DeleteProviderResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.DeleteProviderResponseBody
@@ -388,23 +440,26 @@ export type DeleteProviderResponseBodyJson = {
  * Describes the message yeying.api.llm.DeleteProviderResponseBody.
  * Use `create(DeleteProviderResponseBodySchema)` to create a new message.
  */
-export const DeleteProviderResponseBodySchema: GenMessage<DeleteProviderResponseBody, DeleteProviderResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 10);
+export const DeleteProviderResponseBodySchema: GenMessage<
+  DeleteProviderResponseBody,
+  DeleteProviderResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 10);
 
 /**
  * @generated from message yeying.api.llm.SearchProviderRequest
  */
-export type SearchProviderRequest = Message<"yeying.api.llm.SearchProviderRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchProviderRequest =
+  Message<"yeying.api.llm.SearchProviderRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.SearchProviderRequestBody body = 2;
-   */
-  body?: SearchProviderRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.SearchProviderRequestBody body = 2;
+     */
+    body?: SearchProviderRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.SearchProviderRequest
@@ -425,23 +480,26 @@ export type SearchProviderRequestJson = {
  * Describes the message yeying.api.llm.SearchProviderRequest.
  * Use `create(SearchProviderRequestSchema)` to create a new message.
  */
-export const SearchProviderRequestSchema: GenMessage<SearchProviderRequest, SearchProviderRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 11);
+export const SearchProviderRequestSchema: GenMessage<
+  SearchProviderRequest,
+  SearchProviderRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 11);
 
 /**
  * @generated from message yeying.api.llm.SearchProviderRequestBody
  */
-export type SearchProviderRequestBody = Message<"yeying.api.llm.SearchProviderRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.common.RequestPage page = 1;
-   */
-  page?: RequestPage;
+export type SearchProviderRequestBody =
+  Message<"yeying.api.llm.SearchProviderRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.common.RequestPage page = 1;
+     */
+    page?: RequestPage;
 
-  /**
-   * @generated from field: yeying.api.llm.SearchProviderCondition condition = 2;
-   */
-  condition?: SearchProviderCondition;
-};
+    /**
+     * @generated from field: yeying.api.llm.SearchProviderCondition condition = 2;
+     */
+    condition?: SearchProviderCondition;
+  };
 
 /**
  * @generated from message yeying.api.llm.SearchProviderRequestBody
@@ -462,23 +520,26 @@ export type SearchProviderRequestBodyJson = {
  * Describes the message yeying.api.llm.SearchProviderRequestBody.
  * Use `create(SearchProviderRequestBodySchema)` to create a new message.
  */
-export const SearchProviderRequestBodySchema: GenMessage<SearchProviderRequestBody, SearchProviderRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 12);
+export const SearchProviderRequestBodySchema: GenMessage<
+  SearchProviderRequestBody,
+  SearchProviderRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 12);
 
 /**
  * @generated from message yeying.api.llm.SearchProviderResponse
  */
-export type SearchProviderResponse = Message<"yeying.api.llm.SearchProviderResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchProviderResponse =
+  Message<"yeying.api.llm.SearchProviderResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.SearchProviderResponseBody body = 2;
-   */
-  body?: SearchProviderResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.SearchProviderResponseBody body = 2;
+     */
+    body?: SearchProviderResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.SearchProviderResponse
@@ -499,23 +560,26 @@ export type SearchProviderResponseJson = {
  * Describes the message yeying.api.llm.SearchProviderResponse.
  * Use `create(SearchProviderResponseSchema)` to create a new message.
  */
-export const SearchProviderResponseSchema: GenMessage<SearchProviderResponse, SearchProviderResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 13);
+export const SearchProviderResponseSchema: GenMessage<
+  SearchProviderResponse,
+  SearchProviderResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 13);
 
 /**
  * @generated from message yeying.api.llm.SearchProviderResponseBody
  */
-export type SearchProviderResponseBody = Message<"yeying.api.llm.SearchProviderResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type SearchProviderResponseBody =
+  Message<"yeying.api.llm.SearchProviderResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: repeated yeying.api.llm.ProviderMetadata providers = 2;
-   */
-  providers: ProviderMetadata[];
-};
+    /**
+     * @generated from field: repeated yeying.api.llm.ProviderMetadata providers = 2;
+     */
+    providers: ProviderMetadata[];
+  };
 
 /**
  * @generated from message yeying.api.llm.SearchProviderResponseBody
@@ -536,23 +600,26 @@ export type SearchProviderResponseBodyJson = {
  * Describes the message yeying.api.llm.SearchProviderResponseBody.
  * Use `create(SearchProviderResponseBodySchema)` to create a new message.
  */
-export const SearchProviderResponseBodySchema: GenMessage<SearchProviderResponseBody, SearchProviderResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 14);
+export const SearchProviderResponseBodySchema: GenMessage<
+  SearchProviderResponseBody,
+  SearchProviderResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 14);
 
 /**
  * @generated from message yeying.api.llm.AddProviderRequest
  */
-export type AddProviderRequest = Message<"yeying.api.llm.AddProviderRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type AddProviderRequest =
+  Message<"yeying.api.llm.AddProviderRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.AddProviderRequestBody body = 2;
-   */
-  body?: AddProviderRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.AddProviderRequestBody body = 2;
+     */
+    body?: AddProviderRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.AddProviderRequest
@@ -573,18 +640,21 @@ export type AddProviderRequestJson = {
  * Describes the message yeying.api.llm.AddProviderRequest.
  * Use `create(AddProviderRequestSchema)` to create a new message.
  */
-export const AddProviderRequestSchema: GenMessage<AddProviderRequest, AddProviderRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 15);
+export const AddProviderRequestSchema: GenMessage<
+  AddProviderRequest,
+  AddProviderRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 15);
 
 /**
  * @generated from message yeying.api.llm.AddProviderRequestBody
  */
-export type AddProviderRequestBody = Message<"yeying.api.llm.AddProviderRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.llm.ProviderMetadata provider = 1;
-   */
-  provider?: ProviderMetadata;
-};
+export type AddProviderRequestBody =
+  Message<"yeying.api.llm.AddProviderRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.llm.ProviderMetadata provider = 1;
+     */
+    provider?: ProviderMetadata;
+  };
 
 /**
  * @generated from message yeying.api.llm.AddProviderRequestBody
@@ -600,23 +670,26 @@ export type AddProviderRequestBodyJson = {
  * Describes the message yeying.api.llm.AddProviderRequestBody.
  * Use `create(AddProviderRequestBodySchema)` to create a new message.
  */
-export const AddProviderRequestBodySchema: GenMessage<AddProviderRequestBody, AddProviderRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 16);
+export const AddProviderRequestBodySchema: GenMessage<
+  AddProviderRequestBody,
+  AddProviderRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 16);
 
 /**
  * @generated from message yeying.api.llm.AddProviderResponse
  */
-export type AddProviderResponse = Message<"yeying.api.llm.AddProviderResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type AddProviderResponse =
+  Message<"yeying.api.llm.AddProviderResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.AddProviderResponseBody body = 2;
-   */
-  body?: AddProviderResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.AddProviderResponseBody body = 2;
+     */
+    body?: AddProviderResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.AddProviderResponse
@@ -637,23 +710,26 @@ export type AddProviderResponseJson = {
  * Describes the message yeying.api.llm.AddProviderResponse.
  * Use `create(AddProviderResponseSchema)` to create a new message.
  */
-export const AddProviderResponseSchema: GenMessage<AddProviderResponse, AddProviderResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 17);
+export const AddProviderResponseSchema: GenMessage<
+  AddProviderResponse,
+  AddProviderResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 17);
 
 /**
  * @generated from message yeying.api.llm.AddProviderResponseBody
  */
-export type AddProviderResponseBody = Message<"yeying.api.llm.AddProviderResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type AddProviderResponseBody =
+  Message<"yeying.api.llm.AddProviderResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderMetadata provider = 2;
-   */
-  provider?: ProviderMetadata;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderMetadata provider = 2;
+     */
+    provider?: ProviderMetadata;
+  };
 
 /**
  * @generated from message yeying.api.llm.AddProviderResponseBody
@@ -674,23 +750,26 @@ export type AddProviderResponseBodyJson = {
  * Describes the message yeying.api.llm.AddProviderResponseBody.
  * Use `create(AddProviderResponseBodySchema)` to create a new message.
  */
-export const AddProviderResponseBodySchema: GenMessage<AddProviderResponseBody, AddProviderResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 18);
+export const AddProviderResponseBodySchema: GenMessage<
+  AddProviderResponseBody,
+  AddProviderResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 18);
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailRequest
  */
-export type ProviderDetailRequest = Message<"yeying.api.llm.ProviderDetailRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type ProviderDetailRequest =
+  Message<"yeying.api.llm.ProviderDetailRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderDetailRequestBody body = 2;
-   */
-  body?: ProviderDetailRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderDetailRequestBody body = 2;
+     */
+    body?: ProviderDetailRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailRequest
@@ -711,18 +790,21 @@ export type ProviderDetailRequestJson = {
  * Describes the message yeying.api.llm.ProviderDetailRequest.
  * Use `create(ProviderDetailRequestSchema)` to create a new message.
  */
-export const ProviderDetailRequestSchema: GenMessage<ProviderDetailRequest, ProviderDetailRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 19);
+export const ProviderDetailRequestSchema: GenMessage<
+  ProviderDetailRequest,
+  ProviderDetailRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 19);
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailRequestBody
  */
-export type ProviderDetailRequestBody = Message<"yeying.api.llm.ProviderDetailRequestBody"> & {
-  /**
-   * @generated from field: string uid = 1;
-   */
-  uid: string;
-};
+export type ProviderDetailRequestBody =
+  Message<"yeying.api.llm.ProviderDetailRequestBody"> & {
+    /**
+     * @generated from field: string uid = 1;
+     */
+    uid: string;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailRequestBody
@@ -738,23 +820,26 @@ export type ProviderDetailRequestBodyJson = {
  * Describes the message yeying.api.llm.ProviderDetailRequestBody.
  * Use `create(ProviderDetailRequestBodySchema)` to create a new message.
  */
-export const ProviderDetailRequestBodySchema: GenMessage<ProviderDetailRequestBody, ProviderDetailRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 20);
+export const ProviderDetailRequestBodySchema: GenMessage<
+  ProviderDetailRequestBody,
+  ProviderDetailRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 20);
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailResponse
  */
-export type ProviderDetailResponse = Message<"yeying.api.llm.ProviderDetailResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type ProviderDetailResponse =
+  Message<"yeying.api.llm.ProviderDetailResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderDetailResponseBody body = 2;
-   */
-  body?: ProviderDetailResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderDetailResponseBody body = 2;
+     */
+    body?: ProviderDetailResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailResponse
@@ -775,23 +860,26 @@ export type ProviderDetailResponseJson = {
  * Describes the message yeying.api.llm.ProviderDetailResponse.
  * Use `create(ProviderDetailResponseSchema)` to create a new message.
  */
-export const ProviderDetailResponseSchema: GenMessage<ProviderDetailResponse, ProviderDetailResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 21);
+export const ProviderDetailResponseSchema: GenMessage<
+  ProviderDetailResponse,
+  ProviderDetailResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 21);
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailResponseBody
  */
-export type ProviderDetailResponseBody = Message<"yeying.api.llm.ProviderDetailResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type ProviderDetailResponseBody =
+  Message<"yeying.api.llm.ProviderDetailResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.llm.ProviderDetail detail = 2;
-   */
-  detail?: ProviderDetail;
-};
+    /**
+     * @generated from field: yeying.api.llm.ProviderDetail detail = 2;
+     */
+    detail?: ProviderDetail;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDetailResponseBody
@@ -812,8 +900,10 @@ export type ProviderDetailResponseBodyJson = {
  * Describes the message yeying.api.llm.ProviderDetailResponseBody.
  * Use `create(ProviderDetailResponseBodySchema)` to create a new message.
  */
-export const ProviderDetailResponseBodySchema: GenMessage<ProviderDetailResponseBody, ProviderDetailResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 22);
+export const ProviderDetailResponseBodySchema: GenMessage<
+  ProviderDetailResponseBody,
+  ProviderDetailResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 22);
 
 /**
  * @generated from message yeying.api.llm.ProviderDetail
@@ -849,38 +939,41 @@ export type ProviderDetailJson = {
  * Describes the message yeying.api.llm.ProviderDetail.
  * Use `create(ProviderDetailSchema)` to create a new message.
  */
-export const ProviderDetailSchema: GenMessage<ProviderDetail, ProviderDetailJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 23);
+export const ProviderDetailSchema: GenMessage<
+  ProviderDetail,
+  ProviderDetailJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 23);
 
 /**
  * @generated from message yeying.api.llm.ProviderDescription
  */
-export type ProviderDescription = Message<"yeying.api.llm.ProviderDescription"> & {
-  /**
-   * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
-   */
-  code: ProviderCodeEnum;
+export type ProviderDescription =
+  Message<"yeying.api.llm.ProviderDescription"> & {
+    /**
+     * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
+     */
+    code: ProviderCodeEnum;
 
-  /**
-   * @generated from field: string name = 2;
-   */
-  name: string;
+    /**
+     * @generated from field: string name = 2;
+     */
+    name: string;
 
-  /**
-   * @generated from field: string description = 3;
-   */
-  description: string;
+    /**
+     * @generated from field: string description = 3;
+     */
+    description: string;
 
-  /**
-   * @generated from field: repeated yeying.api.llm.ModelTypeEnum supportedModelTypes = 4;
-   */
-  supportedModelTypes: ModelTypeEnum[];
+    /**
+     * @generated from field: repeated yeying.api.llm.ModelTypeEnum supportedModelTypes = 4;
+     */
+    supportedModelTypes: ModelTypeEnum[];
 
-  /**
-   * @generated from field: string avatar = 5;
-   */
-  avatar: string;
-};
+    /**
+     * @generated from field: string avatar = 5;
+     */
+    avatar: string;
+  };
 
 /**
  * @generated from message yeying.api.llm.ProviderDescription
@@ -916,18 +1009,21 @@ export type ProviderDescriptionJson = {
  * Describes the message yeying.api.llm.ProviderDescription.
  * Use `create(ProviderDescriptionSchema)` to create a new message.
  */
-export const ProviderDescriptionSchema: GenMessage<ProviderDescription, ProviderDescriptionJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 24);
+export const ProviderDescriptionSchema: GenMessage<
+  ProviderDescription,
+  ProviderDescriptionJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 24);
 
 /**
  * @generated from message yeying.api.llm.SearchProviderCondition
  */
-export type SearchProviderCondition = Message<"yeying.api.llm.SearchProviderCondition"> & {
-  /**
-   * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
-   */
-  code: ProviderCodeEnum;
-};
+export type SearchProviderCondition =
+  Message<"yeying.api.llm.SearchProviderCondition"> & {
+    /**
+     * @generated from field: yeying.api.llm.ProviderCodeEnum code = 1;
+     */
+    code: ProviderCodeEnum;
+  };
 
 /**
  * @generated from message yeying.api.llm.SearchProviderCondition
@@ -943,8 +1039,10 @@ export type SearchProviderConditionJson = {
  * Describes the message yeying.api.llm.SearchProviderCondition.
  * Use `create(SearchProviderConditionSchema)` to create a new message.
  */
-export const SearchProviderConditionSchema: GenMessage<SearchProviderCondition, SearchProviderConditionJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 25);
+export const SearchProviderConditionSchema: GenMessage<
+  SearchProviderCondition,
+  SearchProviderConditionJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 25);
 
 /**
  * @generated from message yeying.api.llm.ProviderMetadata
@@ -1060,8 +1158,10 @@ export type ProviderMetadataJson = {
  * Describes the message yeying.api.llm.ProviderMetadata.
  * Use `create(ProviderMetadataSchema)` to create a new message.
  */
-export const ProviderMetadataSchema: GenMessage<ProviderMetadata, ProviderMetadataJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_provider, 26);
+export const ProviderMetadataSchema: GenMessage<
+  ProviderMetadata,
+  ProviderMetadataJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_provider, 26);
 
 /**
  * @generated from message yeying.api.llm.ModelMetadata
@@ -1117,7 +1217,8 @@ export type ModelMetadataJson = {
  * Describes the message yeying.api.llm.ModelMetadata.
  * Use `create(ModelMetadataSchema)` to create a new message.
  */
-export const ModelMetadataSchema: GenMessage<ModelMetadata, ModelMetadataJson> = /*@__PURE__*/
+export const ModelMetadataSchema: GenMessage<ModelMetadata, ModelMetadataJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_provider, 27);
 
 /**
@@ -1204,7 +1305,8 @@ export type ProviderStateJson = {
  * Describes the message yeying.api.llm.ProviderState.
  * Use `create(ProviderStateSchema)` to create a new message.
  */
-export const ProviderStateSchema: GenMessage<ProviderState, ProviderStateJson> = /*@__PURE__*/
+export const ProviderStateSchema: GenMessage<ProviderState, ProviderStateJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_provider, 28);
 
 /**
@@ -1269,12 +1371,21 @@ export enum ModelTypeEnum {
 /**
  * @generated from enum yeying.api.llm.ModelTypeEnum
  */
-export type ModelTypeEnumJson = "MODEL_TYPE_UNKNOWN" | "MODEL_TYPE_LLM" | "MODEL_TYPE_TEXT_EMBEDDING" | "MODEL_TYPE_RERANK" | "MODEL_TYPE_SPEECH2TEXT" | "MODEL_TYPE_TTS" | "MODEL_TYPE_MODERATION" | "MODEL_TYPE_TEXT2IMAGE";
+export type ModelTypeEnumJson =
+  | "MODEL_TYPE_UNKNOWN"
+  | "MODEL_TYPE_LLM"
+  | "MODEL_TYPE_TEXT_EMBEDDING"
+  | "MODEL_TYPE_RERANK"
+  | "MODEL_TYPE_SPEECH2TEXT"
+  | "MODEL_TYPE_TTS"
+  | "MODEL_TYPE_MODERATION"
+  | "MODEL_TYPE_TEXT2IMAGE";
 
 /**
  * Describes the enum yeying.api.llm.ModelTypeEnum.
  */
-export const ModelTypeEnumSchema: GenEnum<ModelTypeEnum, ModelTypeEnumJson> = /*@__PURE__*/
+export const ModelTypeEnumSchema: GenEnum<ModelTypeEnum, ModelTypeEnumJson> =
+  /*@__PURE__*/
   enumDesc(file_yeying_api_llm_provider, 0);
 
 /**
@@ -1341,13 +1452,23 @@ export enum ModelFeatureEnum {
 /**
  * @generated from enum yeying.api.llm.ModelFeatureEnum
  */
-export type ModelFeatureEnumJson = "MODEL_FEATURE_AGENT_THOUGHT" | "MODEL_FEATURE_VISION" | "MODEL_FEATURE_TOOL_CALL" | "MODEL_FEATURE_MULTI_TOOL_CALL" | "MODEL_FEATURE_STREAM_TOOL_CALL" | "MODEL_FEATURE_DOCUMENT" | "MODEL_FEATURE_VIDEO" | "MODEL_FEATURE_AUDIO";
+export type ModelFeatureEnumJson =
+  | "MODEL_FEATURE_AGENT_THOUGHT"
+  | "MODEL_FEATURE_VISION"
+  | "MODEL_FEATURE_TOOL_CALL"
+  | "MODEL_FEATURE_MULTI_TOOL_CALL"
+  | "MODEL_FEATURE_STREAM_TOOL_CALL"
+  | "MODEL_FEATURE_DOCUMENT"
+  | "MODEL_FEATURE_VIDEO"
+  | "MODEL_FEATURE_AUDIO";
 
 /**
  * Describes the enum yeying.api.llm.ModelFeatureEnum.
  */
-export const ModelFeatureEnumSchema: GenEnum<ModelFeatureEnum, ModelFeatureEnumJson> = /*@__PURE__*/
-  enumDesc(file_yeying_api_llm_provider, 1);
+export const ModelFeatureEnumSchema: GenEnum<
+  ModelFeatureEnum,
+  ModelFeatureEnumJson
+> = /*@__PURE__*/ enumDesc(file_yeying_api_llm_provider, 1);
 
 /**
  * @generated from enum yeying.api.llm.ProviderCodeEnum
@@ -1397,13 +1518,21 @@ export enum ProviderCodeEnum {
 /**
  * @generated from enum yeying.api.llm.ProviderCodeEnum
  */
-export type ProviderCodeEnumJson = "PROVIDER_CODE_UNKNOWN" | "PROVIDER_CODE_OPENAI" | "PROVIDER_CODE_TONGYI" | "PROVIDER_CODE_ZHIPUAI" | "PROVIDER_CODE_GROK" | "PROVIDER_CODE_DEEPSEEK";
+export type ProviderCodeEnumJson =
+  | "PROVIDER_CODE_UNKNOWN"
+  | "PROVIDER_CODE_OPENAI"
+  | "PROVIDER_CODE_TONGYI"
+  | "PROVIDER_CODE_ZHIPUAI"
+  | "PROVIDER_CODE_GROK"
+  | "PROVIDER_CODE_DEEPSEEK";
 
 /**
  * Describes the enum yeying.api.llm.ProviderCodeEnum.
  */
-export const ProviderCodeEnumSchema: GenEnum<ProviderCodeEnum, ProviderCodeEnumJson> = /*@__PURE__*/
-  enumDesc(file_yeying_api_llm_provider, 2);
+export const ProviderCodeEnumSchema: GenEnum<
+  ProviderCodeEnum,
+  ProviderCodeEnumJson
+> = /*@__PURE__*/ enumDesc(file_yeying_api_llm_provider, 2);
 
 /**
  * @generated from enum yeying.api.llm.ProviderStatusEnum
@@ -1434,13 +1563,18 @@ export enum ProviderStatusEnum {
 /**
  * @generated from enum yeying.api.llm.ProviderStatusEnum
  */
-export type ProviderStatusEnumJson = "PROVIDER_STATUS_UNKNOWN" | "PROVIDER_STATUS_UNAVAILABLE" | "PROVIDER_STATUS_AVAILABLE";
+export type ProviderStatusEnumJson =
+  | "PROVIDER_STATUS_UNKNOWN"
+  | "PROVIDER_STATUS_UNAVAILABLE"
+  | "PROVIDER_STATUS_AVAILABLE";
 
 /**
  * Describes the enum yeying.api.llm.ProviderStatusEnum.
  */
-export const ProviderStatusEnumSchema: GenEnum<ProviderStatusEnum, ProviderStatusEnumJson> = /*@__PURE__*/
-  enumDesc(file_yeying_api_llm_provider, 3);
+export const ProviderStatusEnumSchema: GenEnum<
+  ProviderStatusEnum,
+  ProviderStatusEnumJson
+> = /*@__PURE__*/ enumDesc(file_yeying_api_llm_provider, 3);
 
 /**
  * @generated from enum yeying.api.llm.QuotaTypeEnum
@@ -1472,12 +1606,17 @@ export enum QuotaTypeEnum {
 /**
  * @generated from enum yeying.api.llm.QuotaTypeEnum
  */
-export type QuotaTypeEnumJson = "QUOTA_TYPE_UNKNOWN" | "QUOTA_TYPE_PAID" | "QUOTA_TYPE_FREE" | "QUOTA_TYPE_TRIAL";
+export type QuotaTypeEnumJson =
+  | "QUOTA_TYPE_UNKNOWN"
+  | "QUOTA_TYPE_PAID"
+  | "QUOTA_TYPE_FREE"
+  | "QUOTA_TYPE_TRIAL";
 
 /**
  * Describes the enum yeying.api.llm.QuotaTypeEnum.
  */
-export const QuotaTypeEnumSchema: GenEnum<QuotaTypeEnum, QuotaTypeEnumJson> = /*@__PURE__*/
+export const QuotaTypeEnumSchema: GenEnum<QuotaTypeEnum, QuotaTypeEnumJson> =
+  /*@__PURE__*/
   enumDesc(file_yeying_api_llm_provider, 4);
 
 /**
@@ -1493,7 +1632,7 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof ProviderDescriptionsRequestSchema;
     output: typeof ProviderDescriptionsResponseSchema;
-  },
+  };
   /**
    * 供应商模型
    *
@@ -1503,7 +1642,7 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof ProviderModelsRequestSchema;
     output: typeof ProviderModelsResponseSchema;
-  },
+  };
   /**
    * 搜索添加的供应商
    *
@@ -1513,7 +1652,7 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof SearchProviderRequestSchema;
     output: typeof SearchProviderResponseSchema;
-  },
+  };
   /**
    * 供应商状态
    *
@@ -1523,7 +1662,7 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof ProviderDetailRequestSchema;
     output: typeof ProviderDetailResponseSchema;
-  },
+  };
   /**
    * 添加新供应商配置
    *
@@ -1533,7 +1672,7 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof AddProviderRequestSchema;
     output: typeof AddProviderResponseSchema;
-  },
+  };
   /**
    * 删除供应商
    *
@@ -1543,7 +1682,5 @@ export const Provider: GenService<{
     methodKind: "unary";
     input: typeof DeleteProviderRequestSchema;
     output: typeof DeleteProviderResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_yeying_api_llm_provider, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_yeying_api_llm_provider, 0);

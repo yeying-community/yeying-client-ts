@@ -2,9 +2,26 @@
 // @generated from file yeying/api/service/service.proto (package yeying.api.service, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponsePage, ResponsePageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type {
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
+import type {
+  MessageHeader,
+  MessageHeaderJson,
+  RequestPage,
+  RequestPageJson,
+  ResponsePage,
+  ResponsePageJson,
+  ResponseStatus,
+  ResponseStatusJson,
+} from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
 import type { ServiceCodeEnum, ServiceCodeEnumJson } from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
@@ -15,25 +32,34 @@ import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file yeying/api/service/service.proto.
  */
-export const file_yeying_api_service_service: GenFile = /*@__PURE__*/
-  fileDesc("CiB5ZXlpbmcvYXBpL3NlcnZpY2Uvc2VydmljZS5wcm90bxISeWV5aW5nLmFwaS5zZXJ2aWNlIoQBChRDcmVhdGVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuQ3JlYXRlU2VydmljZVJlcXVlc3RCb2R5Ik8KGENyZWF0ZVNlcnZpY2VSZXF1ZXN0Qm9keRIzCgdzZXJ2aWNlGAEgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhIoYBChVDcmVhdGVTZXJ2aWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zZXJ2aWNlLkNyZWF0ZVNlcnZpY2VSZXNwb25zZUJvZHkigwEKGUNyZWF0ZVNlcnZpY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSMwoHc2VydmljZRgCIAEoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YSKEAQoURGV0YWlsU2VydmljZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5zZXJ2aWNlLkRldGFpbFNlcnZpY2VSZXF1ZXN0Qm9keSI4ChhEZXRhaWxTZXJ2aWNlUmVxdWVzdEJvZHkSCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0ihgEKFURldGFpbFNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlc3BvbnNlQm9keSKDAQoZRGV0YWlsU2VydmljZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCgdzZXJ2aWNlGAIgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhIoQBChRTZWFyY2hTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuU2VhcmNoU2VydmljZVJlcXVlc3RCb2R5IocBChhTZWFyY2hTZXJ2aWNlUmVxdWVzdEJvZHkSPQoJY29uZGl0aW9uGAEgASgLMioueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VDb25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIngKFlNlYXJjaFNlcnZpY2VDb25kaXRpb24SMAoEY29kZRgBIAEoDjIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VDb2RlRW51bRINCgVvd25lchgCIAEoCRIMCgRuYW1lGAMgASgJEg8KB2tleXdvcmQYBCABKAkihgEKFVNlYXJjaFNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuU2VhcmNoU2VydmljZVJlc3BvbnNlQm9keSKzAQoZU2VhcmNoU2VydmljZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI0CghzZXJ2aWNlcxgCIAMoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlIoQBChRPbmxpbmVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuT25saW5lU2VydmljZVJlcXVlc3RCb2R5IjgKGE9ubGluZVNlcnZpY2VSZXF1ZXN0Qm9keRILCgNkaWQYASABKAkSDwoHdmVyc2lvbhgCIAEoDSKGAQoVT25saW5lU2VydmljZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVzcG9uc2VCb2R5IoMBChlPbmxpbmVTZXJ2aWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjMKB3NlcnZpY2UYAiABKAsyIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlTWV0YWRhdGEihgEKFU9mZmxpbmVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuT2ZmbGluZVNlcnZpY2VSZXF1ZXN0Qm9keSI5ChlPZmZsaW5lU2VydmljZVJlcXVlc3RCb2R5EgsKA2RpZBgBIAEoCRIPCgd2ZXJzaW9uGAIgASgNIogBChZPZmZsaW5lU2VydmljZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPAoEYm9keRgCIAEoCzIuLnlleWluZy5hcGkuc2VydmljZS5PZmZsaW5lU2VydmljZVJlc3BvbnNlQm9keSKEAQoaT2ZmbGluZVNlcnZpY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSMwoHc2VydmljZRgCIAEoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YSKEAQoURGVsZXRlU2VydmljZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXF1ZXN0Qm9keSI4ChhEZWxldGVTZXJ2aWNlUmVxdWVzdEJvZHkSCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0ihgEKFURlbGV0ZVNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuRGVsZXRlU2VydmljZVJlc3BvbnNlQm9keSJOChlEZWxldGVTZXJ2aWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzMtIECgdTZXJ2aWNlEl8KBkNyZWF0ZRIoLnlleWluZy5hcGkuc2VydmljZS5DcmVhdGVTZXJ2aWNlUmVxdWVzdBopLnlleWluZy5hcGkuc2VydmljZS5DcmVhdGVTZXJ2aWNlUmVzcG9uc2UiABJfCgZEZXRhaWwSKC55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlcXVlc3QaKS55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlc3BvbnNlIgASXwoGU2VhcmNoEigueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VSZXNwb25zZSIAEl8KBk9ubGluZRIoLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVxdWVzdBopLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVzcG9uc2UiABJiCgdPZmZsaW5lEikueWV5aW5nLmFwaS5zZXJ2aWNlLk9mZmxpbmVTZXJ2aWNlUmVxdWVzdBoqLnlleWluZy5hcGkuc2VydmljZS5PZmZsaW5lU2VydmljZVJlc3BvbnNlIgASXwoGRGVsZXRlEigueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXNwb25zZSIAQhRaEnlleWluZy9hcGkvc2VydmljZWIGcHJvdG8z", [file_yeying_api_common_message, file_yeying_api_common_code, file_yeying_api_common_model]);
+export const file_yeying_api_service_service: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "CiB5ZXlpbmcvYXBpL3NlcnZpY2Uvc2VydmljZS5wcm90bxISeWV5aW5nLmFwaS5zZXJ2aWNlIoQBChRDcmVhdGVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuQ3JlYXRlU2VydmljZVJlcXVlc3RCb2R5Ik8KGENyZWF0ZVNlcnZpY2VSZXF1ZXN0Qm9keRIzCgdzZXJ2aWNlGAEgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhIoYBChVDcmVhdGVTZXJ2aWNlUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI7CgRib2R5GAIgASgLMi0ueWV5aW5nLmFwaS5zZXJ2aWNlLkNyZWF0ZVNlcnZpY2VSZXNwb25zZUJvZHkigwEKGUNyZWF0ZVNlcnZpY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSMwoHc2VydmljZRgCIAEoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YSKEAQoURGV0YWlsU2VydmljZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5zZXJ2aWNlLkRldGFpbFNlcnZpY2VSZXF1ZXN0Qm9keSI4ChhEZXRhaWxTZXJ2aWNlUmVxdWVzdEJvZHkSCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0ihgEKFURldGFpbFNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlc3BvbnNlQm9keSKDAQoZRGV0YWlsU2VydmljZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIzCgdzZXJ2aWNlGAIgASgLMiIueWV5aW5nLmFwaS5jb21tb24uU2VydmljZU1ldGFkYXRhIoQBChRTZWFyY2hTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuU2VhcmNoU2VydmljZVJlcXVlc3RCb2R5IocBChhTZWFyY2hTZXJ2aWNlUmVxdWVzdEJvZHkSPQoJY29uZGl0aW9uGAEgASgLMioueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VDb25kaXRpb24SLAoEcGFnZRgCIAEoCzIeLnlleWluZy5hcGkuY29tbW9uLlJlcXVlc3RQYWdlIngKFlNlYXJjaFNlcnZpY2VDb25kaXRpb24SMAoEY29kZRgBIAEoDjIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VDb2RlRW51bRINCgVvd25lchgCIAEoCRIMCgRuYW1lGAMgASgJEg8KB2tleXdvcmQYBCABKAkihgEKFVNlYXJjaFNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuU2VhcmNoU2VydmljZVJlc3BvbnNlQm9keSKzAQoZU2VhcmNoU2VydmljZVJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxI0CghzZXJ2aWNlcxgCIAMoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YRItCgRwYWdlGAMgASgLMh8ueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VQYWdlIoQBChRPbmxpbmVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjoKBGJvZHkYAiABKAsyLC55ZXlpbmcuYXBpLnNlcnZpY2UuT25saW5lU2VydmljZVJlcXVlc3RCb2R5IjgKGE9ubGluZVNlcnZpY2VSZXF1ZXN0Qm9keRILCgNkaWQYASABKAkSDwoHdmVyc2lvbhgCIAEoDSKGAQoVT25saW5lU2VydmljZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISOwoEYm9keRgCIAEoCzItLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVzcG9uc2VCb2R5IoMBChlPbmxpbmVTZXJ2aWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzEjMKB3NlcnZpY2UYAiABKAsyIi55ZXlpbmcuYXBpLmNvbW1vbi5TZXJ2aWNlTWV0YWRhdGEihgEKFU9mZmxpbmVTZXJ2aWNlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuT2ZmbGluZVNlcnZpY2VSZXF1ZXN0Qm9keSI5ChlPZmZsaW5lU2VydmljZVJlcXVlc3RCb2R5EgsKA2RpZBgBIAEoCRIPCgd2ZXJzaW9uGAIgASgNIogBChZPZmZsaW5lU2VydmljZVJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISPAoEYm9keRgCIAEoCzIuLnlleWluZy5hcGkuc2VydmljZS5PZmZsaW5lU2VydmljZVJlc3BvbnNlQm9keSKEAQoaT2ZmbGluZVNlcnZpY2VSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSMwoHc2VydmljZRgCIAEoCzIiLnlleWluZy5hcGkuY29tbW9uLlNlcnZpY2VNZXRhZGF0YSKEAQoURGVsZXRlU2VydmljZVJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI6CgRib2R5GAIgASgLMiwueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXF1ZXN0Qm9keSI4ChhEZWxldGVTZXJ2aWNlUmVxdWVzdEJvZHkSCwoDZGlkGAEgASgJEg8KB3ZlcnNpb24YAiABKA0ihgEKFURlbGV0ZVNlcnZpY2VSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjsKBGJvZHkYAiABKAsyLS55ZXlpbmcuYXBpLnNlcnZpY2UuRGVsZXRlU2VydmljZVJlc3BvbnNlQm9keSJOChlEZWxldGVTZXJ2aWNlUmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzMtIECgdTZXJ2aWNlEl8KBkNyZWF0ZRIoLnlleWluZy5hcGkuc2VydmljZS5DcmVhdGVTZXJ2aWNlUmVxdWVzdBopLnlleWluZy5hcGkuc2VydmljZS5DcmVhdGVTZXJ2aWNlUmVzcG9uc2UiABJfCgZEZXRhaWwSKC55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlcXVlc3QaKS55ZXlpbmcuYXBpLnNlcnZpY2UuRGV0YWlsU2VydmljZVJlc3BvbnNlIgASXwoGU2VhcmNoEigueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5zZXJ2aWNlLlNlYXJjaFNlcnZpY2VSZXNwb25zZSIAEl8KBk9ubGluZRIoLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVxdWVzdBopLnlleWluZy5hcGkuc2VydmljZS5PbmxpbmVTZXJ2aWNlUmVzcG9uc2UiABJiCgdPZmZsaW5lEikueWV5aW5nLmFwaS5zZXJ2aWNlLk9mZmxpbmVTZXJ2aWNlUmVxdWVzdBoqLnlleWluZy5hcGkuc2VydmljZS5PZmZsaW5lU2VydmljZVJlc3BvbnNlIgASXwoGRGVsZXRlEigueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXF1ZXN0GikueWV5aW5nLmFwaS5zZXJ2aWNlLkRlbGV0ZVNlcnZpY2VSZXNwb25zZSIAQhRaEnlleWluZy9hcGkvc2VydmljZWIGcHJvdG8z",
+    [
+      file_yeying_api_common_message,
+      file_yeying_api_common_code,
+      file_yeying_api_common_model,
+    ],
+  );
 
 /**
  * create
  *
  * @generated from message yeying.api.service.CreateServiceRequest
  */
-export type CreateServiceRequest = Message<"yeying.api.service.CreateServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type CreateServiceRequest =
+  Message<"yeying.api.service.CreateServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.CreateServiceRequestBody body = 2;
-   */
-  body?: CreateServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.CreateServiceRequestBody body = 2;
+     */
+    body?: CreateServiceRequestBody;
+  };
 
 /**
  * create
@@ -56,21 +82,24 @@ export type CreateServiceRequestJson = {
  * Describes the message yeying.api.service.CreateServiceRequest.
  * Use `create(CreateServiceRequestSchema)` to create a new message.
  */
-export const CreateServiceRequestSchema: GenMessage<CreateServiceRequest, CreateServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 0);
+export const CreateServiceRequestSchema: GenMessage<
+  CreateServiceRequest,
+  CreateServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 0);
 
 /**
  * @generated from message yeying.api.service.CreateServiceRequestBody
  */
-export type CreateServiceRequestBody = Message<"yeying.api.service.CreateServiceRequestBody"> & {
-  /**
-   * *
-   * 创建服务元信息入参
-   *
-   * @generated from field: yeying.api.common.ServiceMetadata service = 1;
-   */
-  service?: ServiceMetadata;
-};
+export type CreateServiceRequestBody =
+  Message<"yeying.api.service.CreateServiceRequestBody"> & {
+    /**
+     * *
+     * 创建服务元信息入参
+     *
+     * @generated from field: yeying.api.common.ServiceMetadata service = 1;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.service.CreateServiceRequestBody
@@ -89,23 +118,26 @@ export type CreateServiceRequestBodyJson = {
  * Describes the message yeying.api.service.CreateServiceRequestBody.
  * Use `create(CreateServiceRequestBodySchema)` to create a new message.
  */
-export const CreateServiceRequestBodySchema: GenMessage<CreateServiceRequestBody, CreateServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 1);
+export const CreateServiceRequestBodySchema: GenMessage<
+  CreateServiceRequestBody,
+  CreateServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 1);
 
 /**
  * @generated from message yeying.api.service.CreateServiceResponse
  */
-export type CreateServiceResponse = Message<"yeying.api.service.CreateServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type CreateServiceResponse =
+  Message<"yeying.api.service.CreateServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.CreateServiceResponseBody body = 2;
-   */
-  body?: CreateServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.CreateServiceResponseBody body = 2;
+     */
+    body?: CreateServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.CreateServiceResponse
@@ -126,23 +158,26 @@ export type CreateServiceResponseJson = {
  * Describes the message yeying.api.service.CreateServiceResponse.
  * Use `create(CreateServiceResponseSchema)` to create a new message.
  */
-export const CreateServiceResponseSchema: GenMessage<CreateServiceResponse, CreateServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 2);
+export const CreateServiceResponseSchema: GenMessage<
+  CreateServiceResponse,
+  CreateServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 2);
 
 /**
  * @generated from message yeying.api.service.CreateServiceResponseBody
  */
-export type CreateServiceResponseBody = Message<"yeying.api.service.CreateServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type CreateServiceResponseBody =
+  Message<"yeying.api.service.CreateServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.common.ServiceMetadata service = 2;
-   */
-  service?: ServiceMetadata;
-};
+    /**
+     * @generated from field: yeying.api.common.ServiceMetadata service = 2;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.service.CreateServiceResponseBody
@@ -163,25 +198,28 @@ export type CreateServiceResponseBodyJson = {
  * Describes the message yeying.api.service.CreateServiceResponseBody.
  * Use `create(CreateServiceResponseBodySchema)` to create a new message.
  */
-export const CreateServiceResponseBodySchema: GenMessage<CreateServiceResponseBody, CreateServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 3);
+export const CreateServiceResponseBodySchema: GenMessage<
+  CreateServiceResponseBody,
+  CreateServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 3);
 
 /**
  * detail
  *
  * @generated from message yeying.api.service.DetailServiceRequest
  */
-export type DetailServiceRequest = Message<"yeying.api.service.DetailServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DetailServiceRequest =
+  Message<"yeying.api.service.DetailServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.DetailServiceRequestBody body = 2;
-   */
-  body?: DetailServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.DetailServiceRequestBody body = 2;
+     */
+    body?: DetailServiceRequestBody;
+  };
 
 /**
  * detail
@@ -204,29 +242,32 @@ export type DetailServiceRequestJson = {
  * Describes the message yeying.api.service.DetailServiceRequest.
  * Use `create(DetailServiceRequestSchema)` to create a new message.
  */
-export const DetailServiceRequestSchema: GenMessage<DetailServiceRequest, DetailServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 4);
+export const DetailServiceRequestSchema: GenMessage<
+  DetailServiceRequest,
+  DetailServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 4);
 
 /**
  * @generated from message yeying.api.service.DetailServiceRequestBody
  */
-export type DetailServiceRequestBody = Message<"yeying.api.service.DetailServiceRequestBody"> & {
-  /**
-   * *
-   * 服务身份 did
-   *
-   * @generated from field: string did = 1;
-   */
-  did: string;
+export type DetailServiceRequestBody =
+  Message<"yeying.api.service.DetailServiceRequestBody"> & {
+    /**
+     * *
+     * 服务身份 did
+     *
+     * @generated from field: string did = 1;
+     */
+    did: string;
 
-  /**
-   * *
-   * 服务版本
-   *
-   * @generated from field: uint32 version = 2;
-   */
-  version: number;
-};
+    /**
+     * *
+     * 服务版本
+     *
+     * @generated from field: uint32 version = 2;
+     */
+    version: number;
+  };
 
 /**
  * @generated from message yeying.api.service.DetailServiceRequestBody
@@ -253,23 +294,26 @@ export type DetailServiceRequestBodyJson = {
  * Describes the message yeying.api.service.DetailServiceRequestBody.
  * Use `create(DetailServiceRequestBodySchema)` to create a new message.
  */
-export const DetailServiceRequestBodySchema: GenMessage<DetailServiceRequestBody, DetailServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 5);
+export const DetailServiceRequestBodySchema: GenMessage<
+  DetailServiceRequestBody,
+  DetailServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 5);
 
 /**
  * @generated from message yeying.api.service.DetailServiceResponse
  */
-export type DetailServiceResponse = Message<"yeying.api.service.DetailServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DetailServiceResponse =
+  Message<"yeying.api.service.DetailServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.DetailServiceResponseBody body = 2;
-   */
-  body?: DetailServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.DetailServiceResponseBody body = 2;
+     */
+    body?: DetailServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.DetailServiceResponse
@@ -290,23 +334,26 @@ export type DetailServiceResponseJson = {
  * Describes the message yeying.api.service.DetailServiceResponse.
  * Use `create(DetailServiceResponseSchema)` to create a new message.
  */
-export const DetailServiceResponseSchema: GenMessage<DetailServiceResponse, DetailServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 6);
+export const DetailServiceResponseSchema: GenMessage<
+  DetailServiceResponse,
+  DetailServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 6);
 
 /**
  * @generated from message yeying.api.service.DetailServiceResponseBody
  */
-export type DetailServiceResponseBody = Message<"yeying.api.service.DetailServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type DetailServiceResponseBody =
+  Message<"yeying.api.service.DetailServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.common.ServiceMetadata service = 2;
-   */
-  service?: ServiceMetadata;
-};
+    /**
+     * @generated from field: yeying.api.common.ServiceMetadata service = 2;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.service.DetailServiceResponseBody
@@ -327,25 +374,28 @@ export type DetailServiceResponseBodyJson = {
  * Describes the message yeying.api.service.DetailServiceResponseBody.
  * Use `create(DetailServiceResponseBodySchema)` to create a new message.
  */
-export const DetailServiceResponseBodySchema: GenMessage<DetailServiceResponseBody, DetailServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 7);
+export const DetailServiceResponseBodySchema: GenMessage<
+  DetailServiceResponseBody,
+  DetailServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 7);
 
 /**
  * search
  *
  * @generated from message yeying.api.service.SearchServiceRequest
  */
-export type SearchServiceRequest = Message<"yeying.api.service.SearchServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchServiceRequest =
+  Message<"yeying.api.service.SearchServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.SearchServiceRequestBody body = 2;
-   */
-  body?: SearchServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.SearchServiceRequestBody body = 2;
+     */
+    body?: SearchServiceRequestBody;
+  };
 
 /**
  * search
@@ -368,23 +418,26 @@ export type SearchServiceRequestJson = {
  * Describes the message yeying.api.service.SearchServiceRequest.
  * Use `create(SearchServiceRequestSchema)` to create a new message.
  */
-export const SearchServiceRequestSchema: GenMessage<SearchServiceRequest, SearchServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 8);
+export const SearchServiceRequestSchema: GenMessage<
+  SearchServiceRequest,
+  SearchServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 8);
 
 /**
  * @generated from message yeying.api.service.SearchServiceRequestBody
  */
-export type SearchServiceRequestBody = Message<"yeying.api.service.SearchServiceRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.service.SearchServiceCondition condition = 1;
-   */
-  condition?: SearchServiceCondition;
+export type SearchServiceRequestBody =
+  Message<"yeying.api.service.SearchServiceRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.service.SearchServiceCondition condition = 1;
+     */
+    condition?: SearchServiceCondition;
 
-  /**
-   * @generated from field: yeying.api.common.RequestPage page = 2;
-   */
-  page?: RequestPage;
-};
+    /**
+     * @generated from field: yeying.api.common.RequestPage page = 2;
+     */
+    page?: RequestPage;
+  };
 
 /**
  * @generated from message yeying.api.service.SearchServiceRequestBody
@@ -405,45 +458,48 @@ export type SearchServiceRequestBodyJson = {
  * Describes the message yeying.api.service.SearchServiceRequestBody.
  * Use `create(SearchServiceRequestBodySchema)` to create a new message.
  */
-export const SearchServiceRequestBodySchema: GenMessage<SearchServiceRequestBody, SearchServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 9);
+export const SearchServiceRequestBodySchema: GenMessage<
+  SearchServiceRequestBody,
+  SearchServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 9);
 
 /**
  * @generated from message yeying.api.service.SearchServiceCondition
  */
-export type SearchServiceCondition = Message<"yeying.api.service.SearchServiceCondition"> & {
-  /**
-   * *
-   * 服务类型【参数可选】
-   *
-   * @generated from field: yeying.api.common.ServiceCodeEnum code = 1;
-   */
-  code: ServiceCodeEnum;
+export type SearchServiceCondition =
+  Message<"yeying.api.service.SearchServiceCondition"> & {
+    /**
+     * *
+     * 服务类型【参数可选】
+     *
+     * @generated from field: yeying.api.common.ServiceCodeEnum code = 1;
+     */
+    code: ServiceCodeEnum;
 
-  /**
-   * *
-   * 服务所有者【参数可选】
-   *
-   * @generated from field: string owner = 2;
-   */
-  owner: string;
+    /**
+     * *
+     * 服务所有者【参数可选】
+     *
+     * @generated from field: string owner = 2;
+     */
+    owner: string;
 
-  /**
-   * *
-   * 服务名称【参数可选】
-   *
-   * @generated from field: string name = 3;
-   */
-  name: string;
+    /**
+     * *
+     * 服务名称【参数可选】
+     *
+     * @generated from field: string name = 3;
+     */
+    name: string;
 
-  /**
-   * *
-   * 输入[服务所有者、服务名称]关键字搜索【参数可选】
-   *
-   * @generated from field: string keyword = 4;
-   */
-  keyword: string;
-};
+    /**
+     * *
+     * 输入[服务所有者、服务名称]关键字搜索【参数可选】
+     *
+     * @generated from field: string keyword = 4;
+     */
+    keyword: string;
+  };
 
 /**
  * @generated from message yeying.api.service.SearchServiceCondition
@@ -486,23 +542,26 @@ export type SearchServiceConditionJson = {
  * Describes the message yeying.api.service.SearchServiceCondition.
  * Use `create(SearchServiceConditionSchema)` to create a new message.
  */
-export const SearchServiceConditionSchema: GenMessage<SearchServiceCondition, SearchServiceConditionJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 10);
+export const SearchServiceConditionSchema: GenMessage<
+  SearchServiceCondition,
+  SearchServiceConditionJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 10);
 
 /**
  * @generated from message yeying.api.service.SearchServiceResponse
  */
-export type SearchServiceResponse = Message<"yeying.api.service.SearchServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchServiceResponse =
+  Message<"yeying.api.service.SearchServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.SearchServiceResponseBody body = 2;
-   */
-  body?: SearchServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.SearchServiceResponseBody body = 2;
+     */
+    body?: SearchServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.SearchServiceResponse
@@ -523,28 +582,31 @@ export type SearchServiceResponseJson = {
  * Describes the message yeying.api.service.SearchServiceResponse.
  * Use `create(SearchServiceResponseSchema)` to create a new message.
  */
-export const SearchServiceResponseSchema: GenMessage<SearchServiceResponse, SearchServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 11);
+export const SearchServiceResponseSchema: GenMessage<
+  SearchServiceResponse,
+  SearchServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 11);
 
 /**
  * @generated from message yeying.api.service.SearchServiceResponseBody
  */
-export type SearchServiceResponseBody = Message<"yeying.api.service.SearchServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type SearchServiceResponseBody =
+  Message<"yeying.api.service.SearchServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: repeated yeying.api.common.ServiceMetadata services = 2;
-   */
-  services: ServiceMetadata[];
+    /**
+     * @generated from field: repeated yeying.api.common.ServiceMetadata services = 2;
+     */
+    services: ServiceMetadata[];
 
-  /**
-   * @generated from field: yeying.api.common.ResponsePage page = 3;
-   */
-  page?: ResponsePage;
-};
+    /**
+     * @generated from field: yeying.api.common.ResponsePage page = 3;
+     */
+    page?: ResponsePage;
+  };
 
 /**
  * @generated from message yeying.api.service.SearchServiceResponseBody
@@ -570,25 +632,28 @@ export type SearchServiceResponseBodyJson = {
  * Describes the message yeying.api.service.SearchServiceResponseBody.
  * Use `create(SearchServiceResponseBodySchema)` to create a new message.
  */
-export const SearchServiceResponseBodySchema: GenMessage<SearchServiceResponseBody, SearchServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 12);
+export const SearchServiceResponseBodySchema: GenMessage<
+  SearchServiceResponseBody,
+  SearchServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 12);
 
 /**
  * online
  *
  * @generated from message yeying.api.service.OnlineServiceRequest
  */
-export type OnlineServiceRequest = Message<"yeying.api.service.OnlineServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type OnlineServiceRequest =
+  Message<"yeying.api.service.OnlineServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.OnlineServiceRequestBody body = 2;
-   */
-  body?: OnlineServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.OnlineServiceRequestBody body = 2;
+     */
+    body?: OnlineServiceRequestBody;
+  };
 
 /**
  * online
@@ -611,23 +676,26 @@ export type OnlineServiceRequestJson = {
  * Describes the message yeying.api.service.OnlineServiceRequest.
  * Use `create(OnlineServiceRequestSchema)` to create a new message.
  */
-export const OnlineServiceRequestSchema: GenMessage<OnlineServiceRequest, OnlineServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 13);
+export const OnlineServiceRequestSchema: GenMessage<
+  OnlineServiceRequest,
+  OnlineServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 13);
 
 /**
  * @generated from message yeying.api.service.OnlineServiceRequestBody
  */
-export type OnlineServiceRequestBody = Message<"yeying.api.service.OnlineServiceRequestBody"> & {
-  /**
-   * @generated from field: string did = 1;
-   */
-  did: string;
+export type OnlineServiceRequestBody =
+  Message<"yeying.api.service.OnlineServiceRequestBody"> & {
+    /**
+     * @generated from field: string did = 1;
+     */
+    did: string;
 
-  /**
-   * @generated from field: uint32 version = 2;
-   */
-  version: number;
-};
+    /**
+     * @generated from field: uint32 version = 2;
+     */
+    version: number;
+  };
 
 /**
  * @generated from message yeying.api.service.OnlineServiceRequestBody
@@ -648,23 +716,26 @@ export type OnlineServiceRequestBodyJson = {
  * Describes the message yeying.api.service.OnlineServiceRequestBody.
  * Use `create(OnlineServiceRequestBodySchema)` to create a new message.
  */
-export const OnlineServiceRequestBodySchema: GenMessage<OnlineServiceRequestBody, OnlineServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 14);
+export const OnlineServiceRequestBodySchema: GenMessage<
+  OnlineServiceRequestBody,
+  OnlineServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 14);
 
 /**
  * @generated from message yeying.api.service.OnlineServiceResponse
  */
-export type OnlineServiceResponse = Message<"yeying.api.service.OnlineServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type OnlineServiceResponse =
+  Message<"yeying.api.service.OnlineServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.OnlineServiceResponseBody body = 2;
-   */
-  body?: OnlineServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.OnlineServiceResponseBody body = 2;
+     */
+    body?: OnlineServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.OnlineServiceResponse
@@ -685,23 +756,26 @@ export type OnlineServiceResponseJson = {
  * Describes the message yeying.api.service.OnlineServiceResponse.
  * Use `create(OnlineServiceResponseSchema)` to create a new message.
  */
-export const OnlineServiceResponseSchema: GenMessage<OnlineServiceResponse, OnlineServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 15);
+export const OnlineServiceResponseSchema: GenMessage<
+  OnlineServiceResponse,
+  OnlineServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 15);
 
 /**
  * @generated from message yeying.api.service.OnlineServiceResponseBody
  */
-export type OnlineServiceResponseBody = Message<"yeying.api.service.OnlineServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type OnlineServiceResponseBody =
+  Message<"yeying.api.service.OnlineServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.common.ServiceMetadata service = 2;
-   */
-  service?: ServiceMetadata;
-};
+    /**
+     * @generated from field: yeying.api.common.ServiceMetadata service = 2;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.service.OnlineServiceResponseBody
@@ -722,25 +796,28 @@ export type OnlineServiceResponseBodyJson = {
  * Describes the message yeying.api.service.OnlineServiceResponseBody.
  * Use `create(OnlineServiceResponseBodySchema)` to create a new message.
  */
-export const OnlineServiceResponseBodySchema: GenMessage<OnlineServiceResponseBody, OnlineServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 16);
+export const OnlineServiceResponseBodySchema: GenMessage<
+  OnlineServiceResponseBody,
+  OnlineServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 16);
 
 /**
  * offline
  *
  * @generated from message yeying.api.service.OfflineServiceRequest
  */
-export type OfflineServiceRequest = Message<"yeying.api.service.OfflineServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type OfflineServiceRequest =
+  Message<"yeying.api.service.OfflineServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.OfflineServiceRequestBody body = 2;
-   */
-  body?: OfflineServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.OfflineServiceRequestBody body = 2;
+     */
+    body?: OfflineServiceRequestBody;
+  };
 
 /**
  * offline
@@ -763,23 +840,26 @@ export type OfflineServiceRequestJson = {
  * Describes the message yeying.api.service.OfflineServiceRequest.
  * Use `create(OfflineServiceRequestSchema)` to create a new message.
  */
-export const OfflineServiceRequestSchema: GenMessage<OfflineServiceRequest, OfflineServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 17);
+export const OfflineServiceRequestSchema: GenMessage<
+  OfflineServiceRequest,
+  OfflineServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 17);
 
 /**
  * @generated from message yeying.api.service.OfflineServiceRequestBody
  */
-export type OfflineServiceRequestBody = Message<"yeying.api.service.OfflineServiceRequestBody"> & {
-  /**
-   * @generated from field: string did = 1;
-   */
-  did: string;
+export type OfflineServiceRequestBody =
+  Message<"yeying.api.service.OfflineServiceRequestBody"> & {
+    /**
+     * @generated from field: string did = 1;
+     */
+    did: string;
 
-  /**
-   * @generated from field: uint32 version = 2;
-   */
-  version: number;
-};
+    /**
+     * @generated from field: uint32 version = 2;
+     */
+    version: number;
+  };
 
 /**
  * @generated from message yeying.api.service.OfflineServiceRequestBody
@@ -800,23 +880,26 @@ export type OfflineServiceRequestBodyJson = {
  * Describes the message yeying.api.service.OfflineServiceRequestBody.
  * Use `create(OfflineServiceRequestBodySchema)` to create a new message.
  */
-export const OfflineServiceRequestBodySchema: GenMessage<OfflineServiceRequestBody, OfflineServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 18);
+export const OfflineServiceRequestBodySchema: GenMessage<
+  OfflineServiceRequestBody,
+  OfflineServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 18);
 
 /**
  * @generated from message yeying.api.service.OfflineServiceResponse
  */
-export type OfflineServiceResponse = Message<"yeying.api.service.OfflineServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type OfflineServiceResponse =
+  Message<"yeying.api.service.OfflineServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.OfflineServiceResponseBody body = 2;
-   */
-  body?: OfflineServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.OfflineServiceResponseBody body = 2;
+     */
+    body?: OfflineServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.OfflineServiceResponse
@@ -837,23 +920,26 @@ export type OfflineServiceResponseJson = {
  * Describes the message yeying.api.service.OfflineServiceResponse.
  * Use `create(OfflineServiceResponseSchema)` to create a new message.
  */
-export const OfflineServiceResponseSchema: GenMessage<OfflineServiceResponse, OfflineServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 19);
+export const OfflineServiceResponseSchema: GenMessage<
+  OfflineServiceResponse,
+  OfflineServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 19);
 
 /**
  * @generated from message yeying.api.service.OfflineServiceResponseBody
  */
-export type OfflineServiceResponseBody = Message<"yeying.api.service.OfflineServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type OfflineServiceResponseBody =
+  Message<"yeying.api.service.OfflineServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.common.ServiceMetadata service = 2;
-   */
-  service?: ServiceMetadata;
-};
+    /**
+     * @generated from field: yeying.api.common.ServiceMetadata service = 2;
+     */
+    service?: ServiceMetadata;
+  };
 
 /**
  * @generated from message yeying.api.service.OfflineServiceResponseBody
@@ -874,25 +960,28 @@ export type OfflineServiceResponseBodyJson = {
  * Describes the message yeying.api.service.OfflineServiceResponseBody.
  * Use `create(OfflineServiceResponseBodySchema)` to create a new message.
  */
-export const OfflineServiceResponseBodySchema: GenMessage<OfflineServiceResponseBody, OfflineServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 20);
+export const OfflineServiceResponseBodySchema: GenMessage<
+  OfflineServiceResponseBody,
+  OfflineServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 20);
 
 /**
  * delete
  *
  * @generated from message yeying.api.service.DeleteServiceRequest
  */
-export type DeleteServiceRequest = Message<"yeying.api.service.DeleteServiceRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteServiceRequest =
+  Message<"yeying.api.service.DeleteServiceRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.DeleteServiceRequestBody body = 2;
-   */
-  body?: DeleteServiceRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.service.DeleteServiceRequestBody body = 2;
+     */
+    body?: DeleteServiceRequestBody;
+  };
 
 /**
  * delete
@@ -915,23 +1004,26 @@ export type DeleteServiceRequestJson = {
  * Describes the message yeying.api.service.DeleteServiceRequest.
  * Use `create(DeleteServiceRequestSchema)` to create a new message.
  */
-export const DeleteServiceRequestSchema: GenMessage<DeleteServiceRequest, DeleteServiceRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 21);
+export const DeleteServiceRequestSchema: GenMessage<
+  DeleteServiceRequest,
+  DeleteServiceRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 21);
 
 /**
  * @generated from message yeying.api.service.DeleteServiceRequestBody
  */
-export type DeleteServiceRequestBody = Message<"yeying.api.service.DeleteServiceRequestBody"> & {
-  /**
-   * @generated from field: string did = 1;
-   */
-  did: string;
+export type DeleteServiceRequestBody =
+  Message<"yeying.api.service.DeleteServiceRequestBody"> & {
+    /**
+     * @generated from field: string did = 1;
+     */
+    did: string;
 
-  /**
-   * @generated from field: uint32 version = 2;
-   */
-  version: number;
-};
+    /**
+     * @generated from field: uint32 version = 2;
+     */
+    version: number;
+  };
 
 /**
  * @generated from message yeying.api.service.DeleteServiceRequestBody
@@ -952,23 +1044,26 @@ export type DeleteServiceRequestBodyJson = {
  * Describes the message yeying.api.service.DeleteServiceRequestBody.
  * Use `create(DeleteServiceRequestBodySchema)` to create a new message.
  */
-export const DeleteServiceRequestBodySchema: GenMessage<DeleteServiceRequestBody, DeleteServiceRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 22);
+export const DeleteServiceRequestBodySchema: GenMessage<
+  DeleteServiceRequestBody,
+  DeleteServiceRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 22);
 
 /**
  * @generated from message yeying.api.service.DeleteServiceResponse
  */
-export type DeleteServiceResponse = Message<"yeying.api.service.DeleteServiceResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteServiceResponse =
+  Message<"yeying.api.service.DeleteServiceResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.service.DeleteServiceResponseBody body = 2;
-   */
-  body?: DeleteServiceResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.service.DeleteServiceResponseBody body = 2;
+     */
+    body?: DeleteServiceResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.service.DeleteServiceResponse
@@ -989,18 +1084,21 @@ export type DeleteServiceResponseJson = {
  * Describes the message yeying.api.service.DeleteServiceResponse.
  * Use `create(DeleteServiceResponseSchema)` to create a new message.
  */
-export const DeleteServiceResponseSchema: GenMessage<DeleteServiceResponse, DeleteServiceResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 23);
+export const DeleteServiceResponseSchema: GenMessage<
+  DeleteServiceResponse,
+  DeleteServiceResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 23);
 
 /**
  * @generated from message yeying.api.service.DeleteServiceResponseBody
  */
-export type DeleteServiceResponseBody = Message<"yeying.api.service.DeleteServiceResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type DeleteServiceResponseBody =
+  Message<"yeying.api.service.DeleteServiceResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.service.DeleteServiceResponseBody
@@ -1016,8 +1114,10 @@ export type DeleteServiceResponseBodyJson = {
  * Describes the message yeying.api.service.DeleteServiceResponseBody.
  * Use `create(DeleteServiceResponseBodySchema)` to create a new message.
  */
-export const DeleteServiceResponseBodySchema: GenMessage<DeleteServiceResponseBody, DeleteServiceResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_service_service, 24);
+export const DeleteServiceResponseBodySchema: GenMessage<
+  DeleteServiceResponseBody,
+  DeleteServiceResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_service_service, 24);
 
 /**
  * *
@@ -1035,7 +1135,7 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof CreateServiceRequestSchema;
     output: typeof CreateServiceResponseSchema;
-  },
+  };
   /**
    * 服务详情
    *
@@ -1045,7 +1145,7 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof DetailServiceRequestSchema;
     output: typeof DetailServiceResponseSchema;
-  },
+  };
   /**
    * 搜索服务
    *
@@ -1055,7 +1155,7 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof SearchServiceRequestSchema;
     output: typeof SearchServiceResponseSchema;
-  },
+  };
   /**
    * 上线服务
    *
@@ -1065,7 +1165,7 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof OnlineServiceRequestSchema;
     output: typeof OnlineServiceResponseSchema;
-  },
+  };
   /**
    * 下线服务
    *
@@ -1075,7 +1175,7 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof OfflineServiceRequestSchema;
     output: typeof OfflineServiceResponseSchema;
-  },
+  };
   /**
    * 删除服务
    *
@@ -1085,7 +1185,5 @@ export const Service: GenService<{
     methodKind: "unary";
     input: typeof DeleteServiceRequestSchema;
     output: typeof DeleteServiceResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_yeying_api_service_service, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_yeying_api_service_service, 0);
