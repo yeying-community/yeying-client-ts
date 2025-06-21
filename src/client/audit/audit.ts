@@ -2,14 +2,56 @@ import { Authenticate } from "../common/authenticate";
 import { ProviderOption } from "../common/model";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary, toJson } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary, toJson } from "@bufbuild/protobuf";
 import { NetworkUnavailable } from "../../common/error";
 import {
   MessageHeader,
   RequestPageSchema,
 } from "../../yeying/api/common/message_pb";
-import { Audit, AuditListRequestBodySchema, AuditListRequestSchema, AuditListResponse, AuditListResponseBody, AuditListResponseBodySchema, AuditMetadata, AuditRequestBodySchema, AuditRequestSchema, AuditResponse, AuditResponseBody, AuditResponseBodySchema, AuditSearchCondition, CancelRequestBodySchema, CancelRequestSchema, CancelResponse, CancelResponseBody, CancelResponseBodySchema, CreateAuditListRequestBody, CreateAuditListRequestBodySchema, CreateAuditListRequestSchema, CreateAuditListResponse, CreateAuditListResponseBody, CreateAuditListResponseBodySchema, CreateRequestBodySchema, CreateRequestSchema, CreateResponse, CreateResponseBody, CreateResponseBodySchema, DetailRequestBodySchema, DetailRequestSchema, DetailResponse, DetailResponseBody, DetailResponseBodySchema, UnbindRequestBodySchema, UnbindRequestSchema, UnbindResponse, UnbindResponseBody, UnbindResponseBodySchema } from "../../yeying/api/audit/audit_pb";
-import {ofAuditStatus} from "../../model/audit"
+import {
+  Audit,
+  AuditListRequestBodySchema,
+  AuditListRequestSchema,
+  AuditListResponse,
+  AuditListResponseBody,
+  AuditListResponseBodySchema,
+  AuditMetadata,
+  AuditRequestBodySchema,
+  AuditRequestSchema,
+  AuditResponse,
+  AuditResponseBody,
+  AuditResponseBodySchema,
+  AuditSearchCondition,
+  AuditSearchConditionJson,
+  AuditSearchConditionSchema,
+  CancelRequestBodySchema,
+  CancelRequestSchema,
+  CancelResponse,
+  CancelResponseBody,
+  CancelResponseBodySchema,
+  CreateAuditListRequestBody,
+  CreateAuditListRequestBodySchema,
+  CreateAuditListRequestSchema,
+  CreateAuditListResponse,
+  CreateAuditListResponseBody,
+  CreateAuditListResponseBodySchema,
+  CreateRequestBodySchema,
+  CreateRequestSchema,
+  CreateResponse,
+  CreateResponseBody,
+  CreateResponseBodySchema,
+  DetailRequestBodySchema,
+  DetailRequestSchema,
+  DetailResponse,
+  DetailResponseBody,
+  DetailResponseBodySchema,
+  UnbindRequestBodySchema,
+  UnbindRequestSchema,
+  UnbindResponse,
+  UnbindResponseBody,
+  UnbindResponseBodySchema,
+} from "../../yeying/api/audit/audit_pb";
+import { ofAuditStatus } from "../../model/audit";
 
 /**
  * AuditProvider 应用审批
@@ -73,10 +115,7 @@ export class AuditProvider {
       });
       try {
         const res = await this.client.create(request);
-        await this.authenticate.doResponse(
-          res,
-          CreateResponseBodySchema
-        );
+        await this.authenticate.doResponse(res, CreateResponseBodySchema);
         resolve(res as CreateResponse);
       } catch (err) {
         console.error("Fail to create audit", err);
@@ -117,10 +156,7 @@ export class AuditProvider {
       });
       try {
         const res = await this.client.detail(request);
-        await this.authenticate.doResponse(
-          res,
-          DetailResponseBodySchema
-        );
+        await this.authenticate.doResponse(res, DetailResponseBodySchema);
         resolve(res as DetailResponse);
       } catch (err) {
         console.error("Fail to detail audit", err);
@@ -143,7 +179,7 @@ export class AuditProvider {
     return new Promise<AuditResponse>(async (resolve, reject) => {
       const body = create(AuditRequestBodySchema, {
         uid: uid,
-        status: ofAuditStatus(status)
+        status: ofAuditStatus(status),
       });
 
       let header: MessageHeader;
@@ -162,10 +198,7 @@ export class AuditProvider {
       });
       try {
         const res = await this.client.audit(request);
-        await this.authenticate.doResponse(
-          res,
-          AuditResponseBodySchema
-        );
+        await this.authenticate.doResponse(res, AuditResponseBodySchema);
         resolve(res as AuditResponse);
       } catch (err) {
         console.error("Fail to audit", err);
@@ -174,7 +207,7 @@ export class AuditProvider {
     });
   }
 
-   /**
+  /**
    * 查看我申请的列表
    *
    * @param sourceDid 申请者的身份 did
@@ -184,39 +217,43 @@ export class AuditProvider {
    * @throws  NetworkUnavailable
    *
    */
-  createAuditList(page: number, pageSize: number, condition?: AuditSearchCondition) {
+  createAuditList(
+    page: number,
+    pageSize: number,
+    condition?: AuditSearchConditionJson,
+  ) {
     return new Promise<CreateAuditListResponse>(async (resolve, reject) => {
-        const body = create(CreateAuditListRequestBodySchema, {
-          page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-          condition: condition,
-        });
-  
-        let header: MessageHeader;
-        try {
-          header = await this.authenticate.createHeader(
-            toBinary(CreateAuditListRequestBodySchema, body),
-          );
-        } catch (err) {
-          console.error("Fail to createAuditList header for audit.", err);
-          return reject(err);
-        }
-  
-        const request = create(CreateAuditListRequestSchema, {
-          header: header,
-          body: body,
-        });
-        try {
-          const res = await this.client.createList(request);
-          await this.authenticate.doResponse(
-            res,
-            CreateAuditListResponseBodySchema
-          );
-          resolve(res as CreateAuditListResponse);
-        } catch (err) {
-          console.error("Fail to createAuditList", err);
-          return reject(new NetworkUnavailable());
-        }
+      const body = create(CreateAuditListRequestBodySchema, {
+        page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
+        condition: fromJson(AuditSearchConditionSchema, condition ?? {}),
       });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(CreateAuditListRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to createAuditList header for audit.", err);
+        return reject(err);
+      }
+
+      const request = create(CreateAuditListRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.createList(request);
+        await this.authenticate.doResponse(
+          res,
+          CreateAuditListResponseBodySchema,
+        );
+        resolve(res as CreateAuditListResponse);
+      } catch (err) {
+        console.error("Fail to createAuditList", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
   }
 
   /**
@@ -229,39 +266,40 @@ export class AuditProvider {
    * @throws  NetworkUnavailable
    *
    */
-  auditList(page: number, pageSize: number, condition?: AuditSearchCondition) {
+  auditList(
+    page: number,
+    pageSize: number,
+    condition?: AuditSearchConditionJson,
+  ) {
     return new Promise<AuditListResponse>(async (resolve, reject) => {
-        const body = create(AuditListRequestBodySchema, {
-          page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-          condition: condition,
-        });
-  
-        let header: MessageHeader;
-        try {
-          header = await this.authenticate.createHeader(
-            toBinary(AuditListRequestBodySchema, body),
-          );
-        } catch (err) {
-          console.error("Fail to auditList header for audit.", err);
-          return reject(err);
-        }
-  
-        const request = create(AuditListRequestSchema, {
-          header: header,
-          body: body,
-        });
-        try {
-          const res = await this.client.auditList(request);
-          await this.authenticate.doResponse(
-            res,
-            AuditListResponseBodySchema
-          );
-          resolve(res as AuditListResponse);
-        } catch (err) {
-          console.error("Fail to auditList", err);
-          return reject(new NetworkUnavailable());
-        }
+      const body = create(AuditListRequestBodySchema, {
+        page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
+        condition: fromJson(AuditSearchConditionSchema, condition ?? {}),
       });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(AuditListRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to auditList header for audit.", err);
+        return reject(err);
+      }
+
+      const request = create(AuditListRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.auditList(request);
+        await this.authenticate.doResponse(res, AuditListResponseBodySchema);
+        resolve(res as AuditListResponse);
+      } catch (err) {
+        console.error("Fail to auditList", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
   }
 
   /**
@@ -276,36 +314,33 @@ export class AuditProvider {
    */
   cancel(uid: string) {
     return new Promise<CancelResponse>(async (resolve, reject) => {
-        const body = create(CancelRequestBodySchema, {
-            uid: uid,
-        });
-  
-        let header: MessageHeader;
-        try {
-          header = await this.authenticate.createHeader(
-            toBinary(CancelRequestBodySchema, body),
-          );
-        } catch (err) {
-          console.error("Fail to cancel header for cancel audit.", err);
-          return reject(err);
-        }
-  
-        const request = create(CancelRequestSchema, {
-          header: header,
-          body: body,
-        });
-        try {
-          const res = await this.client.cancel(request);
-          await this.authenticate.doResponse(
-            res,
-            CancelResponseBodySchema
-          );
-          resolve(res as CancelResponse);
-        } catch (err) {
-          console.error("Fail to cancel", err);
-          return reject(new NetworkUnavailable());
-        }
+      const body = create(CancelRequestBodySchema, {
+        uid: uid,
       });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(CancelRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to cancel header for cancel audit.", err);
+        return reject(err);
+      }
+
+      const request = create(CancelRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.cancel(request);
+        await this.authenticate.doResponse(res, CancelResponseBodySchema);
+        resolve(res as CancelResponse);
+      } catch (err) {
+        console.error("Fail to cancel", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
   }
 
   /**
@@ -320,35 +355,32 @@ export class AuditProvider {
    */
   unbind(uid: string) {
     return new Promise<UnbindResponse>(async (resolve, reject) => {
-        const body = create(UnbindRequestBodySchema, {
-            uid: uid,
-        });
-  
-        let header: MessageHeader;
-        try {
-          header = await this.authenticate.createHeader(
-            toBinary(UnbindRequestBodySchema, body),
-          );
-        } catch (err) {
-          console.error("Fail to unbind header for unbind audit.", err);
-          return reject(err);
-        }
-  
-        const request = create(UnbindRequestSchema, {
-          header: header,
-          body: body,
-        });
-        try {
-          const res = await this.client.unbind(request);
-          await this.authenticate.doResponse(
-            res,
-            UnbindResponseBodySchema
-          );
-          resolve(res as UnbindResponse);
-        } catch (err) {
-          console.error("Fail to unbind", err);
-          return reject(new NetworkUnavailable());
-        }
+      const body = create(UnbindRequestBodySchema, {
+        uid: uid,
       });
+
+      let header: MessageHeader;
+      try {
+        header = await this.authenticate.createHeader(
+          toBinary(UnbindRequestBodySchema, body),
+        );
+      } catch (err) {
+        console.error("Fail to unbind header for unbind audit.", err);
+        return reject(err);
+      }
+
+      const request = create(UnbindRequestSchema, {
+        header: header,
+        body: body,
+      });
+      try {
+        const res = await this.client.unbind(request);
+        await this.authenticate.doResponse(res, UnbindResponseBodySchema);
+        resolve(res as UnbindResponse);
+      } catch (err) {
+        console.error("Fail to unbind", err);
+        return reject(new NetworkUnavailable());
+      }
+    });
   }
 }

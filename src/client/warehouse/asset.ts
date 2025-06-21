@@ -11,6 +11,7 @@ import {
   DeleteAssetRequestSchema,
   DeleteAssetResponseBodySchema,
   SearchAssetCondition,
+  SearchAssetConditionJson,
   SearchAssetConditionSchema,
   SearchAssetRequestBodySchema,
   SearchAssetRequestSchema,
@@ -26,7 +27,7 @@ import {
 } from "../../yeying/api/asset/asset_pb";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary } from "@bufbuild/protobuf";
 import { signAssetMetadata, verifyAssetMetadata } from "../model/model";
 import { isDeleted, isExisted } from "../../common/status";
 import { isBlank } from "../../common/string";
@@ -73,28 +74,18 @@ export class AssetProvider {
    * @example
    * ```ts
    * const condition = { namespaceId: 'example-namespace', format: 'example-format' }
-   * assetProvider.search(condition, 1, 10)
+   * assetProvider.search(1, 10, condition as SearchAssetConditionJson)
    *   .then(assets => console.log(assets))
    *   .catch(err => console.error(err))
    * ```
    */
-  search(
-    condition: Partial<SearchAssetCondition>,
-    page: number,
-    pageSize: number,
-  ) {
+  search(page: number, pageSize: number, condition: SearchAssetConditionJson) {
     return new Promise<AssetMetadata[]>(async (resolve, reject) => {
       const requestPage = create(RequestPageSchema, {
         page: page,
         pageSize: pageSize,
       });
-      const c = create(SearchAssetConditionSchema, {
-        namespaceId: condition.namespaceId,
-        name: condition.name,
-        format: condition.format,
-        hash: condition.hash,
-      });
-
+      const c = fromJson(SearchAssetConditionSchema, condition ?? {});
       const body = create(SearchAssetRequestBodySchema, {
         condition: c,
         page: requestPage,

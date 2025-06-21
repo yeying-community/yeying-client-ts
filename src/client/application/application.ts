@@ -2,7 +2,7 @@ import { Authenticate } from "../common/authenticate";
 import { ProviderOption } from "../common/model";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
-import { create, toBinary, toJson } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary, toJson } from "@bufbuild/protobuf";
 import {
   Application,
   CreateApplicationRequestBodySchema,
@@ -21,15 +21,13 @@ import {
   OfflineApplicationRequestSchema,
   OfflineApplicationRequestBodySchema,
   OfflineApplicationResponseBodySchema,
-
   OnlineApplicationRequestSchema,
   OnlineApplicationRequestBodySchema,
   OnlineApplicationResponseBodySchema,
-
   AuditApplicationRequestSchema,
   AuditApplicationRequestBodySchema,
   AuditApplicationResponseBodySchema,
-  SearchCondition,
+  SearchApplicationCondition,
   ApplicationCommentSchema,
   ApplicationDetailResponseBody,
   CreateApplicationResponseBody,
@@ -44,6 +42,8 @@ import {
   OfflineApplicationResponse,
   OnlineApplicationResponse,
   AuditApplicationResponse,
+  SearchApplicationConditionJson,
+  SearchApplicationConditionSchema,
 } from "../../yeying/api/application/application_pb";
 import { NetworkUnavailable } from "../../common/error";
 import {
@@ -148,11 +148,15 @@ export class ApplicationProvider {
    * @throws  NetworkUnavailable
    *
    */
-  search(page: number, pageSize: number, condition?: SearchCondition) {
+  search(
+    page: number,
+    pageSize: number,
+    condition?: SearchApplicationConditionJson,
+  ) {
     return new Promise<SearchApplicationResponse>(async (resolve, reject) => {
       const body = create(SearchApplicationRequestBodySchema, {
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-        condition: condition,
+        condition: fromJson(SearchApplicationConditionSchema, condition ?? {}),
       });
 
       let header: MessageHeader;
@@ -200,7 +204,7 @@ export class ApplicationProvider {
    * 删除应用
    * @param did 唯一身份
    * @param version 应用版本
-   * @returns 
+   * @returns
    * @throws  NetworkUnavailable
    */
   delete(did: string, version: number) {
@@ -231,7 +235,7 @@ export class ApplicationProvider {
           DeleteApplicationResponseBodySchema,
           isDeleted,
         );
-        
+
         return resolve(res as DeleteApplicationResponse);
       } catch (err) {
         console.error("Fail to delete application", err);
@@ -377,18 +381,25 @@ export class ApplicationProvider {
    * @returns 审核之后的应用状态元信息
    * @throws  NetworkUnavailable
    */
-  audit(did: string, version: number, passed: boolean, signature?: string, auditor?: string, comment?: string) {
+  audit(
+    did: string,
+    version: number,
+    passed: boolean,
+    signature?: string,
+    auditor?: string,
+    comment?: string,
+  ) {
     return new Promise<AuditApplicationResponse>(async (resolve, reject) => {
       const commentMeta = create(ApplicationCommentSchema, {
         auditor: auditor,
         comment: comment,
         passed: passed,
-        signature: signature
-      })
+        signature: signature,
+      });
       const body = create(AuditApplicationRequestBodySchema, {
         did: did,
         version: version,
-        comment: commentMeta
+        comment: commentMeta,
       });
 
       let header: MessageHeader;

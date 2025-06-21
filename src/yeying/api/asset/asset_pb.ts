@@ -2,34 +2,57 @@
 // @generated from file yeying/api/asset/asset.proto (package yeying.api.asset, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, RequestPage, RequestPageJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type {
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
+import type {
+  MessageHeader,
+  MessageHeaderJson,
+  RequestPage,
+  RequestPageJson,
+  ResponseStatus,
+  ResponseStatusJson,
+} from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
-import type { DigitalFormatEnum, DigitalFormatEnumJson } from "../common/code_pb";
+import type {
+  DigitalFormatEnum,
+  DigitalFormatEnumJson,
+} from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/asset/asset.proto.
  */
-export const file_yeying_api_asset_asset: GenFile = /*@__PURE__*/
-  fileDesc("Chx5ZXlpbmcvYXBpL2Fzc2V0L2Fzc2V0LnByb3RvEhB5ZXlpbmcuYXBpLmFzc2V0In4KElNlYXJjaEFzc2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaEFzc2V0UmVxdWVzdEJvZHkigQEKFlNlYXJjaEFzc2V0UmVxdWVzdEJvZHkSOQoJY29uZGl0aW9uGAEgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldENvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UifQoUU2VhcmNoQXNzZXRDb25kaXRpb24SNAoGZm9ybWF0GAEgASgOMiQueWV5aW5nLmFwaS5jb21tb24uRGlnaXRhbEZvcm1hdEVudW0SDAoEaGFzaBgCIAEoCRITCgtuYW1lc3BhY2VJZBgDIAEoCRIMCgRuYW1lGAQgASgJIoABChNTZWFyY2hBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoQXNzZXRSZXNwb25zZUJvZHkifQoXU2VhcmNoQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLwoGYXNzZXRzGAIgAygLMh8ueWV5aW5nLmFwaS5hc3NldC5Bc3NldE1ldGFkYXRhInoKEFNpZ25Bc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TaWduQXNzZXRSZXF1ZXN0Qm9keSJGChRTaWduQXNzZXRSZXF1ZXN0Qm9keRIuCgVhc3NldBgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YSJ8ChFTaWduQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmFzc2V0LlNpZ25Bc3NldFJlc3BvbnNlQm9keSJ6ChVTaWduQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYXNzZXQYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkFzc2V0TWV0YWRhdGEifgoSVXBkYXRlQXNzZXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXF1ZXN0Qm9keSJIChZVcGRhdGVBc3NldFJlcXVlc3RCb2R5Ei4KBWFzc2V0GAEgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5Bc3NldE1ldGFkYXRhIoABChNVcGRhdGVBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXNwb25zZUJvZHkifAoXVXBkYXRlQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYXNzZXQYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkFzc2V0TWV0YWRhdGEifgoSQXNzZXREZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuYXNzZXQuQXNzZXREZXRhaWxSZXF1ZXN0Qm9keSI7ChZBc3NldERldGFpbFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkigAEKE0Fzc2V0RGV0YWlsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI3CgRib2R5GAIgASgLMikueWV5aW5nLmFwaS5hc3NldC5Bc3NldERldGFpbFJlc3BvbnNlQm9keSJ8ChdBc3NldERldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVhc3NldBgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YSJ+ChJEZWxldGVBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5hc3NldC5EZWxldGVBc3NldFJlcXVlc3RCb2R5IjsKFkRlbGV0ZUFzc2V0UmVxdWVzdEJvZHkSDAoEaGFzaBgBIAEoCRITCgtuYW1lc3BhY2VJZBgCIAEoCSKAAQoTRGVsZXRlQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjcKBGJvZHkYAiABKAsyKS55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZUFzc2V0UmVzcG9uc2VCb2R5IkwKF0RlbGV0ZUFzc2V0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzItICCg1Bc3NldE1ldGFkYXRhEhMKC25hbWVzcGFjZUlkGAEgASgJEg0KBW93bmVyGAIgASgJEhIKCnBhcmVudEhhc2gYAyABKAkSDAoEaGFzaBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBG5hbWUYBiABKAkSDgoGY2h1bmtzGAcgAygJEhMKC2Rlc2NyaXB0aW9uGAggASgJEjQKBmZvcm1hdBgJIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkRpZ2l0YWxGb3JtYXRFbnVtEgwKBHNpemUYCiABKAQSEQoJY3JlYXRlZEF0GAsgASgJEhEKCXVwZGF0ZWRBdBgMIAEoCRISCgpjaHVua0NvdW50GA0gASgNEhEKCWNodW5rU2l6ZRgOIAEoDRITCgtpc0VuY3J5cHRlZBgPIAEoCBIRCglzaWduYXR1cmUYECABKAkyvgMKBUFzc2V0ElcKBlNlYXJjaBIkLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoQXNzZXRSZXF1ZXN0GiUueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldFJlc3BvbnNlIgASUQoEU2lnbhIiLnlleWluZy5hcGkuYXNzZXQuU2lnbkFzc2V0UmVxdWVzdBojLnlleWluZy5hcGkuYXNzZXQuU2lnbkFzc2V0UmVzcG9uc2UiABJXCgZVcGRhdGUSJC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZUFzc2V0UmVxdWVzdBolLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXNwb25zZSIAElcKBkRldGFpbBIkLnlleWluZy5hcGkuYXNzZXQuQXNzZXREZXRhaWxSZXF1ZXN0GiUueWV5aW5nLmFwaS5hc3NldC5Bc3NldERldGFpbFJlc3BvbnNlIgASVwoGRGVsZXRlEiQueWV5aW5nLmFwaS5hc3NldC5EZWxldGVBc3NldFJlcXVlc3QaJS55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZUFzc2V0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2Fzc2V0YgZwcm90bzM", [file_yeying_api_common_message, file_yeying_api_common_code]);
+export const file_yeying_api_asset_asset: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "Chx5ZXlpbmcvYXBpL2Fzc2V0L2Fzc2V0LnByb3RvEhB5ZXlpbmcuYXBpLmFzc2V0In4KElNlYXJjaEFzc2V0UmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmFzc2V0LlNlYXJjaEFzc2V0UmVxdWVzdEJvZHkigQEKFlNlYXJjaEFzc2V0UmVxdWVzdEJvZHkSOQoJY29uZGl0aW9uGAEgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldENvbmRpdGlvbhIsCgRwYWdlGAIgASgLMh4ueWV5aW5nLmFwaS5jb21tb24uUmVxdWVzdFBhZ2UifQoUU2VhcmNoQXNzZXRDb25kaXRpb24SNAoGZm9ybWF0GAEgASgOMiQueWV5aW5nLmFwaS5jb21tb24uRGlnaXRhbEZvcm1hdEVudW0SDAoEaGFzaBgCIAEoCRITCgtuYW1lc3BhY2VJZBgDIAEoCRIMCgRuYW1lGAQgASgJIoABChNTZWFyY2hBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoQXNzZXRSZXNwb25zZUJvZHkifQoXU2VhcmNoQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLwoGYXNzZXRzGAIgAygLMh8ueWV5aW5nLmFwaS5hc3NldC5Bc3NldE1ldGFkYXRhInoKEFNpZ25Bc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI0CgRib2R5GAIgASgLMiYueWV5aW5nLmFwaS5hc3NldC5TaWduQXNzZXRSZXF1ZXN0Qm9keSJGChRTaWduQXNzZXRSZXF1ZXN0Qm9keRIuCgVhc3NldBgBIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YSJ8ChFTaWduQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjUKBGJvZHkYAiABKAsyJy55ZXlpbmcuYXBpLmFzc2V0LlNpZ25Bc3NldFJlc3BvbnNlQm9keSJ6ChVTaWduQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYXNzZXQYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkFzc2V0TWV0YWRhdGEifgoSVXBkYXRlQXNzZXRSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXF1ZXN0Qm9keSJIChZVcGRhdGVBc3NldFJlcXVlc3RCb2R5Ei4KBWFzc2V0GAEgASgLMh8ueWV5aW5nLmFwaS5hc3NldC5Bc3NldE1ldGFkYXRhIoABChNVcGRhdGVBc3NldFJlc3BvbnNlEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNwoEYm9keRgCIAEoCzIpLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXNwb25zZUJvZHkifAoXVXBkYXRlQXNzZXRSZXNwb25zZUJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSLgoFYXNzZXQYAiABKAsyHy55ZXlpbmcuYXBpLmFzc2V0LkFzc2V0TWV0YWRhdGEifgoSQXNzZXREZXRhaWxSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkuYXNzZXQuQXNzZXREZXRhaWxSZXF1ZXN0Qm9keSI7ChZBc3NldERldGFpbFJlcXVlc3RCb2R5EgwKBGhhc2gYASABKAkSEwoLbmFtZXNwYWNlSWQYAiABKAkigAEKE0Fzc2V0RGV0YWlsUmVzcG9uc2USMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI3CgRib2R5GAIgASgLMikueWV5aW5nLmFwaS5hc3NldC5Bc3NldERldGFpbFJlc3BvbnNlQm9keSJ8ChdBc3NldERldGFpbFJlc3BvbnNlQm9keRIxCgZzdGF0dXMYASABKAsyIS55ZXlpbmcuYXBpLmNvbW1vbi5SZXNwb25zZVN0YXR1cxIuCgVhc3NldBgCIAEoCzIfLnlleWluZy5hcGkuYXNzZXQuQXNzZXRNZXRhZGF0YSJ+ChJEZWxldGVBc3NldFJlcXVlc3QSMAoGaGVhZGVyGAEgASgLMiAueWV5aW5nLmFwaS5jb21tb24uTWVzc2FnZUhlYWRlchI2CgRib2R5GAIgASgLMigueWV5aW5nLmFwaS5hc3NldC5EZWxldGVBc3NldFJlcXVlc3RCb2R5IjsKFkRlbGV0ZUFzc2V0UmVxdWVzdEJvZHkSDAoEaGFzaBgBIAEoCRITCgtuYW1lc3BhY2VJZBgCIAEoCSKAAQoTRGVsZXRlQXNzZXRSZXNwb25zZRIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjcKBGJvZHkYAiABKAsyKS55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZUFzc2V0UmVzcG9uc2VCb2R5IkwKF0RlbGV0ZUFzc2V0UmVzcG9uc2VCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzItICCg1Bc3NldE1ldGFkYXRhEhMKC25hbWVzcGFjZUlkGAEgASgJEg0KBW93bmVyGAIgASgJEhIKCnBhcmVudEhhc2gYAyABKAkSDAoEaGFzaBgEIAEoCRIPCgd2ZXJzaW9uGAUgASgNEgwKBG5hbWUYBiABKAkSDgoGY2h1bmtzGAcgAygJEhMKC2Rlc2NyaXB0aW9uGAggASgJEjQKBmZvcm1hdBgJIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkRpZ2l0YWxGb3JtYXRFbnVtEgwKBHNpemUYCiABKAQSEQoJY3JlYXRlZEF0GAsgASgJEhEKCXVwZGF0ZWRBdBgMIAEoCRISCgpjaHVua0NvdW50GA0gASgNEhEKCWNodW5rU2l6ZRgOIAEoDRITCgtpc0VuY3J5cHRlZBgPIAEoCBIRCglzaWduYXR1cmUYECABKAkyvgMKBUFzc2V0ElcKBlNlYXJjaBIkLnlleWluZy5hcGkuYXNzZXQuU2VhcmNoQXNzZXRSZXF1ZXN0GiUueWV5aW5nLmFwaS5hc3NldC5TZWFyY2hBc3NldFJlc3BvbnNlIgASUQoEU2lnbhIiLnlleWluZy5hcGkuYXNzZXQuU2lnbkFzc2V0UmVxdWVzdBojLnlleWluZy5hcGkuYXNzZXQuU2lnbkFzc2V0UmVzcG9uc2UiABJXCgZVcGRhdGUSJC55ZXlpbmcuYXBpLmFzc2V0LlVwZGF0ZUFzc2V0UmVxdWVzdBolLnlleWluZy5hcGkuYXNzZXQuVXBkYXRlQXNzZXRSZXNwb25zZSIAElcKBkRldGFpbBIkLnlleWluZy5hcGkuYXNzZXQuQXNzZXREZXRhaWxSZXF1ZXN0GiUueWV5aW5nLmFwaS5hc3NldC5Bc3NldERldGFpbFJlc3BvbnNlIgASVwoGRGVsZXRlEiQueWV5aW5nLmFwaS5hc3NldC5EZWxldGVBc3NldFJlcXVlc3QaJS55ZXlpbmcuYXBpLmFzc2V0LkRlbGV0ZUFzc2V0UmVzcG9uc2UiAEISWhB5ZXlpbmcvYXBpL2Fzc2V0YgZwcm90bzM",
+    [file_yeying_api_common_message, file_yeying_api_common_code],
+  );
 
 /**
  * @generated from message yeying.api.asset.SearchAssetRequest
  */
-export type SearchAssetRequest = Message<"yeying.api.asset.SearchAssetRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchAssetRequest =
+  Message<"yeying.api.asset.SearchAssetRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.SearchAssetRequestBody body = 2;
-   */
-  body?: SearchAssetRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.SearchAssetRequestBody body = 2;
+     */
+    body?: SearchAssetRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.SearchAssetRequest
@@ -50,23 +73,26 @@ export type SearchAssetRequestJson = {
  * Describes the message yeying.api.asset.SearchAssetRequest.
  * Use `create(SearchAssetRequestSchema)` to create a new message.
  */
-export const SearchAssetRequestSchema: GenMessage<SearchAssetRequest, SearchAssetRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 0);
+export const SearchAssetRequestSchema: GenMessage<
+  SearchAssetRequest,
+  SearchAssetRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 0);
 
 /**
  * @generated from message yeying.api.asset.SearchAssetRequestBody
  */
-export type SearchAssetRequestBody = Message<"yeying.api.asset.SearchAssetRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.asset.SearchAssetCondition condition = 1;
-   */
-  condition?: SearchAssetCondition;
+export type SearchAssetRequestBody =
+  Message<"yeying.api.asset.SearchAssetRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.asset.SearchAssetCondition condition = 1;
+     */
+    condition?: SearchAssetCondition;
 
-  /**
-   * @generated from field: yeying.api.common.RequestPage page = 2;
-   */
-  page?: RequestPage;
-};
+    /**
+     * @generated from field: yeying.api.common.RequestPage page = 2;
+     */
+    page?: RequestPage;
+  };
 
 /**
  * @generated from message yeying.api.asset.SearchAssetRequestBody
@@ -87,41 +113,44 @@ export type SearchAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.SearchAssetRequestBody.
  * Use `create(SearchAssetRequestBodySchema)` to create a new message.
  */
-export const SearchAssetRequestBodySchema: GenMessage<SearchAssetRequestBody, SearchAssetRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 1);
+export const SearchAssetRequestBodySchema: GenMessage<
+  SearchAssetRequestBody,
+  SearchAssetRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 1);
 
 /**
  * @generated from message yeying.api.asset.SearchAssetCondition
  */
-export type SearchAssetCondition = Message<"yeying.api.asset.SearchAssetCondition"> & {
-  /**
-   * 资产内容格式
-   *
-   * @generated from field: yeying.api.common.DigitalFormatEnum format = 1;
-   */
-  format: DigitalFormatEnum;
+export type SearchAssetCondition =
+  Message<"yeying.api.asset.SearchAssetCondition"> & {
+    /**
+     * 资产内容格式
+     *
+     * @generated from field: yeying.api.common.DigitalFormatEnum format = 1;
+     */
+    format: DigitalFormatEnum;
 
-  /**
-   * 内容哈希值
-   *
-   * @generated from field: string hash = 2;
-   */
-  hash: string;
+    /**
+     * 内容哈希值
+     *
+     * @generated from field: string hash = 2;
+     */
+    hash: string;
 
-  /**
-   * 命名空间ID
-   *
-   * @generated from field: string namespaceId = 3;
-   */
-  namespaceId: string;
+    /**
+     * 命名空间ID
+     *
+     * @generated from field: string namespaceId = 3;
+     */
+    namespaceId: string;
 
-  /**
-   * 资产名称
-   *
-   * @generated from field: string name = 4;
-   */
-  name: string;
-};
+    /**
+     * 资产名称
+     *
+     * @generated from field: string name = 4;
+     */
+    name: string;
+  };
 
 /**
  * @generated from message yeying.api.asset.SearchAssetCondition
@@ -160,23 +189,26 @@ export type SearchAssetConditionJson = {
  * Describes the message yeying.api.asset.SearchAssetCondition.
  * Use `create(SearchAssetConditionSchema)` to create a new message.
  */
-export const SearchAssetConditionSchema: GenMessage<SearchAssetCondition, SearchAssetConditionJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 2);
+export const SearchAssetConditionSchema: GenMessage<
+  SearchAssetCondition,
+  SearchAssetConditionJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 2);
 
 /**
  * @generated from message yeying.api.asset.SearchAssetResponse
  */
-export type SearchAssetResponse = Message<"yeying.api.asset.SearchAssetResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SearchAssetResponse =
+  Message<"yeying.api.asset.SearchAssetResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.SearchAssetResponseBody body = 2;
-   */
-  body?: SearchAssetResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.SearchAssetResponseBody body = 2;
+     */
+    body?: SearchAssetResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.SearchAssetResponse
@@ -197,23 +229,26 @@ export type SearchAssetResponseJson = {
  * Describes the message yeying.api.asset.SearchAssetResponse.
  * Use `create(SearchAssetResponseSchema)` to create a new message.
  */
-export const SearchAssetResponseSchema: GenMessage<SearchAssetResponse, SearchAssetResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 3);
+export const SearchAssetResponseSchema: GenMessage<
+  SearchAssetResponse,
+  SearchAssetResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 3);
 
 /**
  * @generated from message yeying.api.asset.SearchAssetResponseBody
  */
-export type SearchAssetResponseBody = Message<"yeying.api.asset.SearchAssetResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type SearchAssetResponseBody =
+  Message<"yeying.api.asset.SearchAssetResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: repeated yeying.api.asset.AssetMetadata assets = 2;
-   */
-  assets: AssetMetadata[];
-};
+    /**
+     * @generated from field: repeated yeying.api.asset.AssetMetadata assets = 2;
+     */
+    assets: AssetMetadata[];
+  };
 
 /**
  * @generated from message yeying.api.asset.SearchAssetResponseBody
@@ -234,8 +269,10 @@ export type SearchAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.SearchAssetResponseBody.
  * Use `create(SearchAssetResponseBodySchema)` to create a new message.
  */
-export const SearchAssetResponseBodySchema: GenMessage<SearchAssetResponseBody, SearchAssetResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 4);
+export const SearchAssetResponseBodySchema: GenMessage<
+  SearchAssetResponseBody,
+  SearchAssetResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 4);
 
 /**
  * @generated from message yeying.api.asset.SignAssetRequest
@@ -271,20 +308,23 @@ export type SignAssetRequestJson = {
  * Describes the message yeying.api.asset.SignAssetRequest.
  * Use `create(SignAssetRequestSchema)` to create a new message.
  */
-export const SignAssetRequestSchema: GenMessage<SignAssetRequest, SignAssetRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 5);
+export const SignAssetRequestSchema: GenMessage<
+  SignAssetRequest,
+  SignAssetRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 5);
 
 /**
  * @generated from message yeying.api.asset.SignAssetRequestBody
  */
-export type SignAssetRequestBody = Message<"yeying.api.asset.SignAssetRequestBody"> & {
-  /**
-   * 资产元信息, 资产版本统一由客户端生成，服务端验证版本的有效性，必须是最新的版本号
-   *
-   * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
-   */
-  asset?: AssetMetadata;
-};
+export type SignAssetRequestBody =
+  Message<"yeying.api.asset.SignAssetRequestBody"> & {
+    /**
+     * 资产元信息, 资产版本统一由客户端生成，服务端验证版本的有效性，必须是最新的版本号
+     *
+     * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
+     */
+    asset?: AssetMetadata;
+  };
 
 /**
  * @generated from message yeying.api.asset.SignAssetRequestBody
@@ -302,23 +342,26 @@ export type SignAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.SignAssetRequestBody.
  * Use `create(SignAssetRequestBodySchema)` to create a new message.
  */
-export const SignAssetRequestBodySchema: GenMessage<SignAssetRequestBody, SignAssetRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 6);
+export const SignAssetRequestBodySchema: GenMessage<
+  SignAssetRequestBody,
+  SignAssetRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 6);
 
 /**
  * @generated from message yeying.api.asset.SignAssetResponse
  */
-export type SignAssetResponse = Message<"yeying.api.asset.SignAssetResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type SignAssetResponse =
+  Message<"yeying.api.asset.SignAssetResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.SignAssetResponseBody body = 2;
-   */
-  body?: SignAssetResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.SignAssetResponseBody body = 2;
+     */
+    body?: SignAssetResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.SignAssetResponse
@@ -339,23 +382,26 @@ export type SignAssetResponseJson = {
  * Describes the message yeying.api.asset.SignAssetResponse.
  * Use `create(SignAssetResponseSchema)` to create a new message.
  */
-export const SignAssetResponseSchema: GenMessage<SignAssetResponse, SignAssetResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 7);
+export const SignAssetResponseSchema: GenMessage<
+  SignAssetResponse,
+  SignAssetResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 7);
 
 /**
  * @generated from message yeying.api.asset.SignAssetResponseBody
  */
-export type SignAssetResponseBody = Message<"yeying.api.asset.SignAssetResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type SignAssetResponseBody =
+  Message<"yeying.api.asset.SignAssetResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
-   */
-  asset?: AssetMetadata;
-};
+    /**
+     * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
+     */
+    asset?: AssetMetadata;
+  };
 
 /**
  * @generated from message yeying.api.asset.SignAssetResponseBody
@@ -376,23 +422,26 @@ export type SignAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.SignAssetResponseBody.
  * Use `create(SignAssetResponseBodySchema)` to create a new message.
  */
-export const SignAssetResponseBodySchema: GenMessage<SignAssetResponseBody, SignAssetResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 8);
+export const SignAssetResponseBodySchema: GenMessage<
+  SignAssetResponseBody,
+  SignAssetResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 8);
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetRequest
  */
-export type UpdateAssetRequest = Message<"yeying.api.asset.UpdateAssetRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type UpdateAssetRequest =
+  Message<"yeying.api.asset.UpdateAssetRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.UpdateAssetRequestBody body = 2;
-   */
-  body?: UpdateAssetRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.UpdateAssetRequestBody body = 2;
+     */
+    body?: UpdateAssetRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetRequest
@@ -413,18 +462,21 @@ export type UpdateAssetRequestJson = {
  * Describes the message yeying.api.asset.UpdateAssetRequest.
  * Use `create(UpdateAssetRequestSchema)` to create a new message.
  */
-export const UpdateAssetRequestSchema: GenMessage<UpdateAssetRequest, UpdateAssetRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 9);
+export const UpdateAssetRequestSchema: GenMessage<
+  UpdateAssetRequest,
+  UpdateAssetRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 9);
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetRequestBody
  */
-export type UpdateAssetRequestBody = Message<"yeying.api.asset.UpdateAssetRequestBody"> & {
-  /**
-   * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
-   */
-  asset?: AssetMetadata;
-};
+export type UpdateAssetRequestBody =
+  Message<"yeying.api.asset.UpdateAssetRequestBody"> & {
+    /**
+     * @generated from field: yeying.api.asset.AssetMetadata asset = 1;
+     */
+    asset?: AssetMetadata;
+  };
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetRequestBody
@@ -440,23 +492,26 @@ export type UpdateAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.UpdateAssetRequestBody.
  * Use `create(UpdateAssetRequestBodySchema)` to create a new message.
  */
-export const UpdateAssetRequestBodySchema: GenMessage<UpdateAssetRequestBody, UpdateAssetRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 10);
+export const UpdateAssetRequestBodySchema: GenMessage<
+  UpdateAssetRequestBody,
+  UpdateAssetRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 10);
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetResponse
  */
-export type UpdateAssetResponse = Message<"yeying.api.asset.UpdateAssetResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type UpdateAssetResponse =
+  Message<"yeying.api.asset.UpdateAssetResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.UpdateAssetResponseBody body = 2;
-   */
-  body?: UpdateAssetResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.UpdateAssetResponseBody body = 2;
+     */
+    body?: UpdateAssetResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetResponse
@@ -477,23 +532,26 @@ export type UpdateAssetResponseJson = {
  * Describes the message yeying.api.asset.UpdateAssetResponse.
  * Use `create(UpdateAssetResponseSchema)` to create a new message.
  */
-export const UpdateAssetResponseSchema: GenMessage<UpdateAssetResponse, UpdateAssetResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 11);
+export const UpdateAssetResponseSchema: GenMessage<
+  UpdateAssetResponse,
+  UpdateAssetResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 11);
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetResponseBody
  */
-export type UpdateAssetResponseBody = Message<"yeying.api.asset.UpdateAssetResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type UpdateAssetResponseBody =
+  Message<"yeying.api.asset.UpdateAssetResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
-   */
-  asset?: AssetMetadata;
-};
+    /**
+     * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
+     */
+    asset?: AssetMetadata;
+  };
 
 /**
  * @generated from message yeying.api.asset.UpdateAssetResponseBody
@@ -514,23 +572,26 @@ export type UpdateAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.UpdateAssetResponseBody.
  * Use `create(UpdateAssetResponseBodySchema)` to create a new message.
  */
-export const UpdateAssetResponseBodySchema: GenMessage<UpdateAssetResponseBody, UpdateAssetResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 12);
+export const UpdateAssetResponseBodySchema: GenMessage<
+  UpdateAssetResponseBody,
+  UpdateAssetResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 12);
 
 /**
  * @generated from message yeying.api.asset.AssetDetailRequest
  */
-export type AssetDetailRequest = Message<"yeying.api.asset.AssetDetailRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type AssetDetailRequest =
+  Message<"yeying.api.asset.AssetDetailRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.AssetDetailRequestBody body = 2;
-   */
-  body?: AssetDetailRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.AssetDetailRequestBody body = 2;
+     */
+    body?: AssetDetailRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.AssetDetailRequest
@@ -551,25 +612,28 @@ export type AssetDetailRequestJson = {
  * Describes the message yeying.api.asset.AssetDetailRequest.
  * Use `create(AssetDetailRequestSchema)` to create a new message.
  */
-export const AssetDetailRequestSchema: GenMessage<AssetDetailRequest, AssetDetailRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 13);
+export const AssetDetailRequestSchema: GenMessage<
+  AssetDetailRequest,
+  AssetDetailRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 13);
 
 /**
  * @generated from message yeying.api.asset.AssetDetailRequestBody
  */
-export type AssetDetailRequestBody = Message<"yeying.api.asset.AssetDetailRequestBody"> & {
-  /**
-   * 资产唯一ID
-   *
-   * @generated from field: string hash = 1;
-   */
-  hash: string;
+export type AssetDetailRequestBody =
+  Message<"yeying.api.asset.AssetDetailRequestBody"> & {
+    /**
+     * 资产唯一ID
+     *
+     * @generated from field: string hash = 1;
+     */
+    hash: string;
 
-  /**
-   * @generated from field: string namespaceId = 2;
-   */
-  namespaceId: string;
-};
+    /**
+     * @generated from field: string namespaceId = 2;
+     */
+    namespaceId: string;
+  };
 
 /**
  * @generated from message yeying.api.asset.AssetDetailRequestBody
@@ -592,23 +656,26 @@ export type AssetDetailRequestBodyJson = {
  * Describes the message yeying.api.asset.AssetDetailRequestBody.
  * Use `create(AssetDetailRequestBodySchema)` to create a new message.
  */
-export const AssetDetailRequestBodySchema: GenMessage<AssetDetailRequestBody, AssetDetailRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 14);
+export const AssetDetailRequestBodySchema: GenMessage<
+  AssetDetailRequestBody,
+  AssetDetailRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 14);
 
 /**
  * @generated from message yeying.api.asset.AssetDetailResponse
  */
-export type AssetDetailResponse = Message<"yeying.api.asset.AssetDetailResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type AssetDetailResponse =
+  Message<"yeying.api.asset.AssetDetailResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.AssetDetailResponseBody body = 2;
-   */
-  body?: AssetDetailResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.AssetDetailResponseBody body = 2;
+     */
+    body?: AssetDetailResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.AssetDetailResponse
@@ -629,23 +696,26 @@ export type AssetDetailResponseJson = {
  * Describes the message yeying.api.asset.AssetDetailResponse.
  * Use `create(AssetDetailResponseSchema)` to create a new message.
  */
-export const AssetDetailResponseSchema: GenMessage<AssetDetailResponse, AssetDetailResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 15);
+export const AssetDetailResponseSchema: GenMessage<
+  AssetDetailResponse,
+  AssetDetailResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 15);
 
 /**
  * @generated from message yeying.api.asset.AssetDetailResponseBody
  */
-export type AssetDetailResponseBody = Message<"yeying.api.asset.AssetDetailResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
+export type AssetDetailResponseBody =
+  Message<"yeying.api.asset.AssetDetailResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
 
-  /**
-   * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
-   */
-  asset?: AssetMetadata;
-};
+    /**
+     * @generated from field: yeying.api.asset.AssetMetadata asset = 2;
+     */
+    asset?: AssetMetadata;
+  };
 
 /**
  * @generated from message yeying.api.asset.AssetDetailResponseBody
@@ -666,23 +736,26 @@ export type AssetDetailResponseBodyJson = {
  * Describes the message yeying.api.asset.AssetDetailResponseBody.
  * Use `create(AssetDetailResponseBodySchema)` to create a new message.
  */
-export const AssetDetailResponseBodySchema: GenMessage<AssetDetailResponseBody, AssetDetailResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 16);
+export const AssetDetailResponseBodySchema: GenMessage<
+  AssetDetailResponseBody,
+  AssetDetailResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 16);
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetRequest
  */
-export type DeleteAssetRequest = Message<"yeying.api.asset.DeleteAssetRequest"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteAssetRequest =
+  Message<"yeying.api.asset.DeleteAssetRequest"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.DeleteAssetRequestBody body = 2;
-   */
-  body?: DeleteAssetRequestBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.DeleteAssetRequestBody body = 2;
+     */
+    body?: DeleteAssetRequestBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetRequest
@@ -703,25 +776,28 @@ export type DeleteAssetRequestJson = {
  * Describes the message yeying.api.asset.DeleteAssetRequest.
  * Use `create(DeleteAssetRequestSchema)` to create a new message.
  */
-export const DeleteAssetRequestSchema: GenMessage<DeleteAssetRequest, DeleteAssetRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 17);
+export const DeleteAssetRequestSchema: GenMessage<
+  DeleteAssetRequest,
+  DeleteAssetRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 17);
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetRequestBody
  */
-export type DeleteAssetRequestBody = Message<"yeying.api.asset.DeleteAssetRequestBody"> & {
-  /**
-   * 资产哈希值
-   *
-   * @generated from field: string hash = 1;
-   */
-  hash: string;
+export type DeleteAssetRequestBody =
+  Message<"yeying.api.asset.DeleteAssetRequestBody"> & {
+    /**
+     * 资产哈希值
+     *
+     * @generated from field: string hash = 1;
+     */
+    hash: string;
 
-  /**
-   * @generated from field: string namespaceId = 2;
-   */
-  namespaceId: string;
-};
+    /**
+     * @generated from field: string namespaceId = 2;
+     */
+    namespaceId: string;
+  };
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetRequestBody
@@ -744,23 +820,26 @@ export type DeleteAssetRequestBodyJson = {
  * Describes the message yeying.api.asset.DeleteAssetRequestBody.
  * Use `create(DeleteAssetRequestBodySchema)` to create a new message.
  */
-export const DeleteAssetRequestBodySchema: GenMessage<DeleteAssetRequestBody, DeleteAssetRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 18);
+export const DeleteAssetRequestBodySchema: GenMessage<
+  DeleteAssetRequestBody,
+  DeleteAssetRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 18);
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetResponse
  */
-export type DeleteAssetResponse = Message<"yeying.api.asset.DeleteAssetResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type DeleteAssetResponse =
+  Message<"yeying.api.asset.DeleteAssetResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.asset.DeleteAssetResponseBody body = 2;
-   */
-  body?: DeleteAssetResponseBody;
-};
+    /**
+     * @generated from field: yeying.api.asset.DeleteAssetResponseBody body = 2;
+     */
+    body?: DeleteAssetResponseBody;
+  };
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetResponse
@@ -781,18 +860,21 @@ export type DeleteAssetResponseJson = {
  * Describes the message yeying.api.asset.DeleteAssetResponse.
  * Use `create(DeleteAssetResponseSchema)` to create a new message.
  */
-export const DeleteAssetResponseSchema: GenMessage<DeleteAssetResponse, DeleteAssetResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 19);
+export const DeleteAssetResponseSchema: GenMessage<
+  DeleteAssetResponse,
+  DeleteAssetResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 19);
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetResponseBody
  */
-export type DeleteAssetResponseBody = Message<"yeying.api.asset.DeleteAssetResponseBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type DeleteAssetResponseBody =
+  Message<"yeying.api.asset.DeleteAssetResponseBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.asset.DeleteAssetResponseBody
@@ -808,8 +890,10 @@ export type DeleteAssetResponseBodyJson = {
  * Describes the message yeying.api.asset.DeleteAssetResponseBody.
  * Use `create(DeleteAssetResponseBodySchema)` to create a new message.
  */
-export const DeleteAssetResponseBodySchema: GenMessage<DeleteAssetResponseBody, DeleteAssetResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_asset_asset, 20);
+export const DeleteAssetResponseBodySchema: GenMessage<
+  DeleteAssetResponseBody,
+  DeleteAssetResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_asset_asset, 20);
 
 /**
  * 资产定义
@@ -1057,7 +1141,8 @@ export type AssetMetadataJson = {
  * Describes the message yeying.api.asset.AssetMetadata.
  * Use `create(AssetMetadataSchema)` to create a new message.
  */
-export const AssetMetadataSchema: GenMessage<AssetMetadata, AssetMetadataJson> = /*@__PURE__*/
+export const AssetMetadataSchema: GenMessage<AssetMetadata, AssetMetadataJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_asset_asset, 21);
 
 /**
@@ -1102,7 +1187,7 @@ export const Asset: GenService<{
     methodKind: "unary";
     input: typeof SearchAssetRequestSchema;
     output: typeof SearchAssetResponseSchema;
-  },
+  };
   /**
    * *
    * 以事务的形式和存储供应商签订协议并入库，当所有资产块入库成功后，资产的信息发送到后端服务签字确认，涵盖了新的资产和新的版本入库；
@@ -1114,7 +1199,7 @@ export const Asset: GenService<{
     methodKind: "unary";
     input: typeof SignAssetRequestSchema;
     output: typeof SignAssetResponseSchema;
-  },
+  };
   /**
    * *
    * 更新资产元信息
@@ -1125,7 +1210,7 @@ export const Asset: GenService<{
     methodKind: "unary";
     input: typeof UpdateAssetRequestSchema;
     output: typeof UpdateAssetResponseSchema;
-  },
+  };
   /**
    * *
    * 获得资产详细信息，提供该接口是为了更灵活处理资产信息，资产信息的复杂主要是几个方面：
@@ -1139,7 +1224,7 @@ export const Asset: GenService<{
     methodKind: "unary";
     input: typeof AssetDetailRequestSchema;
     output: typeof AssetDetailResponseSchema;
-  },
+  };
   /**
    * *
    * 删除资产，不回立即删除，而是放入回收站；资产支持多版本，在删除的时候，采取头或者尾部删除，不能从中间删除，确保版本的链条能够正常工作；
@@ -1150,7 +1235,5 @@ export const Asset: GenService<{
     methodKind: "unary";
     input: typeof DeleteAssetRequestSchema;
     output: typeof DeleteAssetResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_yeying_api_asset_asset, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_yeying_api_asset_asset, 0);

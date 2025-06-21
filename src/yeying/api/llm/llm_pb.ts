@@ -2,19 +2,43 @@
 // @generated from file yeying/api/llm/llm.proto (package yeying.api.llm, syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
-import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { MessageHeader, MessageHeaderJson, ResponseStatus, ResponseStatusJson } from "../common/message_pb";
+import type {
+  GenEnum,
+  GenFile,
+  GenMessage,
+  GenService,
+} from "@bufbuild/protobuf/codegenv1";
+import {
+  enumDesc,
+  fileDesc,
+  messageDesc,
+  serviceDesc,
+} from "@bufbuild/protobuf/codegenv1";
+import type {
+  MessageHeader,
+  MessageHeaderJson,
+  ResponseStatus,
+  ResponseStatusJson,
+} from "../common/message_pb";
 import { file_yeying_api_common_message } from "../common/message_pb";
-import type { ContentFormatEnum, ContentFormatEnumJson, DigitalFormatEnum, DigitalFormatEnumJson } from "../common/code_pb";
+import type {
+  ContentFormatEnum,
+  ContentFormatEnumJson,
+  DigitalFormatEnum,
+  DigitalFormatEnumJson,
+} from "../common/code_pb";
 import { file_yeying_api_common_code } from "../common/code_pb";
 import type { Message as Message$1 } from "@bufbuild/protobuf";
 
 /**
  * Describes the file yeying/api/llm/llm.proto.
  */
-export const file_yeying_api_llm_llm: GenFile = /*@__PURE__*/
-  fileDesc("Chh5ZXlpbmcvYXBpL2xsbS9sbG0ucHJvdG8SDnlleWluZy5hcGkubGxtInYKD0NvbXBsZXRlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmxsbS5Db21wbGV0ZVJlcXVlc3RCb2R5IpgBChNDb21wbGV0ZVJlcXVlc3RCb2R5EhEKCXNlc3Npb25JZBgBIAEoCRIQCghwcm9tcHRJZBgCIAEoCRISCgpwcm92aWRlcklkGAMgASgJEg0KBW1vZGVsGAQgASgJEg4KBnN0cmVhbRgFIAEoCBIpCghtZXNzYWdlcxgGIAMoCzIXLnlleWluZy5hcGkubGxtLk1lc3NhZ2UiYgoHTWVzc2FnZRItCgRyb2xlGAEgASgOMh8ueWV5aW5nLmFwaS5sbG0uTWVzc2FnZVJvbGVFbnVtEigKB2NvbnRlbnQYAiABKAsyFy55ZXlpbmcuYXBpLmxsbS5Db250ZW50IkYKB0NvbnRlbnQSLQoEdHlwZRgBIAEoDjIfLnlleWluZy5hcGkubGxtLkNvbnRlbnRUeXBlRW51bRIMCgRkYXRhGAIgASgJIl8KBkFuc3dlchINCgVtb2RlbBgBIAEoCRIKCgJpZBgCIAEoCRIRCgljcmVhdGVkQXQYAyABKAMSJwoHY2hvaWNlcxgEIAMoCzIWLnlleWluZy5hcGkubGxtLkNob2ljZSK8AQoQQ29tcGxldGVSZXNwb25zZRI0CgRoZWFkGAIgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZUhlYWRIABI0CgRib2R5GAMgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZUJvZHlIABI0CgR0YWlsGAQgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZVRhaWxIAEIGCgRkYXRhIoABChRDb21wbGV0ZVJlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmxsbS5Db21wbGV0ZVJlc3BvbnNlSGVhZEJvZHkiTQoYQ29tcGxldGVSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIiQKFENvbXBsZXRlUmVzcG9uc2VCb2R5EgwKBGRhdGEYASABKAkigAEKFENvbXBsZXRlUmVzcG9uc2VUYWlsEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkubGxtLkNvbXBsZXRlUmVzcG9uc2VUYWlsQm9keSJNChhDb21wbGV0ZVJlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMidgoPR2VuZXJhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVxdWVzdEJvZHkixQEKE0dlbmVyYXRlUmVxdWVzdEJvZHkSDQoFbGxtSWQYASABKAkSDQoFbW9kZWwYAiABKAkSDgoGcHJvbXB0GAMgASgJEkMKFXJlc3BvbnNlQ29udGVudEZvcm1hdBgEIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkNvbnRlbnRGb3JtYXRFbnVtEg0KBWNvdW50GAUgASgFEgwKBHNpemUYBiABKAkSDwoHcXVhbGl0eRgHIAEoCRINCgVzdHlsZRgIIAEoCSK8AQoQR2VuZXJhdGVSZXNwb25zZRI0CgRoZWFkGAIgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZUhlYWRIABI0CgRib2R5GAMgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZUJvZHlIABI0CgR0YWlsGAQgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZVRhaWxIAEIGCgRkYXRhIoABChRHZW5lcmF0ZVJlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmxsbS5HZW5lcmF0ZVJlc3BvbnNlSGVhZEJvZHkiTQoYR2VuZXJhdGVSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIiQKFEdlbmVyYXRlUmVzcG9uc2VCb2R5EgwKBGRhdGEYASABKAkigAEKFEdlbmVyYXRlUmVzcG9uc2VUYWlsEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVzcG9uc2VUYWlsQm9keSJNChhHZW5lcmF0ZVJlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMiHQoKVGV4dFByb21wdBIPCgdtZXNzYWdlGAEgASgJIjsKC0ltYWdlUHJvbXB0Eg8KB21lc3NhZ2UYASABKAkSDAoEbWFzaxgCIAEoDBINCgVpbWFnZRgDIAEoDCKPAQoLSW1hZ2VSZXN1bHQSQwoVcmVzcG9uc2VDb250ZW50Rm9ybWF0GAEgASgOMiQueWV5aW5nLmFwaS5jb21tb24uQ29udGVudEZvcm1hdEVudW0SDQoFY291bnQYAiABKAUSDAoEc2l6ZRgDIAEoCRIPCgdxdWFsaXR5GAQgASgJEg0KBXN0eWxlGAUgASgJItQCCgtFZGl0UmVxdWVzdBILCgNkaWQYASABKAkSDQoFbGxtSWQYAiABKAkSDQoFbW9kZWwYAyABKAkSNQoHc3JjVHlwZRgFIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkRpZ2l0YWxGb3JtYXRFbnVtEjUKB2Rlc1R5cGUYBiABKA4yJC55ZXlpbmcuYXBpLmNvbW1vbi5EaWdpdGFsRm9ybWF0RW51bRIwCgp0ZXh0UHJvbXB0GAcgASgLMhoueWV5aW5nLmFwaS5sbG0uVGV4dFByb21wdEgAEjIKC2ltYWdlUHJvbXB0GAggASgLMhsueWV5aW5nLmFwaS5sbG0uSW1hZ2VQcm9tcHRIABIyCgtpbWFnZVJlc3VsdBgJIAEoCzIbLnlleWluZy5hcGkubGxtLkltYWdlUmVzdWx0SAFCCAoGcHJvbXB0QggKBnJlc3VsdCJsCgxFZGl0UmVzcG9uc2USMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSEAoGYmFzZTY0GAIgASgJSAASDwoFYnl0ZXMYAyABKAxIAEIGCgRkYXRhIkAKEFRyYW5zbGF0ZVJlcXVlc3QSCwoDZGlkGAEgASgJEg0KBWxsbUlkGAIgASgJEhAKCGluc3RhbmNlGAMgASgJIkYKEVRyYW5zbGF0ZVJlc3BvbnNlEjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIj4KDkNvbnZlcnRSZXF1ZXN0EgsKA2RpZBgBIAEoCRINCgVsbG1JZBgCIAEoCRIQCghpbnN0YW5jZRgDIAEoCSJECg9Db252ZXJ0UmVzcG9uc2USMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMihgEKBkNob2ljZRINCgVpbmRleBgBIAEoBRItCgRyb2xlGAIgASgOMh8ueWV5aW5nLmFwaS5sbG0uTWVzc2FnZVJvbGVFbnVtEigKB2NvbnRlbnQYAyABKAsyFy55ZXlpbmcuYXBpLmxsbS5Db250ZW50EhQKDGZpbmlzaFJlYXNvbhgEIAEoCSIPCg1TcGVlY2hSZXF1ZXN0IhAKDlNwZWVjaFJlc3BvbnNlKncKD01lc3NhZ2VSb2xlRW51bRIYChRNRVNTQUdFX1JPTEVfVU5LTk9XThAAEhoKFk1FU1NBR0VfUk9MRV9BU1NJU1RBTlQQARIVChFNRVNTQUdFX1JPTEVfVVNFUhACEhcKE01FU1NBR0VfUk9MRV9TWVNURU0QAyqlAQoPQ29udGVudFR5cGVFbnVtEhgKFENPTlRFTlRfVFlQRV9VTktOT1dOEAASFQoRQ09OVEVOVF9UWVBFX1RFWFQQARIWChJDT05URU5UX1RZUEVfSU1BR0UQAhIWChJDT05URU5UX1RZUEVfQVVESU8QAxIWChJDT05URU5UX1RZUEVfVklERU8QBBIZChVDT05URU5UX1RZUEVfRE9DVU1FTlQQBTKRAwoDTGxtElIKCVRyYW5zbGF0ZRIgLnlleWluZy5hcGkubGxtLlRyYW5zbGF0ZVJlcXVlc3QaIS55ZXlpbmcuYXBpLmxsbS5UcmFuc2xhdGVSZXNwb25zZSIAElEKCENvbXBsZXRlEh8ueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZSIAMAESRQoERWRpdBIbLnlleWluZy5hcGkubGxtLkVkaXRSZXF1ZXN0GhwueWV5aW5nLmFwaS5sbG0uRWRpdFJlc3BvbnNlIgAwARJRCghHZW5lcmF0ZRIfLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVxdWVzdBogLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVzcG9uc2UiADABEkkKBlNwZWVjaBIdLnlleWluZy5hcGkubGxtLlNwZWVjaFJlcXVlc3QaHi55ZXlpbmcuYXBpLmxsbS5TcGVlY2hSZXNwb25zZSIAQhBaDnlleWluZy9hcGkvbGxtYgZwcm90bzM", [file_yeying_api_common_message, file_yeying_api_common_code]);
+export const file_yeying_api_llm_llm: GenFile =
+  /*@__PURE__*/
+  fileDesc(
+    "Chh5ZXlpbmcvYXBpL2xsbS9sbG0ucHJvdG8SDnlleWluZy5hcGkubGxtInYKD0NvbXBsZXRlUmVxdWVzdBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjEKBGJvZHkYAiABKAsyIy55ZXlpbmcuYXBpLmxsbS5Db21wbGV0ZVJlcXVlc3RCb2R5IpgBChNDb21wbGV0ZVJlcXVlc3RCb2R5EhEKCXNlc3Npb25JZBgBIAEoCRIQCghwcm9tcHRJZBgCIAEoCRISCgpwcm92aWRlcklkGAMgASgJEg0KBW1vZGVsGAQgASgJEg4KBnN0cmVhbRgFIAEoCBIpCghtZXNzYWdlcxgGIAMoCzIXLnlleWluZy5hcGkubGxtLk1lc3NhZ2UiYgoHTWVzc2FnZRItCgRyb2xlGAEgASgOMh8ueWV5aW5nLmFwaS5sbG0uTWVzc2FnZVJvbGVFbnVtEigKB2NvbnRlbnQYAiABKAsyFy55ZXlpbmcuYXBpLmxsbS5Db250ZW50IkYKB0NvbnRlbnQSLQoEdHlwZRgBIAEoDjIfLnlleWluZy5hcGkubGxtLkNvbnRlbnRUeXBlRW51bRIMCgRkYXRhGAIgASgJIl8KBkFuc3dlchINCgVtb2RlbBgBIAEoCRIKCgJpZBgCIAEoCRIRCgljcmVhdGVkQXQYAyABKAMSJwoHY2hvaWNlcxgEIAMoCzIWLnlleWluZy5hcGkubGxtLkNob2ljZSK8AQoQQ29tcGxldGVSZXNwb25zZRI0CgRoZWFkGAIgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZUhlYWRIABI0CgRib2R5GAMgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZUJvZHlIABI0CgR0YWlsGAQgASgLMiQueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZVRhaWxIAEIGCgRkYXRhIoABChRDb21wbGV0ZVJlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmxsbS5Db21wbGV0ZVJlc3BvbnNlSGVhZEJvZHkiTQoYQ29tcGxldGVSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIiQKFENvbXBsZXRlUmVzcG9uc2VCb2R5EgwKBGRhdGEYASABKAkigAEKFENvbXBsZXRlUmVzcG9uc2VUYWlsEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkubGxtLkNvbXBsZXRlUmVzcG9uc2VUYWlsQm9keSJNChhDb21wbGV0ZVJlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMidgoPR2VuZXJhdGVSZXF1ZXN0EjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISMQoEYm9keRgCIAEoCzIjLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVxdWVzdEJvZHkixQEKE0dlbmVyYXRlUmVxdWVzdEJvZHkSDQoFbGxtSWQYASABKAkSDQoFbW9kZWwYAiABKAkSDgoGcHJvbXB0GAMgASgJEkMKFXJlc3BvbnNlQ29udGVudEZvcm1hdBgEIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkNvbnRlbnRGb3JtYXRFbnVtEg0KBWNvdW50GAUgASgFEgwKBHNpemUYBiABKAkSDwoHcXVhbGl0eRgHIAEoCRINCgVzdHlsZRgIIAEoCSK8AQoQR2VuZXJhdGVSZXNwb25zZRI0CgRoZWFkGAIgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZUhlYWRIABI0CgRib2R5GAMgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZUJvZHlIABI0CgR0YWlsGAQgASgLMiQueWV5aW5nLmFwaS5sbG0uR2VuZXJhdGVSZXNwb25zZVRhaWxIAEIGCgRkYXRhIoABChRHZW5lcmF0ZVJlc3BvbnNlSGVhZBIwCgZoZWFkZXIYASABKAsyIC55ZXlpbmcuYXBpLmNvbW1vbi5NZXNzYWdlSGVhZGVyEjYKBGJvZHkYAiABKAsyKC55ZXlpbmcuYXBpLmxsbS5HZW5lcmF0ZVJlc3BvbnNlSGVhZEJvZHkiTQoYR2VuZXJhdGVSZXNwb25zZUhlYWRCb2R5EjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIiQKFEdlbmVyYXRlUmVzcG9uc2VCb2R5EgwKBGRhdGEYASABKAkigAEKFEdlbmVyYXRlUmVzcG9uc2VUYWlsEjAKBmhlYWRlchgBIAEoCzIgLnlleWluZy5hcGkuY29tbW9uLk1lc3NhZ2VIZWFkZXISNgoEYm9keRgCIAEoCzIoLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVzcG9uc2VUYWlsQm9keSJNChhHZW5lcmF0ZVJlc3BvbnNlVGFpbEJvZHkSMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMiHQoKVGV4dFByb21wdBIPCgdtZXNzYWdlGAEgASgJIjsKC0ltYWdlUHJvbXB0Eg8KB21lc3NhZ2UYASABKAkSDAoEbWFzaxgCIAEoDBINCgVpbWFnZRgDIAEoDCKPAQoLSW1hZ2VSZXN1bHQSQwoVcmVzcG9uc2VDb250ZW50Rm9ybWF0GAEgASgOMiQueWV5aW5nLmFwaS5jb21tb24uQ29udGVudEZvcm1hdEVudW0SDQoFY291bnQYAiABKAUSDAoEc2l6ZRgDIAEoCRIPCgdxdWFsaXR5GAQgASgJEg0KBXN0eWxlGAUgASgJItQCCgtFZGl0UmVxdWVzdBILCgNkaWQYASABKAkSDQoFbGxtSWQYAiABKAkSDQoFbW9kZWwYAyABKAkSNQoHc3JjVHlwZRgFIAEoDjIkLnlleWluZy5hcGkuY29tbW9uLkRpZ2l0YWxGb3JtYXRFbnVtEjUKB2Rlc1R5cGUYBiABKA4yJC55ZXlpbmcuYXBpLmNvbW1vbi5EaWdpdGFsRm9ybWF0RW51bRIwCgp0ZXh0UHJvbXB0GAcgASgLMhoueWV5aW5nLmFwaS5sbG0uVGV4dFByb21wdEgAEjIKC2ltYWdlUHJvbXB0GAggASgLMhsueWV5aW5nLmFwaS5sbG0uSW1hZ2VQcm9tcHRIABIyCgtpbWFnZVJlc3VsdBgJIAEoCzIbLnlleWluZy5hcGkubGxtLkltYWdlUmVzdWx0SAFCCAoGcHJvbXB0QggKBnJlc3VsdCJsCgxFZGl0UmVzcG9uc2USMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMSEAoGYmFzZTY0GAIgASgJSAASDwoFYnl0ZXMYAyABKAxIAEIGCgRkYXRhIkAKEFRyYW5zbGF0ZVJlcXVlc3QSCwoDZGlkGAEgASgJEg0KBWxsbUlkGAIgASgJEhAKCGluc3RhbmNlGAMgASgJIkYKEVRyYW5zbGF0ZVJlc3BvbnNlEjEKBnN0YXR1cxgBIAEoCzIhLnlleWluZy5hcGkuY29tbW9uLlJlc3BvbnNlU3RhdHVzIj4KDkNvbnZlcnRSZXF1ZXN0EgsKA2RpZBgBIAEoCRINCgVsbG1JZBgCIAEoCRIQCghpbnN0YW5jZRgDIAEoCSJECg9Db252ZXJ0UmVzcG9uc2USMQoGc3RhdHVzGAEgASgLMiEueWV5aW5nLmFwaS5jb21tb24uUmVzcG9uc2VTdGF0dXMihgEKBkNob2ljZRINCgVpbmRleBgBIAEoBRItCgRyb2xlGAIgASgOMh8ueWV5aW5nLmFwaS5sbG0uTWVzc2FnZVJvbGVFbnVtEigKB2NvbnRlbnQYAyABKAsyFy55ZXlpbmcuYXBpLmxsbS5Db250ZW50EhQKDGZpbmlzaFJlYXNvbhgEIAEoCSIPCg1TcGVlY2hSZXF1ZXN0IhAKDlNwZWVjaFJlc3BvbnNlKncKD01lc3NhZ2VSb2xlRW51bRIYChRNRVNTQUdFX1JPTEVfVU5LTk9XThAAEhoKFk1FU1NBR0VfUk9MRV9BU1NJU1RBTlQQARIVChFNRVNTQUdFX1JPTEVfVVNFUhACEhcKE01FU1NBR0VfUk9MRV9TWVNURU0QAyqlAQoPQ29udGVudFR5cGVFbnVtEhgKFENPTlRFTlRfVFlQRV9VTktOT1dOEAASFQoRQ09OVEVOVF9UWVBFX1RFWFQQARIWChJDT05URU5UX1RZUEVfSU1BR0UQAhIWChJDT05URU5UX1RZUEVfQVVESU8QAxIWChJDT05URU5UX1RZUEVfVklERU8QBBIZChVDT05URU5UX1RZUEVfRE9DVU1FTlQQBTKRAwoDTGxtElIKCVRyYW5zbGF0ZRIgLnlleWluZy5hcGkubGxtLlRyYW5zbGF0ZVJlcXVlc3QaIS55ZXlpbmcuYXBpLmxsbS5UcmFuc2xhdGVSZXNwb25zZSIAElEKCENvbXBsZXRlEh8ueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXF1ZXN0GiAueWV5aW5nLmFwaS5sbG0uQ29tcGxldGVSZXNwb25zZSIAMAESRQoERWRpdBIbLnlleWluZy5hcGkubGxtLkVkaXRSZXF1ZXN0GhwueWV5aW5nLmFwaS5sbG0uRWRpdFJlc3BvbnNlIgAwARJRCghHZW5lcmF0ZRIfLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVxdWVzdBogLnlleWluZy5hcGkubGxtLkdlbmVyYXRlUmVzcG9uc2UiADABEkkKBlNwZWVjaBIdLnlleWluZy5hcGkubGxtLlNwZWVjaFJlcXVlc3QaHi55ZXlpbmcuYXBpLmxsbS5TcGVlY2hSZXNwb25zZSIAQhBaDnlleWluZy9hcGkvbGxtYgZwcm90bzM",
+    [file_yeying_api_common_message, file_yeying_api_common_code],
+  );
 
 /**
  * @generated from message yeying.api.llm.CompleteRequest
@@ -50,43 +74,46 @@ export type CompleteRequestJson = {
  * Describes the message yeying.api.llm.CompleteRequest.
  * Use `create(CompleteRequestSchema)` to create a new message.
  */
-export const CompleteRequestSchema: GenMessage<CompleteRequest, CompleteRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 0);
+export const CompleteRequestSchema: GenMessage<
+  CompleteRequest,
+  CompleteRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 0);
 
 /**
  * @generated from message yeying.api.llm.CompleteRequestBody
  */
-export type CompleteRequestBody = Message$1<"yeying.api.llm.CompleteRequestBody"> & {
-  /**
-   * @generated from field: string sessionId = 1;
-   */
-  sessionId: string;
+export type CompleteRequestBody =
+  Message$1<"yeying.api.llm.CompleteRequestBody"> & {
+    /**
+     * @generated from field: string sessionId = 1;
+     */
+    sessionId: string;
 
-  /**
-   * @generated from field: string promptId = 2;
-   */
-  promptId: string;
+    /**
+     * @generated from field: string promptId = 2;
+     */
+    promptId: string;
 
-  /**
-   * @generated from field: string providerId = 3;
-   */
-  providerId: string;
+    /**
+     * @generated from field: string providerId = 3;
+     */
+    providerId: string;
 
-  /**
-   * @generated from field: string model = 4;
-   */
-  model: string;
+    /**
+     * @generated from field: string model = 4;
+     */
+    model: string;
 
-  /**
-   * @generated from field: bool stream = 5;
-   */
-  stream: boolean;
+    /**
+     * @generated from field: bool stream = 5;
+     */
+    stream: boolean;
 
-  /**
-   * @generated from field: repeated yeying.api.llm.Message messages = 6;
-   */
-  messages: Message[];
-};
+    /**
+     * @generated from field: repeated yeying.api.llm.Message messages = 6;
+     */
+    messages: Message[];
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteRequestBody
@@ -127,8 +154,10 @@ export type CompleteRequestBodyJson = {
  * Describes the message yeying.api.llm.CompleteRequestBody.
  * Use `create(CompleteRequestBodySchema)` to create a new message.
  */
-export const CompleteRequestBodySchema: GenMessage<CompleteRequestBody, CompleteRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 1);
+export const CompleteRequestBodySchema: GenMessage<
+  CompleteRequestBody,
+  CompleteRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 1);
 
 /**
  * @generated from message yeying.api.llm.Message
@@ -164,7 +193,8 @@ export type MessageJson = {
  * Describes the message yeying.api.llm.Message.
  * Use `create(MessageSchema)` to create a new message.
  */
-export const MessageSchema: GenMessage<Message, MessageJson> = /*@__PURE__*/
+export const MessageSchema: GenMessage<Message, MessageJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 2);
 
 /**
@@ -201,7 +231,8 @@ export type ContentJson = {
  * Describes the message yeying.api.llm.Content.
  * Use `create(ContentSchema)` to create a new message.
  */
-export const ContentSchema: GenMessage<Content, ContentJson> = /*@__PURE__*/
+export const ContentSchema: GenMessage<Content, ContentJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 3);
 
 /**
@@ -258,7 +289,8 @@ export type AnswerJson = {
  * Describes the message yeying.api.llm.Answer.
  * Use `create(AnswerSchema)` to create a new message.
  */
-export const AnswerSchema: GenMessage<Answer, AnswerJson> = /*@__PURE__*/
+export const AnswerSchema: GenMessage<Answer, AnswerJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 4);
 
 /**
@@ -273,25 +305,29 @@ export type CompleteResponse = Message$1<"yeying.api.llm.CompleteResponse"> & {
   /**
    * @generated from oneof yeying.api.llm.CompleteResponse.data
    */
-  data: {
-    /**
-     * @generated from field: yeying.api.llm.CompleteResponseHead head = 2;
-     */
-    value: CompleteResponseHead;
-    case: "head";
-  } | {
-    /**
-     * @generated from field: yeying.api.llm.CompleteResponseBody body = 3;
-     */
-    value: CompleteResponseBody;
-    case: "body";
-  } | {
-    /**
-     * @generated from field: yeying.api.llm.CompleteResponseTail tail = 4;
-     */
-    value: CompleteResponseTail;
-    case: "tail";
-  } | { case: undefined; value?: undefined };
+  data:
+    | {
+        /**
+         * @generated from field: yeying.api.llm.CompleteResponseHead head = 2;
+         */
+        value: CompleteResponseHead;
+        case: "head";
+      }
+    | {
+        /**
+         * @generated from field: yeying.api.llm.CompleteResponseBody body = 3;
+         */
+        value: CompleteResponseBody;
+        case: "body";
+      }
+    | {
+        /**
+         * @generated from field: yeying.api.llm.CompleteResponseTail tail = 4;
+         */
+        value: CompleteResponseTail;
+        case: "tail";
+      }
+    | { case: undefined; value?: undefined };
 };
 
 /**
@@ -323,23 +359,26 @@ export type CompleteResponseJson = {
  * Describes the message yeying.api.llm.CompleteResponse.
  * Use `create(CompleteResponseSchema)` to create a new message.
  */
-export const CompleteResponseSchema: GenMessage<CompleteResponse, CompleteResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 5);
+export const CompleteResponseSchema: GenMessage<
+  CompleteResponse,
+  CompleteResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 5);
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseHead
  */
-export type CompleteResponseHead = Message$1<"yeying.api.llm.CompleteResponseHead"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type CompleteResponseHead =
+  Message$1<"yeying.api.llm.CompleteResponseHead"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.CompleteResponseHeadBody body = 2;
-   */
-  body?: CompleteResponseHeadBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.CompleteResponseHeadBody body = 2;
+     */
+    body?: CompleteResponseHeadBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseHead
@@ -360,18 +399,21 @@ export type CompleteResponseHeadJson = {
  * Describes the message yeying.api.llm.CompleteResponseHead.
  * Use `create(CompleteResponseHeadSchema)` to create a new message.
  */
-export const CompleteResponseHeadSchema: GenMessage<CompleteResponseHead, CompleteResponseHeadJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 6);
+export const CompleteResponseHeadSchema: GenMessage<
+  CompleteResponseHead,
+  CompleteResponseHeadJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 6);
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseHeadBody
  */
-export type CompleteResponseHeadBody = Message$1<"yeying.api.llm.CompleteResponseHeadBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type CompleteResponseHeadBody =
+  Message$1<"yeying.api.llm.CompleteResponseHeadBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseHeadBody
@@ -387,18 +429,21 @@ export type CompleteResponseHeadBodyJson = {
  * Describes the message yeying.api.llm.CompleteResponseHeadBody.
  * Use `create(CompleteResponseHeadBodySchema)` to create a new message.
  */
-export const CompleteResponseHeadBodySchema: GenMessage<CompleteResponseHeadBody, CompleteResponseHeadBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 7);
+export const CompleteResponseHeadBodySchema: GenMessage<
+  CompleteResponseHeadBody,
+  CompleteResponseHeadBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 7);
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseBody
  */
-export type CompleteResponseBody = Message$1<"yeying.api.llm.CompleteResponseBody"> & {
-  /**
-   * @generated from field: string data = 1;
-   */
-  data: string;
-};
+export type CompleteResponseBody =
+  Message$1<"yeying.api.llm.CompleteResponseBody"> & {
+    /**
+     * @generated from field: string data = 1;
+     */
+    data: string;
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseBody
@@ -414,23 +459,26 @@ export type CompleteResponseBodyJson = {
  * Describes the message yeying.api.llm.CompleteResponseBody.
  * Use `create(CompleteResponseBodySchema)` to create a new message.
  */
-export const CompleteResponseBodySchema: GenMessage<CompleteResponseBody, CompleteResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 8);
+export const CompleteResponseBodySchema: GenMessage<
+  CompleteResponseBody,
+  CompleteResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 8);
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseTail
  */
-export type CompleteResponseTail = Message$1<"yeying.api.llm.CompleteResponseTail"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type CompleteResponseTail =
+  Message$1<"yeying.api.llm.CompleteResponseTail"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.CompleteResponseTailBody body = 2;
-   */
-  body?: CompleteResponseTailBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.CompleteResponseTailBody body = 2;
+     */
+    body?: CompleteResponseTailBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseTail
@@ -451,18 +499,21 @@ export type CompleteResponseTailJson = {
  * Describes the message yeying.api.llm.CompleteResponseTail.
  * Use `create(CompleteResponseTailSchema)` to create a new message.
  */
-export const CompleteResponseTailSchema: GenMessage<CompleteResponseTail, CompleteResponseTailJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 9);
+export const CompleteResponseTailSchema: GenMessage<
+  CompleteResponseTail,
+  CompleteResponseTailJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 9);
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseTailBody
  */
-export type CompleteResponseTailBody = Message$1<"yeying.api.llm.CompleteResponseTailBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type CompleteResponseTailBody =
+  Message$1<"yeying.api.llm.CompleteResponseTailBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.CompleteResponseTailBody
@@ -478,8 +529,10 @@ export type CompleteResponseTailBodyJson = {
  * Describes the message yeying.api.llm.CompleteResponseTailBody.
  * Use `create(CompleteResponseTailBodySchema)` to create a new message.
  */
-export const CompleteResponseTailBodySchema: GenMessage<CompleteResponseTailBody, CompleteResponseTailBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 10);
+export const CompleteResponseTailBodySchema: GenMessage<
+  CompleteResponseTailBody,
+  CompleteResponseTailBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 10);
 
 /**
  * @generated from message yeying.api.llm.GenerateRequest
@@ -515,53 +568,56 @@ export type GenerateRequestJson = {
  * Describes the message yeying.api.llm.GenerateRequest.
  * Use `create(GenerateRequestSchema)` to create a new message.
  */
-export const GenerateRequestSchema: GenMessage<GenerateRequest, GenerateRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 11);
+export const GenerateRequestSchema: GenMessage<
+  GenerateRequest,
+  GenerateRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 11);
 
 /**
  * @generated from message yeying.api.llm.GenerateRequestBody
  */
-export type GenerateRequestBody = Message$1<"yeying.api.llm.GenerateRequestBody"> & {
-  /**
-   * @generated from field: string llmId = 1;
-   */
-  llmId: string;
+export type GenerateRequestBody =
+  Message$1<"yeying.api.llm.GenerateRequestBody"> & {
+    /**
+     * @generated from field: string llmId = 1;
+     */
+    llmId: string;
 
-  /**
-   * @generated from field: string model = 2;
-   */
-  model: string;
+    /**
+     * @generated from field: string model = 2;
+     */
+    model: string;
 
-  /**
-   * @generated from field: string prompt = 3;
-   */
-  prompt: string;
+    /**
+     * @generated from field: string prompt = 3;
+     */
+    prompt: string;
 
-  /**
-   * @generated from field: yeying.api.common.ContentFormatEnum responseContentFormat = 4;
-   */
-  responseContentFormat: ContentFormatEnum;
+    /**
+     * @generated from field: yeying.api.common.ContentFormatEnum responseContentFormat = 4;
+     */
+    responseContentFormat: ContentFormatEnum;
 
-  /**
-   * @generated from field: int32 count = 5;
-   */
-  count: number;
+    /**
+     * @generated from field: int32 count = 5;
+     */
+    count: number;
 
-  /**
-   * @generated from field: string size = 6;
-   */
-  size: string;
+    /**
+     * @generated from field: string size = 6;
+     */
+    size: string;
 
-  /**
-   * @generated from field: string quality = 7;
-   */
-  quality: string;
+    /**
+     * @generated from field: string quality = 7;
+     */
+    quality: string;
 
-  /**
-   * @generated from field: string style = 8;
-   */
-  style: string;
-};
+    /**
+     * @generated from field: string style = 8;
+     */
+    style: string;
+  };
 
 /**
  * @generated from message yeying.api.llm.GenerateRequestBody
@@ -612,8 +668,10 @@ export type GenerateRequestBodyJson = {
  * Describes the message yeying.api.llm.GenerateRequestBody.
  * Use `create(GenerateRequestBodySchema)` to create a new message.
  */
-export const GenerateRequestBodySchema: GenMessage<GenerateRequestBody, GenerateRequestBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 12);
+export const GenerateRequestBodySchema: GenMessage<
+  GenerateRequestBody,
+  GenerateRequestBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 12);
 
 /**
  * @generated from message yeying.api.llm.GenerateResponse
@@ -622,25 +680,29 @@ export type GenerateResponse = Message$1<"yeying.api.llm.GenerateResponse"> & {
   /**
    * @generated from oneof yeying.api.llm.GenerateResponse.data
    */
-  data: {
-    /**
-     * @generated from field: yeying.api.llm.GenerateResponseHead head = 2;
-     */
-    value: GenerateResponseHead;
-    case: "head";
-  } | {
-    /**
-     * @generated from field: yeying.api.llm.GenerateResponseBody body = 3;
-     */
-    value: GenerateResponseBody;
-    case: "body";
-  } | {
-    /**
-     * @generated from field: yeying.api.llm.GenerateResponseTail tail = 4;
-     */
-    value: GenerateResponseTail;
-    case: "tail";
-  } | { case: undefined; value?: undefined };
+  data:
+    | {
+        /**
+         * @generated from field: yeying.api.llm.GenerateResponseHead head = 2;
+         */
+        value: GenerateResponseHead;
+        case: "head";
+      }
+    | {
+        /**
+         * @generated from field: yeying.api.llm.GenerateResponseBody body = 3;
+         */
+        value: GenerateResponseBody;
+        case: "body";
+      }
+    | {
+        /**
+         * @generated from field: yeying.api.llm.GenerateResponseTail tail = 4;
+         */
+        value: GenerateResponseTail;
+        case: "tail";
+      }
+    | { case: undefined; value?: undefined };
 };
 
 /**
@@ -667,23 +729,26 @@ export type GenerateResponseJson = {
  * Describes the message yeying.api.llm.GenerateResponse.
  * Use `create(GenerateResponseSchema)` to create a new message.
  */
-export const GenerateResponseSchema: GenMessage<GenerateResponse, GenerateResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 13);
+export const GenerateResponseSchema: GenMessage<
+  GenerateResponse,
+  GenerateResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 13);
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseHead
  */
-export type GenerateResponseHead = Message$1<"yeying.api.llm.GenerateResponseHead"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type GenerateResponseHead =
+  Message$1<"yeying.api.llm.GenerateResponseHead"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.GenerateResponseHeadBody body = 2;
-   */
-  body?: GenerateResponseHeadBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.GenerateResponseHeadBody body = 2;
+     */
+    body?: GenerateResponseHeadBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseHead
@@ -704,18 +769,21 @@ export type GenerateResponseHeadJson = {
  * Describes the message yeying.api.llm.GenerateResponseHead.
  * Use `create(GenerateResponseHeadSchema)` to create a new message.
  */
-export const GenerateResponseHeadSchema: GenMessage<GenerateResponseHead, GenerateResponseHeadJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 14);
+export const GenerateResponseHeadSchema: GenMessage<
+  GenerateResponseHead,
+  GenerateResponseHeadJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 14);
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseHeadBody
  */
-export type GenerateResponseHeadBody = Message$1<"yeying.api.llm.GenerateResponseHeadBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type GenerateResponseHeadBody =
+  Message$1<"yeying.api.llm.GenerateResponseHeadBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseHeadBody
@@ -731,20 +799,23 @@ export type GenerateResponseHeadBodyJson = {
  * Describes the message yeying.api.llm.GenerateResponseHeadBody.
  * Use `create(GenerateResponseHeadBodySchema)` to create a new message.
  */
-export const GenerateResponseHeadBodySchema: GenMessage<GenerateResponseHeadBody, GenerateResponseHeadBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 15);
+export const GenerateResponseHeadBodySchema: GenMessage<
+  GenerateResponseHeadBody,
+  GenerateResponseHeadBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 15);
 
 /**
  * 根据请求时要求返回的格式确定具体内容，可能是base64编码，也可能是一个地址
  *
  * @generated from message yeying.api.llm.GenerateResponseBody
  */
-export type GenerateResponseBody = Message$1<"yeying.api.llm.GenerateResponseBody"> & {
-  /**
-   * @generated from field: string data = 1;
-   */
-  data: string;
-};
+export type GenerateResponseBody =
+  Message$1<"yeying.api.llm.GenerateResponseBody"> & {
+    /**
+     * @generated from field: string data = 1;
+     */
+    data: string;
+  };
 
 /**
  * 根据请求时要求返回的格式确定具体内容，可能是base64编码，也可能是一个地址
@@ -762,23 +833,26 @@ export type GenerateResponseBodyJson = {
  * Describes the message yeying.api.llm.GenerateResponseBody.
  * Use `create(GenerateResponseBodySchema)` to create a new message.
  */
-export const GenerateResponseBodySchema: GenMessage<GenerateResponseBody, GenerateResponseBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 16);
+export const GenerateResponseBodySchema: GenMessage<
+  GenerateResponseBody,
+  GenerateResponseBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 16);
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseTail
  */
-export type GenerateResponseTail = Message$1<"yeying.api.llm.GenerateResponseTail"> & {
-  /**
-   * @generated from field: yeying.api.common.MessageHeader header = 1;
-   */
-  header?: MessageHeader;
+export type GenerateResponseTail =
+  Message$1<"yeying.api.llm.GenerateResponseTail"> & {
+    /**
+     * @generated from field: yeying.api.common.MessageHeader header = 1;
+     */
+    header?: MessageHeader;
 
-  /**
-   * @generated from field: yeying.api.llm.GenerateResponseTailBody body = 2;
-   */
-  body?: GenerateResponseTailBody;
-};
+    /**
+     * @generated from field: yeying.api.llm.GenerateResponseTailBody body = 2;
+     */
+    body?: GenerateResponseTailBody;
+  };
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseTail
@@ -799,18 +873,21 @@ export type GenerateResponseTailJson = {
  * Describes the message yeying.api.llm.GenerateResponseTail.
  * Use `create(GenerateResponseTailSchema)` to create a new message.
  */
-export const GenerateResponseTailSchema: GenMessage<GenerateResponseTail, GenerateResponseTailJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 17);
+export const GenerateResponseTailSchema: GenMessage<
+  GenerateResponseTail,
+  GenerateResponseTailJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 17);
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseTailBody
  */
-export type GenerateResponseTailBody = Message$1<"yeying.api.llm.GenerateResponseTailBody"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type GenerateResponseTailBody =
+  Message$1<"yeying.api.llm.GenerateResponseTailBody"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.GenerateResponseTailBody
@@ -826,8 +903,10 @@ export type GenerateResponseTailBodyJson = {
  * Describes the message yeying.api.llm.GenerateResponseTailBody.
  * Use `create(GenerateResponseTailBodySchema)` to create a new message.
  */
-export const GenerateResponseTailBodySchema: GenMessage<GenerateResponseTailBody, GenerateResponseTailBodyJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 18);
+export const GenerateResponseTailBodySchema: GenMessage<
+  GenerateResponseTailBody,
+  GenerateResponseTailBodyJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 18);
 
 /**
  * @generated from message yeying.api.llm.TextPrompt
@@ -853,7 +932,8 @@ export type TextPromptJson = {
  * Describes the message yeying.api.llm.TextPrompt.
  * Use `create(TextPromptSchema)` to create a new message.
  */
-export const TextPromptSchema: GenMessage<TextPrompt, TextPromptJson> = /*@__PURE__*/
+export const TextPromptSchema: GenMessage<TextPrompt, TextPromptJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 19);
 
 /**
@@ -900,7 +980,8 @@ export type ImagePromptJson = {
  * Describes the message yeying.api.llm.ImagePrompt.
  * Use `create(ImagePromptSchema)` to create a new message.
  */
-export const ImagePromptSchema: GenMessage<ImagePrompt, ImagePromptJson> = /*@__PURE__*/
+export const ImagePromptSchema: GenMessage<ImagePrompt, ImagePromptJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 20);
 
 /**
@@ -967,7 +1048,8 @@ export type ImageResultJson = {
  * Describes the message yeying.api.llm.ImageResult.
  * Use `create(ImageResultSchema)` to create a new message.
  */
-export const ImageResultSchema: GenMessage<ImageResult, ImageResultJson> = /*@__PURE__*/
+export const ImageResultSchema: GenMessage<ImageResult, ImageResultJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 21);
 
 /**
@@ -1002,30 +1084,35 @@ export type EditRequest = Message$1<"yeying.api.llm.EditRequest"> & {
   /**
    * @generated from oneof yeying.api.llm.EditRequest.prompt
    */
-  prompt: {
-    /**
-     * @generated from field: yeying.api.llm.TextPrompt textPrompt = 7;
-     */
-    value: TextPrompt;
-    case: "textPrompt";
-  } | {
-    /**
-     * @generated from field: yeying.api.llm.ImagePrompt imagePrompt = 8;
-     */
-    value: ImagePrompt;
-    case: "imagePrompt";
-  } | { case: undefined; value?: undefined };
+  prompt:
+    | {
+        /**
+         * @generated from field: yeying.api.llm.TextPrompt textPrompt = 7;
+         */
+        value: TextPrompt;
+        case: "textPrompt";
+      }
+    | {
+        /**
+         * @generated from field: yeying.api.llm.ImagePrompt imagePrompt = 8;
+         */
+        value: ImagePrompt;
+        case: "imagePrompt";
+      }
+    | { case: undefined; value?: undefined };
 
   /**
    * @generated from oneof yeying.api.llm.EditRequest.result
    */
-  result: {
-    /**
-     * @generated from field: yeying.api.llm.ImageResult imageResult = 9;
-     */
-    value: ImageResult;
-    case: "imageResult";
-  } | { case: undefined; value?: undefined };
+  result:
+    | {
+        /**
+         * @generated from field: yeying.api.llm.ImageResult imageResult = 9;
+         */
+        value: ImageResult;
+        case: "imageResult";
+      }
+    | { case: undefined; value?: undefined };
 };
 
 /**
@@ -1077,7 +1164,8 @@ export type EditRequestJson = {
  * Describes the message yeying.api.llm.EditRequest.
  * Use `create(EditRequestSchema)` to create a new message.
  */
-export const EditRequestSchema: GenMessage<EditRequest, EditRequestJson> = /*@__PURE__*/
+export const EditRequestSchema: GenMessage<EditRequest, EditRequestJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 22);
 
 /**
@@ -1092,19 +1180,22 @@ export type EditResponse = Message$1<"yeying.api.llm.EditResponse"> & {
   /**
    * @generated from oneof yeying.api.llm.EditResponse.data
    */
-  data: {
-    /**
-     * @generated from field: string base64 = 2;
-     */
-    value: string;
-    case: "base64";
-  } | {
-    /**
-     * @generated from field: bytes bytes = 3;
-     */
-    value: Uint8Array;
-    case: "bytes";
-  } | { case: undefined; value?: undefined };
+  data:
+    | {
+        /**
+         * @generated from field: string base64 = 2;
+         */
+        value: string;
+        case: "base64";
+      }
+    | {
+        /**
+         * @generated from field: bytes bytes = 3;
+         */
+        value: Uint8Array;
+        case: "bytes";
+      }
+    | { case: undefined; value?: undefined };
 };
 
 /**
@@ -1131,7 +1222,8 @@ export type EditResponseJson = {
  * Describes the message yeying.api.llm.EditResponse.
  * Use `create(EditResponseSchema)` to create a new message.
  */
-export const EditResponseSchema: GenMessage<EditResponse, EditResponseJson> = /*@__PURE__*/
+export const EditResponseSchema: GenMessage<EditResponse, EditResponseJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 23);
 
 /**
@@ -1178,18 +1270,21 @@ export type TranslateRequestJson = {
  * Describes the message yeying.api.llm.TranslateRequest.
  * Use `create(TranslateRequestSchema)` to create a new message.
  */
-export const TranslateRequestSchema: GenMessage<TranslateRequest, TranslateRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 24);
+export const TranslateRequestSchema: GenMessage<
+  TranslateRequest,
+  TranslateRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 24);
 
 /**
  * @generated from message yeying.api.llm.TranslateResponse
  */
-export type TranslateResponse = Message$1<"yeying.api.llm.TranslateResponse"> & {
-  /**
-   * @generated from field: yeying.api.common.ResponseStatus status = 1;
-   */
-  status?: ResponseStatus;
-};
+export type TranslateResponse =
+  Message$1<"yeying.api.llm.TranslateResponse"> & {
+    /**
+     * @generated from field: yeying.api.common.ResponseStatus status = 1;
+     */
+    status?: ResponseStatus;
+  };
 
 /**
  * @generated from message yeying.api.llm.TranslateResponse
@@ -1205,8 +1300,10 @@ export type TranslateResponseJson = {
  * Describes the message yeying.api.llm.TranslateResponse.
  * Use `create(TranslateResponseSchema)` to create a new message.
  */
-export const TranslateResponseSchema: GenMessage<TranslateResponse, TranslateResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 25);
+export const TranslateResponseSchema: GenMessage<
+  TranslateResponse,
+  TranslateResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 25);
 
 /**
  * @generated from message yeying.api.llm.ConvertRequest
@@ -1252,8 +1349,10 @@ export type ConvertRequestJson = {
  * Describes the message yeying.api.llm.ConvertRequest.
  * Use `create(ConvertRequestSchema)` to create a new message.
  */
-export const ConvertRequestSchema: GenMessage<ConvertRequest, ConvertRequestJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 26);
+export const ConvertRequestSchema: GenMessage<
+  ConvertRequest,
+  ConvertRequestJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 26);
 
 /**
  * @generated from message yeying.api.llm.ConvertResponse
@@ -1279,8 +1378,10 @@ export type ConvertResponseJson = {
  * Describes the message yeying.api.llm.ConvertResponse.
  * Use `create(ConvertResponseSchema)` to create a new message.
  */
-export const ConvertResponseSchema: GenMessage<ConvertResponse, ConvertResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 27);
+export const ConvertResponseSchema: GenMessage<
+  ConvertResponse,
+  ConvertResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 27);
 
 /**
  * @generated from message yeying.api.llm.Choice
@@ -1336,46 +1437,46 @@ export type ChoiceJson = {
  * Describes the message yeying.api.llm.Choice.
  * Use `create(ChoiceSchema)` to create a new message.
  */
-export const ChoiceSchema: GenMessage<Choice, ChoiceJson> = /*@__PURE__*/
+export const ChoiceSchema: GenMessage<Choice, ChoiceJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 28);
 
 /**
  * @generated from message yeying.api.llm.SpeechRequest
  */
-export type SpeechRequest = Message$1<"yeying.api.llm.SpeechRequest"> & {
-};
+export type SpeechRequest = Message$1<"yeying.api.llm.SpeechRequest"> & {};
 
 /**
  * @generated from message yeying.api.llm.SpeechRequest
  */
-export type SpeechRequestJson = {
-};
+export type SpeechRequestJson = {};
 
 /**
  * Describes the message yeying.api.llm.SpeechRequest.
  * Use `create(SpeechRequestSchema)` to create a new message.
  */
-export const SpeechRequestSchema: GenMessage<SpeechRequest, SpeechRequestJson> = /*@__PURE__*/
+export const SpeechRequestSchema: GenMessage<SpeechRequest, SpeechRequestJson> =
+  /*@__PURE__*/
   messageDesc(file_yeying_api_llm_llm, 29);
 
 /**
  * @generated from message yeying.api.llm.SpeechResponse
  */
-export type SpeechResponse = Message$1<"yeying.api.llm.SpeechResponse"> & {
-};
+export type SpeechResponse = Message$1<"yeying.api.llm.SpeechResponse"> & {};
 
 /**
  * @generated from message yeying.api.llm.SpeechResponse
  */
-export type SpeechResponseJson = {
-};
+export type SpeechResponseJson = {};
 
 /**
  * Describes the message yeying.api.llm.SpeechResponse.
  * Use `create(SpeechResponseSchema)` to create a new message.
  */
-export const SpeechResponseSchema: GenMessage<SpeechResponse, SpeechResponseJson> = /*@__PURE__*/
-  messageDesc(file_yeying_api_llm_llm, 30);
+export const SpeechResponseSchema: GenMessage<
+  SpeechResponse,
+  SpeechResponseJson
+> = /*@__PURE__*/ messageDesc(file_yeying_api_llm_llm, 30);
 
 /**
  * 消息角色，在大模型进行推理时，涉及到多个系统组件的配合，有设定场景的，有理解意图的，有给出答案的等等。
@@ -1417,13 +1518,19 @@ export enum MessageRoleEnum {
  *
  * @generated from enum yeying.api.llm.MessageRoleEnum
  */
-export type MessageRoleEnumJson = "MESSAGE_ROLE_UNKNOWN" | "MESSAGE_ROLE_ASSISTANT" | "MESSAGE_ROLE_USER" | "MESSAGE_ROLE_SYSTEM";
+export type MessageRoleEnumJson =
+  | "MESSAGE_ROLE_UNKNOWN"
+  | "MESSAGE_ROLE_ASSISTANT"
+  | "MESSAGE_ROLE_USER"
+  | "MESSAGE_ROLE_SYSTEM";
 
 /**
  * Describes the enum yeying.api.llm.MessageRoleEnum.
  */
-export const MessageRoleEnumSchema: GenEnum<MessageRoleEnum, MessageRoleEnumJson> = /*@__PURE__*/
-  enumDesc(file_yeying_api_llm_llm, 0);
+export const MessageRoleEnumSchema: GenEnum<
+  MessageRoleEnum,
+  MessageRoleEnumJson
+> = /*@__PURE__*/ enumDesc(file_yeying_api_llm_llm, 0);
 
 /**
  * @generated from enum yeying.api.llm.ContentTypeEnum
@@ -1463,13 +1570,21 @@ export enum ContentTypeEnum {
 /**
  * @generated from enum yeying.api.llm.ContentTypeEnum
  */
-export type ContentTypeEnumJson = "CONTENT_TYPE_UNKNOWN" | "CONTENT_TYPE_TEXT" | "CONTENT_TYPE_IMAGE" | "CONTENT_TYPE_AUDIO" | "CONTENT_TYPE_VIDEO" | "CONTENT_TYPE_DOCUMENT";
+export type ContentTypeEnumJson =
+  | "CONTENT_TYPE_UNKNOWN"
+  | "CONTENT_TYPE_TEXT"
+  | "CONTENT_TYPE_IMAGE"
+  | "CONTENT_TYPE_AUDIO"
+  | "CONTENT_TYPE_VIDEO"
+  | "CONTENT_TYPE_DOCUMENT";
 
 /**
  * Describes the enum yeying.api.llm.ContentTypeEnum.
  */
-export const ContentTypeEnumSchema: GenEnum<ContentTypeEnum, ContentTypeEnumJson> = /*@__PURE__*/
-  enumDesc(file_yeying_api_llm_llm, 1);
+export const ContentTypeEnumSchema: GenEnum<
+  ContentTypeEnum,
+  ContentTypeEnumJson
+> = /*@__PURE__*/ enumDesc(file_yeying_api_llm_llm, 1);
 
 /**
  * @generated from service yeying.api.llm.Llm
@@ -1484,7 +1599,7 @@ export const Llm: GenService<{
     methodKind: "unary";
     input: typeof TranslateRequestSchema;
     output: typeof TranslateResponseSchema;
-  },
+  };
   /**
    * 内容补全
    *
@@ -1494,7 +1609,7 @@ export const Llm: GenService<{
     methodKind: "server_streaming";
     input: typeof CompleteRequestSchema;
     output: typeof CompleteResponseSchema;
-  },
+  };
   /**
    * 编辑图片
    *
@@ -1504,7 +1619,7 @@ export const Llm: GenService<{
     methodKind: "server_streaming";
     input: typeof EditRequestSchema;
     output: typeof EditResponseSchema;
-  },
+  };
   /**
    * 文本生成图片
    *
@@ -1514,7 +1629,7 @@ export const Llm: GenService<{
     methodKind: "server_streaming";
     input: typeof GenerateRequestSchema;
     output: typeof GenerateResponseSchema;
-  },
+  };
   /**
    * 文本生语音
    *
@@ -1524,7 +1639,5 @@ export const Llm: GenService<{
     methodKind: "unary";
     input: typeof SpeechRequestSchema;
     output: typeof SpeechResponseSchema;
-  },
-}> = /*@__PURE__*/
-  serviceDesc(file_yeying_api_llm_llm, 0);
-
+  };
+}> = /*@__PURE__*/ serviceDesc(file_yeying_api_llm_llm, 0);

@@ -1,5 +1,5 @@
 import {ApplicationProvider} from '../../../src/client/application/application.js'
-import {LanguageCodeEnum, ProviderOption, SearchCondition, ServiceCodeEnum, UserProvider} from "../../../src";
+import {LanguageCodeEnum, ProviderOption, SearchCondition, SearchConditionJson, ServiceCodeEnum, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
@@ -129,7 +129,7 @@ describe('Application', () => {
 
   it('search', async () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    const res = await applicationProvider.search(1, 10, {keyword: "et"} as SearchCondition)
+    const res = await applicationProvider.search(1, 10, {keyword: "et"})
     console.log(`res=${JSON.stringify(res)}`)
     console.log(`Success to search application with count=${res.body?.applications.length}`)
     const len = res.body?.applications?.length

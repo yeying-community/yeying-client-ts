@@ -32,6 +32,7 @@ import {
   DeleteServiceRequestSchema,
   DeleteServiceRequestBodySchema,
   DetailServiceResponseBodySchema,
+  SearchServiceConditionJson,
 } from "../../yeying/api/service/service_pb";
 import { Client, createClient } from "@connectrpc/connect";
 import { createGrpcWebTransport } from "@connectrpc/connect-web";
@@ -39,7 +40,7 @@ import {
   MessageHeader,
   RequestPageSchema,
 } from "../../yeying/api/common/message_pb";
-import { create, toBinary, toJson } from "@bufbuild/protobuf";
+import { create, fromJson, toBinary, toJson } from "@bufbuild/protobuf";
 import {
   ServiceMetadata,
   ServiceMetadataSchema,
@@ -130,7 +131,7 @@ export class ServiceProvider {
     return new Promise<DetailServiceResponse>(async (resolve, reject) => {
       const body = create(DetailServiceRequestBodySchema, {
         did: did,
-        version: version
+        version: version,
       });
 
       let header: MessageHeader;
@@ -149,11 +150,11 @@ export class ServiceProvider {
       });
       try {
         const res = await this.client.detail(request);
-        console.log(`res=${JSON.stringify(res)}`)
+        console.log(`res=${JSON.stringify(res)}`);
         await this.authenticate.doResponse(
           res,
           DetailServiceResponseBodySchema,
-          isDeleted
+          isDeleted,
         );
         resolve(res as DetailServiceResponse);
       } catch (err) {
@@ -180,11 +181,11 @@ export class ServiceProvider {
   search(
     page: number,
     pageSize: number,
-    condition?: SearchServiceCondition
+    condition?: SearchServiceConditionJson,
   ) {
     return new Promise<SearchServiceResponse>(async (resolve, reject) => {
       const body = create(SearchServiceRequestBodySchema, {
-        condition: condition,
+        condition: fromJson(SearchServiceConditionSchema, condition ?? {}),
         page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
       });
 
