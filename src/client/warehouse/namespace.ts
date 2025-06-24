@@ -13,7 +13,7 @@ import {
     Namespace,
     NamespaceDetailRequestBodySchema,
     NamespaceDetailRequestSchema,
-    NamespaceDetailResponseBody,
+    NamespaceDetailResponseBody, NamespaceDetailResponseBodySchema,
     NamespaceMetadata,
     NamespaceMetadataSchema,
     SearchNamespaceCondition,
@@ -161,7 +161,7 @@ export class NamespaceProvider {
 
             try {
                 const res = await this.client.detail(request)
-                await this.authenticate.doResponse(res, SearchNamespaceResponseBodySchema)
+                await this.authenticate.doResponse(res, NamespaceDetailResponseBodySchema)
                 const resBody = res.body as NamespaceDetailResponseBody
                 await verifyNamespaceMetadata(resBody.namespace)
                 resolve(resBody.namespace as NamespaceMetadata)
