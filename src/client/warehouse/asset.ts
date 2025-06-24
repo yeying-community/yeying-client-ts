@@ -10,7 +10,6 @@ import {
     DeleteAssetRequestBodySchema,
     DeleteAssetRequestSchema,
     DeleteAssetResponseBodySchema,
-    SearchAssetCondition,
     SearchAssetConditionJson,
     SearchAssetConditionSchema,
     SearchAssetRequestBodySchema,
@@ -79,7 +78,7 @@ export class AssetProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    search(page: number, pageSize: number, condition: SearchAssetConditionJson) {
+    search(page: number, pageSize: number, condition?: SearchAssetConditionJson) {
         return new Promise<AssetMetadata[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
