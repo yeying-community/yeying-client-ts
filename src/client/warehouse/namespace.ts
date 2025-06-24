@@ -7,7 +7,13 @@ import {
     CreateNamespaceRequestBodySchema,
     CreateNamespaceRequestSchema,
     CreateNamespaceResponseBodySchema,
+    DeleteNamespaceRequestBodySchema,
+    DeleteNamespaceRequestSchema,
+    DeleteNamespaceResponseBodySchema,
     Namespace,
+    NamespaceDetailRequestBodySchema,
+    NamespaceDetailRequestSchema,
+    NamespaceDetailResponseBody, NamespaceDetailResponseBodySchema,
     NamespaceMetadata,
     NamespaceMetadataSchema,
     SearchNamespaceCondition,
@@ -84,10 +90,7 @@ export class NamespaceProvider {
      * @returns 当前页面的命名空间列表
      *
      * @throws ServiceUnavailable 服务不可用
-     * @example
-     * ```ts
-     * const data = await namespaceProvider.get('someHash');
-     * console.log(data); // 输出区块数据
+     *
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchNamespaceConditionJson) {
@@ -126,6 +129,80 @@ export class NamespaceProvider {
                 resolve(namespaces)
             } catch (err) {
                 console.error('Fail to search namespace', err)
+                return reject(err)
+            }
+        })
+    }
+
+    /**
+     * 获取命名空间详情
+     *
+     * @param uid 命名空间唯一id
+     *
+     * @returns 命名空间元数据
+
+     * @throws ServiceUnavailable 服务不可用
+     */
+    detail(uid: string) {
+        return new Promise<NamespaceMetadata>(async (resolve, reject) => {
+            const body = create(NamespaceDetailRequestBodySchema, { uid: uid })
+            let header
+            try {
+                header = await this.authenticate.createHeader(toBinary(NamespaceDetailRequestBodySchema, body))
+            } catch (err) {
+                console.error(`Fail to create header when getting namespace detail, uid=${uid}`, err)
+                return reject(err)
+            }
+
+            const request = create(NamespaceDetailRequestSchema, {
+                header: header,
+                body: body
+            })
+
+            try {
+                const res = await this.client.detail(request)
+                await this.authenticate.doResponse(res, NamespaceDetailResponseBodySchema)
+                const resBody = res.body as NamespaceDetailResponseBody
+                await verifyNamespaceMetadata(resBody.namespace)
+                resolve(resBody.namespace as NamespaceMetadata)
+            } catch (err) {
+                console.error('Fail to get namespace detail', err)
+                return reject(err)
+            }
+        })
+    }
+
+    /**
+     * 删除命名空间
+     *
+     * @param uid 命名空间唯一id
+     *
+     * @returns
+
+     * @throws ServiceUnavailable 服务不可用
+     */
+    delete(uid: string) {
+        return new Promise<void>(async (resolve, reject) => {
+            const body = create(DeleteNamespaceRequestBodySchema, { uid: uid })
+            let header
+            try {
+                header = await this.authenticate.createHeader(toBinary(DeleteNamespaceRequestBodySchema, body))
+            } catch (err) {
+                console.error(`Fail to create header when deleting namespace, uid=${uid}`, err)
+                return reject(err)
+            }
+
+            const request = create(DeleteNamespaceRequestSchema, {
+                header: header,
+                body: body
+            })
+
+            try {
+                const res = await this.client.delete(request)
+                await this.authenticate.doResponse(res, DeleteNamespaceResponseBodySchema)
+                resolve()
+            } catch (err) {
+                console.error('Fail to delete namespace', err)
                 return reject(err)
             }
         })
