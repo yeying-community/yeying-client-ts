@@ -38,9 +38,9 @@ import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
 import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
-import { ServiceMetadata, ServiceMetadataSchema } from '../../yeying/api/common/model_pb'
+import { ServiceMetadata, ServiceMetadataJson, ServiceMetadataSchema } from '../../yeying/api/common/model_pb'
 import { isDeleted, isExisted } from '../../common/status'
-import { verifyServiceMetadata } from '../model/model'
+import { signServiceMetadata, verifyServiceMetadata } from '../model/model'
 
 /**
  * 提供服务管理功能的类，支持创建、详情、上线、搜索和下线、删除服务。
@@ -81,14 +81,15 @@ export class ServiceProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    create(service: ServiceMetadata) {
+    create(service: ServiceMetadataJson) {
         return new Promise<CreateServiceResponse>(async (resolve, reject) => {
             const body = create(CreateServiceRequestBodySchema, {
-                service: service
+                service: fromJson(ServiceMetadataSchema, service?? {})
             })
 
             let header: MessageHeader
             try {
+                await signServiceMetadata(this.authenticate, fromJson(ServiceMetadataSchema, service?? {}))
                 header = await this.authenticate.createHeader(toBinary(CreateServiceRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for create service.', err)
