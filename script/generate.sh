@@ -8,13 +8,13 @@ current_directory=$(
 
 usage() {
   printf "Usage: %s\n \
-    -d <You can specify the directory of yeying-idl, default third_party/yeying-idl\n \
+    -d <You can specify the directory of yeying-idl, default ../yeying-idl\n \
     " "${base_name}"
 }
 
 cd "${current_directory}"/.. || exit 1
 runtime_directory=$(pwd)
-idl_dir=${runtime_directory}/third_party/yeying-idl
+idl_dir=${runtime_directory}/../yeying-idl
 
 # For macos`s getopt, reference: https://formulae.brew.sh/formula/gnu-getopt
 while getopts ":d:" o; do
