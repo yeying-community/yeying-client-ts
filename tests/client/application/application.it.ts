@@ -1,5 +1,5 @@
 import {ApplicationProvider} from '../../../src/client/application/application.js'
-import {LanguageCodeEnum, ProviderOption, SearchCondition, SearchConditionJson, ServiceCodeEnum, UserProvider} from "../../../src";
+import {ApplicationCodeEnum, ApplicationCodeEnumSchema, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, ServiceCodeEnumSchema, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
@@ -10,6 +10,7 @@ import {
 import {ApplicationMetadata} from "../../../src/yeying/api/common/model_pb";
 import {getProviderProxy} from "../common/common";
 import {convertApplicationMetadataFromIdentity} from "../../../src/model/model";
+import { enumToJson } from '@bufbuild/protobuf';
 
 let providerOption: ProviderOption | undefined
 
@@ -61,7 +62,23 @@ describe('Application', () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    const res = await applicationProvider.create(applicationMetadata as ApplicationMetadata)
+    const res = await applicationProvider.create({
+      owner: applicationMetadata?.owner,
+      network: applicationMetadata?.network,
+      address: applicationMetadata?.address,
+      did: applicationMetadata?.did,
+      version: applicationMetadata?.version,
+      hash: applicationMetadata?.hash,
+      name: applicationMetadata?.name,
+      code: enumToJson(ApplicationCodeEnumSchema, applicationMetadata ? applicationMetadata?.code: ApplicationCodeEnum.APPLICATION_CODE_UNKNOWN),
+      description: applicationMetadata?.description,
+      location: applicationMetadata?.location,
+      serviceCodes: applicationMetadata?.serviceCodes.map(item => enumToJson(ServiceCodeEnumSchema, item)),
+      avatar: applicationMetadata?.avatar,
+      createdAt: applicationMetadata?.createdAt,
+      updatedAt: applicationMetadata?.updatedAt,
+      signature: applicationMetadata?.signature,
+      codePackagePath: applicationMetadata?.codePackagePath})
     console.log(`Success to create application=${res.body?.application?.did}`)
     mockDid = res.body?.application?.did
     mockVersion = res.body?.application?.version

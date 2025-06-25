@@ -1,9 +1,9 @@
 import {getProviderProxy} from "../common/common";
 import {ProviderOption} from "../../../src/client/common/model";
-import {LanguageCodeEnum, ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
+import {ApiCodeEnum, ApiCodeEnumSchema, LanguageCodeEnum, ServiceCodeEnum, ServiceCodeEnumSchema} from "../../../src/yeying/api/common/code_pb";
 import {ServiceProvider} from "../../../src/client/service/service";
 import {UserProvider} from "../../../src/client/user/user";
-import {toJson} from "@bufbuild/protobuf";
+import {enumToJson, toJson} from "@bufbuild/protobuf";
 import {
     createIdentity, decryptBlockAddress,
     IdentityCodeEnum,
@@ -65,7 +65,25 @@ let mockVersion: number = 0
 describe('Service', () => {
     it('create', async () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const res = await serviceProvider.create(serviceMetadata as ServiceMetadata)
+        const res = await serviceProvider.create({
+              owner: serviceMetadata?.owner,
+              network: serviceMetadata?.network,
+              address: serviceMetadata?.address,
+              did: serviceMetadata?.did,
+              version: serviceMetadata?.version,
+              name: serviceMetadata?.name,
+              description: serviceMetadata?.description,
+              code: enumToJson(ServiceCodeEnumSchema, serviceMetadata ? serviceMetadata?.code: ServiceCodeEnum.SERVICE_CODE_UNKNOWN),
+              apiCodes: serviceMetadata?.apiCodes.map(item => enumToJson(ApiCodeEnumSchema, item)),
+              proxy: serviceMetadata?.proxy,
+              grpc: serviceMetadata?.grpc,
+              avatar: serviceMetadata?.avatar,
+              createdAt: serviceMetadata?.createdAt,
+              updatedAt: serviceMetadata?.updatedAt,
+              signature: serviceMetadata?.signature,
+              codePackagePath: serviceMetadata?.codePackagePath
+              }
+        )
         const service = res.body?.service
         assert.isDefined(service)
         mockDId = service.did
