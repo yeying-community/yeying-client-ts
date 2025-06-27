@@ -1,5 +1,5 @@
 import {AuditProvider} from '../../../src/client/audit/audit.js'
-import {AuditMetadata, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
+import {AuditMetadata, AuditStatus, AuditStatusSchema, AuditTypeEnum, AuditTypeEnumSchema, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
@@ -9,6 +9,8 @@ import {
 } from "@yeying-community/yeying-web3";
 import {getProviderProxy} from "../common/common";
 import {convertAuditMetadataFrom, passedStatus, rejectStatus} from "../../../src/model/audit.js";
+import { enumToJson } from '@bufbuild/protobuf';
+import { convertAuditStatusToJson } from '../../../src/client/model/model.js';
 
 let providerOption: ProviderOption | undefined
 
@@ -67,7 +69,19 @@ describe('Audit', () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    const res = await auditProvider.create(auditMetadata as AuditMetadata)
+    const res = await auditProvider.create({
+        uid: auditMetadata?.uid,
+        appName: auditMetadata?.appName,
+        sourceDid: auditMetadata?.sourceDid,
+        sourceName: auditMetadata?.sourceName,
+        targetDid: auditMetadata?.targetDid,
+        targetName: auditMetadata?.targetName,
+        reason: auditMetadata?.reason,
+        status: convertAuditStatusToJson(auditMetadata?.status),
+        createdAt: auditMetadata?.createdAt,
+        updatedAt: auditMetadata?.updatedAt,
+        type: enumToJson(AuditTypeEnumSchema, auditMetadata ? auditMetadata.type : AuditTypeEnum.AUDIT_TYPE_UNKNOWN)
+    })
     console.log(`Success to create audit=${JSON.stringify(res)}`)
     uid = res.body?.meta?.uid
   })
