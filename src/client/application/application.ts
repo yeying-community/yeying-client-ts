@@ -46,7 +46,7 @@ import {
     SearchApplicationConditionSchema
 } from '../../yeying/api/application/application_pb'
 import { NetworkUnavailable } from '../../common/error'
-import { ApplicationMetadata, ApplicationMetadataSchema } from '../../yeying/api/common/model_pb'
+import { ApplicationMetadata, ApplicationMetadataJson, ApplicationMetadataSchema } from '../../yeying/api/common/model_pb'
 import { signApplicationMetadata, verifyApplicationMetadata } from '../model/model'
 import { isDeleted, isExisted } from '../../common/status'
 import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
@@ -90,15 +90,17 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      *
      */
-    create(application: ApplicationMetadata) {
+    create(application: ApplicationMetadataJson) {
         return new Promise<CreateApplicationResponse>(async (resolve, reject) => {
+            const meta: ApplicationMetadata = fromJson(ApplicationMetadataSchema, application?? {})
             const body = create(CreateApplicationRequestBodySchema, {
-                application: application
+                application: meta
             })
 
             let header: MessageHeader
+
             try {
-                await signApplicationMetadata(this.authenticate, application)
+                await signApplicationMetadata(this.authenticate, meta)
                 header = await this.authenticate.createHeader(toBinary(CreateApplicationRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for creating application.', err)
