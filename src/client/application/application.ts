@@ -92,13 +92,15 @@ export class ApplicationProvider {
      */
     create(application: ApplicationMetadataJson) {
         return new Promise<CreateApplicationResponse>(async (resolve, reject) => {
+            const meta: ApplicationMetadata = fromJson(ApplicationMetadataSchema, application?? {})
             const body = create(CreateApplicationRequestBodySchema, {
-                application: fromJson(ApplicationMetadataSchema, application?? {})
+                application: meta
             })
 
             let header: MessageHeader
+
             try {
-                await signApplicationMetadata(this.authenticate, fromJson(ApplicationMetadataSchema, application?? {}))
+                await signApplicationMetadata(this.authenticate, meta)
                 header = await this.authenticate.createHeader(toBinary(CreateApplicationRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for creating application.', err)

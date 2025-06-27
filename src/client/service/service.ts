@@ -83,13 +83,14 @@ export class ServiceProvider {
      */
     create(service: ServiceMetadataJson) {
         return new Promise<CreateServiceResponse>(async (resolve, reject) => {
+            const meta: ServiceMetadata = fromJson(ServiceMetadataSchema, service?? {})
             const body = create(CreateServiceRequestBodySchema, {
-                service: fromJson(ServiceMetadataSchema, service?? {})
+                service: meta
             })
 
             let header: MessageHeader
             try {
-                await signServiceMetadata(this.authenticate, fromJson(ServiceMetadataSchema, service?? {}))
+                await signServiceMetadata(this.authenticate, meta)
                 header = await this.authenticate.createHeader(toBinary(CreateServiceRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for create service.', err)
