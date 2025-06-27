@@ -13,6 +13,8 @@ import {
     AuditListResponseBody,
     AuditListResponseBodySchema,
     AuditMetadata,
+    AuditMetadataJson,
+    AuditMetadataSchema,
     AuditRequestBodySchema,
     AuditRequestSchema,
     AuditResponse,
@@ -90,10 +92,11 @@ export class AuditProvider {
      * @throws  NetworkUnavailable
      *
      */
-    create(meta: AuditMetadata) {
+    create(meta: AuditMetadataJson) {
         return new Promise<CreateResponse>(async (resolve, reject) => {
+            const metadata = fromJson(AuditMetadataSchema, meta ?? {})
             const body = create(CreateRequestBodySchema, {
-                meta: meta
+                meta: metadata
             })
 
             let header: MessageHeader
