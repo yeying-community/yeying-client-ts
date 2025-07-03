@@ -13,7 +13,7 @@ import {
 } from '@yeying-community/yeying-web3'
 import { getDigitalFormatByName } from '../../common/common'
 import { AssetMetadata, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
-import { create } from '@bufbuild/protobuf'
+import { create, toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'
 import { AssetProvider } from './asset'
 import { ConfigProvider } from '../config/config'
@@ -167,7 +167,7 @@ export class Uploader {
                 asset.chunks = chunkList // 资产块的元数据
                 asset.hash = encodeHex(assetDigest.sum()) // 资产哈希
 
-                resolve(await this.assetProvider.sign(asset)) // 上传成功，返回资产元数据
+                resolve(await this.assetProvider.sign(toJson(AssetMetadataSchema, asset))) // 上传成功，返回资产元数据
             } catch (err) {
                 console.error(`Fail to upload the file=${file.name}`, err)
                 return reject(err) // 上传失败，返回错误

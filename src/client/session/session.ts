@@ -2,7 +2,7 @@ import { Authenticate } from '../common/authenticate'
 import { Client, createClient } from '@connectrpc/connect'
 import { ProviderOption } from '../common/model'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create, toBinary, toJson } from '@bufbuild/protobuf'
+import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import { generateUuid } from '../../common/string'
 import { signSessionMetadata, verifySessionMetadata } from '../model/model'
 import { isDeleted, isExisted } from '../../common/status'
@@ -23,6 +23,7 @@ import {
     SessionDetailRequestSchema,
     SessionDetailResponseBodySchema,
     SessionMetadata,
+    SessionMetadataJson,
     SessionMetadataSchema,
     UpdateSessionRequestBodySchema,
     UpdateSessionRequestSchema,
@@ -278,13 +279,14 @@ export class SessionProvider {
      * });
      * ```
      */
-    update(session: SessionMetadata) {
+    update(session: SessionMetadataJson) {
         return new Promise<SessionMetadata>(async (resolve, reject) => {
-            const body = create(UpdateSessionRequestBodySchema, { session: session })
+            const sessionMeta: SessionMetadata = fromJson(SessionMetadataSchema, session ?? {})
+            const body = create(UpdateSessionRequestBodySchema, { session: sessionMeta })
             let header
             try {
                 session.updatedAt = getCurrentUtcString()
-                await signSessionMetadata(this.authenticate, session)
+                await signSessionMetadata(this.authenticate, sessionMeta)
                 header = await this.authenticate.createHeader(toBinary(UpdateSessionRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for updating session.', err)

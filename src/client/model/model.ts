@@ -1,5 +1,5 @@
 import { AssetMetadata, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
-import { fromJson, toBinary } from '@bufbuild/protobuf'
+import { toBinary } from '@bufbuild/protobuf'
 import { DataTampering } from '../../common/error'
 import { Authenticate } from '../common/authenticate'
 import { ConfigMetadata, ConfigMetadataSchema } from '../../yeying/api/config/config_pb'
@@ -29,7 +29,7 @@ import {
     ServiceMetadataSchema
 } from '../../yeying/api/common/model_pb'
 import { SolutionMetadata, SolutionMetadataSchema } from '../../yeying/api/bulletin/bulletin_pb'
-import { AuditStatus, AuditStatusJson, CanceledStatus, CanceledStatusJson, PassedStatus, PassedStatusJson, PendingStatus, PendingStatusJson, PendingStatusSchema, RejectStatus, RejectStatusJson } from '../../yeying/api/audit/audit_pb'
+import { AuditStatus, AuditStatusJson, CanceledStatus, CanceledStatusJson, PassedStatus, PassedStatusJson, PendingStatus, PendingStatusJson, RejectStatus, RejectStatusJson } from '../../yeying/api/audit/audit_pb'
 
 /**
  * 对资产元数据进行签名，并更新元数据的`signature`字段。

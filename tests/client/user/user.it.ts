@@ -45,7 +45,7 @@ describe('User', () => {
         const user1 = detail.user as UserMetadata
 
         user1.name = "test2"
-        const user2 = await userProvider.update(user1)
+        const user2 = await userProvider.update(toJson(UserMetadataSchema, user1 ?? {}))
 
         console.log(`Success to update user=${JSON.stringify(toJson(UserMetadataSchema, user2))}`)
         assert.equal(user2.name, user1.name)

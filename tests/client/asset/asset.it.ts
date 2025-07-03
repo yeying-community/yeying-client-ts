@@ -1,4 +1,4 @@
-import {DigitalFormatEnum, ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
+import {ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
 import {getIdentity, getNamespace, getProviderProxy} from "../common/common";
 import {AssetProvider} from "../../../src/client/warehouse/asset";
 import {UserProvider} from "../../../src/client/user/user";

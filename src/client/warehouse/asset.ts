@@ -7,6 +7,8 @@ import {
     AssetDetailRequestSchema,
     AssetDetailResponseBodySchema,
     AssetMetadata,
+    AssetMetadataJson,
+    AssetMetadataSchema,
     DeleteAssetRequestBodySchema,
     DeleteAssetRequestSchema,
     DeleteAssetResponseBodySchema,
@@ -116,26 +118,27 @@ export class AssetProvider {
      * 更新资产的信息。
      *
      */
-    update(asset: Partial<AssetMetadata>) {
+    update(asset: AssetMetadataJson) {
         return new Promise<AssetMetadata>(async (resolve, reject) => {
+            const assetMeta: AssetMetadata = fromJson(AssetMetadataSchema, asset ?? {})
             let existing: AssetMetadata
             try {
-                existing = await this.detail(asset.namespaceId as string, asset.hash as string)
+                existing = await this.detail(assetMeta.namespaceId as string, assetMeta.hash as string)
             } catch (err) {
                 console.error('Fail to get asset detail when updating asset.', err)
                 return reject(err)
             }
 
-            if (!isBlank(asset.name)) {
-                existing.name = <string>asset.name
+            if (!isBlank(assetMeta.name)) {
+                existing.name = <string>assetMeta.name
             }
 
-            if (asset.description) {
-                existing.description = asset.description
+            if (assetMeta.description) {
+                existing.description = assetMeta.description
             }
 
-            if (asset.format) {
-                existing.format = asset.format
+            if (assetMeta.format) {
+                existing.format = assetMeta.format
             }
 
             const body = create(UpdateAssetRequestBodySchema, { asset: existing })
@@ -282,13 +285,14 @@ export class AssetProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    sign(asset: AssetMetadata) {
+    sign(asset: AssetMetadataJson) {
         return new Promise<AssetMetadata>(async (resolve, reject) => {
-            const body = create(SignAssetRequestBodySchema, { asset: asset })
+            const assetMeta: AssetMetadata = fromJson(AssetMetadataSchema, asset ?? {})
+            const body = create(SignAssetRequestBodySchema, { asset: assetMeta })
 
             let header
             try {
-                await signAssetMetadata(this.authenticate, asset)
+                await signAssetMetadata(this.authenticate, assetMeta)
                 header = await this.authenticate.createHeader(toBinary(SignAssetRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header when signing asset', err)
