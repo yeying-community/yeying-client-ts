@@ -48,7 +48,7 @@ describe('Session', () => {
         assert.isDefined(sessionDetail.session)
         const session1 = sessionDetail.session as SessionMetadata
         session1.name = 'test2'
-        const session2 = await sessionProvider.update(session1)
+        const session2 = await sessionProvider.update(toJson(SessionMetadataSchema, session1 ?? {}))
         console.log(`Success to update session=${JSON.stringify(toJson(SessionMetadataSchema, session2))}`)
         assert.equal(session2.name, "test2")
     })

@@ -16,7 +16,6 @@ import {
     NamespaceDetailResponseBody, NamespaceDetailResponseBodySchema,
     NamespaceMetadata,
     NamespaceMetadataSchema,
-    SearchNamespaceCondition,
     SearchNamespaceConditionJson,
     SearchNamespaceConditionSchema,
     SearchNamespaceRequestBodySchema,

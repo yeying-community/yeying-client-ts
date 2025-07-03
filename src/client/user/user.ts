@@ -12,12 +12,13 @@ import {
     UserDetailRequestSchema,
     UserDetailResponseBodySchema,
     UserMetadata,
+    UserMetadataJson,
     UserMetadataSchema
 } from '../../yeying/api/user/user_pb'
 import { Authenticate } from '../common/authenticate'
 import { MessageHeader } from '../../yeying/api/common/message_pb'
 import { ProviderOption } from '../common/model'
-import { create, toBinary } from '@bufbuild/protobuf'
+import { create, fromJson, toBinary } from '@bufbuild/protobuf'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { Client, createClient } from '@connectrpc/connect'
 import { signUserMetadata, verifyUserMetadata, verifyUserState } from '../model/model'
@@ -147,13 +148,14 @@ export class UserProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    update(user: UserMetadata): Promise<UserMetadata> {
+    update(user: UserMetadataJson): Promise<UserMetadata> {
         return new Promise<UserMetadata>(async (resolve, reject) => {
-            const body = create(UpdateUserRequestBodySchema, { user: user })
+            const userMeta: UserMetadata = fromJson(UserMetadataSchema, user ?? {})
+            const body = create(UpdateUserRequestBodySchema, { user: userMeta })
             let header
             try {
                 user.updatedAt = getCurrentUtcString()
-                await signUserMetadata(this.authenticate, user)
+                await signUserMetadata(this.authenticate, userMeta)
                 header = await this.authenticate.createHeader(toBinary(UpdateUserRequestBodySchema, body))
             } catch (err) {
                 console.error('Fail to create header for modifying user', err)

@@ -3,6 +3,7 @@ import { ProviderOption } from '../common/model'
 import {
     Block,
     BlockMetadata,
+    BlockMetadataJson,
     BlockMetadataSchema,
     ConfirmBlockRequestBodySchema,
     ConfirmBlockRequestSchema,
@@ -17,7 +18,7 @@ import {
 } from '../../yeying/api/asset/block_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create, toBinary, toJson } from '@bufbuild/protobuf'
+import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import { signBlockMetadata, verifyBlockMetadata } from '../model/model'
 import { isExisted } from '../../common/status'
 import { digest, encodeHex, getCurrentUtcString } from '@yeying-community/yeying-web3'
@@ -116,9 +117,10 @@ export class BlockProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    confirm(block: BlockMetadata) {
+    confirm(block: BlockMetadataJson) {
+        const blockMeta: BlockMetadata = fromJson(BlockMetadataSchema, block ?? {})
         return new Promise<BlockMetadata | undefined>(async (resolve, reject) => {
-            const body = create(ConfirmBlockRequestBodySchema, { block: block })
+            const body = create(ConfirmBlockRequestBodySchema, { block: blockMeta })
             let header
             try {
                 header = await this.authenticate.createHeader(toBinary(ConfirmBlockRequestBodySchema, body))
@@ -174,7 +176,15 @@ export class BlockProvider {
             await signBlockMetadata(this.authenticate, block)
 
             // 判断这个块是否已经上传,避免重传
-            const existing = await this.confirm(block)
+            const existing = await this.confirm({
+                namespaceId: block.namespaceId,
+                uploader: block.uploader,
+                owner: block.owner,
+                hash: block.hash,
+                size: String(block.size),
+                createdAt: block.createdAt,
+                signature: block.signature,
+            })
             if (existing) {
                 return resolve(existing)
             }

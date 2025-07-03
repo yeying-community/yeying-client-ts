@@ -18,13 +18,11 @@ import {
     LinkVisitorRequestBodySchema,
     LinkVisitorRequestSchema,
     LinkVisitorResponseBodySchema,
-    SearchLinkCondition,
     SearchLinkConditionJson,
     SearchLinkConditionSchema,
     SearchLinkRequestBodySchema,
     SearchLinkRequestSchema,
     SearchLinkResponseBodySchema,
-    UpdateLinkRequestBodySchema,
     VisitorMetadata,
     VisitorMetadataSchema
 } from '../../yeying/api/asset/link_pb'

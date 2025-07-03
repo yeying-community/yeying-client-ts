@@ -1,5 +1,5 @@
 import {AuditProvider} from '../../../src/client/audit/audit.js'
-import {AuditMetadata, AuditStatus, AuditStatusSchema, AuditTypeEnum, AuditTypeEnumSchema, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
+import {AuditMetadata, AuditTypeEnum, AuditTypeEnumSchema, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
