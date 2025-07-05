@@ -1,6 +1,6 @@
-import {Authenticate} from '../common/authenticate'
-import {ProviderOption} from '../common/model'
-import {RequestPageSchema} from '../../yeying/api/common/message_pb'
+import { Authenticate } from '../common/authenticate'
+import { ProviderOption } from '../common/model'
+import { RequestPageSchema } from '../../yeying/api/common/message_pb'
 import {
     Asset,
     AssetDetailRequestBodySchema,
@@ -27,13 +27,13 @@ import {
     UpdateAssetResponseBody,
     UpdateAssetResponseBodySchema
 } from '../../yeying/api/asset/asset_pb'
-import {Client, createClient} from '@connectrpc/connect'
-import {createGrpcWebTransport} from '@connectrpc/connect-web'
-import {create, fromJson, toBinary, toJson} from '@bufbuild/protobuf'
-import {signAssetMetadata, verifyAssetMetadata} from '../model/model'
-import {isDeleted, isExisted} from '../../common/status'
-import {isBlank} from '../../common/string'
-import {getCurrentUtcString} from '@yeying-community/yeying-web3'
+import { Client, createClient } from '@connectrpc/connect'
+import { createGrpcWebTransport } from '@connectrpc/connect-web'
+import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
+import { signAssetMetadata, verifyAssetMetadata } from '../model/model'
+import { isDeleted, isExisted } from '../../common/status'
+import { isBlank } from '../../common/string'
+import { getCurrentUtcString } from '@yeying-community/yeying-web3'
 
 /**
  * 提供对资产的管理，包括查询、版本获取、详情查看、删除等操作
@@ -143,7 +143,7 @@ export class AssetProvider {
             existing.updatedAt = getCurrentUtcString()
 
             const newAsset = fromJson(AssetMetadataSchema, existing)
-            const body = create(UpdateAssetRequestBodySchema, {asset: newAsset})
+            const body = create(UpdateAssetRequestBodySchema, { asset: newAsset })
 
             let header
             try {
@@ -292,7 +292,7 @@ export class AssetProvider {
     sign(asset: AssetMetadataJson) {
         return new Promise<AssetMetadataJson>(async (resolve, reject) => {
             const metadata = fromJson(AssetMetadataSchema, asset)
-            const body = create(SignAssetRequestBodySchema, {asset: metadata})
+            const body = create(SignAssetRequestBodySchema, { asset: metadata })
 
             let header
             try {

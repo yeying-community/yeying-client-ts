@@ -78,7 +78,7 @@ export class ServiceProvider {
      */
     create(service: ServiceMetadataJson) {
         return new Promise<CreateServiceResponse>(async (resolve, reject) => {
-            const meta: ServiceMetadata = fromJson(ServiceMetadataSchema, service?? {})
+            const meta: ServiceMetadata = fromJson(ServiceMetadataSchema, service ?? {})
             const body = create(CreateServiceRequestBodySchema, {
                 service: meta
             })

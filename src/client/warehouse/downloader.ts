@@ -1,5 +1,5 @@
 import { BlockProvider } from './block'
-import {AssetMetadata, AssetMetadataJson, AssetMetadataSchema} from '../../yeying/api/asset/asset_pb'
+import { AssetMetadata, AssetMetadataJson, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
 import { AssetCipher } from './cipher'
 import { toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'

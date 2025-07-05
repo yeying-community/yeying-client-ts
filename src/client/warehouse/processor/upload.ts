@@ -7,9 +7,9 @@ import {
     WorkerCallback,
     WorkerOption
 } from '../model'
-import {Processor} from './common'
-import {Uploader} from '../uploader'
-import {AssetMetadataJson} from "../../../yeying/api/asset/asset_pb";
+import { Processor } from './common'
+import { Uploader } from '../uploader'
+import { AssetMetadataJson } from '../../../yeying/api/asset/asset_pb'
 
 export class UploadProcessor implements Processor {
     private uploader: Uploader | undefined
@@ -25,13 +25,13 @@ export class UploadProcessor implements Processor {
         const config: WorkerOption = c.payload
         //@ts-ignore, 当前定义的类是动态创建，这个类需要通过url传入进来
         this.uploader = new Uploader(config.providerOption, config.securityAlgorithm)
-        return {workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE'}
+        return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
     }
 
     async config(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`upload worker config: ${JSON.stringify(c)}`)
         const config: CommonConfig = c.payload
-        return {workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE'}
+        return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
     }
 
     async start(c: CommandMessage): Promise<ProcessMessage> {

@@ -12,15 +12,15 @@ import {
     toISO
 } from '@yeying-community/yeying-web3'
 import { getDigitalFormatByName } from '../../common/common'
-import {AssetMetadata, AssetMetadataJson, AssetMetadataSchema} from '../../yeying/api/asset/asset_pb'
-import {create, enumToJson, toJson} from '@bufbuild/protobuf'
+import { AssetMetadata, AssetMetadataJson, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
+import { create, enumToJson, toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'
 import { AssetProvider } from './asset'
 import { ConfigProvider } from '../config/config'
 import { ConfigTypeEnum } from '../../yeying/api/config/config_pb'
-import {BlockMetadata, BlockMetadataJson} from '../../yeying/api/asset/block_pb'
+import { BlockMetadata, BlockMetadataJson } from '../../yeying/api/asset/block_pb'
 import { UploadCallback, UploadResult } from './model'
-import {DigitalFormatEnumSchema} from "../../yeying/api/common/code_pb";
+import { DigitalFormatEnumSchema } from '../../yeying/api/common/code_pb'
 
 /**
  * 该类用于上传资产文件，通过将文件分块后上传，每个块加密（可选）并生成哈希值，最后对整个资产进行签名
@@ -97,7 +97,7 @@ export class Uploader {
                     this.chunkSize = parseInt(metadata.value)
                 }
 
-                const asset : AssetMetadataJson = {
+                const asset: AssetMetadataJson = {
                     namespaceId: namespaceId,
                     owner: this.blockProvider.getOwner(), // 设置资产拥有者
                     parentHash: parentHash, // 设置父哈希
@@ -181,7 +181,7 @@ export class Uploader {
                         const uploadResult: UploadResult = {
                             asset: asset,
                             block: block,
-                            progress: {total: chunkCount, completed: index + 1}
+                            progress: { total: chunkCount, completed: index + 1 }
                         }
                         blockCallback(uploadResult)
                     }

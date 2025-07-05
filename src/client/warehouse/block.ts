@@ -119,9 +119,7 @@ export class BlockProvider {
      */
     confirm(block: BlockMetadataJson) {
         return new Promise<BlockMetadata | undefined>(async (resolve, reject) => {
-            const body = create(ConfirmBlockRequestBodySchema,
-                {block: fromJson(BlockMetadataSchema, block) }
-            )
+            const body = create(ConfirmBlockRequestBodySchema, { block: fromJson(BlockMetadataSchema, block) })
 
             let header
             try {
@@ -185,7 +183,7 @@ export class BlockProvider {
                 hash: block.hash,
                 size: String(block.size),
                 createdAt: block.createdAt,
-                signature: block.signature,
+                signature: block.signature
             })
             if (existing) {
                 return resolve(toJson(BlockMetadataSchema, existing))
