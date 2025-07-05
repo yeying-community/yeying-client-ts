@@ -16,10 +16,7 @@ import {
     SearchDeletedAssetRequestSchema,
     SearchDeletedAssetResponseBodySchema
 } from '../../yeying/api/asset/recycle_pb'
-import {
-    SearchAssetConditionJson,
-    SearchAssetConditionSchema
-} from '../../yeying/api/asset/asset_pb'
+import { SearchAssetConditionJson, SearchAssetConditionSchema } from '../../yeying/api/asset/asset_pb'
 import { RequestPageSchema } from '../../yeying/api/common/message_pb'
 
 /**

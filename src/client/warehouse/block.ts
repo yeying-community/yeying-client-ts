@@ -94,7 +94,7 @@ export class BlockProvider {
                 await this.authenticate.doResponse(res, GetBlockResponseBodySchema)
                 const detail: BlockDetail = {
                     data: res.data,
-                    block: (res.body as GetBlockResponseBody)?.block as BlockMetadata
+                    block: toJson(BlockMetadataSchema, res.body?.block as BlockMetadata)
                 }
 
                 resolve(detail)
@@ -118,9 +118,9 @@ export class BlockProvider {
      * ```
      */
     confirm(block: BlockMetadataJson) {
-        const blockMeta: BlockMetadata = fromJson(BlockMetadataSchema, block ?? {})
         return new Promise<BlockMetadata | undefined>(async (resolve, reject) => {
-            const body = create(ConfirmBlockRequestBodySchema, { block: blockMeta })
+            const body = create(ConfirmBlockRequestBodySchema, { block: fromJson(BlockMetadataSchema, block) })
+
             let header
             try {
                 header = await this.authenticate.createHeader(toBinary(ConfirmBlockRequestBodySchema, body))
@@ -157,14 +157,14 @@ export class BlockProvider {
      *
      * @example
      * ```ts
-     * const blockMetadata = await blockProvider.createBlockMetadata('example-namespace', new Uint8Array([1, 2, 3]))
+     * const block = await blockProvider.createBlockMetadata('example-namespace', new Uint8Array([1, 2, 3]))
      * blockProvider.put(blockMetadata, new Uint8Array([1, 2, 3]))
      *   .then(response => console.log(response))
      *   .catch(err => console.error(err))
      * ```
      */
     put(namespaceId: string, data: Uint8Array) {
-        return new Promise<BlockMetadata>(async (resolve, reject) => {
+        return new Promise<BlockMetadataJson>(async (resolve, reject) => {
             const block = create(BlockMetadataSchema, {
                 namespaceId: namespaceId,
                 hash: encodeHex(await digest(data, 'SHA-256')),
@@ -183,10 +183,10 @@ export class BlockProvider {
                 hash: block.hash,
                 size: String(block.size),
                 createdAt: block.createdAt,
-                signature: block.signature,
+                signature: block.signature
             })
             if (existing) {
-                return resolve(existing)
+                return resolve(toJson(BlockMetadataSchema, existing))
             }
 
             const body = create(PutBlockRequestBodySchema, { block: block })
@@ -207,7 +207,7 @@ export class BlockProvider {
                 const res = await this.client.put(request)
                 await this.authenticate.doResponse(res, PutBlockResponseBodySchema, isExisted)
                 await verifyBlockMetadata(res.body?.block)
-                return resolve(res.body?.block as BlockMetadata)
+                return resolve(toJson(BlockMetadataSchema, res.body?.block as BlockMetadata))
             } catch (err) {
                 console.error(`Fail to put block=${JSON.stringify(toJson(BlockMetadataSchema, block))}`, err)
                 return reject(err)

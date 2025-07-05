@@ -3,12 +3,14 @@ import {
     CommonConfig,
     ProcessMessage,
     ProcessType,
+    UploadAssetMessage,
     WorkerCallback,
-    WorkerOption,
-    UploadAssetMessage
+    WorkerOption
 } from '../model'
 import { Processor } from './common'
 import { Uploader } from '../uploader'
+import { AssetMetadataJson } from '../../../yeying/api/asset/asset_pb'
+import { ProviderOption } from '../../common/model'
 
 export class UploadProcessor implements Processor {
     private uploader: Uploader | undefined
@@ -22,8 +24,7 @@ export class UploadProcessor implements Processor {
     async initialize(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`initialize worker: ${JSON.stringify(c)}`)
         const config: WorkerOption = c.payload
-        //@ts-ignore, 当前定义的类是动态创建，这个类需要通过url传入进来
-        this.uploader = new Uploader(config.providerOption, config.securityAlgorithm)
+        this.uploader = new Uploader(config.providerOption as ProviderOption, config.securityAlgorithm)
         return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
     }
 
@@ -38,31 +39,32 @@ export class UploadProcessor implements Processor {
         // 实现实际处理逻辑
         const message: UploadAssetMessage = c.payload
 
+        const asset = await this.uploader?.createAssetMetadataJson(message.namespaceId, message.file, message.encrypted)
+
         const complete = (a: any) => this.callback(this.createProcessMessage(c, 'COMPLETE', a))
         const error = (e: any) => this.callback(this.createProcessMessage(c, 'ERROR', e.message))
         const callback = (p: any) => this.callback(this.createProcessMessage(c, 'PROGRESS', p))
-
         this.uploader
-            ?.upload(message.namespaceId, message.file, message.encrypted, callback)
+            ?.upload(message.file, asset as AssetMetadataJson, callback)
             .then(complete)
             .catch(error)
         console.log(`upload worker start message: ${JSON.stringify(message)}`)
-        return this.createProcessMessage(c, 'RESPONSE')
+        return this.createProcessMessage(c, 'RESPONSE', asset)
     }
 
     async pause(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`upload worker pause: ${JSON.stringify(c)}`)
-        return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
+        return this.createProcessMessage(c, 'RESPONSE')
     }
 
     async abort(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`upload worker abort: ${JSON.stringify(c)}`)
-        return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
+        return this.createProcessMessage(c, 'RESPONSE')
     }
 
     async resume(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`upload worker resume: ${JSON.stringify(c)}`)
-        return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
+        return this.createProcessMessage(c, 'RESPONSE')
     }
 
     // 必须实现静态序列化方法

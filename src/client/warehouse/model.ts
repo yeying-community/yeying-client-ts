@@ -1,9 +1,10 @@
-import { BlockMetadata } from '../../yeying/api/asset/block_pb'
+import { BlockMetadata, BlockMetadataJson } from '../../yeying/api/asset/block_pb'
 import { ProviderOption } from '../common/model'
 import { SecurityAlgorithm } from '@yeying-community/yeying-web3'
+import { AssetMetadataJson } from '../../yeying/api/asset/asset_pb'
 
 export interface DownloadResult {
-    block: BlockMetadata
+    block: BlockMetadataJson
     data: Uint8Array
     progress: Progress
 }
@@ -12,7 +13,8 @@ export type DownloadCallback = (result: DownloadResult) => void
 export type UploadCallback = (result: UploadResult) => void
 
 export interface UploadResult {
-    block: BlockMetadata
+    asset: AssetMetadataJson
+    block: BlockMetadataJson
     progress: Progress
 }
 
@@ -22,7 +24,7 @@ export interface Progress {
 }
 
 export interface BlockDetail {
-    block: BlockMetadata
+    block: BlockMetadataJson
     data: Uint8Array
 }
 
