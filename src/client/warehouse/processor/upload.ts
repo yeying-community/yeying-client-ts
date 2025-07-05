@@ -10,6 +10,7 @@ import {
 import { Processor } from './common'
 import { Uploader } from '../uploader'
 import { AssetMetadataJson } from '../../../yeying/api/asset/asset_pb'
+import { ProviderOption } from '../../common/model'
 
 export class UploadProcessor implements Processor {
     private uploader: Uploader | undefined
@@ -23,8 +24,7 @@ export class UploadProcessor implements Processor {
     async initialize(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`initialize worker: ${JSON.stringify(c)}`)
         const config: WorkerOption = c.payload
-        //@ts-ignore, 当前定义的类是动态创建，这个类需要通过url传入进来
-        this.uploader = new Uploader(config.providerOption, config.securityAlgorithm)
+        this.uploader = new Uploader(config.providerOption as ProviderOption, config.securityAlgorithm)
         return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
     }
 

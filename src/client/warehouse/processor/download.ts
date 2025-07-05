@@ -1,14 +1,16 @@
 import {
     CommandMessage,
     CommonConfig,
+    DownloadAssetMessage,
     ProcessMessage,
     ProcessType,
     WorkerCallback,
-    WorkerOption,
-    DownloadAssetMessage
+    WorkerOption
 } from '../model'
 import { Processor } from './common'
 import { Downloader } from '../downloader'
+import { ProviderOption } from '../../common/model'
+import { AssetMetadataJson } from '../../../yeying/api/asset/asset_pb'
 
 export class DownloadProcessor implements Processor {
     private downloader: Downloader | undefined
@@ -22,8 +24,7 @@ export class DownloadProcessor implements Processor {
     async initialize(c: CommandMessage): Promise<ProcessMessage> {
         console.log(`initialize worker: ${JSON.stringify(c)}`)
         const config: WorkerOption = c.payload
-        //@ts-ignore, 当前定义的类是动态创建，这个类需要通过url传入进来
-        this.downloader = new Downloader(config.providerOption, config.securityAlgorithm)
+        this.downloader = new Downloader(config.providerOption as ProviderOption, config.securityAlgorithm)
         return { workerId: c.workerId, msgId: c.msgId, processType: 'RESPONSE' }
     }
 
@@ -39,8 +40,12 @@ export class DownloadProcessor implements Processor {
         const complete = (a: any) => this.callback(this.createProcessMessage(c, 'COMPLETE', a))
         const error = (e: any) => this.callback(this.createProcessMessage(c, 'ERROR', e.message))
         const progress = (b: any) => this.callback(this.createProcessMessage(c, 'PROGRESS', b), [b.data.buffer])
-        this.downloader?.download(message.namespaceId, message.hash, progress).then(complete).catch(error)
-        return this.createProcessMessage(c, 'RESPONSE')
+        const asset = await this.downloader?.assetProvider.detail(message.namespaceId, message.hash)
+        this.downloader
+            ?.download(asset as AssetMetadataJson, progress)
+            .then(complete)
+            .catch(error)
+        return this.createProcessMessage(c, 'RESPONSE', asset)
     }
 
     async pause(c: CommandMessage): Promise<ProcessMessage> {

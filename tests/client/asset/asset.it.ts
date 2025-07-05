@@ -66,7 +66,8 @@ describe('Asset', () => {
         const downloader = new Downloader(providerOption, identity.securityConfig.algorithm)
 
         const dataList: Uint8Array[] = []
-        const asset = await downloader.download(namespace.uid, hash, r => {
+        const asset = await downloader.assetProvider.detail(namespace.uid, hash)
+        await downloader.download(asset, r => {
             console.log(`download block=${JSON.stringify(r.block)}`)
             dataList.push(r.data)
         })

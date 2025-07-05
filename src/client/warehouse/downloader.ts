@@ -1,7 +1,6 @@
 import { BlockProvider } from './block'
-import { AssetMetadata, AssetMetadataJson, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
+import { AssetMetadataJson } from '../../yeying/api/asset/asset_pb'
 import { AssetCipher } from './cipher'
-import { toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'
 import { SecurityAlgorithm } from '@yeying-community/yeying-web3'
 import { AssetProvider } from './asset'
@@ -39,22 +38,16 @@ export class Downloader {
 
     /**
      * 下载文件,根据命名空间 ID 和哈希值下载文件,如果文件被加密，会自动解密
-     * @param namespaceId - 命名空间 ID
+     * @param asset - 资产元信息
      * @param hash - 资产的哈希值
      * @param blockCallback - 返回完整的资产块元信息和数据，以及进度
      *
      * @returns  资产块元信息
-     * @example
-     * ```ts
-     * downloader.download('example-namespace', 'example-hash')
-     *   .then(file => console.log(file))
-     *   .catch(err => console.error(err))
-     * ```
      */
-    download(namespaceId: string, hash: string, blockCallback?: DownloadCallback): Promise<AssetMetadataJson> {
-        return new Promise<AssetMetadataJson>(async (resolve, reject) => {
+    download(asset: AssetMetadataJson, blockCallback?: DownloadCallback): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
             try {
-                const asset = await this.assetProvider.detail(namespaceId, hash)
+                const namespaceId = asset.namespaceId as string
                 console.log(`Try to download asset=${JSON.stringify(asset)}`)
                 const chunkCount = asset.chunkCount as number
                 for (let index: number = 0; index < chunkCount; index++) {
@@ -79,9 +72,9 @@ export class Downloader {
                     }
                 }
 
-                resolve(asset)
+                resolve()
             } catch (e) {
-                console.log(`Fail to download asset, namespaceId=${namespaceId}, hash=${hash}`, e)
+                console.log(`Fail to download asset, namespaceId=${asset.namespaceId}, hash=${asset.hash}`, e)
                 return reject(e)
             }
         })
