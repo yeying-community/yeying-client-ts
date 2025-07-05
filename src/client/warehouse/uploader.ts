@@ -100,12 +100,12 @@ export class Uploader {
                 const asset: AssetMetadataJson = {
                     namespaceId: namespaceId,
                     owner: this.blockProvider.getOwner(), // 设置资产拥有者
-                    parentHash: parentHash, // 设置父哈希
+                    parentHash: parentHash || "", // 设置父哈希
                     name: file.name, // 设置文件名称
                     format: enumToJson(DigitalFormatEnumSchema, getDigitalFormatByName(file.name)), // 获取文件格式
                     createdAt: toISO(convertToUtcDateTime(convertDateToDateTime(new Date(file.lastModified)))),
                     updatedAt: getCurrentUtcString(),
-                    description: description,
+                    description: description || "",
                     size: file.size.toString(),
                     chunkCount: Math.ceil(file.size / this.chunkSize),
                     chunkSize: this.chunkSize,
