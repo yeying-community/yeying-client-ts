@@ -8,11 +8,12 @@ import {
     LinkMetadata,
     LinkMetadataSchema,
     LinkTypeEnum,
-    UrlMetadata, UrlMetadataSchema,
+    UrlMetadata,
+    UrlMetadataSchema,
     VisitorMetadataSchema
 } from "../../../src/yeying/api/asset/link_pb";
 import {toJson} from "@bufbuild/protobuf";
-import {AssetMetadata, ProviderOption, Uploader, UserProvider} from "../../../src";
+import {AssetMetadataJson, ProviderOption, Uploader, UserProvider} from "../../../src";
 
 const namespace = getNamespace()
 const identity = getIdentity()
@@ -22,7 +23,7 @@ const providerOption: ProviderOption = {
 }
 
 const file: File = createTestFile("link.txt", 1024 * 1024 + 10)
-let asset: AssetMetadata | undefined = undefined
+let asset: AssetMetadataJson | undefined = undefined
 
 
 beforeAll(async () => {
@@ -32,7 +33,8 @@ beforeAll(async () => {
     const namespaceProvider = new NamespaceProvider(providerOption)
     await namespaceProvider.create(namespace.name, "", namespace.uid)
     const uploader = new Uploader(providerOption, identity.securityConfig.algorithm)
-    asset = await uploader.upload(namespace.uid, file, false)
+    const metadata = await uploader.createAssetMetadataJson(namespace.uid, file, false)
+    asset = await uploader.upload(file, metadata)
 });
 
 afterAll(() => {
@@ -41,13 +43,13 @@ afterAll(() => {
 
 describe('Link', () => {
     it('create', async () => {
-        const a = asset as AssetMetadata
+        const a = asset as AssetMetadataJson
         const linkProvider = new LinkProvider(providerOption)
         console.log(`Try to create link for asset=${a.hash}`)
         const detail = await linkProvider.create(
-            a.namespaceId,
-            a.name,
-            a.hash,
+            a.namespaceId as string,
+            a.name as string,
+            a.hash as string,
             24 * 3600,
             LinkTypeEnum.LINK_TYPE_PUBLIC)
         assert.isDefined(detail)

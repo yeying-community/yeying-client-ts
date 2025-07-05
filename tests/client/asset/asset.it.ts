@@ -6,7 +6,6 @@ import {Uploader} from "../../../src/client/warehouse/uploader";
 import {Downloader} from "../../../src/client/warehouse/downloader";
 import {readFile, ResultDataType} from "../../../src/common/file";
 import {AssetMetadataSchema, SearchAssetConditionJson} from "../../../src/yeying/api/asset/asset_pb";
-import {BlockMetadataSchema} from "../../../src/yeying/api/asset/block_pb";
 import {ProviderOption} from "../../../src/client/common/model";
 import {toJson} from "@bufbuild/protobuf";
 import {NamespaceProvider} from "../../../src/client/warehouse/namespace";
@@ -38,12 +37,13 @@ describe('Asset', () => {
         const name = 'test'
         const blob = new Blob([content], {type: 'text/plain'})
         const file = new File([blob], name, {type: 'text/plain'})
+        const metadata = await uploader.createAssetMetadataJson(namespace.uid, file, true)
         try {
-            const asset = await uploader.upload(namespace.uid, file, true, r => {
-                console.log(`upload block=${JSON.stringify(toJson(BlockMetadataSchema, r.block))}`)
+            const asset = await uploader.upload(file, metadata, r => {
+                console.log(`upload block=${JSON.stringify(r.block)}`)
             })
             assert.isDefined(asset)
-            console.log(`Success to put asset, hash=${asset.hash}, chunk count=${asset.chunks.length}`)
+            console.log(`Success to put asset, hash=${asset.hash}, chunk count=${asset.chunks?.length}`)
         } catch (err) {
             console.error('Fail to upload', err)
             assert.isTrue(false)
@@ -65,14 +65,14 @@ describe('Asset', () => {
     it('download', async () => {
         const downloader = new Downloader(providerOption, identity.securityConfig.algorithm)
 
-        const dataList :Uint8Array[] = []
+        const dataList: Uint8Array[] = []
         const asset = await downloader.download(namespace.uid, hash, r => {
-            console.log(`download block=${JSON.stringify(toJson(BlockMetadataSchema, r.block))}`)
+            console.log(`download block=${JSON.stringify(r.block)}`)
             dataList.push(r.data)
         })
 
-        console.log(`download asset completely, asset=${JSON.stringify(toJson(AssetMetadataSchema, asset))}`)
-        const data = new Blob(dataList, { type: 'application/octet-stream' })
+        console.log(`download asset completely, asset=${JSON.stringify(asset)}`)
+        const data = new Blob(dataList, {type: 'application/octet-stream'})
         const text = await readFile(data, ResultDataType.Text)
         assert.equal(text as string, content)
         console.log(`Success to download asset, hash=${hash}, text=${text}`)
