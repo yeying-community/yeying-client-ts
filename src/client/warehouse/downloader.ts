@@ -1,5 +1,5 @@
 import { BlockProvider } from './block'
-import { AssetMetadata, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
+import {AssetMetadata, AssetMetadataJson, AssetMetadataSchema} from '../../yeying/api/asset/asset_pb'
 import { AssetCipher } from './cipher'
 import { toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'
@@ -51,18 +51,19 @@ export class Downloader {
      *   .catch(err => console.error(err))
      * ```
      */
-    download(namespaceId: string, hash: string, blockCallback?: DownloadCallback): Promise<AssetMetadata> {
-        return new Promise<AssetMetadata>(async (resolve, reject) => {
+    download(namespaceId: string, hash: string, blockCallback?: DownloadCallback): Promise<AssetMetadataJson> {
+        return new Promise<AssetMetadataJson>(async (resolve, reject) => {
             try {
                 const asset = await this.assetProvider.detail(namespaceId, hash)
-                console.log(`Try to download asset=${JSON.stringify(toJson(AssetMetadataSchema, asset))}`)
-                for (let index: number = 0; index < asset.chunkCount; index++) {
+                console.log(`Try to download asset=${JSON.stringify(asset)}`)
+                const chunkCount = asset.chunkCount as number
+                for (let index: number = 0; index < chunkCount; index++) {
                     if (this.isAbort) {
                         return
                     }
-
+                    const chunkHash = asset.chunks?.[index]
                     // 下载数据块
-                    const detail = await this.blockProvider.get(namespaceId, asset.chunks[index])
+                    const detail = await this.blockProvider.get(namespaceId, chunkHash as string)
                     if (asset.isEncrypted) {
                         // 如果资产加密，解密数据块
                         detail.data = await this.assetCipher.decrypt(detail.data)
@@ -72,7 +73,7 @@ export class Downloader {
                         const result: DownloadResult = {
                             block: detail.block,
                             data: detail.data,
-                            progress: { total: asset.chunkCount, completed: index + 1 }
+                            progress: { total: chunkCount, completed: index + 1 }
                         }
                         blockCallback(result)
                     }
