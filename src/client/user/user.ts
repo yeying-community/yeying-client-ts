@@ -97,7 +97,7 @@ export class UserProvider {
                 const res = await this.client.add(request)
                 await this.authenticate.doResponse(res, AddUserResponseBodySchema, isExisted)
                 await verifyUserMetadata(res.body?.user)
-                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, {alwaysEmitImplicit: true}))
+                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to add user', err)
                 return reject(err)
@@ -127,7 +127,7 @@ export class UserProvider {
                 await this.authenticate.doResponse(res, UserDetailResponseBodySchema)
                 await verifyUserMetadata(res.body?.detail?.user)
                 await verifyUserState(res.body?.detail?.state)
-                return resolve(toJson(UserDetailSchema, res.body?.detail as UserDetail, {alwaysEmitImplicit: true}))
+                return resolve(toJson(UserDetailSchema, res.body?.detail as UserDetail, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to get user detail.', err)
                 return reject(err)
@@ -172,7 +172,7 @@ export class UserProvider {
                 const res = await this.client.update(request)
                 await this.authenticate.doResponse(res, UpdateUserResponseBodySchema)
                 await verifyUserMetadata(res.body?.user)
-                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, {alwaysEmitImplicit: true}))
+                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to update user', err)
                 return reject(err)

@@ -123,7 +123,7 @@ export class LinkProvider {
                 await this.authenticate.doResponse(res, CreateLinkResponseBodySchema)
                 await verifyLinkMetadata(res.body?.detail?.link)
                 await verifyUrlMetadata(res.body?.detail?.url)
-                resolve(toJson(LinkDetailSchema, res?.body?.detail as LinkDetail, {alwaysEmitImplicit: true}))
+                resolve(toJson(LinkDetailSchema, res?.body?.detail as LinkDetail, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to create link for asset', err)
                 return reject(err)
@@ -176,7 +176,7 @@ export class LinkProvider {
                         )
                     }
                 }
-                resolve(links.map(link => toJson(LinkMetadataSchema, link, {alwaysEmitImplicit: true})))
+                resolve(links.map((link) => toJson(LinkMetadataSchema, link, { alwaysEmitImplicit: true })))
             } catch (err) {
                 console.error('Fail to search links', err)
                 return reject(err)
@@ -215,7 +215,7 @@ export class LinkProvider {
                 const detail = res.body?.detail as LinkDetail
                 await verifyLinkMetadata(detail.link)
                 await verifyUrlMetadata(detail.url)
-                resolve(toJson(LinkDetailSchema, detail, {alwaysEmitImplicit: true}))
+                resolve(toJson(LinkDetailSchema, detail, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to get link detail.', err)
                 return reject(err)
@@ -308,7 +308,7 @@ export class LinkProvider {
                         visitors.push(visitor)
                     }
                 }
-                resolve(visitors.map(visitor => toJson(VisitorMetadataSchema, visitor, {alwaysEmitImplicit: true})))
+                resolve(visitors.map((visitor) => toJson(VisitorMetadataSchema, visitor, { alwaysEmitImplicit: true })))
             } catch (err) {
                 console.error('Fail to get visitors for link.', err)
                 return reject(err)

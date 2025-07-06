@@ -95,7 +95,7 @@ export class Uploader {
                 if (this.chunkSize === undefined) {
                     const metadata = await this.configProvider.get('chunk.size', ConfigTypeEnum.CONFIG_TYPE_SYSTEM)
                     if (metadata.value === undefined) {
-                        return reject("chunkSize is undefined")
+                        return reject('chunkSize is undefined')
                     }
                     this.chunkSize = parseInt(metadata.value)
                 }

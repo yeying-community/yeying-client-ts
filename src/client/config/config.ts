@@ -69,7 +69,9 @@ export class ConfigProvider {
                 const res = await this.client.get(request)
                 await this.authenticate.doResponse(res, GetConfigResponseBodySchema)
                 await verifyConfigMetadata(res.body?.config)
-                return resolve(toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, {alwaysEmitImplicit: true}))
+                return resolve(
+                    toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to get config', err)
                 return reject(err)
@@ -107,7 +109,9 @@ export class ConfigProvider {
                 const res = await this.client.set(request)
                 await this.authenticate.doResponse(res, SetConfigResponseBodySchema)
                 await verifyConfigMetadata(res.body?.config)
-                return resolve(toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, {alwaysEmitImplicit: true}))
+                return resolve(
+                    toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to set config', err)
                 return reject(err)
