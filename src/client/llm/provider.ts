@@ -103,7 +103,7 @@ export class ProviderProvider {
                 const res = await this.client.descriptions(request)
                 await this.authenticate.doResponse(res, ProviderDescriptionsResponseBodySchema)
                 const descriptions = res.body?.descriptions as ProviderDescription[]
-                resolve(descriptions.map(description => toJson(ProviderDescriptionSchema, description)))
+                resolve(descriptions.map(description => toJson(ProviderDescriptionSchema, description, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to list providers.', err)
                 return reject(err)
@@ -140,7 +140,7 @@ export class ProviderProvider {
                 const res = await this.client.models(request)
                 await this.authenticate.doResponse(res, ProviderModelsResponseBodySchema)
                 const models = res.body?.models as ModelMetadata[]
-                resolve(models.map(model => toJson(ModelMetadataSchema, model)))
+                resolve(models.map(model => toJson(ModelMetadataSchema, model, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to list models.', err)
                 return reject(err)
@@ -196,7 +196,7 @@ export class ProviderProvider {
                 const res = await this.client.add(request)
                 await this.authenticate.doResponse(res, AddProviderResponseBodySchema, isExisted)
                 await verifyProviderMetadata(res.body?.provider)
-                return resolve(toJson(ProviderMetadataSchema, res.body?.provider as ProviderMetadata))
+                return resolve(toJson(ProviderMetadataSchema, res.body?.provider as ProviderMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to add provider.', err)
                 return reject(err)
@@ -259,7 +259,7 @@ export class ProviderProvider {
                         }
                     }
                 }
-                resolve(providers.map(provider => toJson(ProviderMetadataSchema, provider)))
+                resolve(providers.map(provider => toJson(ProviderMetadataSchema, provider, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to search provider.', err)
                 return reject(err)
@@ -339,7 +339,7 @@ export class ProviderProvider {
                 await this.authenticate.doResponse(res, ProviderDetailResponseBodySchema)
                 await verifyProviderMetadata(res.body?.detail?.provider)
                 await verifyProviderState(res.body?.detail?.state)
-                return resolve(toJson(ProviderDetailSchema, res.body?.detail as ProviderDetail))
+                return resolve(toJson(ProviderDetailSchema, res.body?.detail as ProviderDetail, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to get provider detail.', err)
                 return reject(err)

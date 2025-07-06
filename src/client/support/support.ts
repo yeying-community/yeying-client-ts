@@ -5,7 +5,6 @@ import {
     CollectSupportRequestBodySchema,
     CollectSupportRequestSchema,
     CollectSupportResponseBodySchema,
-    FaqMetadata,
     FaqMetadataJson,
     FaqMetadataSchema,
     Support,
@@ -88,7 +87,7 @@ export class SupportProvider {
             try {
                 const res = await this.client.collect(request)
                 await this.authenticate.doResponse(res, CollectSupportResponseBodySchema)
-                resolve(toJson(FaqMetadataSchema, faq))
+                resolve(toJson(FaqMetadataSchema, faq, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to collect faq', err)
                 return reject(err)

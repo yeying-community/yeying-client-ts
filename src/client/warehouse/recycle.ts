@@ -94,7 +94,7 @@ export class RecycleProvider {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchDeletedAssetResponseBodySchema)
                 const assets = res?.body?.assets as DeletedAssetMetadata[]
-                resolve(assets.map(asset => toJson(DeletedAssetMetadataSchema, asset)))
+                resolve(assets.map(asset => toJson(DeletedAssetMetadataSchema, asset, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to search deleted assets', err)
                 return reject(err)

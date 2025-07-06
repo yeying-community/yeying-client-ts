@@ -108,7 +108,7 @@ export class InvitationProvider {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateInvitationResponseBodySchema)
                 await verifyInvitationMetadata(res.body?.invitation)
-                return resolve(toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata))
+                return resolve(toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to create invitation', err)
                 return reject(err)
@@ -155,7 +155,7 @@ export class InvitationProvider {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchInvitationResponseBodySchema)
                 const invitationsList = res.body?.invitations as InvitationMetadata[]
-                resolve(invitationsList.map(invitation => toJson(InvitationMetadataSchema, invitation)))
+                resolve(invitationsList.map(invitation => toJson(InvitationMetadataSchema, invitation, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to search invitation', err)
                 return reject(err)
@@ -197,7 +197,7 @@ export class InvitationProvider {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, InvitationDetailResponseBodySchema)
                 await verifyInvitationMetadata(res.body?.invitation)
-                return resolve(toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata))
+                return resolve(toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to get invitation detail.', err)
                 return reject(err)

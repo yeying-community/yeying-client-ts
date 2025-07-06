@@ -114,7 +114,7 @@ export class SessionProvider {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateSessionResponseBodySchema, isExisted)
                 await verifySessionMetadata(res.body?.session)
-                return resolve(toJson(SessionMetadataSchema, res.body?.session as SessionMetadata))
+                return resolve(toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to create session.', err)
                 return reject(err)
@@ -180,7 +180,7 @@ export class SessionProvider {
                         }
                     }
                 }
-                resolve(sessions.map(session => toJson(SessionMetadataSchema, session)))
+                resolve(sessions.map(session => toJson(SessionMetadataSchema, session, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to search session.', err)
                 return reject(err)
@@ -260,7 +260,7 @@ export class SessionProvider {
                 await this.authenticate.doResponse(res, SessionDetailResponseBodySchema)
                 const detail = res.body?.detail as SessionDetail
                 await verifySessionMetadata(detail.session)
-                return resolve(toJson(SessionDetailSchema, detail))
+                return resolve(toJson(SessionDetailSchema, detail, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to get session detail.', err)
                 return reject(err)
@@ -303,7 +303,7 @@ export class SessionProvider {
                 const res = await this.client.update(request)
                 await this.authenticate.doResponse(res, UpdateSessionResponseBodySchema)
                 await verifySessionMetadata(res.body?.session)
-                return resolve(toJson(SessionMetadataSchema, res.body?.session as SessionMetadata))
+                return resolve(toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to update session.', err)
                 return reject(err)

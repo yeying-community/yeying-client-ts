@@ -98,7 +98,7 @@ export class NodeProvider {
                 const res = await this.client.whoami(request)
                 await this.authenticate.doResponse(res, WhoamiResponseBodySchema)
                 await verifyServiceMetadata(res.body?.service)
-                resolve(toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata))
+                resolve(toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to call whoami', err)
                 return reject(err)

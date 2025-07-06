@@ -76,7 +76,7 @@ export class MailProvider {
             try {
                 const res = await this.client.send(request)
                 await this.authenticate.doResponse(res, SendMailResponseBodySchema)
-                resolve(toJson(SendMailResponseSchema, res))
+                resolve(toJson(SendMailResponseSchema, res, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to send mail', err)
                 return reject(err)
@@ -120,7 +120,7 @@ export class MailProvider {
             try {
                 const res = await this.client.verify(request)
                 await this.authenticate.doResponse(res, VerifyMailResponseBodySchema)
-                resolve(toJson(VerifyMailResponseSchema, res))
+                resolve(toJson(VerifyMailResponseSchema, res, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to verify email code', err)
                 return reject(err)

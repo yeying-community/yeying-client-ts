@@ -99,7 +99,7 @@ export class BulletinProvider {
                     }
                 }
 
-                resolve(solutions.map(solution => toJson(SolutionMetadataSchema, solution)))
+                resolve(solutions.map(solution => toJson(SolutionMetadataSchema, solution, {alwaysEmitImplicit: true})))
             } catch (err) {
                 console.error('Fail to BulletinList solutions', err)
                 return reject(err)

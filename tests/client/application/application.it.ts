@@ -161,6 +161,7 @@ describe('Application', () => {
   it('delete', async () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const application = applicationMetadata as ApplicationMetadata
+    console.log(`application=${JSON.stringify(application)}`)
     const res = await applicationProvider.delete(application.did, application.version)
     console.log(`res=${res.body?.status}`)
     console.log(`Success to delete application=${application.did}, version=${application.version}`)

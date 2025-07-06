@@ -118,7 +118,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateResponseBodySchema)
-                resolve(toJson(CreateResponseSchema, res as CreateResponse))
+                resolve(toJson(CreateResponseSchema, res as CreateResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to create audit', err)
                 return reject(new NetworkUnavailable())
@@ -157,7 +157,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, DetailResponseBodySchema)
-                resolve(toJson(DetailResponseSchema, res as DetailResponse))
+                resolve(toJson(DetailResponseSchema, res as DetailResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to detail audit', err)
                 return reject(new NetworkUnavailable())
@@ -197,7 +197,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.audit(request)
                 await this.authenticate.doResponse(res, AuditResponseBodySchema)
-                resolve(toJson(AuditResponseSchema, res as AuditResponse))
+                resolve(toJson(AuditResponseSchema, res as AuditResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to audit', err)
                 return reject(new NetworkUnavailable())
@@ -237,7 +237,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.createList(request)
                 await this.authenticate.doResponse(res, CreateAuditListResponseBodySchema)
-                resolve(toJson(CreateAuditListResponseSchema, res as CreateAuditListResponse))
+                resolve(toJson(CreateAuditListResponseSchema, res as CreateAuditListResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to createAuditList', err)
                 return reject(new NetworkUnavailable())
@@ -277,7 +277,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.auditList(request)
                 await this.authenticate.doResponse(res, AuditListResponseBodySchema)
-                resolve(toJson(AuditListResponseSchema, res as AuditListResponse))
+                resolve(toJson(AuditListResponseSchema, res as AuditListResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to auditList', err)
                 return reject(new NetworkUnavailable())
@@ -316,7 +316,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.cancel(request)
                 await this.authenticate.doResponse(res, CancelResponseBodySchema)
-                resolve(toJson(CancelResponseSchema, res as CancelResponse))
+                resolve(toJson(CancelResponseSchema, res as CancelResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to cancel', err)
                 return reject(new NetworkUnavailable())
@@ -355,7 +355,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.unbind(request)
                 await this.authenticate.doResponse(res, UnbindResponseBodySchema)
-                resolve(toJson(UnbindResponseSchema, res as UnbindResponse))
+                resolve(toJson(UnbindResponseSchema, res as UnbindResponse, {alwaysEmitImplicit: true}))
             } catch (err) {
                 console.error('Fail to unbind', err)
                 return reject(new NetworkUnavailable())
