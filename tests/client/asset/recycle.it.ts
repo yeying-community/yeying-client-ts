@@ -4,10 +4,8 @@ import {AssetProvider} from "../../../src/client/warehouse/asset";
 import {Uploader} from "../../../src/client/warehouse/uploader";
 import {AssetMetadataJson} from "../../../src/yeying/api/asset/asset_pb";
 import {ProviderOption, UserProvider} from "../../../src";
-import {toJson} from "@bufbuild/protobuf";
 import {NamespaceProvider} from "../../../src/client/warehouse/namespace";
 import {RecycleProvider} from "../../../src/client/warehouse/recycle";
-import {DeletedAssetMetadataSchema} from "../../../src/yeying/api/asset/recycle_pb";
 
 const identity = getIdentity()
 const providerOption: ProviderOption = {
@@ -44,7 +42,7 @@ describe('Recycle', () => {
         })
         console.log(`Success to search deleted assets=${deletedAssets.length} from trash`)
         deletedAssets.forEach(a => {
-            console.log(`deleted asset=${JSON.stringify(toJson(DeletedAssetMetadataSchema, a))}`)
+            console.log(`deleted asset=${JSON.stringify(a)}`)
         })
     })
 

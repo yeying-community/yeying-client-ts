@@ -82,7 +82,7 @@ export class AssetProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchAssetConditionJson) {
-        return new Promise<AssetMetadata[]>(async (resolve, reject) => {
+        return new Promise<AssetMetadataJson[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -107,7 +107,8 @@ export class AssetProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchAssetResponseBodySchema)
-                resolve(res?.body?.assets as AssetMetadata[])
+                const assets = res?.body?.assets as AssetMetadata[]
+                resolve(assets.map((asset) => toJson(AssetMetadataSchema, asset, { alwaysEmitImplicit: true })))
             } catch (err) {
                 console.error('Fail to search assets', err)
                 return reject(err)
@@ -163,7 +164,7 @@ export class AssetProvider {
                 await this.authenticate.doResponse(res, UpdateAssetResponseBodySchema)
                 const resBody = res.body as UpdateAssetResponseBody
                 await verifyAssetMetadata(resBody.asset)
-                resolve(toJson(AssetMetadataSchema, resBody.asset as AssetMetadata))
+                resolve(toJson(AssetMetadataSchema, resBody.asset as AssetMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error(`Fail to update asset=${JSON.stringify(asset)}`, err)
                 return reject(err)
@@ -214,7 +215,7 @@ export class AssetProvider {
                 const resBody = res.body as AssetDetailResponseBody
                 await verifyAssetMetadata(resBody.asset)
 
-                resolve(toJson(AssetMetadataSchema, res?.body?.asset as AssetMetadata))
+                resolve(toJson(AssetMetadataSchema, res?.body?.asset as AssetMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to get asset detail', err)
                 return reject(err)
@@ -313,7 +314,7 @@ export class AssetProvider {
                 await this.authenticate.doResponse(res, SignAssetResponseBodySchema, isExisted)
                 const resBody = res.body as SignAssetResponseBody
                 await verifyAssetMetadata(resBody.asset)
-                resolve(toJson(AssetMetadataSchema, resBody?.asset as AssetMetadata))
+                resolve(toJson(AssetMetadataSchema, resBody?.asset as AssetMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to sign asset', err)
                 return reject(err)

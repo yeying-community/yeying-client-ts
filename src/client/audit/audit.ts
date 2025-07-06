@@ -11,34 +11,48 @@ import {
     AuditListRequestSchema,
     AuditListResponse,
     AuditListResponseBodySchema,
+    AuditListResponseJson,
+    AuditListResponseSchema,
     AuditMetadataJson,
     AuditMetadataSchema,
     AuditRequestBodySchema,
     AuditRequestSchema,
     AuditResponse,
     AuditResponseBodySchema,
+    AuditResponseJson,
+    AuditResponseSchema,
     AuditSearchConditionJson,
     AuditSearchConditionSchema,
     CancelRequestBodySchema,
     CancelRequestSchema,
     CancelResponse,
     CancelResponseBodySchema,
+    CancelResponseJson,
+    CancelResponseSchema,
     CreateAuditListRequestBodySchema,
     CreateAuditListRequestSchema,
     CreateAuditListResponse,
     CreateAuditListResponseBodySchema,
+    CreateAuditListResponseJson,
+    CreateAuditListResponseSchema,
     CreateRequestBodySchema,
     CreateRequestSchema,
     CreateResponse,
     CreateResponseBodySchema,
+    CreateResponseJson,
+    CreateResponseSchema,
     DetailRequestBodySchema,
     DetailRequestSchema,
     DetailResponse,
     DetailResponseBodySchema,
+    DetailResponseJson,
+    DetailResponseSchema,
     UnbindRequestBodySchema,
     UnbindRequestSchema,
     UnbindResponse,
-    UnbindResponseBodySchema
+    UnbindResponseBodySchema,
+    UnbindResponseJson,
+    UnbindResponseSchema
 } from '../../yeying/api/audit/audit_pb'
 import { ofAuditStatus } from '../../model/audit'
 
@@ -83,7 +97,7 @@ export class AuditProvider {
      *
      */
     create(meta: AuditMetadataJson) {
-        return new Promise<CreateResponse>(async (resolve, reject) => {
+        return new Promise<CreateResponseJson>(async (resolve, reject) => {
             const metadata = fromJson(AuditMetadataSchema, meta ?? {})
             const body = create(CreateRequestBodySchema, {
                 meta: metadata
@@ -104,7 +118,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateResponseBodySchema)
-                resolve(res as CreateResponse)
+                resolve(toJson(CreateResponseSchema, res as CreateResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to create audit', err)
                 return reject(new NetworkUnavailable())
@@ -123,7 +137,7 @@ export class AuditProvider {
      *
      */
     detail(uid: string) {
-        return new Promise<DetailResponse>(async (resolve, reject) => {
+        return new Promise<DetailResponseJson>(async (resolve, reject) => {
             const body = create(DetailRequestBodySchema, {
                 uid: uid
             })
@@ -143,7 +157,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, DetailResponseBodySchema)
-                resolve(res as DetailResponse)
+                resolve(toJson(DetailResponseSchema, res as DetailResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to detail audit', err)
                 return reject(new NetworkUnavailable())
@@ -162,7 +176,7 @@ export class AuditProvider {
      *
      */
     audit(uid: string, status: string) {
-        return new Promise<AuditResponse>(async (resolve, reject) => {
+        return new Promise<AuditResponseJson>(async (resolve, reject) => {
             const body = create(AuditRequestBodySchema, {
                 uid: uid,
                 status: ofAuditStatus(status)
@@ -183,7 +197,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.audit(request)
                 await this.authenticate.doResponse(res, AuditResponseBodySchema)
-                resolve(res as AuditResponse)
+                resolve(toJson(AuditResponseSchema, res as AuditResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to audit', err)
                 return reject(new NetworkUnavailable())
@@ -202,7 +216,7 @@ export class AuditProvider {
      *
      */
     createAuditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<CreateAuditListResponse>(async (resolve, reject) => {
+        return new Promise<CreateAuditListResponseJson>(async (resolve, reject) => {
             const body = create(CreateAuditListRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(AuditSearchConditionSchema, condition ?? {})
@@ -223,7 +237,9 @@ export class AuditProvider {
             try {
                 const res = await this.client.createList(request)
                 await this.authenticate.doResponse(res, CreateAuditListResponseBodySchema)
-                resolve(res as CreateAuditListResponse)
+                resolve(
+                    toJson(CreateAuditListResponseSchema, res as CreateAuditListResponse, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to createAuditList', err)
                 return reject(new NetworkUnavailable())
@@ -242,7 +258,7 @@ export class AuditProvider {
      *
      */
     auditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<AuditListResponse>(async (resolve, reject) => {
+        return new Promise<AuditListResponseJson>(async (resolve, reject) => {
             const body = create(AuditListRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(AuditSearchConditionSchema, condition ?? {})
@@ -263,7 +279,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.auditList(request)
                 await this.authenticate.doResponse(res, AuditListResponseBodySchema)
-                resolve(res as AuditListResponse)
+                resolve(toJson(AuditListResponseSchema, res as AuditListResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to auditList', err)
                 return reject(new NetworkUnavailable())
@@ -282,7 +298,7 @@ export class AuditProvider {
      *
      */
     cancel(uid: string) {
-        return new Promise<CancelResponse>(async (resolve, reject) => {
+        return new Promise<CancelResponseJson>(async (resolve, reject) => {
             const body = create(CancelRequestBodySchema, {
                 uid: uid
             })
@@ -302,7 +318,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.cancel(request)
                 await this.authenticate.doResponse(res, CancelResponseBodySchema)
-                resolve(res as CancelResponse)
+                resolve(toJson(CancelResponseSchema, res as CancelResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to cancel', err)
                 return reject(new NetworkUnavailable())
@@ -321,7 +337,7 @@ export class AuditProvider {
      *
      */
     unbind(uid: string) {
-        return new Promise<UnbindResponse>(async (resolve, reject) => {
+        return new Promise<UnbindResponseJson>(async (resolve, reject) => {
             const body = create(UnbindRequestBodySchema, {
                 uid: uid
             })
@@ -341,7 +357,7 @@ export class AuditProvider {
             try {
                 const res = await this.client.unbind(request)
                 await this.authenticate.doResponse(res, UnbindResponseBodySchema)
-                resolve(res as UnbindResponse)
+                resolve(toJson(UnbindResponseSchema, res as UnbindResponse, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to unbind', err)
                 return reject(new NetworkUnavailable())

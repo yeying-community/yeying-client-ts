@@ -3,10 +3,11 @@ import { ProviderOption } from '../common/model'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { MessageHeader } from '../../yeying/api/common/message_pb'
-import { create, toBinary } from '@bufbuild/protobuf'
+import { create, toBinary, toJson } from '@bufbuild/protobuf'
 import {
     Config,
     ConfigMetadata,
+    ConfigMetadataJson,
     ConfigMetadataSchema,
     ConfigTypeEnum,
     GetConfigRequestBodySchema,
@@ -49,7 +50,7 @@ export class ConfigProvider {
      *
      */
     get(key: string, type: ConfigTypeEnum = ConfigTypeEnum.CONFIG_TYPE_USER) {
-        return new Promise<ConfigMetadata>(async (resolve, reject) => {
+        return new Promise<ConfigMetadataJson>(async (resolve, reject) => {
             const body = create(GetConfigRequestBodySchema, { key: key, type: type })
 
             let header: MessageHeader
@@ -68,7 +69,9 @@ export class ConfigProvider {
                 const res = await this.client.get(request)
                 await this.authenticate.doResponse(res, GetConfigResponseBodySchema)
                 await verifyConfigMetadata(res.body?.config)
-                return resolve(res.body?.config as ConfigMetadata)
+                return resolve(
+                    toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to get config', err)
                 return reject(err)
@@ -77,7 +80,7 @@ export class ConfigProvider {
     }
 
     set(key: string, value: string) {
-        return new Promise<ConfigMetadata>(async (resolve, reject) => {
+        return new Promise<ConfigMetadataJson>(async (resolve, reject) => {
             const configMetadata = create(ConfigMetadataSchema, {
                 owner: this.authenticate.getDid(),
                 key: key,
@@ -106,7 +109,9 @@ export class ConfigProvider {
                 const res = await this.client.set(request)
                 await this.authenticate.doResponse(res, SetConfigResponseBodySchema)
                 await verifyConfigMetadata(res.body?.config)
-                return resolve(res.body?.config as ConfigMetadata)
+                return resolve(
+                    toJson(ConfigMetadataSchema, res.body?.config as ConfigMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to set config', err)
                 return reject(err)

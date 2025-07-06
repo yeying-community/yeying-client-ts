@@ -1,7 +1,7 @@
 import { Authenticate } from '../common/authenticate'
 import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
 import { ProviderOption } from '../common/model'
-import { create, toBinary } from '@bufbuild/protobuf'
+import { create, toBinary, toJson } from '@bufbuild/protobuf'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { Client, createClient } from '@connectrpc/connect'
 import {
@@ -13,6 +13,7 @@ import {
     InvitationDetailRequestSchema,
     InvitationDetailResponseBodySchema,
     InvitationMetadata,
+    InvitationMetadataJson,
     InvitationMetadataSchema,
     SearchInvitationRequestBodySchema,
     SearchInvitationRequestSchema,
@@ -78,7 +79,7 @@ export class InvitationProvider {
      * ```
      */
     create(duration: number, invitee?: string) {
-        return new Promise<InvitationMetadata>(async (resolve, reject) => {
+        return new Promise<InvitationMetadataJson>(async (resolve, reject) => {
             const invitation: InvitationMetadata = create(InvitationMetadataSchema, {
                 code: generateRandomString(32),
                 inviter: this.authenticate.getDid(),
@@ -107,7 +108,11 @@ export class InvitationProvider {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateInvitationResponseBodySchema)
                 await verifyInvitationMetadata(res.body?.invitation)
-                return resolve(res.body?.invitation as InvitationMetadata)
+                return resolve(
+                    toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to create invitation', err)
                 return reject(err)
@@ -130,7 +135,7 @@ export class InvitationProvider {
      * ```
      */
     search(page: number, pageSize: number) {
-        return new Promise<InvitationMetadata[]>(async (resolve, reject) => {
+        return new Promise<InvitationMetadataJson[]>(async (resolve, reject) => {
             const body = create(SearchInvitationRequestBodySchema, {
                 page: create(RequestPageSchema, {
                     page: page,
@@ -153,7 +158,12 @@ export class InvitationProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchInvitationResponseBodySchema)
-                resolve(res.body?.invitations as InvitationMetadata[])
+                const invitationsList = res.body?.invitations as InvitationMetadata[]
+                resolve(
+                    invitationsList.map((invitation) =>
+                        toJson(InvitationMetadataSchema, invitation, { alwaysEmitImplicit: true })
+                    )
+                )
             } catch (err) {
                 console.error('Fail to search invitation', err)
                 return reject(err)
@@ -175,7 +185,7 @@ export class InvitationProvider {
      * ```
      */
     detail(code: string) {
-        return new Promise<InvitationMetadata>(async (resolve, reject) => {
+        return new Promise<InvitationMetadataJson>(async (resolve, reject) => {
             const body = create(InvitationDetailRequestBodySchema, {
                 code: code
             })
@@ -195,7 +205,11 @@ export class InvitationProvider {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, InvitationDetailResponseBodySchema)
                 await verifyInvitationMetadata(res.body?.invitation)
-                return resolve(res.body?.invitation as InvitationMetadata)
+                return resolve(
+                    toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to get invitation detail.', err)
                 return reject(err)

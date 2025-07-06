@@ -2,8 +2,6 @@ import {getIdentity, getProviderProxy} from "../common/common";
 import {ProviderOption} from "../../../src/client/common/model";
 import {LanguageCodeEnum, ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
 import {BulletinProvider} from "../../../src/client/bulletin/bulletin";
-import {SolutionMetadataSchema} from "../../../src/yeying/api/bulletin/bulletin_pb";
-import {toJson} from "@bufbuild/protobuf";
 import {UserProvider} from "../../../src";
 
 const identity = getIdentity()
@@ -22,7 +20,7 @@ describe('Bulletin', () => {
         const bulletinProvider = new BulletinProvider(providerOption)
         const solutions = await bulletinProvider.list(LanguageCodeEnum.LANGUAGE_CODE_ZH_CH, 1, 10)
         for (const solution of solutions) {
-            console.log(`Success to list solution, page=${JSON.stringify(toJson(SolutionMetadataSchema, solution))}`)
+            console.log(`Success to list solution, page=${JSON.stringify(solution)}`)
         }
     })
 })

@@ -36,7 +36,21 @@ import {
     OnlineApplicationResponse,
     AuditApplicationResponse,
     SearchApplicationConditionJson,
-    SearchApplicationConditionSchema
+    SearchApplicationConditionSchema,
+    CreateApplicationResponseJson,
+    CreateApplicationResponseSchema,
+    SearchApplicationResponseJson,
+    SearchApplicationResponseSchema,
+    DeleteApplicationResponseJson,
+    DeleteApplicationResponseSchema,
+    ApplicationDetailResponseJson,
+    ApplicationDetailResponseSchema,
+    OfflineApplicationResponseJson,
+    OfflineApplicationResponseSchema,
+    OnlineApplicationResponseJson,
+    OnlineApplicationResponseSchema,
+    AuditApplicationResponseJson,
+    AuditApplicationResponseSchema
 } from '../../yeying/api/application/application_pb'
 import { NetworkUnavailable } from '../../common/error'
 import {
@@ -88,7 +102,7 @@ export class ApplicationProvider {
      *
      */
     create(application: ApplicationMetadataJson) {
-        return new Promise<CreateApplicationResponse>(async (resolve, reject) => {
+        return new Promise<CreateApplicationResponseJson>(async (resolve, reject) => {
             const meta: ApplicationMetadata = fromJson(ApplicationMetadataSchema, application ?? {})
             const body = create(CreateApplicationRequestBodySchema, {
                 application: meta
@@ -112,7 +126,11 @@ export class ApplicationProvider {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateApplicationResponseBodySchema, isExisted)
                 await verifyApplicationMetadata(res.body?.application)
-                resolve(res as CreateApplicationResponse)
+                resolve(
+                    toJson(CreateApplicationResponseSchema, res as CreateApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to create application', err)
                 return reject(new NetworkUnavailable())
@@ -133,7 +151,7 @@ export class ApplicationProvider {
      *
      */
     search(page: number, pageSize: number, condition?: SearchApplicationConditionJson) {
-        return new Promise<SearchApplicationResponse>(async (resolve, reject) => {
+        return new Promise<SearchApplicationResponseJson>(async (resolve, reject) => {
             const body = create(SearchApplicationRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(SearchApplicationConditionSchema, condition ?? {})
@@ -167,7 +185,11 @@ export class ApplicationProvider {
                         )
                     }
                 }
-                resolve(res as SearchApplicationResponse)
+                resolve(
+                    toJson(SearchApplicationResponseSchema, res as SearchApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to search application', err)
                 return reject(new NetworkUnavailable())
@@ -183,7 +205,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     delete(did: string, version: number) {
-        return new Promise<DeleteApplicationResponse>(async (resolve, reject) => {
+        return new Promise<DeleteApplicationResponseJson>(async (resolve, reject) => {
             const body = create(DeleteApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -205,7 +227,11 @@ export class ApplicationProvider {
                 const res = await this.client.delete(request)
                 await this.authenticate.doResponse(res, DeleteApplicationResponseBodySchema, isDeleted)
 
-                return resolve(res as DeleteApplicationResponse)
+                return resolve(
+                    toJson(DeleteApplicationResponseSchema, res as DeleteApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to delete application', err)
                 return reject(new NetworkUnavailable())
@@ -221,7 +247,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     detail(did: string, version: number) {
-        return new Promise<ApplicationDetailResponse>(async (resolve, reject) => {
+        return new Promise<ApplicationDetailResponseJson>(async (resolve, reject) => {
             const body = create(ApplicationDetailRequestBodySchema, {
                 did: did,
                 version: version
@@ -242,7 +268,11 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, ApplicationDetailResponseBodySchema)
-                return resolve(res as ApplicationDetailResponse)
+                return resolve(
+                    toJson(ApplicationDetailResponseSchema, res as ApplicationDetailResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to detail application', err)
                 return reject(new NetworkUnavailable())
@@ -258,7 +288,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     offline(did: string, version: number) {
-        return new Promise<OfflineApplicationResponse>(async (resolve, reject) => {
+        return new Promise<OfflineApplicationResponseJson>(async (resolve, reject) => {
             const body = create(OfflineApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -279,7 +309,11 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.offline(request)
                 await this.authenticate.doResponse(res, OfflineApplicationResponseBodySchema)
-                return resolve(res as OfflineApplicationResponse)
+                return resolve(
+                    toJson(OfflineApplicationResponseSchema, res as OfflineApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to offline application', err)
                 return reject(new NetworkUnavailable())
@@ -295,7 +329,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     online(did: string, version: number) {
-        return new Promise<OnlineApplicationResponse>(async (resolve, reject) => {
+        return new Promise<OnlineApplicationResponseJson>(async (resolve, reject) => {
             const body = create(OnlineApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -316,7 +350,11 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.online(request)
                 await this.authenticate.doResponse(res, OnlineApplicationResponseBodySchema)
-                return resolve(res as OnlineApplicationResponse)
+                return resolve(
+                    toJson(OnlineApplicationResponseSchema, res as OnlineApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to online application', err)
                 return reject(new NetworkUnavailable())
@@ -336,7 +374,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     audit(did: string, version: number, passed: boolean, signature?: string, auditor?: string, comment?: string) {
-        return new Promise<AuditApplicationResponse>(async (resolve, reject) => {
+        return new Promise<AuditApplicationResponseJson>(async (resolve, reject) => {
             const commentMeta = create(ApplicationCommentSchema, {
                 auditor: auditor,
                 comment: comment,
@@ -364,7 +402,11 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.audit(request)
                 await this.authenticate.doResponse(res, AuditApplicationResponseBodySchema)
-                return resolve(res as AuditApplicationResponse)
+                return resolve(
+                    toJson(AuditApplicationResponseSchema, res as AuditApplicationResponse, {
+                        alwaysEmitImplicit: true
+                    })
+                )
             } catch (err) {
                 console.error('Fail to audit application', err)
                 return reject(new NetworkUnavailable())

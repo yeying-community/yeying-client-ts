@@ -9,8 +9,10 @@ import {
     UpdateUserResponseBodySchema,
     User,
     UserDetail,
+    UserDetailJson,
     UserDetailRequestSchema,
     UserDetailResponseBodySchema,
+    UserDetailSchema,
     UserMetadata,
     UserMetadataJson,
     UserMetadataSchema
@@ -18,7 +20,7 @@ import {
 import { Authenticate } from '../common/authenticate'
 import { MessageHeader } from '../../yeying/api/common/message_pb'
 import { ProviderOption } from '../common/model'
-import { create, fromJson, toBinary } from '@bufbuild/protobuf'
+import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { Client, createClient } from '@connectrpc/connect'
 import { signUserMetadata, verifyUserMetadata, verifyUserState } from '../model/model'
@@ -68,7 +70,7 @@ export class UserProvider {
      * ```
      */
     add(name: string, avatar: string) {
-        return new Promise<UserMetadata>(async (resolve, reject) => {
+        return new Promise<UserMetadataJson>(async (resolve, reject) => {
             const user: UserMetadata = create(UserMetadataSchema, {
                 did: this.authenticate.getDid(),
                 name: name,
@@ -95,7 +97,7 @@ export class UserProvider {
                 const res = await this.client.add(request)
                 await this.authenticate.doResponse(res, AddUserResponseBodySchema, isExisted)
                 await verifyUserMetadata(res.body?.user)
-                return resolve(res.body?.user as UserMetadata)
+                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to add user', err)
                 return reject(err)
@@ -110,7 +112,7 @@ export class UserProvider {
      *
      */
     detail() {
-        return new Promise<UserDetail>(async (resolve, reject) => {
+        return new Promise<UserDetailJson>(async (resolve, reject) => {
             let header
             try {
                 header = await this.authenticate.createHeader()
@@ -125,7 +127,7 @@ export class UserProvider {
                 await this.authenticate.doResponse(res, UserDetailResponseBodySchema)
                 await verifyUserMetadata(res.body?.detail?.user)
                 await verifyUserState(res.body?.detail?.state)
-                return resolve(res.body?.detail as UserDetail)
+                return resolve(toJson(UserDetailSchema, res.body?.detail as UserDetail, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to get user detail.', err)
                 return reject(err)
@@ -148,8 +150,8 @@ export class UserProvider {
      *   .catch(err => console.error(err))
      * ```
      */
-    update(user: UserMetadataJson): Promise<UserMetadata> {
-        return new Promise<UserMetadata>(async (resolve, reject) => {
+    update(user: UserMetadataJson): Promise<UserMetadataJson> {
+        return new Promise<UserMetadataJson>(async (resolve, reject) => {
             const userMeta: UserMetadata = fromJson(UserMetadataSchema, user ?? {})
             const body = create(UpdateUserRequestBodySchema, { user: userMeta })
             let header
@@ -170,7 +172,7 @@ export class UserProvider {
                 const res = await this.client.update(request)
                 await this.authenticate.doResponse(res, UpdateUserResponseBodySchema)
                 await verifyUserMetadata(res.body?.user)
-                return resolve(res.body?.user as UserMetadata)
+                return resolve(toJson(UserMetadataSchema, res.body?.user as UserMetadata, { alwaysEmitImplicit: true }))
             } catch (err) {
                 console.error('Fail to update user', err)
                 return reject(err)

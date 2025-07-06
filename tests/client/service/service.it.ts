@@ -3,7 +3,7 @@ import {ProviderOption} from "../../../src/client/common/model";
 import {ApiCodeEnumSchema, LanguageCodeEnum, ServiceCodeEnum, ServiceCodeEnumSchema} from "../../../src/yeying/api/common/code_pb";
 import {ServiceProvider} from "../../../src/client/service/service";
 import {UserProvider} from "../../../src/client/user/user";
-import {enumToJson, toJson} from "@bufbuild/protobuf";
+import {enumToJson} from "@bufbuild/protobuf";
 import {
     createIdentity, decryptBlockAddress,
     IdentityCodeEnum,
@@ -11,7 +11,7 @@ import {
     NetworkTypeEnum,
     SecurityAlgorithm
 } from "@yeying-community/yeying-web3";
-import {ServiceMetadata, ServiceMetadataSchema} from "../../../src/yeying/api/common/model_pb";
+import {ServiceMetadata} from "../../../src/yeying/api/common/model_pb";
 import {signServiceMetadata} from "../../../src/client/model/model";
 import {Authenticate} from "../../../src/client/common/authenticate";
 import {convertServiceMetadataFromIdentity} from "../../../src/model/model";
@@ -59,8 +59,8 @@ beforeAll(async () => {
     await signServiceMetadata(new Authenticate(blockAddress), serviceMetadata)
 })
 
-let mockDId: string = ""
-let mockVersion: number = 0
+let mockDId: string|undefined = ""
+let mockVersion: number|undefined = 0
 describe('Service', () => {
     it('create', async () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
@@ -87,7 +87,7 @@ describe('Service', () => {
         assert.isDefined(service)
         mockDId = service.did
         mockVersion = service.version
-        console.log(`Success to create identity=${JSON.stringify(toJson(ServiceMetadataSchema, service))}`)
+        console.log(`Success to create identity=${JSON.stringify(service)}`)
         console.log(`res=${JSON.stringify(res)}`)
     })
 
@@ -95,10 +95,12 @@ describe('Service', () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
         console.log(`did=${mockDId}`)
         console.log(`version=${mockVersion}`)
+        assert.isDefined(mockDId)
+        assert.isDefined(mockVersion)
         const res = await serviceProvider.detail(mockDId, mockVersion)
         const service = res.body?.service
         assert.isDefined(service)
-        console.log(`Success to detail identity=${JSON.stringify(toJson(ServiceMetadataSchema, service))}`)
+        console.log(`Success to detail identity=${JSON.stringify(service)}`)
         console.log(`res=${JSON.stringify(res)}`)
     })
 
@@ -112,7 +114,7 @@ describe('Service', () => {
         assert.isTrue(services.length > 0)
         const len = res.body?.services?.length
         assert.isAtLeast(len == undefined ? 0 : len, 1)
-        res.body?.services.map(i => console.log(`service, name=${i.name}, code=${i.code}`))
+        services.map(i => console.log(`service, name=${i.name}, code=${i.code}`))
         console.log(`res=${JSON.stringify(res)}`)
     })
 

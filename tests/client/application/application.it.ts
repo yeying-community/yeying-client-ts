@@ -148,6 +148,9 @@ describe('Application', () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const res = await applicationProvider.search(1, 10, {keyword: "et"})
     console.log(`res=${JSON.stringify(res)}`)
+    if (res.body?.applications === undefined) {
+      throw Error("mockDid is undefined or mockVersion is undefined")
+    }
     console.log(`Success to search application with count=${res.body?.applications.length}`)
     const len = res.body?.applications?.length
     assert.isAtLeast(len == undefined ? 0 : len, 1)
@@ -158,6 +161,7 @@ describe('Application', () => {
   it('delete', async () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const application = applicationMetadata as ApplicationMetadata
+    console.log(`application=${JSON.stringify(application)}`)
     const res = await applicationProvider.delete(application.did, application.version)
     console.log(`res=${res.body?.status}`)
     console.log(`Success to delete application=${application.did}, version=${application.version}`)

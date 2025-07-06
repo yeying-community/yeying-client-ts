@@ -10,7 +10,6 @@ import {
     ConfirmBlockResponseBodySchema,
     GetBlockRequestBodySchema,
     GetBlockRequestSchema,
-    GetBlockResponseBody,
     GetBlockResponseBodySchema,
     PutBlockRequestBodySchema,
     PutBlockRequestSchema,
@@ -94,7 +93,7 @@ export class BlockProvider {
                 await this.authenticate.doResponse(res, GetBlockResponseBodySchema)
                 const detail: BlockDetail = {
                     data: res.data,
-                    block: toJson(BlockMetadataSchema, res.body?.block as BlockMetadata)
+                    block: toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
                 }
 
                 resolve(detail)
@@ -118,7 +117,7 @@ export class BlockProvider {
      * ```
      */
     confirm(block: BlockMetadataJson) {
-        return new Promise<BlockMetadata | undefined>(async (resolve, reject) => {
+        return new Promise<BlockMetadataJson>(async (resolve, reject) => {
             const body = create(ConfirmBlockRequestBodySchema, { block: fromJson(BlockMetadataSchema, block) })
 
             let header
@@ -139,8 +138,9 @@ export class BlockProvider {
                 if (res.body?.block !== undefined) {
                     await verifyBlockMetadata(res.body?.block)
                 }
-
-                return resolve(res.body?.block)
+                return resolve(
+                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error('Fail to put block', err)
                 return reject(err)
@@ -186,7 +186,7 @@ export class BlockProvider {
                 signature: block.signature
             })
             if (existing) {
-                return resolve(toJson(BlockMetadataSchema, existing))
+                return resolve(existing)
             }
 
             const body = create(PutBlockRequestBodySchema, { block: block })
@@ -207,7 +207,9 @@ export class BlockProvider {
                 const res = await this.client.put(request)
                 await this.authenticate.doResponse(res, PutBlockResponseBodySchema, isExisted)
                 await verifyBlockMetadata(res.body?.block)
-                return resolve(toJson(BlockMetadataSchema, res.body?.block as BlockMetadata))
+                return resolve(
+                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
+                )
             } catch (err) {
                 console.error(`Fail to put block=${JSON.stringify(toJson(BlockMetadataSchema, block))}`, err)
                 return reject(err)
