@@ -6,13 +6,14 @@ import {
     CollectSupportRequestSchema,
     CollectSupportResponseBodySchema,
     FaqMetadata,
+    FaqMetadataJson,
     FaqMetadataSchema,
     Support,
     SupportCodeEnum
 } from '../../yeying/api/support/support_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create, toBinary } from '@bufbuild/protobuf'
+import { create, toBinary, toJson } from '@bufbuild/protobuf'
 import { getCurrentUtcString } from '@yeying-community/yeying-web3'
 
 /**
@@ -56,7 +57,7 @@ export class SupportProvider {
      * ```
      */
     async collectFaq(type: string, email: string, description: string) {
-        return new Promise<FaqMetadata>(async (resolve, reject) => {
+        return new Promise<FaqMetadataJson>(async (resolve, reject) => {
             const faq = create(FaqMetadataSchema, {
                 did: this.authenticate.getDid(),
                 type: type,
@@ -87,7 +88,7 @@ export class SupportProvider {
             try {
                 const res = await this.client.collect(request)
                 await this.authenticate.doResponse(res, CollectSupportResponseBodySchema)
-                resolve(faq)
+                resolve(toJson(FaqMetadataSchema, faq))
             } catch (err) {
                 console.error('Fail to collect faq', err)
                 return reject(err)

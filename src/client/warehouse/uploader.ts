@@ -12,13 +12,13 @@ import {
     toISO
 } from '@yeying-community/yeying-web3'
 import { getDigitalFormatByName } from '../../common/common'
-import { AssetMetadata, AssetMetadataJson, AssetMetadataSchema } from '../../yeying/api/asset/asset_pb'
-import { create, enumToJson, toJson } from '@bufbuild/protobuf'
+import { AssetMetadataJson } from '../../yeying/api/asset/asset_pb'
+import { enumToJson, toJson } from '@bufbuild/protobuf'
 import { ProviderOption } from '../common/model'
 import { AssetProvider } from './asset'
 import { ConfigProvider } from '../config/config'
 import { ConfigTypeEnum } from '../../yeying/api/config/config_pb'
-import { BlockMetadata, BlockMetadataJson } from '../../yeying/api/asset/block_pb'
+import { BlockMetadataJson } from '../../yeying/api/asset/block_pb'
 import { UploadCallback, UploadResult } from './model'
 import { DigitalFormatEnumSchema } from '../../yeying/api/common/code_pb'
 
@@ -94,6 +94,9 @@ export class Uploader {
             try {
                 if (this.chunkSize === undefined) {
                     const metadata = await this.configProvider.get('chunk.size', ConfigTypeEnum.CONFIG_TYPE_SYSTEM)
+                    if (metadata.value === undefined) {
+                        return reject("chunkSize is undefined")
+                    }
                     this.chunkSize = parseInt(metadata.value)
                 }
 

@@ -9,6 +9,7 @@ import {
     BulletinListResponseBody,
     BulletinListResponseBodySchema,
     SolutionMetadata,
+    SolutionMetadataJson,
     SolutionMetadataSchema
 } from '../../yeying/api/bulletin/bulletin_pb'
 import { Client, createClient } from '@connectrpc/connect'
@@ -58,7 +59,7 @@ export class BulletinProvider {
      * ```
      */
     async list(language: LanguageCodeEnum, page: number, pageSize: number) {
-        return new Promise<SolutionMetadata[]>(async (resolve, reject) => {
+        return new Promise<SolutionMetadataJson[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -98,7 +99,7 @@ export class BulletinProvider {
                     }
                 }
 
-                resolve(solutions)
+                resolve(solutions.map(solution => toJson(SolutionMetadataSchema, solution)))
             } catch (err) {
                 console.error('Fail to BulletinList solutions', err)
                 return reject(err)

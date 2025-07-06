@@ -10,8 +10,8 @@ import {
 } from '../../yeying/api/node/node_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create } from '@bufbuild/protobuf'
-import { ServiceMetadata } from '../../yeying/api/common/model_pb'
+import { create, toJson } from '@bufbuild/protobuf'
+import { ServiceMetadata, ServiceMetadataJson, ServiceMetadataSchema } from '../../yeying/api/common/model_pb'
 import { verifyServiceMetadata } from '../model/model'
 
 /**
@@ -84,7 +84,7 @@ export class NodeProvider {
      * ```
      */
     whoami() {
-        return new Promise<ServiceMetadata>(async (resolve, reject) => {
+        return new Promise<ServiceMetadataJson>(async (resolve, reject) => {
             let header: MessageHeader
             try {
                 header = await this.authenticate.createHeader()
@@ -98,7 +98,7 @@ export class NodeProvider {
                 const res = await this.client.whoami(request)
                 await this.authenticate.doResponse(res, WhoamiResponseBodySchema)
                 await verifyServiceMetadata(res.body?.service)
-                resolve(res.body?.service as ServiceMetadata)
+                resolve(toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata))
             } catch (err) {
                 console.error('Fail to call whoami', err)
                 return reject(err)

@@ -2,9 +2,11 @@ import { Authenticate } from '../common/authenticate'
 import { ProviderOption } from '../common/model'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create, fromJson, toBinary } from '@bufbuild/protobuf'
+import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import {
     DeletedAssetMetadata,
+    DeletedAssetMetadataJson,
+    DeletedAssetMetadataSchema,
     RecoverDeletedAssetRequestBodySchema,
     RecoverDeletedAssetRequestSchema,
     RecoverDeletedAssetResponseBodySchema,
@@ -65,8 +67,8 @@ export class RecycleProvider {
      * @returns {Promise<DeletedAssetMetadata[]>} 当前页面的删除的资产元信息。
      *
      */
-    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<DeletedAssetMetadata[]> {
-        return new Promise<DeletedAssetMetadata[]>(async (resolve, reject) => {
+    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<DeletedAssetMetadataJson[]> {
+        return new Promise<DeletedAssetMetadataJson[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -91,7 +93,8 @@ export class RecycleProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchDeletedAssetResponseBodySchema)
-                resolve(res?.body?.assets as DeletedAssetMetadata[])
+                const assets = res?.body?.assets as DeletedAssetMetadata[]
+                resolve(assets.map(asset => toJson(DeletedAssetMetadataSchema, asset)))
             } catch (err) {
                 console.error('Fail to search deleted assets', err)
                 return reject(err)

@@ -1,9 +1,7 @@
 import {getIdentity, getProviderProxy} from "../common/common";
 import {ProviderOption} from "../../../src/client/common/model";
 import {ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
-import {toJson} from "@bufbuild/protobuf";
 import {SessionProvider} from "../../../src/client/session/session";
-import {SessionMetadata, SessionMetadataSchema} from "../../../src/yeying/api/session/session_pb";
 import {UserProvider} from "../../../src";
 
 const sessionId: string = "333422fc-a425-4937-b2d9-5584a9bf6346"
@@ -22,7 +20,7 @@ describe('Session', () => {
     it('create', async () => {
         const sessionProvider = new SessionProvider(providerOption)
         const session = await sessionProvider.create('test', undefined, undefined, sessionId)
-        console.log(`Success to create session=${JSON.stringify(toJson(SessionMetadataSchema, session))}`)
+        console.log(`Success to create session=${JSON.stringify(session)}`)
         assert.isDefined(session)
     })
 
@@ -30,7 +28,7 @@ describe('Session', () => {
         const sessionProvider = new SessionProvider(providerOption)
         const sessions = await sessionProvider.search()
         for (const session of sessions) {
-            console.log(`Success to search session=${JSON.stringify(toJson(SessionMetadataSchema, session))}`)
+            console.log(`Success to search session=${JSON.stringify(session)}`)
         }
         assert.isAtLeast(sessions.length, 1)
     })
@@ -38,7 +36,7 @@ describe('Session', () => {
     it('detail', async () => {
         const sessionProvider = new SessionProvider(providerOption)
         const detail = await sessionProvider.detail(sessionId)
-        console.log(`Success to get session detail, session=${JSON.stringify(toJson(SessionMetadataSchema, detail.session as SessionMetadata))}`)
+        console.log(`Success to get session detail, session=${JSON.stringify(detail.session)}`)
         assert.isDefined(detail)
     })
 
@@ -46,10 +44,10 @@ describe('Session', () => {
         const sessionProvider = new SessionProvider(providerOption)
         const sessionDetail = await sessionProvider.detail(sessionId)
         assert.isDefined(sessionDetail.session)
-        const session1 = sessionDetail.session as SessionMetadata
+        const session1 = sessionDetail.session
         session1.name = 'test2'
-        const session2 = await sessionProvider.update(toJson(SessionMetadataSchema, session1 ?? {}))
-        console.log(`Success to update session=${JSON.stringify(toJson(SessionMetadataSchema, session2))}`)
+        const session2 = await sessionProvider.update(session1)
+        console.log(`Success to update session=${JSON.stringify(session2)}`)
         assert.equal(session2.name, "test2")
     })
 

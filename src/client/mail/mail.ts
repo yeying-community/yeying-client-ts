@@ -6,13 +6,17 @@ import {
     SendMailRequestBodySchema,
     SendMailRequestSchema,
     SendMailResponseBodySchema,
+    SendMailResponseJson,
+    SendMailResponseSchema,
     VerifyMailRequestBodySchema,
     VerifyMailRequestSchema,
-    VerifyMailResponseBodySchema
+    VerifyMailResponseBodySchema,
+    VerifyMailResponseJson,
+    VerifyMailResponseSchema
 } from '../../yeying/api/mail/mail_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { create, toBinary } from '@bufbuild/protobuf'
+import { create, toBinary, toJson } from '@bufbuild/protobuf'
 
 /**
  * 邮箱验证码服务提供者，提供前端页面直接调用的接口
@@ -51,7 +55,7 @@ export class MailProvider {
      * ```
      */
     send(toMail: string) {
-        return new Promise<void>(async (resolve, reject) => {
+        return new Promise<SendMailResponseJson>(async (resolve, reject) => {
             const body = create(SendMailRequestBodySchema, {
                 toMail: toMail
             })
@@ -72,7 +76,7 @@ export class MailProvider {
             try {
                 const res = await this.client.send(request)
                 await this.authenticate.doResponse(res, SendMailResponseBodySchema)
-                resolve()
+                resolve(toJson(SendMailResponseSchema, res))
             } catch (err) {
                 console.error('Fail to send mail', err)
                 return reject(err)
@@ -95,7 +99,7 @@ export class MailProvider {
      * ```
      */
     verify(toMail: string, code: string) {
-        return new Promise<void>(async (resolve, reject) => {
+        return new Promise<VerifyMailResponseJson>(async (resolve, reject) => {
             const body = create(VerifyMailRequestBodySchema, {
                 toMail: toMail,
                 code: code
@@ -116,7 +120,7 @@ export class MailProvider {
             try {
                 const res = await this.client.verify(request)
                 await this.authenticate.doResponse(res, VerifyMailResponseBodySchema)
-                resolve()
+                resolve(toJson(VerifyMailResponseSchema, res))
             } catch (err) {
                 console.error('Fail to verify email code', err)
                 return reject(err)

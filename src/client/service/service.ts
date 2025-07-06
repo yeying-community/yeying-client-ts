@@ -27,7 +27,19 @@ import {
     DeleteServiceRequestSchema,
     DeleteServiceRequestBodySchema,
     DetailServiceResponseBodySchema,
-    SearchServiceConditionJson
+    SearchServiceConditionJson,
+    CreateServiceResponseJson,
+    CreateServiceResponseSchema,
+    DetailServiceResponseJson,
+    DetailServiceResponseSchema,
+    SearchServiceResponseJson,
+    SearchServiceResponseSchema,
+    OfflineServiceResponseJson,
+    OfflineServiceResponseSchema,
+    OnlineServiceResponseJson,
+    OnlineServiceResponseSchema,
+    DeleteServiceResponseJson,
+    DeleteServiceResponseSchema
 } from '../../yeying/api/service/service_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
@@ -77,7 +89,7 @@ export class ServiceProvider {
      * ```
      */
     create(service: ServiceMetadataJson) {
-        return new Promise<CreateServiceResponse>(async (resolve, reject) => {
+        return new Promise<CreateServiceResponseJson>(async (resolve, reject) => {
             const meta: ServiceMetadata = fromJson(ServiceMetadataSchema, service ?? {})
             const body = create(CreateServiceRequestBodySchema, {
                 service: meta
@@ -99,7 +111,7 @@ export class ServiceProvider {
             try {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateServiceResponseBodySchema, isExisted)
-                resolve(res as CreateServiceResponse)
+                resolve(toJson(CreateServiceResponseSchema, res as CreateServiceResponse))
             } catch (err) {
                 console.error('Fail to create service', err)
                 return reject(err)
@@ -113,7 +125,7 @@ export class ServiceProvider {
      * @returns  DetailServiceResponseBody
      */
     detail(did: string, version: number) {
-        return new Promise<DetailServiceResponse>(async (resolve, reject) => {
+        return new Promise<DetailServiceResponseJson>(async (resolve, reject) => {
             const body = create(DetailServiceRequestBodySchema, {
                 did: did,
                 version: version
@@ -135,7 +147,7 @@ export class ServiceProvider {
                 const res = await this.client.detail(request)
                 console.log(`res=${JSON.stringify(res)}`)
                 await this.authenticate.doResponse(res, DetailServiceResponseBodySchema, isDeleted)
-                resolve(res as DetailServiceResponse)
+                resolve(toJson(DetailServiceResponseSchema, res as DetailServiceResponse))
             } catch (err) {
                 console.error('Fail to detail service', err)
                 return reject(err)
@@ -158,7 +170,7 @@ export class ServiceProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchServiceConditionJson) {
-        return new Promise<SearchServiceResponse>(async (resolve, reject) => {
+        return new Promise<SearchServiceResponseJson>(async (resolve, reject) => {
             const body = create(SearchServiceRequestBodySchema, {
                 condition: fromJson(SearchServiceConditionSchema, condition ?? {}),
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -192,7 +204,7 @@ export class ServiceProvider {
                     }
                 }
 
-                resolve(res as SearchServiceResponse)
+                resolve(toJson(SearchServiceResponseSchema, res as SearchServiceResponse))
             } catch (err) {
                 console.error('Fail to search service', err)
                 return reject(err)
@@ -210,7 +222,7 @@ export class ServiceProvider {
      *
      */
     offline(did: string, version: number) {
-        return new Promise<OfflineServiceResponse>(async (resolve, reject) => {
+        return new Promise<OfflineServiceResponseJson>(async (resolve, reject) => {
             const body = create(OfflineServiceRequestBodySchema, {
                 did: did,
                 version: version
@@ -231,7 +243,7 @@ export class ServiceProvider {
             try {
                 const res = await this.client.offline(request)
                 await this.authenticate.doResponse(res, OfflineServiceResponseBodySchema, isDeleted)
-                resolve(res as OfflineServiceResponse)
+                resolve(toJson(OfflineServiceResponseSchema, res as OfflineServiceResponse))
             } catch (err) {
                 console.error('Fail to offline service', err)
                 return reject(err)
@@ -249,7 +261,7 @@ export class ServiceProvider {
      *
      */
     online(did: string, version: number) {
-        return new Promise<OnlineServiceResponse>(async (resolve, reject) => {
+        return new Promise<OnlineServiceResponseJson>(async (resolve, reject) => {
             const body = create(OnlineServiceRequestBodySchema, {
                 did: did,
                 version: version
@@ -270,7 +282,7 @@ export class ServiceProvider {
             try {
                 const res = await this.client.online(request)
                 await this.authenticate.doResponse(res, OnlineServiceResponseBodySchema, isDeleted)
-                resolve(res as OnlineServiceResponse)
+                resolve(toJson(OnlineServiceResponseSchema, res as OnlineServiceResponse))
             } catch (err) {
                 console.error('Fail to online service', err)
                 return reject(err)
@@ -288,7 +300,7 @@ export class ServiceProvider {
      *
      */
     delete(did: string, version: number) {
-        return new Promise<DeleteServiceResponse>(async (resolve, reject) => {
+        return new Promise<DeleteServiceResponseJson>(async (resolve, reject) => {
             const body = create(DeleteServiceRequestBodySchema, {
                 did: did,
                 version: version
@@ -309,7 +321,7 @@ export class ServiceProvider {
             try {
                 const res = await this.client.delete(request)
                 await this.authenticate.doResponse(res, DeleteServiceResponseBodySchema, isDeleted)
-                resolve(res as DeleteServiceResponse)
+                resolve(toJson(DeleteServiceResponseSchema, res as DeleteServiceResponse))
             } catch (err) {
                 console.error('Fail to delete service', err)
                 return reject(err)

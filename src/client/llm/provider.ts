@@ -8,17 +8,24 @@ import {
     DeleteProviderRequestSchema,
     DeleteProviderResponseBodySchema,
     ModelMetadata,
+    ModelMetadataJson,
+    ModelMetadataSchema,
     ModelTypeEnum,
     Provider,
     ProviderCodeEnum,
     ProviderDescription,
+    ProviderDescriptionJson,
+    ProviderDescriptionSchema,
     ProviderDescriptionsRequestSchema,
     ProviderDescriptionsResponseBodySchema,
     ProviderDetail,
+    ProviderDetailJson,
     ProviderDetailRequestBodySchema,
     ProviderDetailRequestSchema,
     ProviderDetailResponseBodySchema,
+    ProviderDetailSchema,
     ProviderMetadata,
+    ProviderMetadataJson,
     ProviderMetadataSchema,
     ProviderModelsRequestSchema,
     ProviderModelsResponseBodySchema,
@@ -80,7 +87,7 @@ export class ProviderProvider {
      *
      */
     descriptions() {
-        return new Promise<ProviderDescription[]>(async (resolve, reject) => {
+        return new Promise<ProviderDescriptionJson[]>(async (resolve, reject) => {
             let header
             try {
                 header = await this.authenticate.createHeader()
@@ -95,7 +102,8 @@ export class ProviderProvider {
             try {
                 const res = await this.client.descriptions(request)
                 await this.authenticate.doResponse(res, ProviderDescriptionsResponseBodySchema)
-                resolve(res.body?.descriptions as ProviderDescription[])
+                const descriptions = res.body?.descriptions as ProviderDescription[]
+                resolve(descriptions.map(description => toJson(ProviderDescriptionSchema, description)))
             } catch (err) {
                 console.error('Fail to list providers.', err)
                 return reject(err)
@@ -118,7 +126,7 @@ export class ProviderProvider {
      * ```
      */
     models(providerCode?: ProviderCodeEnum, modelType?: ModelTypeEnum) {
-        return new Promise<ModelMetadata[]>(async (resolve, reject) => {
+        return new Promise<ModelMetadataJson[]>(async (resolve, reject) => {
             let header
             try {
                 header = await this.authenticate.createHeader()
@@ -131,7 +139,8 @@ export class ProviderProvider {
             try {
                 const res = await this.client.models(request)
                 await this.authenticate.doResponse(res, ProviderModelsResponseBodySchema)
-                resolve(res.body?.models as ModelMetadata[])
+                const models = res.body?.models as ModelMetadata[]
+                resolve(models.map(model => toJson(ModelMetadataSchema, model)))
             } catch (err) {
                 console.error('Fail to list models.', err)
                 return reject(err)
@@ -156,7 +165,7 @@ export class ProviderProvider {
      * ```
      */
     add(name: string, code: ProviderCodeEnum, key: string, uid?: string) {
-        return new Promise<ProviderMetadata>(async (resolve, reject) => {
+        return new Promise<ProviderMetadataJson>(async (resolve, reject) => {
             const provider = create(ProviderMetadataSchema, {
                 owner: this.authenticate.getDid(),
                 name: name,
@@ -187,7 +196,7 @@ export class ProviderProvider {
                 const res = await this.client.add(request)
                 await this.authenticate.doResponse(res, AddProviderResponseBodySchema, isExisted)
                 await verifyProviderMetadata(res.body?.provider)
-                return resolve(res.body?.provider as ProviderMetadata)
+                return resolve(toJson(ProviderMetadataSchema, res.body?.provider as ProviderMetadata))
             } catch (err) {
                 console.error('Fail to add provider.', err)
                 return reject(err)
@@ -211,7 +220,7 @@ export class ProviderProvider {
      * ```
      */
     search(page: number, pageSize: number, code?: ProviderCodeEnum) {
-        return new Promise<ProviderMetadata[]>(async (resolve, reject) => {
+        return new Promise<ProviderMetadataJson[]>(async (resolve, reject) => {
             const condition = create(SearchProviderConditionSchema, {
                 code: code
             })
@@ -250,7 +259,7 @@ export class ProviderProvider {
                         }
                     }
                 }
-                resolve(providers)
+                resolve(providers.map(provider => toJson(ProviderMetadataSchema, provider)))
             } catch (err) {
                 console.error('Fail to search provider.', err)
                 return reject(err)
@@ -311,7 +320,7 @@ export class ProviderProvider {
      * ```
      */
     detail(uid: string) {
-        return new Promise<ProviderDetail>(async (resolve, reject) => {
+        return new Promise<ProviderDetailJson>(async (resolve, reject) => {
             const body = create(ProviderDetailRequestBodySchema, { uid: uid })
             let header
             try {
@@ -330,7 +339,7 @@ export class ProviderProvider {
                 await this.authenticate.doResponse(res, ProviderDetailResponseBodySchema)
                 await verifyProviderMetadata(res.body?.detail?.provider)
                 await verifyProviderState(res.body?.detail?.state)
-                return resolve(res.body?.detail as ProviderDetail)
+                return resolve(toJson(ProviderDetailSchema, res.body?.detail as ProviderDetail))
             } catch (err) {
                 console.error('Fail to get provider detail.', err)
                 return reject(err)

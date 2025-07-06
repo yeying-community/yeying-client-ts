@@ -11,14 +11,15 @@ const provider: ProviderOption = {
 describe('Mail', () => {
     it('send', async () => {
         const mailProvider = new MailProvider(provider)
-        await mailProvider.send("mock@mail.com")
-        console.log(`Success to send email`)
+        const res = await mailProvider.send("mock@mail.com")
+        console.log(`Success to send email, res=${JSON.stringify(res)}`)
     })
 
     it('verify', async () => {
         const mailProvider = new MailProvider(provider)
         const toMail = "mock@mail.com"
         console.log("start verify email:", toMail)
-        await mailProvider.verify(toMail, "mockCode")
+        const res = await mailProvider.verify(toMail, "mockCode")
+        console.log(`res=${JSON.stringify(res)}`)
     })
 })

@@ -1,18 +1,10 @@
 import {ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
 import {createTestFile, getIdentity, getNamespace, getProviderProxy} from "../common/common";
-
-
 import {NamespaceProvider} from "../../../src/client/warehouse/namespace";
 import {LinkProvider} from "../../../src/client/warehouse/link";
 import {
-    LinkMetadata,
-    LinkMetadataSchema,
-    LinkTypeEnum,
-    UrlMetadata,
-    UrlMetadataSchema,
-    VisitorMetadataSchema
+    LinkTypeEnum
 } from "../../../src/yeying/api/asset/link_pb";
-import {toJson} from "@bufbuild/protobuf";
 import {AssetMetadataJson, ProviderOption, Uploader, UserProvider} from "../../../src";
 
 const namespace = getNamespace()
@@ -53,8 +45,8 @@ describe('Link', () => {
             24 * 3600,
             LinkTypeEnum.LINK_TYPE_PUBLIC)
         assert.isDefined(detail)
-        console.log(`Success to get link=${JSON.stringify(toJson(LinkMetadataSchema, detail.link as LinkMetadata))}`)
-        console.log(`Success to get url=${JSON.stringify(toJson(UrlMetadataSchema, detail.url as UrlMetadata))}`)
+        console.log(`Success to get link=${JSON.stringify(detail.link)}`)
+        console.log(`Success to get url=${JSON.stringify(detail.url)}`)
     })
 
     it('search', async () => {
@@ -67,15 +59,21 @@ describe('Link', () => {
         const linkProvider = new LinkProvider(providerOption)
         const links = await linkProvider.search(1, 10, {hash: asset?.hash})
         assert.isAtLeast(links.length, 1)
+        if (links[0].uid === undefined) {
+            throw Error("uid is undefined")
+        }
         const detail = await linkProvider.detail(links[0].uid)
-        console.log(`Success to get link=${JSON.stringify(toJson(LinkMetadataSchema, detail.link as LinkMetadata))}`)
-        console.log(`Success to get url=${JSON.stringify(toJson(UrlMetadataSchema, detail.url as UrlMetadata))}`)
+        console.log(`Success to get link=${JSON.stringify(detail.link)}`)
+        console.log(`Success to get url=${JSON.stringify(detail.url)}`)
     })
 
     it('disable', async () => {
         const linkProvider = new LinkProvider(providerOption)
         const links = await linkProvider.search(1, 10, {hash: asset?.hash})
         assert.isAtLeast(links.length, 1)
+        if (links[0].uid === undefined) {
+            throw Error("uid is undefined")
+        }
         await linkProvider.disable(links[0].uid)
         console.log(`Success to disable url=${links[0].uid}`)
     })
@@ -84,10 +82,12 @@ describe('Link', () => {
         const linkProvider = new LinkProvider(providerOption)
         const links = await linkProvider.search(1, 10, {hash: asset?.hash})
         assert.isAtLeast(links.length, 1)
-
+        if (links[0].uid === undefined) {
+            throw Error("uid is undefined")
+        }
         const visitors = await linkProvider.visitors(links[0].uid)
         for (const visitor of visitors) {
-            console.log(`Success to get visitor=${JSON.stringify(toJson(VisitorMetadataSchema, visitor))}`)
+            console.log(`Success to get visitor=${JSON.stringify(visitor)}`)
         }
     })
 })

@@ -2,8 +2,7 @@ import {UserProvider} from '../../../src/client/user/user'
 import {getProviderProxy} from "../common/common";
 import {ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
 import {ProviderOption} from "../../../src/client/common/model";
-import {toJson} from "@bufbuild/protobuf";
-import {UserDetailSchema, UserMetadata, UserMetadataSchema,} from "../../../src/yeying/api/user/user_pb";
+import {UserMetadata} from "../../../src/yeying/api/user/user_pb";
 
 const providerOption: ProviderOption = {
     proxy: getProviderProxy(ServiceCodeEnum.SERVICE_CODE_AGENT),
@@ -30,13 +29,13 @@ describe('User', () => {
     it('add', async () => {
         const userProvider = new UserProvider(providerOption)
         const user = await userProvider.add('test1', "avatar1")
-        console.log(`Success to add new user=${JSON.stringify(toJson(UserMetadataSchema, user))}`)
+        console.log(`Success to add new user=${JSON.stringify(user)}`)
     })
 
     it('detail', async () => {
         const userProvider = new UserProvider(providerOption)
         const detail = await userProvider.detail()
-        console.log(`Success to get user=${JSON.stringify(toJson(UserDetailSchema, detail))}`)
+        console.log(`Success to get user=${JSON.stringify(detail)}`)
     })
 
     it('update', async () => {
@@ -45,9 +44,9 @@ describe('User', () => {
         const user1 = detail.user as UserMetadata
 
         user1.name = "test2"
-        const user2 = await userProvider.update(toJson(UserMetadataSchema, user1 ?? {}))
+        const user2 = await userProvider.update(user1)
 
-        console.log(`Success to update user=${JSON.stringify(toJson(UserMetadataSchema, user2))}`)
+        console.log(`Success to update user=${JSON.stringify(user2)}`)
         assert.equal(user2.name, user1.name)
     })
 })

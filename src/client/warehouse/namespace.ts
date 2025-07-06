@@ -16,6 +16,7 @@ import {
     NamespaceDetailResponseBody,
     NamespaceDetailResponseBodySchema,
     NamespaceMetadata,
+    NamespaceMetadataJson,
     NamespaceMetadataSchema,
     SearchNamespaceConditionJson,
     SearchNamespaceConditionSchema,
@@ -94,7 +95,7 @@ export class NamespaceProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchNamespaceConditionJson) {
-        return new Promise<NamespaceMetadata[]>(async (resolve, reject) => {
+        return new Promise<NamespaceMetadataJson[]>(async (resolve, reject) => {
             const body = create(SearchNamespaceRequestBodySchema, {
                 condition: fromJson(SearchNamespaceConditionSchema, condition ?? {}),
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -126,7 +127,7 @@ export class NamespaceProvider {
                     }
                 }
 
-                resolve(namespaces)
+                resolve(namespaces.map(namespace => toJson(NamespaceMetadataSchema, namespace)))
             } catch (err) {
                 console.error('Fail to search namespace', err)
                 return reject(err)
@@ -144,7 +145,7 @@ export class NamespaceProvider {
      * @throws ServiceUnavailable 服务不可用
      */
     detail(uid: string) {
-        return new Promise<NamespaceMetadata>(async (resolve, reject) => {
+        return new Promise<NamespaceMetadataJson>(async (resolve, reject) => {
             const body = create(NamespaceDetailRequestBodySchema, { uid: uid })
             let header
             try {
@@ -164,7 +165,7 @@ export class NamespaceProvider {
                 await this.authenticate.doResponse(res, NamespaceDetailResponseBodySchema)
                 const resBody = res.body as NamespaceDetailResponseBody
                 await verifyNamespaceMetadata(resBody.namespace)
-                resolve(resBody.namespace as NamespaceMetadata)
+                resolve(toJson(NamespaceMetadataSchema, resBody.namespace as NamespaceMetadata))
             } catch (err) {
                 console.error('Fail to get namespace detail', err)
                 return reject(err)
@@ -219,7 +220,7 @@ export class NamespaceProvider {
      * @throws ServiceUnavailable 服务不可用
      */
     create(name: string, description: string, uid?: string, participants?: string) {
-        return new Promise<NamespaceMetadata>(async (resolve, reject) => {
+        return new Promise<NamespaceMetadataJson>(async (resolve, reject) => {
             const namespace = create(NamespaceMetadataSchema, {
                 owner: this.authenticate.getDid(),
                 uid: uid || uid === '' ? uid : generateUuid(),
@@ -250,7 +251,7 @@ export class NamespaceProvider {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateNamespaceResponseBodySchema)
                 await verifyNamespaceMetadata(res.body?.namespace)
-                return resolve(res.body?.namespace as NamespaceMetadata)
+                return resolve(toJson(NamespaceMetadataSchema, res.body?.namespace as NamespaceMetadata))
             } catch (err) {
                 console.error('Fail to create namespace', err)
                 return reject(err)

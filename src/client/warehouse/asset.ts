@@ -82,7 +82,7 @@ export class AssetProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchAssetConditionJson) {
-        return new Promise<AssetMetadata[]>(async (resolve, reject) => {
+        return new Promise<AssetMetadataJson[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -107,7 +107,8 @@ export class AssetProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchAssetResponseBodySchema)
-                resolve(res?.body?.assets as AssetMetadata[])
+                const assets = res?.body?.assets as AssetMetadata[]
+                resolve(assets.map(asset => toJson(AssetMetadataSchema, asset)))
             } catch (err) {
                 console.error('Fail to search assets', err)
                 return reject(err)

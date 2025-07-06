@@ -33,6 +33,9 @@ describe('Namespace', () => {
             const namespaceMetadata = await namespaceProvider.create("default", "test", defaultNamespaceId)
             assert.equal(namespaceMetadata.uid, defaultNamespaceId)
             // 设置默认命名空间
+            if (namespaceMetadata.uid === undefined) {
+                throw Error("uid is undefined")
+            }
             await namespaceProvider.setDefaultNamespace(namespaceMetadata.uid)
             // 获得默认命名空间
             namespaceId = await namespaceProvider.getDefaultNamespace()

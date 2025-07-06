@@ -2,8 +2,6 @@ import {getIdentity, getProviderProxy} from "../common/common";
 import {ProviderOption} from "../../../src/client/common/model";
 import {ServiceCodeEnum} from "../../../src/yeying/api/common/code_pb";
 import {NodeProvider} from "../../../src/client/node/node";
-import {toJson} from "@bufbuild/protobuf";
-import {ServiceMetadataSchema} from "../../../src/yeying/api/common/model_pb";
 
 const identity = getIdentity()
 const providerOption: ProviderOption = {
@@ -16,7 +14,7 @@ describe('Node', () => {
         const nodeProvider = new NodeProvider(providerOption)
         const node = await nodeProvider.whoami()
         assert.isDefined(node)
-        console.log(`whoami=${JSON.stringify(toJson(ServiceMetadataSchema, node), null, 2)}`)
+        console.log(`whoami=${JSON.stringify(node, null, 2)}`)
     })
 
     it('health check', async () => {

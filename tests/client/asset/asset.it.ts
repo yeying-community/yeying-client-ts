@@ -5,9 +5,8 @@ import {UserProvider} from "../../../src/client/user/user";
 import {Uploader} from "../../../src/client/warehouse/uploader";
 import {Downloader} from "../../../src/client/warehouse/downloader";
 import {readFile, ResultDataType} from "../../../src/common/file";
-import {AssetMetadataSchema, SearchAssetConditionJson} from "../../../src/yeying/api/asset/asset_pb";
+import {SearchAssetConditionJson} from "../../../src/yeying/api/asset/asset_pb";
 import {ProviderOption} from "../../../src/client/common/model";
-import {toJson} from "@bufbuild/protobuf";
 import {NamespaceProvider} from "../../../src/client/warehouse/namespace";
 import {generateRandomString} from "../../../src/common/string";
 import {digest, encodeHex, encodeString} from "@yeying-community/yeying-web3";
@@ -58,7 +57,7 @@ describe('Asset', () => {
 
         console.log(`Success to search assets=${assets.length}`)
         assets.forEach(a => {
-            console.log(`asset=${JSON.stringify(toJson(AssetMetadataSchema, a))}`)
+            console.log(`asset=${JSON.stringify(a)}`)
         })
     })
 

@@ -10,7 +10,6 @@ import {
     ConfirmBlockResponseBodySchema,
     GetBlockRequestBodySchema,
     GetBlockRequestSchema,
-    GetBlockResponseBody,
     GetBlockResponseBodySchema,
     PutBlockRequestBodySchema,
     PutBlockRequestSchema,
@@ -118,7 +117,7 @@ export class BlockProvider {
      * ```
      */
     confirm(block: BlockMetadataJson) {
-        return new Promise<BlockMetadata | undefined>(async (resolve, reject) => {
+        return new Promise<BlockMetadataJson>(async (resolve, reject) => {
             const body = create(ConfirmBlockRequestBodySchema, { block: fromJson(BlockMetadataSchema, block) })
 
             let header
@@ -139,8 +138,7 @@ export class BlockProvider {
                 if (res.body?.block !== undefined) {
                     await verifyBlockMetadata(res.body?.block)
                 }
-
-                return resolve(res.body?.block)
+                return resolve(toJson(BlockMetadataSchema, res.body?.block as BlockMetadata))
             } catch (err) {
                 console.error('Fail to put block', err)
                 return reject(err)
@@ -186,7 +184,7 @@ export class BlockProvider {
                 signature: block.signature
             })
             if (existing) {
-                return resolve(toJson(BlockMetadataSchema, existing))
+                return resolve(existing)
             }
 
             const body = create(PutBlockRequestBodySchema, { block: block })

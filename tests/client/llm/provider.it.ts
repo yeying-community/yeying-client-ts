@@ -5,10 +5,6 @@ import {ProviderProvider} from "../../../src/client/llm/provider";
 import {toJson} from "@bufbuild/protobuf";
 import {
     ProviderCodeEnum,
-    ProviderMetadata,
-    ProviderMetadataSchema,
-    ProviderState,
-    ProviderStateSchema
 } from "../../../src/yeying/api/llm/provider_pb";
 import {UserProvider} from "../../../src";
 
@@ -52,15 +48,15 @@ describe('Provider', () => {
     it('add', async () => {
         const providerProvider = new ProviderProvider(providerOption)
         const metadata = await providerProvider.add("test1", provider.code, "", provider.uid)
-        console.log(`Success to add provider=${JSON.stringify(toJson(ProviderMetadataSchema, metadata))}`)
+        console.log(`Success to add provider=${JSON.stringify(metadata)}`)
         assert.isDefined(metadata)
     })
 
     it('detail', async () => {
         const providerProvider = new ProviderProvider(providerOption)
         const detail = await providerProvider.detail(provider.uid)
-        console.log(`Success to get provider detail, provider=${JSON.stringify(toJson(ProviderMetadataSchema, detail.provider as ProviderMetadata))}`)
-        console.log(`Success to get provider detail, state=${JSON.stringify(toJson(ProviderStateSchema, detail.state as ProviderState))}`)
+        console.log(`Success to get provider detail, provider=${JSON.stringify(detail.provider)}`)
+        console.log(`Success to get provider detail, state=${JSON.stringify(detail.state)}`)
         assert.isDefined(detail)
     })
 
@@ -68,7 +64,7 @@ describe('Provider', () => {
         const providerProvider = new ProviderProvider(providerOption)
         const providers = await providerProvider.search(1, 10, provider.code)
         for (const provider of providers) {
-            console.log(`Success to list provider=${JSON.stringify(toJson(ProviderMetadataSchema, provider))}`)
+            console.log(`Success to list provider=${JSON.stringify(provider)}`)
         }
 
         assert.isAtLeast(providers.length, 1)

@@ -9,10 +9,13 @@ import {
     DisableLinkResponseBodySchema,
     Link,
     LinkDetail,
+    LinkDetailJson,
     LinkDetailRequestBodySchema,
     LinkDetailRequestSchema,
     LinkDetailResponseBodySchema,
+    LinkDetailSchema,
     LinkMetadata,
+    LinkMetadataJson,
     LinkMetadataSchema,
     LinkTypeEnum,
     LinkVisitorRequestBodySchema,
@@ -24,6 +27,7 @@ import {
     SearchLinkRequestSchema,
     SearchLinkResponseBodySchema,
     VisitorMetadata,
+    VisitorMetadataJson,
     VisitorMetadataSchema
 } from '../../yeying/api/asset/link_pb'
 import { ProviderOption } from '../common/model'
@@ -81,7 +85,7 @@ export class LinkProvider {
         visitors: string[] = [],
         description?: string
     ) {
-        return new Promise<LinkDetail>(async (resolve, reject) => {
+        return new Promise<LinkDetailJson>(async (resolve, reject) => {
             const link = create(LinkMetadataSchema, {
                 namespaceId: namespaceId,
                 name: name,
@@ -119,7 +123,7 @@ export class LinkProvider {
                 await this.authenticate.doResponse(res, CreateLinkResponseBodySchema)
                 await verifyLinkMetadata(res.body?.detail?.link)
                 await verifyUrlMetadata(res.body?.detail?.url)
-                resolve(res?.body?.detail as LinkDetail)
+                resolve(toJson(LinkDetailSchema, res?.body?.detail as LinkDetail))
             } catch (err) {
                 console.error('Fail to create link for asset', err)
                 return reject(err)
@@ -138,7 +142,7 @@ export class LinkProvider {
      *
      */
     search(page: number = 1, pageSize: number = 10, condition?: SearchLinkConditionJson) {
-        return new Promise<LinkMetadata[]>(async (resolve, reject) => {
+        return new Promise<LinkMetadataJson[]>(async (resolve, reject) => {
             const body = create(SearchLinkRequestBodySchema, {
                 condition: fromJson(SearchLinkConditionSchema, condition ?? {}),
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -172,7 +176,7 @@ export class LinkProvider {
                         )
                     }
                 }
-                resolve(links)
+                resolve(links.map(link => toJson(LinkMetadataSchema, link)))
             } catch (err) {
                 console.error('Fail to search links', err)
                 return reject(err)
@@ -189,7 +193,7 @@ export class LinkProvider {
      *
      */
     detail(uid: string) {
-        return new Promise<LinkDetail>(async (resolve, reject) => {
+        return new Promise<LinkDetailJson>(async (resolve, reject) => {
             const body = create(LinkDetailRequestBodySchema, { uid: uid })
 
             let header
@@ -211,7 +215,7 @@ export class LinkProvider {
                 const detail = res.body?.detail as LinkDetail
                 await verifyLinkMetadata(detail.link)
                 await verifyUrlMetadata(detail.url)
-                resolve(detail)
+                resolve(toJson(LinkDetailSchema, detail))
             } catch (err) {
                 console.error('Fail to get link detail.', err)
                 return reject(err)
@@ -266,7 +270,7 @@ export class LinkProvider {
      *
      */
     visitors(uid: string, page: number = 1, pageSize: number = 10) {
-        return new Promise<VisitorMetadata[]>(async (resolve, reject) => {
+        return new Promise<VisitorMetadataJson[]>(async (resolve, reject) => {
             const body = create(LinkVisitorRequestBodySchema, {
                 uid: uid,
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -304,7 +308,7 @@ export class LinkProvider {
                         visitors.push(visitor)
                     }
                 }
-                resolve(visitors)
+                resolve(visitors.map(visitor => toJson(VisitorMetadataSchema, visitor)))
             } catch (err) {
                 console.error('Fail to get visitors for link.', err)
                 return reject(err)
