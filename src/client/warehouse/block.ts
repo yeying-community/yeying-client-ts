@@ -93,7 +93,7 @@ export class BlockProvider {
                 await this.authenticate.doResponse(res, GetBlockResponseBodySchema)
                 const detail: BlockDetail = {
                     data: res.data,
-                    block: toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
+                    block: toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true }) as BlockMetadataJson
                 }
 
                 resolve(detail)
@@ -139,7 +139,7 @@ export class BlockProvider {
                     await verifyBlockMetadata(res.body?.block)
                 }
                 return resolve(
-                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
+                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true }) as BlockMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to put block', err)
@@ -208,7 +208,7 @@ export class BlockProvider {
                 await this.authenticate.doResponse(res, PutBlockResponseBodySchema, isExisted)
                 await verifyBlockMetadata(res.body?.block)
                 return resolve(
-                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true })
+                    toJson(BlockMetadataSchema, res.body?.block as BlockMetadata, { alwaysEmitImplicit: true }) as BlockMetadataJson
                 )
             } catch (err) {
                 console.error(`Fail to put block=${JSON.stringify(toJson(BlockMetadataSchema, block))}`, err)

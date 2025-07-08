@@ -22,7 +22,6 @@ import {
 import { generateRandomString } from '../../common/string'
 import { signInvitationMetadata, verifyInvitationMetadata } from '../model/model'
 import {
-    formatDateTime,
     getCurrentUtcDateTime,
     getCurrentUtcString,
     plusSecond,
@@ -111,7 +110,7 @@ export class InvitationProvider {
                 return resolve(
                     toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as InvitationMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to create invitation', err)
@@ -161,7 +160,7 @@ export class InvitationProvider {
                 const invitationsList = res.body?.invitations as InvitationMetadata[]
                 resolve(
                     invitationsList.map((invitation) =>
-                        toJson(InvitationMetadataSchema, invitation, { alwaysEmitImplicit: true })
+                        toJson(InvitationMetadataSchema, invitation, { alwaysEmitImplicit: true }) as InvitationMetadataJson
                     )
                 )
             } catch (err) {
@@ -208,7 +207,7 @@ export class InvitationProvider {
                 return resolve(
                     toJson(InvitationMetadataSchema, res.body?.invitation as InvitationMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as InvitationMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to get invitation detail.', err)

@@ -102,7 +102,7 @@ export class ApplicationProvider {
      *
      */
     create(application: ApplicationMetadataJson) {
-        return new Promise<CreateApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<ApplicationMetadataJson>(async (resolve, reject) => {
             const meta: ApplicationMetadata = fromJson(ApplicationMetadataSchema, application ?? {})
             const body = create(CreateApplicationRequestBodySchema, {
                 application: meta
@@ -127,9 +127,9 @@ export class ApplicationProvider {
                 await this.authenticate.doResponse(res, CreateApplicationResponseBodySchema, isExisted)
                 await verifyApplicationMetadata(res.body?.application)
                 resolve(
-                    toJson(CreateApplicationResponseSchema, res as CreateApplicationResponse, {
+                    toJson(ApplicationMetadataSchema, res.body?.application as ApplicationMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as ApplicationMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to create application', err)
@@ -151,7 +151,7 @@ export class ApplicationProvider {
      *
      */
     search(page: number, pageSize: number, condition?: SearchApplicationConditionJson) {
-        return new Promise<SearchApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<ApplicationMetadataJson[]>(async (resolve, reject) => {
             const body = create(SearchApplicationRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(SearchApplicationConditionSchema, condition ?? {})
@@ -185,11 +185,17 @@ export class ApplicationProvider {
                         )
                     }
                 }
-                resolve(
-                    toJson(SearchApplicationResponseSchema, res as SearchApplicationResponse, {
-                        alwaysEmitImplicit: true
-                    })
-                )
+                if (res.body) {
+                    resolve(
+                        res.body?.applications.map(app => 
+                            toJson(ApplicationMetadataSchema, app as ApplicationMetadata, {
+                                alwaysEmitImplicit: true
+                            }) as ApplicationMetadataJson
+                        )
+                
+                    )
+                }
+      
             } catch (err) {
                 console.error('Fail to search application', err)
                 return reject(new NetworkUnavailable())
@@ -205,7 +211,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     delete(did: string, version: number) {
-        return new Promise<DeleteApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const body = create(DeleteApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -227,11 +233,7 @@ export class ApplicationProvider {
                 const res = await this.client.delete(request)
                 await this.authenticate.doResponse(res, DeleteApplicationResponseBodySchema, isDeleted)
 
-                return resolve(
-                    toJson(DeleteApplicationResponseSchema, res as DeleteApplicationResponse, {
-                        alwaysEmitImplicit: true
-                    })
-                )
+                return resolve()
             } catch (err) {
                 console.error('Fail to delete application', err)
                 return reject(new NetworkUnavailable())
@@ -247,7 +249,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     detail(did: string, version: number) {
-        return new Promise<ApplicationDetailResponseJson>(async (resolve, reject) => {
+        return new Promise<ApplicationMetadataJson>(async (resolve, reject) => {
             const body = create(ApplicationDetailRequestBodySchema, {
                 did: did,
                 version: version
@@ -269,9 +271,9 @@ export class ApplicationProvider {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, ApplicationDetailResponseBodySchema)
                 return resolve(
-                    toJson(ApplicationDetailResponseSchema, res as ApplicationDetailResponse, {
+                    toJson(ApplicationMetadataSchema, res.body?.application as ApplicationMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as ApplicationMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to detail application', err)
@@ -288,7 +290,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     offline(did: string, version: number) {
-        return new Promise<OfflineApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const body = create(OfflineApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -309,11 +311,7 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.offline(request)
                 await this.authenticate.doResponse(res, OfflineApplicationResponseBodySchema)
-                return resolve(
-                    toJson(OfflineApplicationResponseSchema, res as OfflineApplicationResponse, {
-                        alwaysEmitImplicit: true
-                    })
-                )
+                return resolve()
             } catch (err) {
                 console.error('Fail to offline application', err)
                 return reject(new NetworkUnavailable())
@@ -329,7 +327,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     online(did: string, version: number) {
-        return new Promise<OnlineApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const body = create(OnlineApplicationRequestBodySchema, {
                 did: did,
                 version: version
@@ -350,11 +348,7 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.online(request)
                 await this.authenticate.doResponse(res, OnlineApplicationResponseBodySchema)
-                return resolve(
-                    toJson(OnlineApplicationResponseSchema, res as OnlineApplicationResponse, {
-                        alwaysEmitImplicit: true
-                    })
-                )
+                return resolve()
             } catch (err) {
                 console.error('Fail to online application', err)
                 return reject(new NetworkUnavailable())
@@ -374,7 +368,7 @@ export class ApplicationProvider {
      * @throws  NetworkUnavailable
      */
     audit(did: string, version: number, passed: boolean, signature?: string, auditor?: string, comment?: string) {
-        return new Promise<AuditApplicationResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const commentMeta = create(ApplicationCommentSchema, {
                 auditor: auditor,
                 comment: comment,
@@ -402,11 +396,7 @@ export class ApplicationProvider {
             try {
                 const res = await this.client.audit(request)
                 await this.authenticate.doResponse(res, AuditApplicationResponseBodySchema)
-                return resolve(
-                    toJson(AuditApplicationResponseSchema, res as AuditApplicationResponse, {
-                        alwaysEmitImplicit: true
-                    })
-                )
+                return resolve()
             } catch (err) {
                 console.error('Fail to audit application', err)
                 return reject(new NetworkUnavailable())

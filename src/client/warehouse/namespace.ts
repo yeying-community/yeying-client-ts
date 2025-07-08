@@ -129,7 +129,7 @@ export class NamespaceProvider {
 
                 resolve(
                     namespaces.map((namespace) =>
-                        toJson(NamespaceMetadataSchema, namespace, { alwaysEmitImplicit: true })
+                        toJson(NamespaceMetadataSchema, namespace, { alwaysEmitImplicit: true }) as NamespaceMetadataJson
                     )
                 )
             } catch (err) {
@@ -172,7 +172,7 @@ export class NamespaceProvider {
                 resolve(
                     toJson(NamespaceMetadataSchema, resBody.namespace as NamespaceMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as NamespaceMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to get namespace detail', err)
@@ -262,7 +262,7 @@ export class NamespaceProvider {
                 return resolve(
                     toJson(NamespaceMetadataSchema, res.body?.namespace as NamespaceMetadata, {
                         alwaysEmitImplicit: true
-                    })
+                    }) as NamespaceMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to create namespace', err)

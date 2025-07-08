@@ -8,7 +8,6 @@ import {
     BulletinListRequestSchema,
     BulletinListResponseBody,
     BulletinListResponseBodySchema,
-    SolutionMetadata,
     SolutionMetadataJson,
     SolutionMetadataSchema
 } from '../../yeying/api/bulletin/bulletin_pb'
@@ -100,7 +99,7 @@ export class BulletinProvider {
                 }
 
                 resolve(
-                    solutions.map((solution) => toJson(SolutionMetadataSchema, solution, { alwaysEmitImplicit: true }))
+                    solutions.map((solution) => toJson(SolutionMetadataSchema, solution, { alwaysEmitImplicit: true }) as SolutionMetadataJson)
                 )
             } catch (err) {
                 console.error('Fail to BulletinList solutions', err)

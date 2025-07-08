@@ -83,7 +83,7 @@ describe('Service', () => {
               codePackagePath: serviceMetadata?.codePackagePath
               }
         )
-        const service = res.body?.service
+        const service = res
         assert.isDefined(service)
         mockDId = service.did
         mockVersion = service.version
@@ -98,7 +98,7 @@ describe('Service', () => {
         assert.isDefined(mockDId)
         assert.isDefined(mockVersion)
         const res = await serviceProvider.detail(mockDId, mockVersion)
-        const service = res.body?.service
+        const service = res
         assert.isDefined(service)
         console.log(`Success to detail identity=${JSON.stringify(service)}`)
         console.log(`res=${JSON.stringify(res)}`)
@@ -109,10 +109,10 @@ describe('Service', () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
         const res = await serviceProvider.search(1, 10, {keyword: "de"})
         console.log(`search res=${JSON.stringify(res)}`)
-        const services = res.body?.services
+        const services = res
         assert.isDefined(services)
         assert.isTrue(services.length > 0)
-        const len = res.body?.services?.length
+        const len = res.length
         assert.isAtLeast(len == undefined ? 0 : len, 1)
         services.map(i => console.log(`service, name=${i.name}, code=${i.code}`))
         console.log(`res=${JSON.stringify(res)}`)

@@ -55,7 +55,7 @@ export class MailProvider {
      * ```
      */
     send(toMail: string) {
-        return new Promise<SendMailResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const body = create(SendMailRequestBodySchema, {
                 toMail: toMail
             })
@@ -76,7 +76,7 @@ export class MailProvider {
             try {
                 const res = await this.client.send(request)
                 await this.authenticate.doResponse(res, SendMailResponseBodySchema)
-                resolve(toJson(SendMailResponseSchema, res, { alwaysEmitImplicit: true }))
+                resolve()
             } catch (err) {
                 console.error('Fail to send mail', err)
                 return reject(err)
@@ -99,7 +99,7 @@ export class MailProvider {
      * ```
      */
     verify(toMail: string, code: string) {
-        return new Promise<VerifyMailResponseJson>(async (resolve, reject) => {
+        return new Promise<void>(async (resolve, reject) => {
             const body = create(VerifyMailRequestBodySchema, {
                 toMail: toMail,
                 code: code
@@ -120,7 +120,7 @@ export class MailProvider {
             try {
                 const res = await this.client.verify(request)
                 await this.authenticate.doResponse(res, VerifyMailResponseBodySchema)
-                resolve(toJson(VerifyMailResponseSchema, res, { alwaysEmitImplicit: true }))
+                resolve()
             } catch (err) {
                 console.error('Fail to verify email code', err)
                 return reject(err)
