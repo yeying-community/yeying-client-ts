@@ -22,6 +22,8 @@ import {
 } from '../../yeying/api/asset/recycle_pb'
 import { SearchAssetConditionJson, SearchAssetConditionSchema } from '../../yeying/api/asset/asset_pb'
 import { RequestPageSchema } from '../../yeying/api/common/message_pb'
+import { ProviderMetadataJson, ProviderMetadataSchema } from '../../yeying/api/llm/provider_pb'
+import { verifyAssetMetadata, verifyProviderMetadata } from '../model/model'
 
 /**
  * 区块提供者类，用于与区块链交互，提供数据的获取和存储功能。
@@ -66,11 +68,11 @@ export class RecycleProvider {
      * @param page 页码。
      * @param pageSize 每页数量。
      *
-     * @returns {Promise<DeletedAssetMetadata[]>} 当前页面的删除的资产元信息。
+     * @returns {Promise<DeletedAssetMetadataJson[]>} 当前页面的删除的资产元信息。
      *
      */
-    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<SearchDeletedAssetResponseBodyJson> {
-        return new Promise<SearchDeletedAssetResponseBodyJson>(async (resolve, reject) => {
+    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<DeletedAssetMetadataJson[]> {
+        return new Promise<DeletedAssetMetadataJson[]>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -95,8 +97,25 @@ export class RecycleProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchDeletedAssetResponseBodySchema)
-                const assets = res?.body?.assets as DeletedAssetMetadata[]
-                resolve(toJson(SearchDeletedAssetResponseBodySchema, res.body as SearchDeletedAssetResponseBody, { alwaysEmitImplicit: true }) as SearchDeletedAssetResponseBodyJson)
+                const deletedAssets: DeletedAssetMetadataJson[] = []
+                if (res?.body?.assets !== undefined) {
+                    for (const deletedAsset of res.body.assets) {
+                        const deletedAssetJson = toJson(DeletedAssetMetadataSchema, deletedAsset, {
+                            alwaysEmitImplicit: true
+                        }) as DeletedAssetMetadataJson
+                        try {
+                            await verifyAssetMetadata(deletedAsset.asset)
+                            deletedAssets.push(deletedAssetJson)
+                        } catch (err) {
+                            console.error(
+                                `Fail to verify deleted asset=${JSON.stringify(deletedAssetJson)} when searching`,
+                                err
+                            )
+                        }
+                    }
+                }
+
+                resolve(deletedAssets)
             } catch (err) {
                 console.error('Fail to search deleted assets', err)
                 return reject(err)

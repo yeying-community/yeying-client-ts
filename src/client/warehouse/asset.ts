@@ -34,6 +34,7 @@ import { signAssetMetadata, verifyAssetMetadata } from '../model/model'
 import { isDeleted, isExisted } from '../../common/status'
 import { isBlank } from '../../common/string'
 import { getCurrentUtcString } from '@yeying-community/yeying-web3'
+import { DeletedAssetMetadataJson, DeletedAssetMetadataSchema } from '../../yeying/api/asset/recycle_pb'
 
 /**
  * 提供对资产的管理，包括查询、版本获取、详情查看、删除等操作
@@ -107,8 +108,22 @@ export class AssetProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchAssetResponseBodySchema)
-                const assets = res?.body?.assets as AssetMetadata[]
-                resolve(assets.map((asset) => toJson(AssetMetadataSchema, asset, { alwaysEmitImplicit: true }) as AssetMetadataJson))
+                const assets: AssetMetadataJson[] = []
+                if (res?.body?.assets !== undefined) {
+                    for (const asset of res.body.assets) {
+                        const assetJson = toJson(AssetMetadataSchema, asset, {
+                            alwaysEmitImplicit: true
+                        }) as AssetMetadataJson
+                        try {
+                            await verifyAssetMetadata(asset)
+                            assets.push(assetJson)
+                        } catch (err) {
+                            console.error(`Fail to verify asset=${JSON.stringify(assetJson)} when searching`, err)
+                        }
+                    }
+                }
+
+                resolve(assets)
             } catch (err) {
                 console.error('Fail to search assets', err)
                 return reject(err)
@@ -164,7 +179,11 @@ export class AssetProvider {
                 await this.authenticate.doResponse(res, UpdateAssetResponseBodySchema)
                 const resBody = res.body as UpdateAssetResponseBody
                 await verifyAssetMetadata(resBody.asset)
-                resolve(toJson(AssetMetadataSchema, resBody.asset as AssetMetadata, { alwaysEmitImplicit: true }) as AssetMetadataJson)
+                resolve(
+                    toJson(AssetMetadataSchema, resBody.asset as AssetMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as AssetMetadataJson
+                )
             } catch (err) {
                 console.error(`Fail to update asset=${JSON.stringify(asset)}`, err)
                 return reject(err)
@@ -215,7 +234,11 @@ export class AssetProvider {
                 const resBody = res.body as AssetDetailResponseBody
                 await verifyAssetMetadata(resBody.asset)
 
-                resolve(toJson(AssetMetadataSchema, res?.body?.asset as AssetMetadata, { alwaysEmitImplicit: true }) as AssetMetadataJson)
+                resolve(
+                    toJson(AssetMetadataSchema, res?.body?.asset as AssetMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as AssetMetadataJson
+                )
             } catch (err) {
                 console.error('Fail to get asset detail', err)
                 return reject(err)
@@ -314,7 +337,11 @@ export class AssetProvider {
                 await this.authenticate.doResponse(res, SignAssetResponseBodySchema, isExisted)
                 const resBody = res.body as SignAssetResponseBody
                 await verifyAssetMetadata(resBody.asset)
-                resolve(toJson(AssetMetadataSchema, resBody?.asset as AssetMetadata, { alwaysEmitImplicit: true }) as AssetMetadataJson)
+                resolve(
+                    toJson(AssetMetadataSchema, resBody?.asset as AssetMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as AssetMetadataJson
+                )
             } catch (err) {
                 console.error('Fail to sign asset', err)
                 return reject(err)

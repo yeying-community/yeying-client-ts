@@ -29,7 +29,8 @@ import {
     AuditApplicationResponseBodySchema,
     ApplicationCommentSchema,
     SearchApplicationConditionJson,
-    SearchApplicationResponseBodyJson
+    SearchApplicationResponseBodyJson,
+    SearchApplicationConditionSchema
 } from '../../yeying/api/application/application_pb'
 import { NetworkUnavailable } from '../../common/error'
 import {
@@ -40,6 +41,7 @@ import {
 import { signApplicationMetadata, verifyApplicationMetadata } from '../model/model'
 import { isDeleted, isExisted } from '../../common/status'
 import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
+import { ProviderMetadataJson, ProviderMetadataSchema } from '../../yeying/api/llm/provider_pb'
 /**
  * ApplicationProvider 管理应用。
  */
@@ -130,7 +132,7 @@ export class ApplicationProvider {
      *
      */
     search(page: number, pageSize: number, condition?: SearchApplicationConditionJson) {
-        return new Promise<SearchApplicationResponseBodyJson>(async (resolve, reject) => {
+        return new Promise<ApplicationMetadataJson[]>(async (resolve, reject) => {
             const body = create(SearchApplicationRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(SearchApplicationConditionSchema, condition ?? {})
@@ -152,26 +154,23 @@ export class ApplicationProvider {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchApplicationResponseBodySchema)
                 const body = res.body as SearchApplicationResponseBody
-                const applications = []
+                const applications: ApplicationMetadataJson[] = []
                 for (const application of body.applications) {
+                    const applicationJson = toJson(ApplicationMetadataSchema, application, {
+                        alwaysEmitImplicit: true
+                    }) as ApplicationMetadataJson
+
                     try {
                         await verifyApplicationMetadata(application)
-                        applications.push(application)
+                        applications.push(applicationJson)
                     } catch (err) {
                         console.error(
-                            `invalid application=${JSON.stringify(toJson(ApplicationMetadataSchema, application))} when searching application.`,
+                            `invalid application=${JSON.stringify(applicationJson)} when searching application.`,
                             err
                         )
                     }
                 }
-                if (res.body) {
-                    resolve(
-                        toJson(SearchApplicationResponseBodySchema, res.body as SearchApplicationResponseBody, {
-                                alwaysEmitImplicit: true
-                            }) as SearchApplicationResponseBodyJson
-                    )
-                }
-      
+                resolve(applications)
             } catch (err) {
                 console.error('Fail to search application', err)
                 return reject(new NetworkUnavailable())

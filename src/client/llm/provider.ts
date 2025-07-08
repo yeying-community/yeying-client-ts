@@ -106,8 +106,11 @@ export class ProviderProvider {
                 await this.authenticate.doResponse(res, ProviderDescriptionsResponseBodySchema)
                 const descriptions = res.body?.descriptions as ProviderDescription[]
                 resolve(
-                    descriptions.map((description) =>
-                        toJson(ProviderDescriptionSchema, description, { alwaysEmitImplicit: true }) as ProviderDescriptionJson
+                    descriptions.map(
+                        (description) =>
+                            toJson(ProviderDescriptionSchema, description, {
+                                alwaysEmitImplicit: true
+                            }) as ProviderDescriptionJson
                     )
                 )
             } catch (err) {
@@ -146,7 +149,11 @@ export class ProviderProvider {
                 const res = await this.client.models(request)
                 await this.authenticate.doResponse(res, ProviderModelsResponseBodySchema)
                 const models = res.body?.models as ModelMetadata[]
-                resolve(models.map((model) => toJson(ModelMetadataSchema, model, { alwaysEmitImplicit: true }) as ModelMetadataJson))
+                resolve(
+                    models.map(
+                        (model) => toJson(ModelMetadataSchema, model, { alwaysEmitImplicit: true }) as ModelMetadataJson
+                    )
+                )
             } catch (err) {
                 console.error('Fail to list models.', err)
                 return reject(err)
@@ -203,7 +210,9 @@ export class ProviderProvider {
                 await this.authenticate.doResponse(res, AddProviderResponseBodySchema, isExisted)
                 await verifyProviderMetadata(res.body?.provider)
                 return resolve(
-                    toJson(ProviderMetadataSchema, res.body?.provider as ProviderMetadata, { alwaysEmitImplicit: true }) as ProviderMetadataJson
+                    toJson(ProviderMetadataSchema, res.body?.provider as ProviderMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as ProviderMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to add provider.', err)
@@ -228,7 +237,7 @@ export class ProviderProvider {
      * ```
      */
     search(page: number, pageSize: number, code?: ProviderCodeEnum) {
-        return new Promise<SearchProviderResponseBodyJson>(async (resolve, reject) => {
+        return new Promise<ProviderMetadataJson[]>(async (resolve, reject) => {
             const condition = create(SearchProviderConditionSchema, {
                 code: code
             })
@@ -253,21 +262,21 @@ export class ProviderProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchProviderResponseBodySchema)
-                const providers: ProviderMetadata[] = []
+                const providers: ProviderMetadataJson[] = []
                 if (res.body?.providers !== undefined) {
                     for (const provider of res.body.providers) {
+                        const providerJson = toJson(ProviderMetadataSchema, provider, {
+                            alwaysEmitImplicit: true
+                        }) as ProviderMetadataJson
                         try {
                             await verifyProviderMetadata(provider)
-                            providers.push(provider)
+                            providers.push(providerJson)
                         } catch (err) {
-                            console.error(
-                                `Fail to verify provider=${toJson(ProviderMetadataSchema, provider)} when searching`,
-                                err
-                            )
+                            console.error(`Fail to verify provider=${JSON.stringify(providerJson)} when searching`, err)
                         }
                     }
                 }
-                resolve(toJson(SearchProviderResponseBodySchema, res.body as SearchProviderResponseBody, { alwaysEmitImplicit: true }) as SearchProviderResponseBodyJson)
+                resolve(providers)
             } catch (err) {
                 console.error('Fail to search provider.', err)
                 return reject(err)
@@ -348,7 +357,9 @@ export class ProviderProvider {
                 await verifyProviderMetadata(res.body?.detail?.provider)
                 await verifyProviderState(res.body?.detail?.state)
                 return resolve(
-                    toJson(ProviderDetailSchema, res.body?.detail as ProviderDetail, { alwaysEmitImplicit: true }) as ProviderDetailJson
+                    toJson(ProviderDetailSchema, res.body?.detail as ProviderDetail, {
+                        alwaysEmitImplicit: true
+                    }) as ProviderDetailJson
                 )
             } catch (err) {
                 console.error('Fail to get provider detail.', err)
