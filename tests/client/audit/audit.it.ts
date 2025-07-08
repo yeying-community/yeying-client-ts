@@ -83,7 +83,7 @@ describe('Audit', () => {
         type: enumToJson(AuditTypeEnumSchema, auditMetadata ? auditMetadata.type : AuditTypeEnum.AUDIT_TYPE_UNKNOWN)
     })
     console.log(`Success to create audit=${JSON.stringify(res)}`)
-    uid = res.body?.meta?.uid
+    uid = res.uid
   })
 
   it('detail', async () => {
