@@ -16,6 +16,8 @@ import {
     SearchSessionConditionSchema,
     SearchSessionRequestBodySchema,
     SearchSessionRequestSchema,
+    SearchSessionResponseBody,
+    SearchSessionResponseBodyJson,
     SearchSessionResponseBodySchema,
     Session,
     SessionDetail,
@@ -141,7 +143,7 @@ export class SessionProvider {
      * ```
      */
     search(page: number = 1, pageSize: number = 10, uid?: string, name?: string) {
-        return new Promise<SessionMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<SearchSessionResponseBodyJson>(async (resolve, reject) => {
             const body = create(SearchSessionRequestBodySchema, {
                 condition: create(SearchSessionConditionSchema, {
                     uid: uid,
@@ -182,7 +184,7 @@ export class SessionProvider {
                         }
                     }
                 }
-                resolve(sessions.map((session) => toJson(SessionMetadataSchema, session, { alwaysEmitImplicit: true }) as SessionMetadataJson))
+                resolve(toJson(SearchSessionResponseBodySchema, res.body as SearchSessionResponseBody, { alwaysEmitImplicit: true }) as SearchSessionResponseBodyJson)
             } catch (err) {
                 console.error('Fail to search session.', err)
                 return reject(err)

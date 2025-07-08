@@ -14,32 +14,16 @@ import {
     OfflineServiceResponseBodySchema,
     DetailServiceRequestBodySchema,
     DetailServiceRequestSchema,
-    OfflineServiceResponse,
-    CreateServiceResponse,
-    DetailServiceResponse,
-    SearchServiceResponse,
-    OnlineServiceResponse,
     OnlineServiceRequestSchema,
     OnlineServiceRequestBodySchema,
     OnlineServiceResponseBodySchema,
-    DeleteServiceResponse,
     DeleteServiceResponseBodySchema,
     DeleteServiceRequestSchema,
     DeleteServiceRequestBodySchema,
     DetailServiceResponseBodySchema,
     SearchServiceConditionJson,
-    CreateServiceResponseJson,
-    CreateServiceResponseSchema,
-    DetailServiceResponseJson,
-    DetailServiceResponseSchema,
-    SearchServiceResponseJson,
-    SearchServiceResponseSchema,
-    OfflineServiceResponseJson,
-    OfflineServiceResponseSchema,
-    OnlineServiceResponseJson,
-    OnlineServiceResponseSchema,
-    DeleteServiceResponseJson,
-    DeleteServiceResponseSchema
+    SearchServiceResponseBodyJson,
+    SearchServiceResponseBody
 } from '../../yeying/api/service/service_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
@@ -170,7 +154,7 @@ export class ServiceProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchServiceConditionJson) {
-        return new Promise<ServiceMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<SearchServiceResponseBodyJson>(async (resolve, reject) => {
             const body = create(SearchServiceRequestBodySchema, {
                 condition: fromJson(SearchServiceConditionSchema, condition ?? {}),
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -204,7 +188,7 @@ export class ServiceProvider {
                     }
                 }
                 if (res.body) {
-                    resolve(res.body.services.map(service => toJson(ServiceMetadataSchema, service as ServiceMetadata, { alwaysEmitImplicit: true }) as ServiceMetadataJson))
+                    resolve(toJson(SearchServiceResponseBodySchema, res.body as SearchServiceResponseBody, { alwaysEmitImplicit: true }) as SearchServiceResponseBodyJson)
                 }
                 
             } catch (err) {

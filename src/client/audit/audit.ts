@@ -9,51 +9,34 @@ import {
     Audit,
     AuditListRequestBodySchema,
     AuditListRequestSchema,
-    AuditListResponse,
     AuditListResponseBodySchema,
-    AuditListResponseJson,
-    AuditListResponseSchema,
     AuditMetadataJson,
     AuditMetadataSchema,
     AuditAuditRequestBodySchema,
     AuditAuditRequestSchema,
-    AuditAuditResponse,
     AuditAuditResponseBodySchema,
-    AuditAuditResponseJson,
-    AuditAuditResponseSchema,
     AuditSearchConditionJson,
     AuditSearchConditionSchema,
     AuditCancelRequestBodySchema,
     AuditCancelRequestSchema,
-    AuditCancelResponse,
     AuditCancelResponseBodySchema,
-    AuditCancelResponseJson,
-    AuditCancelResponseSchema,
     CreateAuditListRequestBodySchema,
     CreateAuditListRequestSchema,
-    CreateAuditListResponse,
     CreateAuditListResponseBodySchema,
-    CreateAuditListResponseJson,
-    CreateAuditListResponseSchema,
     AuditCreateRequestBodySchema,
     AuditCreateRequestSchema,
-    AuditCreateResponse,
     AuditCreateResponseBodySchema,
-    AuditCreateResponseJson,
-    AuditCreateResponseSchema,
     AuditDetailRequestBodySchema,
     AuditDetailRequestSchema,
-    AuditDetailResponse,
     AuditDetailResponseBodySchema,
-    AuditDetailResponseJson,
-    AuditDetailResponseSchema,
     AuditUnbindRequestBodySchema,
     AuditUnbindRequestSchema,
-    AuditUnbindResponse,
     AuditUnbindResponseBodySchema,
-    AuditUnbindResponseJson,
-    AuditUnbindResponseSchema,
-    AuditMetadata
+    AuditMetadata,
+    CreateAuditListResponseBodyJson,
+    CreateAuditListResponseBody,
+    AuditListResponseBodyJson,
+    AuditListResponseBody
 } from '../../yeying/api/audit/audit_pb'
 import { ofAuditStatus } from '../../model/audit'
 
@@ -217,7 +200,7 @@ export class AuditProvider {
      *
      */
     createAuditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<AuditMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<CreateAuditListResponseBodyJson>(async (resolve, reject) => {
             const body = create(CreateAuditListRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(AuditSearchConditionSchema, condition ?? {})
@@ -240,7 +223,7 @@ export class AuditProvider {
                 await this.authenticate.doResponse(res, CreateAuditListResponseBodySchema)
                 if (res.body) {
                     resolve(
-                        res.body.audits.map(audit => toJson(AuditMetadataSchema, audit as AuditMetadata, { alwaysEmitImplicit: true }) as AuditMetadataJson)
+                        toJson(CreateAuditListResponseBodySchema, res.body as CreateAuditListResponseBody, { alwaysEmitImplicit: true }) as CreateAuditListResponseBodyJson
                     )
                 }
    
@@ -262,7 +245,7 @@ export class AuditProvider {
      *
      */
     auditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<AuditMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<AuditListResponseBodyJson>(async (resolve, reject) => {
             const body = create(AuditListRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(AuditSearchConditionSchema, condition ?? {})
@@ -284,7 +267,7 @@ export class AuditProvider {
                 const res = await this.client.auditList(request)
                 await this.authenticate.doResponse(res, AuditListResponseBodySchema)
                 if (res.body) {
-                    resolve(res.body.audits.map(audit => toJson(AuditMetadataSchema, audit as AuditMetadata, { alwaysEmitImplicit: true }) as AuditMetadataJson))
+                    resolve(toJson(AuditListResponseBodySchema, res.body as AuditListResponseBody, { alwaysEmitImplicit: true }) as AuditListResponseBodyJson)
                 }
             } catch (err) {
                 console.error('Fail to auditList', err)

@@ -28,29 +28,8 @@ import {
     AuditApplicationRequestBodySchema,
     AuditApplicationResponseBodySchema,
     ApplicationCommentSchema,
-    CreateApplicationResponse,
-    SearchApplicationResponse,
-    DeleteApplicationResponse,
-    ApplicationDetailResponse,
-    OfflineApplicationResponse,
-    OnlineApplicationResponse,
-    AuditApplicationResponse,
     SearchApplicationConditionJson,
-    SearchApplicationConditionSchema,
-    CreateApplicationResponseJson,
-    CreateApplicationResponseSchema,
-    SearchApplicationResponseJson,
-    SearchApplicationResponseSchema,
-    DeleteApplicationResponseJson,
-    DeleteApplicationResponseSchema,
-    ApplicationDetailResponseJson,
-    ApplicationDetailResponseSchema,
-    OfflineApplicationResponseJson,
-    OfflineApplicationResponseSchema,
-    OnlineApplicationResponseJson,
-    OnlineApplicationResponseSchema,
-    AuditApplicationResponseJson,
-    AuditApplicationResponseSchema
+    SearchApplicationResponseBodyJson
 } from '../../yeying/api/application/application_pb'
 import { NetworkUnavailable } from '../../common/error'
 import {
@@ -151,7 +130,7 @@ export class ApplicationProvider {
      *
      */
     search(page: number, pageSize: number, condition?: SearchApplicationConditionJson) {
-        return new Promise<ApplicationMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<SearchApplicationResponseBodyJson>(async (resolve, reject) => {
             const body = create(SearchApplicationRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(SearchApplicationConditionSchema, condition ?? {})
@@ -187,12 +166,9 @@ export class ApplicationProvider {
                 }
                 if (res.body) {
                     resolve(
-                        res.body?.applications.map(app => 
-                            toJson(ApplicationMetadataSchema, app as ApplicationMetadata, {
+                        toJson(SearchApplicationResponseBodySchema, res.body as SearchApplicationResponseBody, {
                                 alwaysEmitImplicit: true
-                            }) as ApplicationMetadataJson
-                        )
-                
+                            }) as SearchApplicationResponseBodyJson
                     )
                 }
       

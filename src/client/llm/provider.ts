@@ -33,6 +33,8 @@ import {
     SearchProviderConditionSchema,
     SearchProviderRequestBodySchema,
     SearchProviderRequestSchema,
+    SearchProviderResponseBody,
+    SearchProviderResponseBodyJson,
     SearchProviderResponseBodySchema
 } from '../../yeying/api/llm/provider_pb'
 import { ProviderOption } from '../common/model'
@@ -226,7 +228,7 @@ export class ProviderProvider {
      * ```
      */
     search(page: number, pageSize: number, code?: ProviderCodeEnum) {
-        return new Promise<ProviderMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<SearchProviderResponseBodyJson>(async (resolve, reject) => {
             const condition = create(SearchProviderConditionSchema, {
                 code: code
             })
@@ -265,9 +267,7 @@ export class ProviderProvider {
                         }
                     }
                 }
-                resolve(
-                    providers.map((provider) => toJson(ProviderMetadataSchema, provider, { alwaysEmitImplicit: true }) as ProviderMetadataJson)
-                )
+                resolve(toJson(SearchProviderResponseBodySchema, res.body as SearchProviderResponseBody, { alwaysEmitImplicit: true }) as SearchProviderResponseBodyJson)
             } catch (err) {
                 console.error('Fail to search provider.', err)
                 return reject(err)

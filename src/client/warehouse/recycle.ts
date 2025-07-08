@@ -16,6 +16,8 @@ import {
     RemoveDeletedAssetResponseBodySchema,
     SearchDeletedAssetRequestBodySchema,
     SearchDeletedAssetRequestSchema,
+    SearchDeletedAssetResponseBody,
+    SearchDeletedAssetResponseBodyJson,
     SearchDeletedAssetResponseBodySchema
 } from '../../yeying/api/asset/recycle_pb'
 import { SearchAssetConditionJson, SearchAssetConditionSchema } from '../../yeying/api/asset/asset_pb'
@@ -67,8 +69,8 @@ export class RecycleProvider {
      * @returns {Promise<DeletedAssetMetadata[]>} 当前页面的删除的资产元信息。
      *
      */
-    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<DeletedAssetMetadataJson[]> {
-        return new Promise<DeletedAssetMetadataJson[]>(async (resolve, reject) => {
+    search(page: number, pageSize: number, condition: SearchAssetConditionJson): Promise<SearchDeletedAssetResponseBodyJson> {
+        return new Promise<SearchDeletedAssetResponseBodyJson>(async (resolve, reject) => {
             const requestPage = create(RequestPageSchema, {
                 page: page,
                 pageSize: pageSize
@@ -94,7 +96,7 @@ export class RecycleProvider {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchDeletedAssetResponseBodySchema)
                 const assets = res?.body?.assets as DeletedAssetMetadata[]
-                resolve(assets.map((asset) => toJson(DeletedAssetMetadataSchema, asset, { alwaysEmitImplicit: true }) as DeletedAssetMetadataJson))
+                resolve(toJson(SearchDeletedAssetResponseBodySchema, res.body as SearchDeletedAssetResponseBody, { alwaysEmitImplicit: true }) as SearchDeletedAssetResponseBodyJson)
             } catch (err) {
                 console.error('Fail to search deleted assets', err)
                 return reject(err)
