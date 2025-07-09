@@ -128,8 +128,11 @@ export class NamespaceProvider {
                 }
 
                 resolve(
-                    namespaces.map((namespace) =>
-                        toJson(NamespaceMetadataSchema, namespace, { alwaysEmitImplicit: true }) as NamespaceMetadataJson
+                    namespaces.map(
+                        (namespace) =>
+                            toJson(NamespaceMetadataSchema, namespace, {
+                                alwaysEmitImplicit: true
+                            }) as NamespaceMetadataJson
                     )
                 )
             } catch (err) {

@@ -21,12 +21,7 @@ import {
 } from '../../yeying/api/invitation/invitation_pb'
 import { generateRandomString } from '../../common/string'
 import { signInvitationMetadata, verifyInvitationMetadata } from '../model/model'
-import {
-    getCurrentUtcDateTime,
-    getCurrentUtcString,
-    plusSecond,
-    toISO
-} from '@yeying-community/yeying-web3'
+import { getCurrentUtcDateTime, getCurrentUtcString, plusSecond, toISO } from '@yeying-community/yeying-web3'
 
 /**
  * 邀请码提供商，创建和查询邀请码。
@@ -159,8 +154,11 @@ export class InvitationProvider {
                 await this.authenticate.doResponse(res, SearchInvitationResponseBodySchema)
                 const invitationsList = res.body?.invitations as InvitationMetadata[]
                 resolve(
-                    invitationsList.map((invitation) =>
-                        toJson(InvitationMetadataSchema, invitation, { alwaysEmitImplicit: true }) as InvitationMetadataJson
+                    invitationsList.map(
+                        (invitation) =>
+                            toJson(InvitationMetadataSchema, invitation, {
+                                alwaysEmitImplicit: true
+                            }) as InvitationMetadataJson
                     )
                 )
             } catch (err) {

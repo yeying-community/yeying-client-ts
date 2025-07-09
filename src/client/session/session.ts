@@ -16,6 +16,8 @@ import {
     SearchSessionConditionSchema,
     SearchSessionRequestBodySchema,
     SearchSessionRequestSchema,
+    SearchSessionResponseBody,
+    SearchSessionResponseBodyJson,
     SearchSessionResponseBodySchema,
     Session,
     SessionDetail,
@@ -115,7 +117,9 @@ export class SessionProvider {
                 await this.authenticate.doResponse(res, CreateSessionResponseBodySchema, isExisted)
                 await verifySessionMetadata(res.body?.session)
                 return resolve(
-                    toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, { alwaysEmitImplicit: true }) as SessionMetadataJson
+                    toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as SessionMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to create session.', err)
@@ -168,21 +172,24 @@ export class SessionProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchSessionResponseBodySchema)
-                const sessions: SessionMetadata[] = []
+                const sessions: SessionMetadataJson[] = []
                 if (res.body?.sessions !== undefined) {
                     for (const session of res.body.sessions) {
+                        const sessionJson = toJson(SessionMetadataSchema, session, {
+                            alwaysEmitImplicit: true
+                        }) as SessionMetadataJson
                         try {
                             await verifySessionMetadata(session)
-                            sessions.push(session)
+                            sessions.push(sessionJson)
                         } catch (err) {
                             console.error(
-                                `Fail to verify session=${toJson(SessionMetadataSchema, session)} when searching session`,
+                                `Fail to verify session=${JSON.stringify(sessionJson)} when searching session`,
                                 err
                             )
                         }
                     }
                 }
-                resolve(sessions.map((session) => toJson(SessionMetadataSchema, session, { alwaysEmitImplicit: true }) as SessionMetadataJson))
+                resolve(sessions)
             } catch (err) {
                 console.error('Fail to search session.', err)
                 return reject(err)
@@ -306,7 +313,9 @@ export class SessionProvider {
                 await this.authenticate.doResponse(res, UpdateSessionResponseBodySchema)
                 await verifySessionMetadata(res.body?.session)
                 return resolve(
-                    toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, { alwaysEmitImplicit: true }) as SessionMetadataJson
+                    toJson(SessionMetadataSchema, res.body?.session as SessionMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as SessionMetadataJson
                 )
             } catch (err) {
                 console.error('Fail to update session.', err)

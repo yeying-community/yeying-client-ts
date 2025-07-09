@@ -4,42 +4,26 @@ import {
     CreateServiceRequestBodySchema,
     CreateServiceRequestSchema,
     CreateServiceResponseBodySchema,
-    SearchServiceConditionSchema,
-    SearchServiceRequestBodySchema,
-    SearchServiceRequestSchema,
-    SearchServiceResponseBodySchema,
-    Service,
+    DeleteServiceRequestBodySchema,
+    DeleteServiceRequestSchema,
+    DeleteServiceResponseBodySchema,
+    DetailServiceRequestBodySchema,
+    DetailServiceRequestSchema,
+    DetailServiceResponseBodySchema,
     OfflineServiceRequestBodySchema,
     OfflineServiceRequestSchema,
     OfflineServiceResponseBodySchema,
-    DetailServiceRequestBodySchema,
-    DetailServiceRequestSchema,
-    OfflineServiceResponse,
-    CreateServiceResponse,
-    DetailServiceResponse,
-    SearchServiceResponse,
-    OnlineServiceResponse,
-    OnlineServiceRequestSchema,
     OnlineServiceRequestBodySchema,
+    OnlineServiceRequestSchema,
     OnlineServiceResponseBodySchema,
-    DeleteServiceResponse,
-    DeleteServiceResponseBodySchema,
-    DeleteServiceRequestSchema,
-    DeleteServiceRequestBodySchema,
-    DetailServiceResponseBodySchema,
     SearchServiceConditionJson,
-    CreateServiceResponseJson,
-    CreateServiceResponseSchema,
-    DetailServiceResponseJson,
-    DetailServiceResponseSchema,
-    SearchServiceResponseJson,
-    SearchServiceResponseSchema,
-    OfflineServiceResponseJson,
-    OfflineServiceResponseSchema,
-    OnlineServiceResponseJson,
-    OnlineServiceResponseSchema,
-    DeleteServiceResponseJson,
-    DeleteServiceResponseSchema
+    SearchServiceConditionSchema,
+    SearchServiceRequestBodySchema,
+    SearchServiceRequestSchema,
+    SearchServiceResponseBody,
+    SearchServiceResponseBodyJson,
+    SearchServiceResponseBodySchema,
+    Service
 } from '../../yeying/api/service/service_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
@@ -111,7 +95,11 @@ export class ServiceProvider {
             try {
                 const res = await this.client.create(request)
                 await this.authenticate.doResponse(res, CreateServiceResponseBodySchema, isExisted)
-                resolve(toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata, { alwaysEmitImplicit: true }) as ServiceMetadataJson)
+                resolve(
+                    toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as ServiceMetadataJson
+                )
             } catch (err) {
                 console.error('Fail to create service', err)
                 return reject(err)
@@ -147,7 +135,11 @@ export class ServiceProvider {
                 const res = await this.client.detail(request)
                 console.log(`res=${JSON.stringify(res)}`)
                 await this.authenticate.doResponse(res, DetailServiceResponseBodySchema, isDeleted)
-                resolve(toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata, { alwaysEmitImplicit: true }) as ServiceMetadataJson)
+                resolve(
+                    toJson(ServiceMetadataSchema, res.body?.service as ServiceMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as ServiceMetadataJson
+                )
             } catch (err) {
                 console.error('Fail to detail service', err)
                 return reject(err)
@@ -191,22 +183,21 @@ export class ServiceProvider {
             try {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchServiceResponseBodySchema)
-                const services = []
+                const services: ServiceMetadataJson[] = []
                 for (const service of res.body?.services as ServiceMetadata[]) {
+                    const serviceJson = toJson(ServiceMetadataSchema, service, {
+                        alwaysEmitImplicit: true
+                    }) as ServiceMetadataJson
+
                     try {
                         await verifyServiceMetadata(service)
-                        services.push(service)
+                        services.push(serviceJson)
                     } catch (err) {
-                        console.error(
-                            `Invalid service metadata=${JSON.stringify(toJson(ServiceMetadataSchema, service))} when searching services.`,
-                            err
-                        )
+                        console.error(`Invalid service metadata=${JSON.stringify(serviceJson)} when searching.`, err)
                     }
                 }
-                if (res.body) {
-                    resolve(res.body.services.map(service => toJson(ServiceMetadataSchema, service as ServiceMetadata, { alwaysEmitImplicit: true }) as ServiceMetadataJson))
-                }
-                
+
+                resolve(services)
             } catch (err) {
                 console.error('Fail to search service', err)
                 return reject(err)

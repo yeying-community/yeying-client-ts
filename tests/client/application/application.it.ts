@@ -148,9 +148,6 @@ describe('Application', () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const res = await applicationProvider.search(1, 10, {keyword: "et"})
     console.log(`res=${JSON.stringify(res)}`)
-    if (res === undefined) {
-      throw Error("mockDid is undefined or mockVersion is undefined")
-    }
     console.log(`Success to search application with count=${res.length}`)
     const len = res.length
     assert.isAtLeast(len == undefined ? 0 : len, 1)
