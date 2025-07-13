@@ -5,6 +5,6 @@
   "theme": "default", 
   "excludePrivate": true, 
   "excludeProtected": true,
-  "readme": "none"
+  "readme": "README.md"
 }
 
