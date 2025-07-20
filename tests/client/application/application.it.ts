@@ -78,7 +78,8 @@ describe('Application', () => {
       createdAt: applicationMetadata?.createdAt,
       updatedAt: applicationMetadata?.updatedAt,
       signature: applicationMetadata?.signature,
-      codePackagePath: applicationMetadata?.codePackagePath})
+      codePackagePath: applicationMetadata?.codePackagePath
+    })
     console.log(`Success to create application=${res.did}`)
     mockDid = res.did
     mockVersion = res.version
@@ -102,51 +103,9 @@ describe('Application', () => {
     console.log(`res=${JSON.stringify(res)}`)
   })
 
-  it('audit', async () => {
-    console.log(providerOption?.blockAddress)
-    console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    if (mockDid == undefined || mockVersion == undefined) {
-      throw Error("mockDid is undefined or mockVersion is undefined")
-    }
-    const res = await applicationProvider.audit(mockDid, mockVersion, true, 'mock')
-    console.log(`Success to audit application=${res}`)
-    console.log(`res=${JSON.stringify(res)}`)
-  })
-
-  it('online', async () => {
-    console.log(providerOption?.blockAddress)
-    console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    if (mockDid == undefined || mockVersion == undefined) {
-      throw Error("mockDid is undefined or mockVersion is undefined")
-    }
-    const res = await applicationProvider.online(mockDid, mockVersion)
-    console.log(`Success to online application=${res}`)
-    console.log(`res=${JSON.stringify(res)}`)
-  })
-
-  it('offline', async () => {
-    console.log(providerOption?.blockAddress)
-    console.log(providerOption?.proxy)
-    const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    console.log(`mockDid=${mockDid}`)
-    console.log(`mockVersion=${mockVersion}`)
-    if (mockDid == undefined || mockVersion == undefined) {
-      throw Error("mockDid is undefined or mockVersion is undefined")
-    }
-    const res = await applicationProvider.offline(mockDid, mockVersion)
-    console.log(`Success to offline application=${res}`)
-    console.log(`res=${JSON.stringify(res)}`)
-  })
-
   it('search', async () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
-    const res = await applicationProvider.search(1, 10, {keyword: "et"})
+    const res = await applicationProvider.search(1, 10)
     console.log(`res=${JSON.stringify(res)}`)
     console.log(`Success to search application with count=${res.length}`)
     const len = res.length

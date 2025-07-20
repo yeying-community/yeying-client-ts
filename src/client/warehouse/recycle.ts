@@ -4,7 +4,6 @@ import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import {
-    DeletedAssetMetadata,
     DeletedAssetMetadataJson,
     DeletedAssetMetadataSchema,
     RecoverDeletedAssetRequestBodySchema,
@@ -16,14 +15,11 @@ import {
     RemoveDeletedAssetResponseBodySchema,
     SearchDeletedAssetRequestBodySchema,
     SearchDeletedAssetRequestSchema,
-    SearchDeletedAssetResponseBody,
-    SearchDeletedAssetResponseBodyJson,
     SearchDeletedAssetResponseBodySchema
 } from '../../yeying/api/asset/recycle_pb'
 import { SearchAssetConditionJson, SearchAssetConditionSchema } from '../../yeying/api/asset/asset_pb'
 import { RequestPageSchema } from '../../yeying/api/common/message_pb'
-import { ProviderMetadataJson, ProviderMetadataSchema } from '../../yeying/api/llm/provider_pb'
-import { verifyAssetMetadata, verifyProviderMetadata } from '../model/model'
+import { verifyAssetMetadata } from '../model/model'
 
 /**
  * 区块提供者类，用于与区块链交互，提供数据的获取和存储功能。

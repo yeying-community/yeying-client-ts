@@ -1,5 +1,5 @@
 import {AuditProvider} from '../../../src/client/audit/audit.js'
-import {AuditMetadata, AuditTypeEnum, AuditTypeEnumSchema, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
+import {ApplicationMetadata, ApplicationMetadataSchema, AuditMetadata, convertApplicationMetadataFromIdentity, generateUuid, LanguageCodeEnum, ProviderOption, ServiceCodeEnum, UserProvider} from "../../../src";
 import {
   createIdentity, decryptBlockAddress,
   IdentityCodeEnum,
@@ -8,9 +8,8 @@ import {
   SecurityAlgorithm
 } from "@yeying-community/yeying-web3";
 import {getProviderProxy} from "../common/common";
-import {convertAuditMetadataFrom, passedStatus, rejectStatus} from "../../../src/model/audit.js";
-import { enumToJson } from '@bufbuild/protobuf';
-import { convertAuditStatusToJson } from '../../../src/client/model/model.js';
+import {convertAuditMetadataFrom } from "../../../src/model/audit.js";
+import { toJson } from '@bufbuild/protobuf';
 
 let providerOption: ProviderOption | undefined
 
@@ -34,19 +33,18 @@ const applicationTemplate = {
 let auditMetadata: AuditMetadata | undefined
 
 const appName: string = generateUuid()
-let sourceDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96g'
-let targetDid: string = 'did:ethr:0x7e4:0x02fc1cd27d963449cc5c6251f0bb8659af0565cd2e75d17b38cafb32bd978fa96h'
+let applicant: string = 'did:ethr:0x07e4:0x0244a3b859bbbeeb7f5cfb685843746ab629f0b8d1b0e7ae7a1e8e65ba9aaeddfd::jack'
+let approver: string = 'did:ethr:0x07e4:0x0244a3b859bbbeeb7f5cfb685843746ab629f0b8d1b0e7ae7a1e8e65ba9aaeddfd::tom'
 
-const sourceName: string = 'jack'
-const targetName: string = 'tom'
-
+let applicationMetadata: ApplicationMetadata | undefined
 beforeAll(async () => {
   const password = "123456"
   const serviceIdentity = await createIdentity(applicationTemplate, password)
+
+  applicationMetadata = convertApplicationMetadataFromIdentity(serviceIdentity)
+
   const identityMetadata = serviceIdentity.metadata as IdentityMetadata
-  targetDid = identityMetadata.did
-  sourceDid  = identityMetadata.did
-  auditMetadata = convertAuditMetadataFrom(appName, sourceDid, sourceName, targetDid, targetName)
+  auditMetadata = convertAuditMetadataFrom(JSON.stringify(toJson(ApplicationMetadataSchema, applicationMetadata as ApplicationMetadata)), applicant, approver)
   const blockAddress = await decryptBlockAddress(
       serviceIdentity.blockAddress,
       serviceIdentity.securityConfig?.algorithm as SecurityAlgorithm,
@@ -71,16 +69,13 @@ describe('Audit', () => {
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     const res = await auditProvider.create({
         uid: auditMetadata?.uid,
-        appName: auditMetadata?.appName,
-        sourceDid: auditMetadata?.sourceDid,
-        sourceName: auditMetadata?.sourceName,
-        targetDid: auditMetadata?.targetDid,
-        targetName: auditMetadata?.targetName,
+        appOrServiceMetadata: auditMetadata?.appOrServiceMetadata,
+        applicant: auditMetadata?.applicant,
+        approver: auditMetadata?.approver,
         reason: auditMetadata?.reason,
-        status: convertAuditStatusToJson(auditMetadata?.status),
         createdAt: auditMetadata?.createdAt,
         updatedAt: auditMetadata?.updatedAt,
-        type: enumToJson(AuditTypeEnumSchema, auditMetadata ? auditMetadata.type : AuditTypeEnum.AUDIT_TYPE_UNKNOWN)
+        signature: 'signature'
     })
     console.log(`Success to create audit=${JSON.stringify(res)}`)
     uid = res.uid
@@ -98,49 +93,50 @@ describe('Audit', () => {
     console.log(`Success to detail auditRecord=${JSON.stringify(res)}`)
   })
 
-  it('auditPassed', async () => {
+  it('approve', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`uid=${uid}`)
-    console.log(`targetDid=${targetDid}`)
-    console.log(`status=${JSON.stringify(passedStatus)}`)
     if (!uid) {
       throw Error("uid is null")
     }
-    const res = await auditProvider.audit(uid, "passed")
+    const res = await auditProvider.approve({
+      auditId: uid,
+      text: "通过",
+      status: 'COMMENT_STATUS_AGREE',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      signature: 'signature'
+    })
     console.log(`Success to audit auditPassed=${JSON.stringify(res)}`)
   })
 
-  it('auditReject', async () => {
+  it('reject', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     console.log(`uid=${uid}`)
-    console.log(`status=${JSON.stringify(rejectStatus)}`)
     if (!uid) {
       throw Error("uid is null")
     }
-    const res = await auditProvider.audit(uid, "reject")
+    const res = await auditProvider.reject({
+      auditId: uid,
+      text: "拒绝",
+      status: 'COMMENT_STATUS_REJECT',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      signature: 'signature'
+    })
     console.log(`Success to audit rejectStatus=${JSON.stringify(res)}`)
   })
 
-  it('createAuditList', async () => {
+  it('search', async () => {
     console.log(providerOption?.blockAddress)
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    console.log(`sourceDid=${sourceDid}`)
-    const res = await auditProvider.createAuditList(1, 10)
-    console.log(`Success to res=${JSON.stringify(res)}`)
-  })
-
-  it('auditList', async () => {
-    console.log(providerOption?.blockAddress)
-    console.log(providerOption?.proxy)
-    const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    console.log(`targetDid=${targetDid}`)
-    const res = await auditProvider.auditList(1, 10)
-    console.log(`Success to res=${JSON.stringify(res)}`)
+    const res = await auditProvider.search(1, 10, {})
+    console.log(`Success to audit search=${JSON.stringify(res)}`)
   })
 
   it('cancel', async () => {
@@ -153,17 +149,5 @@ describe('Audit', () => {
     }
     const res = await auditProvider.cancel(uid)
     console.log(`Success to cancel=${JSON.stringify(res)}`)
-  })
-
-  it('unbind', async () => {
-    console.log(providerOption?.blockAddress)
-    console.log(providerOption?.proxy)
-    const auditProvider = new AuditProvider(providerOption as ProviderOption)
-    console.log(`uid=${uid}`)
-    if (!uid) {
-      throw Error("uid is null")
-    }
-    const res = await auditProvider.unbind(uid)
-    console.log(`Success to unbind=${JSON.stringify(res)}`)
   })
 })

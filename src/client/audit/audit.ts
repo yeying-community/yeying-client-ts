@@ -7,38 +7,37 @@ import { NetworkUnavailable } from '../../common/error'
 import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
 import {
     Audit,
-    AuditListRequestBodySchema,
-    AuditListRequestSchema,
-    AuditListResponseBodySchema,
     AuditMetadataJson,
     AuditMetadataSchema,
-    AuditAuditRequestBodySchema,
-    AuditAuditRequestSchema,
-    AuditAuditResponseBodySchema,
     AuditSearchConditionJson,
     AuditSearchConditionSchema,
     AuditCancelRequestBodySchema,
     AuditCancelRequestSchema,
     AuditCancelResponseBodySchema,
-    CreateAuditListRequestBodySchema,
-    CreateAuditListRequestSchema,
-    CreateAuditListResponseBodySchema,
     AuditCreateRequestBodySchema,
     AuditCreateRequestSchema,
     AuditCreateResponseBodySchema,
     AuditDetailRequestBodySchema,
     AuditDetailRequestSchema,
     AuditDetailResponseBodySchema,
-    AuditUnbindRequestBodySchema,
-    AuditUnbindRequestSchema,
-    AuditUnbindResponseBodySchema,
     AuditMetadata,
-    CreateAuditListResponseBodyJson,
-    CreateAuditListResponseBody,
-    AuditListResponseBodyJson,
-    AuditListResponseBody
+    AuditDetail,
+    AuditDetailJson,
+    AuditDetailSchema,
+    AuditApproveRequestBodySchema,
+    CommentMetadataJson,
+    CommentMetadataSchema,
+    AuditApproveRequestSchema,
+    CommentMetadata,
+    AuditRejectRequestBodySchema,
+    AuditRejectRequestSchema,
+    AuditSearchRequestBodySchema,
+    AuditSearchRequestSchema,
+    AuditSearchResponseBodySchema,
+    AuditSearchResponseBody,
+    AuditApproveResponseBodySchema,
+    AuditRejectResponseBodySchema,
 } from '../../yeying/api/audit/audit_pb'
-import { ofAuditStatus } from '../../model/audit'
 
 /**
  * AuditProvider 应用审批
@@ -125,7 +124,7 @@ export class AuditProvider {
      *
      */
     detail(uid: string) {
-        return new Promise<AuditMetadataJson>(async (resolve, reject) => {
+        return new Promise<AuditDetailJson>(async (resolve, reject) => {
             const body = create(AuditDetailRequestBodySchema, {
                 uid: uid
             })
@@ -146,144 +145,12 @@ export class AuditProvider {
                 const res = await this.client.detail(request)
                 await this.authenticate.doResponse(res, AuditDetailResponseBodySchema)
                 resolve(
-                    toJson(AuditMetadataSchema, res.body?.meta as AuditMetadata, {
+                    toJson(AuditDetailSchema, res.body?.detail as AuditDetail, {
                         alwaysEmitImplicit: true
-                    }) as AuditMetadataJson
+                    }) as AuditDetailJson
                 )
             } catch (err) {
                 console.error('Fail to detail audit', err)
-                return reject(new NetworkUnavailable())
-            }
-        })
-    }
-
-    /**
-     * 审批
-     *
-     * @param uid 主键 uid
-     * @param status 审批状态 passed（同意） / reject（拒绝）
-     * @returns 返回申请元信息。
-     *
-     * @throws  NetworkUnavailable
-     *
-     */
-    audit(uid: string, status: string) {
-        return new Promise<void>(async (resolve, reject) => {
-            const body = create(AuditAuditRequestBodySchema, {
-                uid: uid,
-                status: ofAuditStatus(status)
-            })
-
-            let header: MessageHeader
-            try {
-                header = await this.authenticate.createHeader(toBinary(AuditAuditRequestBodySchema, body))
-            } catch (err) {
-                console.error('Fail to audit header for audit.', err)
-                return reject(err)
-            }
-
-            const request = create(AuditAuditRequestSchema, {
-                header: header,
-                body: body
-            })
-            try {
-                const res = await this.client.audit(request)
-                await this.authenticate.doResponse(res, AuditAuditResponseBodySchema)
-                resolve()
-            } catch (err) {
-                console.error('Fail to audit', err)
-                return reject(new NetworkUnavailable())
-            }
-        })
-    }
-
-    /**
-     * 查看我申请的列表
-     *
-     * @param sourceDid 申请者的身份 did
-     *
-     * @returns 返回申请元信息列表。
-     *
-     * @throws  NetworkUnavailable
-     *
-     */
-    createAuditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<CreateAuditListResponseBodyJson>(async (resolve, reject) => {
-            const body = create(CreateAuditListRequestBodySchema, {
-                page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-                condition: fromJson(AuditSearchConditionSchema, condition ?? {})
-            })
-
-            let header: MessageHeader
-            try {
-                header = await this.authenticate.createHeader(toBinary(CreateAuditListRequestBodySchema, body))
-            } catch (err) {
-                console.error('Fail to createAuditList header for audit.', err)
-                return reject(err)
-            }
-
-            const request = create(CreateAuditListRequestSchema, {
-                header: header,
-                body: body
-            })
-            try {
-                const res = await this.client.createList(request)
-                await this.authenticate.doResponse(res, CreateAuditListResponseBodySchema)
-                if (res.body) {
-                    resolve(
-                        toJson(CreateAuditListResponseBodySchema, res.body as CreateAuditListResponseBody, {
-                            alwaysEmitImplicit: true
-                        }) as CreateAuditListResponseBodyJson
-                    )
-                }
-            } catch (err) {
-                console.error('Fail to createAuditList', err)
-                return reject(new NetworkUnavailable())
-            }
-        })
-    }
-
-    /**
-     * 查看我审批的列表
-     *
-     * @param sourceDid 审批者的身份 did
-     *
-     * @returns 返回审批元信息列表。
-     *
-     * @throws  NetworkUnavailable
-     *
-     */
-    auditList(page: number, pageSize: number, condition?: AuditSearchConditionJson) {
-        return new Promise<AuditListResponseBodyJson>(async (resolve, reject) => {
-            const body = create(AuditListRequestBodySchema, {
-                page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
-                condition: fromJson(AuditSearchConditionSchema, condition ?? {})
-            })
-
-            let header: MessageHeader
-            try {
-                header = await this.authenticate.createHeader(toBinary(AuditListRequestBodySchema, body))
-            } catch (err) {
-                console.error('Fail to auditList header for audit.', err)
-                return reject(err)
-            }
-
-            const request = create(AuditListRequestSchema, {
-                header: header,
-                body: body
-            })
-            try {
-                const res = await this.client.auditList(request)
-                await this.authenticate.doResponse(res, AuditListResponseBodySchema)
-                if (res.body) {
-                    resolve(
-                        toJson(AuditListResponseBodySchema, res.body as AuditListResponseBody, {
-                            alwaysEmitImplicit: true
-                        }) as AuditListResponseBodyJson
-                    )
-                }
-            } catch (err) {
-                console.error('Fail to auditList', err)
                 return reject(new NetworkUnavailable())
             }
         })
@@ -329,39 +196,137 @@ export class AuditProvider {
     }
 
     /**
-     * 解绑我申请成功的应用
+     * 通过✅申请
      *
-     * @param uid 主键 uid
+     * @param CommentMetadataJson
      *
-     * @returns 成功/失败
+     * @returns 返回审批元列表。
      *
      * @throws  NetworkUnavailable
      *
      */
-    unbind(uid: string) {
-        return new Promise<void>(async (resolve, reject) => {
-            const body = create(AuditUnbindRequestBodySchema, {
-                uid: uid
+    approve(meta: CommentMetadataJson) {
+        return new Promise<CommentMetadataJson>(async (resolve, reject) => {
+            const metadata = fromJson(CommentMetadataSchema, meta ?? {})
+            const body = create(AuditApproveRequestBodySchema, {
+                metadata: metadata
             })
 
             let header: MessageHeader
             try {
-                header = await this.authenticate.createHeader(toBinary(AuditUnbindRequestBodySchema, body))
+                header = await this.authenticate.createHeader(toBinary(AuditApproveRequestBodySchema, body))
             } catch (err) {
-                console.error('Fail to unbind header for unbind audit.', err)
+                console.error('Fail to approve header for approve audit.', err)
                 return reject(err)
             }
 
-            const request = create(AuditUnbindRequestSchema, {
+            const request = create(AuditApproveRequestSchema, {
                 header: header,
                 body: body
             })
             try {
-                const res = await this.client.unbind(request)
-                await this.authenticate.doResponse(res, AuditUnbindResponseBodySchema)
-                resolve()
+                const res = await this.client.approve(request)
+                await this.authenticate.doResponse(res, AuditApproveResponseBodySchema)
+                resolve(
+                    toJson(CommentMetadataSchema, res.body?.metadata as CommentMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as CommentMetadataJson
+                )
             } catch (err) {
-                console.error('Fail to unbind', err)
+                console.error('Fail to approve', err)
+                return reject(new NetworkUnavailable())
+            }
+        })
+    }
+
+    /**
+     * 拒绝❌申请
+     *
+     * @param CommentMetadataJson
+     *
+     * @returns 返回审批元信息。
+     *
+     * @throws  NetworkUnavailable
+     *
+     */
+    reject(meta: CommentMetadataJson) {
+        return new Promise<CommentMetadataJson>(async (resolve, reject) => {
+            const metadata = fromJson(CommentMetadataSchema, meta ?? {})
+            const body = create(AuditRejectRequestBodySchema, {
+                metadata: metadata
+            })
+
+            let header: MessageHeader
+            try {
+                header = await this.authenticate.createHeader(toBinary(AuditRejectRequestBodySchema, body))
+            } catch (err) {
+                console.error('Fail to reject header for approve audit.', err)
+                return reject(err)
+            }
+
+            const request = create(AuditRejectRequestSchema, {
+                header: header,
+                body: body
+            })
+            try {
+                const res = await this.client.reject(request)
+                await this.authenticate.doResponse(res, AuditRejectResponseBodySchema)
+                resolve(
+                    toJson(CommentMetadataSchema, res.body?.metadata as CommentMetadata, {
+                        alwaysEmitImplicit: true
+                    }) as CommentMetadataJson
+                )
+            } catch (err) {
+                console.error('Fail to reject', err)
+                return reject(new NetworkUnavailable())
+            }
+        })
+    }
+
+    /**
+     * 审计搜索
+     *
+     * @param AuditSearchConditionJson
+     *
+     * @returns 返回审批元信息列表。
+     *
+     * @throws  NetworkUnavailable
+     *
+     */
+    search(page: number, pageSize: number, condition: AuditSearchConditionJson) {
+        return new Promise<AuditDetailJson[]>(async (resolve, reject) => {
+            const meta = fromJson(AuditSearchConditionSchema, condition ?? {})
+            const body = create(AuditSearchRequestBodySchema, {
+                page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
+                condition: meta
+            })
+
+            let header: MessageHeader
+            try {
+                header = await this.authenticate.createHeader(toBinary(AuditSearchRequestBodySchema, body))
+            } catch (err) {
+                console.error('Fail to search header for approve audit.', err)
+                return reject(err)
+            }
+
+            const request = create(AuditSearchRequestSchema, {
+                header: header,
+                body: body
+            })
+            try {
+                const res = await this.client.search(request)
+                await this.authenticate.doResponse(res, AuditSearchResponseBodySchema)
+                const body = res.body as AuditSearchResponseBody
+                const auditDetails: AuditDetailJson[] = []
+                for (const d of body.detail) {
+                    const auditDetailJson = toJson(AuditDetailSchema, d, {
+                        alwaysEmitImplicit: true
+                    }) as AuditDetailJson
+                    auditDetails.push(auditDetailJson)
+                }
+                resolve(auditDetails)
+            } catch (err) {
+                console.error('Fail to search', err)
                 return reject(new NetworkUnavailable())
             }
         })

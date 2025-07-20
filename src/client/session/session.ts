@@ -16,8 +16,6 @@ import {
     SearchSessionConditionSchema,
     SearchSessionRequestBodySchema,
     SearchSessionRequestSchema,
-    SearchSessionResponseBody,
-    SearchSessionResponseBodyJson,
     SearchSessionResponseBodySchema,
     Session,
     SessionDetail,

@@ -118,22 +118,6 @@ describe('Service', () => {
         console.log(`res=${JSON.stringify(res)}`)
     })
 
-    it('online', async () => {
-        const service = serviceMetadata as ServiceMetadata
-        const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const res = await serviceProvider.online(service.did, service.version)
-        console.log(`res=${JSON.stringify(res)}`)
-        console.log(`Success to online service did=${service.did} r=${service.version}`)
-    })
-
-    it('offline', async () => {
-        const service = serviceMetadata as ServiceMetadata
-        const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
-        const res = await serviceProvider.offline(service.did, service.version)
-        console.log(`res=${JSON.stringify(res)}`)
-        console.log(`Success to offline service did=${service.did} r=${service.version}`)
-    })
-
     it('delete', async () => {
         const service = serviceMetadata as ServiceMetadata
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
