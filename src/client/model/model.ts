@@ -29,19 +29,6 @@ import {
     ServiceMetadataSchema
 } from '../../yeying/api/common/model_pb'
 import { SolutionMetadata, SolutionMetadataSchema } from '../../yeying/api/bulletin/bulletin_pb'
-import {
-    AuditStatus,
-    AuditStatusJson,
-    CanceledStatus,
-    CanceledStatusJson,
-    PassedStatus,
-    PassedStatusJson,
-    PendingStatus,
-    PendingStatusJson,
-    RejectStatus,
-    RejectStatusJson
-} from '../../yeying/api/audit/audit_pb'
-
 /**
  * 对资产元数据进行签名，并更新元数据的`signature`字段。
  *
@@ -575,49 +562,4 @@ export async function verifySolutionMetadata(solution?: SolutionMetadata) {
     } finally {
         solution.signature = signature
     }
-}
-
-// 示例子转换函数（需根据实际类型实现）
-function convertPendingStatusToJson(status: PendingStatus): PendingStatusJson {
-    return {
-        text: status.text
-    } as PendingStatusJson
-}
-function convertCanceledStatusToJson(status: CanceledStatus): CanceledStatusJson {
-    return {
-        text: status.text
-    } as CanceledStatusJson
-}
-function convertPassedStatusToJson(status: PassedStatus): PassedStatusJson {
-    return {
-        text: status.text
-    } as PassedStatusJson
-}
-function convertRejectStatusToJson(status: RejectStatus): RejectStatusJson {
-    return {
-        text: status.text
-    } as RejectStatusJson
-}
-
-export function convertAuditStatusToJson(status?: AuditStatus): AuditStatusJson {
-    const result: AuditStatusJson = {}
-    if (!status) {
-        return result
-    }
-
-    switch (status.status.case) {
-        case 'pending':
-            result.pending = convertPendingStatusToJson(status.status.value)
-            break
-        case 'canceled':
-            result.canceled = convertCanceledStatusToJson(status.status.value)
-            break
-        case 'passed':
-            result.passed = convertPassedStatusToJson(status.status.value)
-            break
-        case 'reject':
-            result.reject = convertRejectStatusToJson(status.status.value)
-            break
-    }
-    return result
 }

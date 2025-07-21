@@ -1,4 +1,4 @@
-import { BlockMetadata, BlockMetadataJson } from '../../yeying/api/asset/block_pb'
+import { BlockMetadataJson } from '../../yeying/api/asset/block_pb'
 import { ProviderOption } from '../common/model'
 import { SecurityAlgorithm } from '@yeying-community/yeying-web3'
 import { AssetMetadataJson } from '../../yeying/api/asset/asset_pb'

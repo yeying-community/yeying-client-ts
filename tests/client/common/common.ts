@@ -73,7 +73,7 @@ export function getApplicationAddress(code: ApplicationCodeEnum) {
 export function getProviderProxy(code: ServiceCodeEnum) {
     switch (code) {
         case ServiceCodeEnum.SERVICE_CODE_NODE:
-            return process.env.YEYING_NODE_URL ? process.env.YEYING_NODE_URL as string : "http://localhost:8441"
+            return process.env.YEYING_NODE_URL ? process.env.YEYING_NODE_URL as string : "http://47.116.193.171:8441"
         case ServiceCodeEnum.SERVICE_CODE_WAREHOUSE:
             return process.env.YEYING_WAREHOUSE_URL ? process.env.YEYING_WAREHOUSE_URL as string : "http://localhost:8641"
         case ServiceCodeEnum.SERVICE_CODE_AGENT:

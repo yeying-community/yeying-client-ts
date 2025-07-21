@@ -10,18 +10,10 @@ import {
     DetailServiceRequestBodySchema,
     DetailServiceRequestSchema,
     DetailServiceResponseBodySchema,
-    OfflineServiceRequestBodySchema,
-    OfflineServiceRequestSchema,
-    OfflineServiceResponseBodySchema,
-    OnlineServiceRequestBodySchema,
-    OnlineServiceRequestSchema,
-    OnlineServiceResponseBodySchema,
     SearchServiceConditionJson,
     SearchServiceConditionSchema,
     SearchServiceRequestBodySchema,
     SearchServiceRequestSchema,
-    SearchServiceResponseBody,
-    SearchServiceResponseBodyJson,
     SearchServiceResponseBodySchema,
     Service
 } from '../../yeying/api/service/service_pb'
@@ -200,84 +192,6 @@ export class ServiceProvider {
                 resolve(services)
             } catch (err) {
                 console.error('Fail to search service', err)
-                return reject(err)
-            }
-        })
-    }
-
-    /**
-     * 根据服务的 DID 和版本号发送下线请求
-     *
-     * @param did - 服务的 DID
-     * @param version - 服务的版本号
-     *
-     * @returns 返回下线服务的响应体
-     *
-     */
-    offline(did: string, version: number) {
-        return new Promise<void>(async (resolve, reject) => {
-            const body = create(OfflineServiceRequestBodySchema, {
-                did: did,
-                version: version
-            })
-
-            let header: MessageHeader
-            try {
-                header = await this.authenticate.createHeader(toBinary(OfflineServiceRequestBodySchema, body))
-            } catch (err) {
-                console.error('Fail to create header for offline service.', err)
-                return reject(err)
-            }
-
-            const request = create(OfflineServiceRequestSchema, {
-                header: header,
-                body: body
-            })
-            try {
-                const res = await this.client.offline(request)
-                await this.authenticate.doResponse(res, OfflineServiceResponseBodySchema, isDeleted)
-                resolve()
-            } catch (err) {
-                console.error('Fail to offline service', err)
-                return reject(err)
-            }
-        })
-    }
-
-    /**
-     * 根据服务的 DID 和版本号发送上线请求
-     *
-     * @param did - 服务的 DID
-     * @param version - 服务的版本号
-     *
-     * @returns 返回上线服务的响应体
-     *
-     */
-    online(did: string, version: number) {
-        return new Promise<void>(async (resolve, reject) => {
-            const body = create(OnlineServiceRequestBodySchema, {
-                did: did,
-                version: version
-            })
-
-            let header: MessageHeader
-            try {
-                header = await this.authenticate.createHeader(toBinary(OnlineServiceRequestBodySchema, body))
-            } catch (err) {
-                console.error('Fail to create header for online service.', err)
-                return reject(err)
-            }
-
-            const request = create(OnlineServiceRequestSchema, {
-                header: header,
-                body: body
-            })
-            try {
-                const res = await this.client.online(request)
-                await this.authenticate.doResponse(res, OnlineServiceResponseBodySchema, isDeleted)
-                resolve()
-            } catch (err) {
-                console.error('Fail to online service', err)
                 return reject(err)
             }
         })
