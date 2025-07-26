@@ -136,7 +136,10 @@ describe('Audit', () => {
     console.log(providerOption?.proxy)
     const auditProvider = new AuditProvider(providerOption as ProviderOption)
     const res = await auditProvider.search(1, 10, {})
+    assert.isDefined(res.list)
     console.log(`Success to audit search=${JSON.stringify(res)}`)
+    const len = res.list.length
+    assert.isAtLeast(len == undefined ? 0 : len, 1)
   })
 
   it('cancel', async () => {

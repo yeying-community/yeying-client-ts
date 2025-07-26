@@ -109,10 +109,10 @@ describe('Service', () => {
         const serviceProvider = new ServiceProvider(providerOption as ProviderOption)
         const res = await serviceProvider.search(1, 10, {keyword: "de"})
         console.log(`search res=${JSON.stringify(res)}`)
-        const services = res
+        const services = res.list
         assert.isDefined(services)
         assert.isTrue(services.length > 0)
-        const len = res.length
+        const len = services.length
         assert.isAtLeast(len == undefined ? 0 : len, 1)
         services.map(i => console.log(`service, name=${i.name}, code=${i.code}`))
         console.log(`res=${JSON.stringify(res)}`)

@@ -1,5 +1,5 @@
 import { Authenticate } from '../common/authenticate'
-import { ProviderOption } from '../common/model'
+import { PageResponseResult, ProviderOption } from '../common/model'
 import {
     CreateServiceRequestBodySchema,
     CreateServiceRequestSchema,
@@ -19,7 +19,7 @@ import {
 } from '../../yeying/api/service/service_pb'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
-import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
+import { MessageHeader, RequestPageSchema, ResponsePage, ResponsePageSchema } from '../../yeying/api/common/message_pb'
 import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import { ServiceMetadata, ServiceMetadataJson, ServiceMetadataSchema } from '../../yeying/api/common/model_pb'
 import { isDeleted, isExisted } from '../../common/status'
@@ -154,7 +154,7 @@ export class ServiceProvider {
      * ```
      */
     search(page: number, pageSize: number, condition?: SearchServiceConditionJson) {
-        return new Promise<ServiceMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<PageResponseResult<ServiceMetadataJson>>(async (resolve, reject) => {
             const body = create(SearchServiceRequestBodySchema, {
                 condition: fromJson(SearchServiceConditionSchema, condition ?? {}),
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize })
@@ -188,8 +188,7 @@ export class ServiceProvider {
                         console.error(`Invalid service metadata=${JSON.stringify(serviceJson)} when searching.`, err)
                     }
                 }
-
-                resolve(services)
+                resolve(PageResponseResult.buildPageInfo(services, toJson(ResponsePageSchema, res.body?.page as ResponsePage)))
             } catch (err) {
                 console.error('Fail to search service', err)
                 return reject(err)

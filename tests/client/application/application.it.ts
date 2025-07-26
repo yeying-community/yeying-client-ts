@@ -107,10 +107,11 @@ describe('Application', () => {
     const applicationProvider = new ApplicationProvider(providerOption as ProviderOption)
     const res = await applicationProvider.search(1, 10)
     console.log(`res=${JSON.stringify(res)}`)
-    console.log(`Success to search application with count=${res.length}`)
-    const len = res.length
+    assert.isDefined(res.list)
+    console.log(`Success to search application with count=${res.list.length}`)
+    const len = res.list.length
     assert.isAtLeast(len == undefined ? 0 : len, 1)
-    res.map(i => console.log(`application, name=${i.name}, code=${i.code}`))
+    res.list.map(i => console.log(`application, name=${i.name}, code=${i.code}`))
     console.log(`res=${JSON.stringify(res)}`)
   })
 
