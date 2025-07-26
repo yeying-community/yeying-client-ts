@@ -1,5 +1,5 @@
 import { Authenticate } from '../common/authenticate'
-import { ProviderOption } from '../common/model'
+import { PageResponseResult, ProviderOption } from '../common/model'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
@@ -29,7 +29,7 @@ import {
 } from '../../yeying/api/common/model_pb'
 import { signApplicationMetadata, verifyApplicationMetadata } from '../model/model'
 import { isDeleted, isExisted } from '../../common/status'
-import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
+import { MessageHeader, RequestPageSchema, ResponsePage, ResponsePageSchema } from '../../yeying/api/common/message_pb'
 /**
  * ApplicationProvider 管理应用。
  */
@@ -120,7 +120,7 @@ export class ApplicationProvider {
      *
      */
     search(page: number, pageSize: number, condition?: SearchApplicationConditionJson) {
-        return new Promise<ApplicationMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<PageResponseResult<ApplicationMetadataJson>>(async (resolve, reject) => {
             const body = create(SearchApplicationRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
                 condition: fromJson(SearchApplicationConditionSchema, condition ?? {})
@@ -158,7 +158,7 @@ export class ApplicationProvider {
                         )
                     }
                 }
-                resolve(applications)
+                resolve(PageResponseResult.buildPageInfo(applications, toJson(ResponsePageSchema, res.body?.page as ResponsePage)))
             } catch (err) {
                 console.error('Fail to search application', err)
                 return reject(new NetworkUnavailable())

@@ -1,10 +1,10 @@
 import { Authenticate } from '../common/authenticate'
-import { ProviderOption } from '../common/model'
+import { PageResponseResult, ProviderOption } from '../common/model'
 import { Client, createClient } from '@connectrpc/connect'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { create, fromJson, toBinary, toJson } from '@bufbuild/protobuf'
 import { NetworkUnavailable } from '../../common/error'
-import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
+import { MessageHeader, RequestPageSchema, ResponsePage, ResponsePageSchema } from '../../yeying/api/common/message_pb'
 import {
     Audit,
     AuditMetadataJson,
@@ -294,7 +294,7 @@ export class AuditProvider {
      *
      */
     search(page: number, pageSize: number, condition: AuditSearchConditionJson) {
-        return new Promise<AuditDetailJson[]>(async (resolve, reject) => {
+        return new Promise<PageResponseResult<AuditDetailJson>>(async (resolve, reject) => {
             const meta = fromJson(AuditSearchConditionSchema, condition ?? {})
             const body = create(AuditSearchRequestBodySchema, {
                 page: create(RequestPageSchema, { page: page, pageSize: pageSize }),
@@ -324,7 +324,7 @@ export class AuditProvider {
                     }) as AuditDetailJson
                     auditDetails.push(auditDetailJson)
                 }
-                resolve(auditDetails)
+                resolve(PageResponseResult.buildPageInfo(auditDetails, toJson(ResponsePageSchema, res.body?.page as ResponsePage)))
             } catch (err) {
                 console.error('Fail to search', err)
                 return reject(new NetworkUnavailable())

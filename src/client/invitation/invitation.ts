@@ -1,6 +1,6 @@
 import { Authenticate } from '../common/authenticate'
-import { MessageHeader, RequestPageSchema } from '../../yeying/api/common/message_pb'
-import { ProviderOption } from '../common/model'
+import { MessageHeader, RequestPageSchema, ResponsePage, ResponsePageSchema } from '../../yeying/api/common/message_pb'
+import { PageResponseResult, ProviderOption } from '../common/model'
 import { create, toBinary, toJson } from '@bufbuild/protobuf'
 import { createGrpcWebTransport } from '@connectrpc/connect-web'
 import { Client, createClient } from '@connectrpc/connect'
@@ -129,7 +129,7 @@ export class InvitationProvider {
      * ```
      */
     search(page: number, pageSize: number) {
-        return new Promise<InvitationMetadataJson[]>(async (resolve, reject) => {
+        return new Promise<PageResponseResult<InvitationMetadataJson>>(async (resolve, reject) => {
             const body = create(SearchInvitationRequestBodySchema, {
                 page: create(RequestPageSchema, {
                     page: page,
@@ -153,14 +153,13 @@ export class InvitationProvider {
                 const res = await this.client.search(request)
                 await this.authenticate.doResponse(res, SearchInvitationResponseBodySchema)
                 const invitationsList = res.body?.invitations as InvitationMetadata[]
-                resolve(
-                    invitationsList.map(
+                const invitations = invitationsList.map(
                         (invitation) =>
                             toJson(InvitationMetadataSchema, invitation, {
                                 alwaysEmitImplicit: true
                             }) as InvitationMetadataJson
                     )
-                )
+                resolve(PageResponseResult.buildPageInfo(invitations, toJson(ResponsePageSchema, res.body?.page as ResponsePage)))
             } catch (err) {
                 console.error('Fail to search invitation', err)
                 return reject(err)
