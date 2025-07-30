@@ -1,6 +1,6 @@
 {
   "name": "@yeying-community/yeying-client-ts",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "browser": "dist/yeying-client-ts.umd.js",
   "main": "dist/yeying-client-ts.cjs.js",
   "module": "dist/yeying-client-ts.esm.js",
@@ -19,7 +19,8 @@
   "dependencies": {
     "@bufbuild/protobuf": "^2.2.5",
     "@connectrpc/connect-web": "^2.0.2",
-    "@yeying-community/yeying-web3": "^0.0.36"
+    "@yeying-community/yeying-web3": "^0.0.36",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",

@@ -78,6 +78,8 @@ export function getProviderProxy(code: ServiceCodeEnum) {
             return process.env.YEYING_WAREHOUSE_URL ? process.env.YEYING_WAREHOUSE_URL as string : "http://localhost:8641"
         case ServiceCodeEnum.SERVICE_CODE_AGENT:
             return process.env.YEYING_AGENT_URL ? process.env.YEYING_AGENT_URL as string : "http://localhost:8541"
+        case ServiceCodeEnum.SERVICE_CODE_CORRECTION:
+            return process.env.YEYING_CORRECTION_URL ? process.env.YEYING_CORRECTION_URL as string : "http://121.199.75.42:8741"
         default:
             throw new Error(`Unknown service provider=${code}`)
     }
